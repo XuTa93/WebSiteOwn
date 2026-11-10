@@ -227,7 +227,7 @@
       font-family: var(--nx-ff-mono); font-size: 0.8125rem;
     }
     .hero-meta span {
-      background: var(--nx-steel-800); border: 1px solid rgba(255,255,255,0.12);
+      background: var(--nx-steel-800); border: 1px solid rgba(255,255,255,0.24);
       padding: 0.35rem 0.8rem; border-radius: var(--nx-radius-s); color: rgba(255,255,255,0.9);
     }
 
@@ -333,14 +333,34 @@
     }
     .nx-btn--primary { color: var(--nx-steel-900); background: var(--nx-brand); }
     .nx-btn--primary:hover { background: #26E080; color: var(--nx-steel-900); padding-right: 2.2rem; margin-right: -0.25rem; }
-    .nx-btn--secondary { color: var(--nx-text); background: #E3EAE6; font-weight: 600; }
-    .nx-btn--secondary:hover { background: var(--nx-steel-900); color: #fff; padding-right: 2.15rem; margin-right: -0.2rem; }
-    .nx-btn--ghost-light {
-      color: #fff; background: #1E2924; font-weight: 600;
-      padding: 0.78rem 1.85rem 0.78rem 1.65rem;
+    .nx-btn--secondary {
+      color: var(--nx-text); background: #82968C; font-weight: 600;
+      padding: 0.78rem 1.85rem 0.78rem 1.65rem; isolation: isolate;
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%);
     }
-    .nx-btn--ghost-light:hover { background: #2B3B33; color: var(--nx-brand); padding-right: 2.05rem; margin-right: -0.2rem; }
+    .nx-btn--secondary::before {
+      content: ""; position: absolute; top: 1.5px; bottom: 1.5px; left: 2.2px; right: 1.8px; z-index: -1;
+      background: #EAF0ED;
+      clip-path: polygon(0 0, calc(100% - 11.2px) 0, 100% 50%, calc(100% - 11.2px) 100%, 0 100%, 8.5px 50%);
+      transition: background-color 0.16s ease;
+    }
+    .nx-btn--secondary:hover { background: var(--nx-brand-hover); color: var(--nx-text-brand); padding-right: 2.05rem; margin-right: -0.2rem; }
+    .nx-btn--secondary:hover::before { background: var(--nx-brand-subtle); }
+    .nx-btn--secondary:active { background: var(--nx-brand-pressed); color: var(--nx-brand-pressed); }
+    .nx-btn--secondary:active::before { background: #D5F3E4; }
+    .nx-btn--ghost-light {
+      color: #fff; background: rgba(255, 255, 255, 0.44); font-weight: 600;
+      padding: 0.78rem 1.85rem 0.78rem 1.65rem; isolation: isolate;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%);
+    }
+    .nx-btn--ghost-light::before {
+      content: ""; position: absolute; top: 1.5px; bottom: 1.5px; left: 2.2px; right: 1.8px; z-index: -1;
+      background: #22302A;
+      clip-path: polygon(0 0, calc(100% - 11.2px) 0, 100% 50%, calc(100% - 11.2px) 100%, 0 100%, 8.5px 50%);
+      transition: background-color 0.16s ease;
+    }
+    .nx-btn--ghost-light:hover { background: var(--nx-brand); color: var(--nx-brand); padding-right: 2.05rem; margin-right: -0.2rem; }
+    .nx-btn--ghost-light:hover::before { background: #293A32; }
     .nx-btn--sm {
       padding: 0.52rem 1.65rem 0.52rem 1.05rem; font-size: 0.85rem;
       clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
