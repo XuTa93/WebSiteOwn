@@ -87,6 +87,7 @@
       background: var(--nx-surface-alt);
       margin: 0;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     h1, h2, h3, h4 { line-height: 1.22; letter-spacing: -0.02em; margin-top: 0; }
     code, pre { font-family: var(--nx-ff-mono); }
@@ -183,21 +184,21 @@
     .nx-mobile-nav.is-open { display: block; animation: mobSlide 0.14s ease-out; }
     @media (min-width: 900px) { .nx-mobile-nav, .nx-mobile-nav.is-open { display: none !important; } }
 
-    .nx-mob-inner { padding: 0.5rem 1.25rem 1.25rem; display: grid; gap: 0.125rem; }
+    .nx-mob-inner { padding: 0.5rem 1.25rem 0.85rem; display: grid; gap: 0.125rem; }
     .nx-mob-link {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center;
       padding: 0.85rem 0.25rem; border-bottom: 1px solid rgba(16, 23, 20, 0.08);
       text-decoration: none; font-size: 0.95rem; font-weight: 600; color: var(--nx-text);
-      transition: color 0.15s ease;
+      position: relative; transition: color 0.15s ease;
     }
-    .nx-mob-link span:last-child { color: var(--nx-text-brand); font-family: var(--nx-ff-mono); font-size: 0.875rem; }
+    .nx-mob-link:last-child { border-bottom: none; }
+    .nx-mob-link::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+      background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.2s ease;
+    }
     .nx-mob-link:hover, .nx-mob-link:focus-visible { color: var(--nx-text-brand); }
-    .nx-mob-footer {
-      margin-top: 0.75rem; display: grid; grid-template-columns: 1fr; gap: 0.5rem;
-    }
-    @media (min-width: 460px) { .nx-mob-footer { grid-template-columns: repeat(2, 1fr); } }
-    .nx-mob-footer .nx-btn { width: 100%; justify-content: center; }
-    .nx-mob-footer .nx-btn:hover { margin-right: 0; }
+    .nx-mob-link:hover::after, .nx-mob-link:focus-visible::after { transform: scaleX(1); }
 
     /* Hero Banner */
     .bg-hero {
@@ -311,7 +312,7 @@
     @media (min-width: 768px) { .font-cards { grid-template-columns: 1.35fr 1fr; } }
     .font-box {
       border-radius: var(--nx-radius-m); padding: 1.5rem; border: 1px solid var(--nx-border);
-      background: var(--nx-surface-alt);
+      background: var(--nx-surface-alt); min-width: 0; overflow-wrap: anywhere;
     }
     .font-sample-big { font-size: 2.5rem; font-weight: 800; line-height: 1.1; margin: 0.35rem 0 0.75rem; letter-spacing: -0.03em; }
     .type-table { width: 100%; border-collapse: collapse; }
@@ -348,7 +349,7 @@
 
     .comp-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
     @media (min-width: 900px) { .comp-grid { grid-template-columns: 1fr 1fr; } }
-    .comp-box { border: 1px solid #D4DCD8; border-radius: var(--nx-radius-m); padding: 1.5rem; }
+    .comp-box { border: 1px solid #D4DCD8; border-radius: var(--nx-radius-m); padding: 1.5rem; min-width: 0; }
     .comp-box h4 { font-size: 0.875rem; font-family: var(--nx-ff-mono); text-transform: uppercase; color: var(--nx-text-muted); margin-bottom: 1rem; }
 
     /* Industrial Status Tags */
@@ -433,15 +434,11 @@
     <!-- MOBILE NAV DRAWER (< 900px) -->
     <nav class="nx-mobile-nav" id="mobile-nav-panel" aria-label="Menu điều hướng di động">
       <div class="nx-mob-inner">
-        <a href="#logo" class="nx-mob-link"><span>01. Logo BYRA Technologics</span><span>→</span></a>
-        <a href="#colors" class="nx-mob-link"><span>02. Bảng màu Emerald Jade &amp; Steel</span><span>→</span></a>
-        <a href="#typography" class="nx-mob-link"><span>03. Phông chữ Inter &amp; IBM Plex Mono</span><span>→</span></a>
-        <a href="#components" class="nx-mob-link"><span>04. UI Kit, 8C Chevron &amp; Andon</span><span>→</span></a>
-        <a href="#tokens" class="nx-mob-link"><span>05. CSS Design Tokens</span><span>→</span></a>
-        <div class="nx-mob-footer">
-          <a href="SmartFactory.html" class="nx-btn nx-btn--primary">Trang Giải pháp MES</a>
-          <a href="Products.html" class="nx-btn nx-btn--secondary">Trang Sản phẩm</a>
-        </div>
+        <a href="#logo" class="nx-mob-link">01. Logo</a>
+        <a href="#colors" class="nx-mob-link">02. Bảng màu</a>
+        <a href="#typography" class="nx-mob-link">03. Phông chữ</a>
+        <a href="#components" class="nx-mob-link">04. UI Kit &amp; Andon</a>
+        <a href="#tokens" class="nx-mob-link">05. CSS Tokens</a>
       </div>
     </nav>
   </header>
@@ -780,7 +777,7 @@
               <span class="status-pill status-pill--down"><span class="status-dot"></span>DOWN · Dừng sự cố</span>
               <span class="status-pill status-pill--info"><span class="status-dot"></span>WO-26-1182 · Planned</span>
             </div>
-            <div style="background: var(--nx-surface-alt); padding: 0.75rem 1rem; border-radius: var(--nx-radius-s); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+            <div style="background: var(--nx-surface-alt); padding: 0.75rem 1rem; border-radius: var(--nx-radius-s); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; font-size: 0.875rem;">
               <code style="color: var(--nx-text-muted); font-size: 0.8125rem;">05/11 09:02</code>
               <span>Sản xuất · Máy <code>M3-02</code> · Ca A · 182°C</span>
               <span class="status-pill status-pill--run" style="padding: 0.15rem 0.6rem; font-size: 0.75rem;">Sản xuất</span>

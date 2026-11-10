@@ -125,6 +125,11 @@
       display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem;
       padding-top: 0.45rem; padding-bottom: 0.45rem;
     }
+    @media (max-width: 767px) {
+      .nx-topbar { font-size: 0.78rem; }
+      .nx-topbar-tagline { display: none; }
+      .nx-topbar .nx-container { justify-content: flex-end; }
+    }
     .nx-topbar a { color: #fff; text-decoration: none; font-weight: 600; position: relative; display: inline-block; }
     .nx-topbar a::after {
       content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
@@ -231,8 +236,8 @@
     .nx-mobile-nav.is-open { display: block; animation: mobSlide 0.14s ease-out; }
     @media (min-width: 1000px) { .nx-mobile-nav, .nx-mobile-nav.is-open { display: none !important; } }
 
-    .nx-mob-inner { padding: 0.5rem 1rem 1.25rem; display: grid; gap: 0.125rem; }
-    @media (min-width: 640px) { .nx-mob-inner { padding: 0.75rem 1.5rem 1.5rem; } }
+    .nx-mob-inner { padding: 0.5rem 1rem 0.75rem; display: grid; gap: 0.125rem; }
+    @media (min-width: 640px) { .nx-mob-inner { padding: 0.75rem 1.5rem 0.9rem; } }
 
     .nx-mob-group { border-bottom: 1px solid rgba(16, 23, 20, 0.08); }
     .nx-mob-trigger {
@@ -278,12 +283,12 @@
     }
 
     .nx-mob-link {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center;
       padding: 0.88rem 0.25rem; border-bottom: 1px solid rgba(16, 23, 20, 0.08);
       text-decoration: none; font-size: 1rem; font-weight: 600; color: var(--nx-text);
       position: relative; transition: color 0.15s ease;
     }
-    .nx-mob-link span:last-child { color: var(--nx-text-brand); font-family: var(--nx-ff-mono); font-size: 0.9rem; }
+    .nx-mob-link:last-child { border-bottom: none; }
     .nx-mob-link::after {
       content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
       background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
@@ -291,18 +296,6 @@
     }
     .nx-mob-link:hover, .nx-mob-link:focus-visible { color: var(--nx-text-brand); }
     .nx-mob-link:hover::after, .nx-mob-link:focus-visible::after { transform: scaleX(1); }
-
-    .nx-mob-footer {
-      margin-top: 0.85rem; padding: 0.9rem; background: var(--nx-surface-alt);
-      border-left: 3px solid var(--nx-brand); border-radius: var(--nx-radius-s);
-      display: grid; gap: 0.75rem;
-    }
-    .nx-mob-actions { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
-    @media (min-width: 460px) { .nx-mob-actions { grid-template-columns: repeat(2, 1fr); } }
-    .nx-mob-actions .nx-btn { width: 100%; padding-top: 0.62rem; padding-bottom: 0.62rem; font-size: 0.875rem; }
-    .nx-mob-actions .nx-btn:hover { margin-right: 0; }
-    .nx-mob-hotline { font-family: var(--nx-ff-mono); font-size: 0.78rem; color: var(--nx-text-muted); }
-    .nx-mob-hotline a { color: var(--nx-text); font-weight: 700; text-decoration: none; }
 
     /* Mega menu (Axis-inspired Full-Bleed Split Layout) */
     .nx-mega {
@@ -867,6 +860,7 @@
     .nx-form input, .nx-form select { padding: 0.65rem 0.9rem; border-radius: var(--nx-radius-s); border: 1.5px solid rgba(0,0,0,0.15); font-family: var(--nx-ff-body); font-size: 0.9375rem; }
     .nx-form input:focus, .nx-form select:focus { outline: none; border-color: var(--nx-brand-hover); }
     .nx-form-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    @media (max-width: 519px) { .nx-form-2 { grid-template-columns: 1fr; } }
     .nx-toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--nx-steel-900); color: #fff; border-left: 4px solid var(--nx-brand); padding: 0.875rem 1.25rem; border-radius: var(--nx-radius-s); box-shadow: var(--nx-elev-2); font-size: 0.875rem; font-weight: 600; display: none; z-index: 600; }
     .nx-toast.is-visible { display: block; }
 
@@ -880,7 +874,7 @@
   <!-- UTILITY TOP BAR -->
   <div class="nx-topbar">
     <div class="nx-container">
-      <span>Giải pháp Smart Factory cho nhà máy Việt Nam — MES · Số hóa · Truy xuất nguồn gốc</span>
+      <span class="nx-topbar-tagline">Giải pháp Smart Factory cho nhà máy Việt Nam — MES · Số hóa · Truy xuất nguồn gốc</span>
       <span>Hotline: <a href="tel:+84000000000">(+84) 000 000 000</a> · <a href="#contact" data-modal-trigger="survey">Đăng ký khảo sát miễn phí</a></span>
     </div>
   </div>
@@ -1109,20 +1103,22 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
           <div class="nx-mob-sub" id="mob-solutions-sub">
-            <div class="nx-mob-sub-title">Giải pháp theo phân hệ (7 Mô-đun)</div>
+            <div class="nx-mob-sub-title">Giải pháp theo phân hệ</div>
             <ul>
               <li><a href="#solutions" data-sol-jump="mes">MES — Điều hành sản xuất</a></li>
               <li><a href="#solutions" data-sol-jump="trace">Truy xuất nguồn gốc GS1</a></li>
               <li><a href="#solutions" data-sol-jump="oee">Giám sát máy &amp; OEE (IIoT)</a></li>
               <li><a href="#solutions" data-sol-jump="qms">Quản lý chất lượng (QMS / SPC)</a></li>
               <li><a href="#solutions" data-sol-jump="wms">Kho thông minh &amp; Intralogistics</a></li>
-              <li><a href="#solutions" data-sol-jump="cmms">Bảo trì &amp; Số hóa biểu mẫu</a></li>
-              <li><a href="#solutions" data-sol-jump="ems">Quản lý năng lượng &amp; ESG (EMS)</a></li>
+              <li><a href="#solutions" data-sol-jump="ems">Quản lý năng lượng (EMS)</a></li>
+              <li><a href="#solutions" data-sol-jump="cmms">Bảo trì thiết bị (CMMS)</a></li>
+              <li><a href="#solutions" data-sol-jump="cmms">Số hóa biểu mẫu (Paperless)</a></li>
               <li><a href="#platform">Tích hợp hai chiều ERP ⇄ MES</a></li>
             </ul>
             <div class="nx-mob-sub-title">Giải pháp theo ngành</div>
             <ul>
-              <li><a href="#cases" data-filter-jump="electronics">Điện tử &amp; Cơ khí chính xác</a></li>
+              <li><a href="#cases" data-filter-jump="electronics">Điện tử &amp; Lắp ráp SMT</a></li>
+              <li><a href="#cases" data-filter-jump="electronics">Cơ khí chính xác &amp; Ô tô</a></li>
               <li><a href="#cases" data-filter-jump="fnb">Thực phẩm &amp; Đồ uống (F&amp;B)</a></li>
               <li><a href="#cases" data-filter-jump="pharma">Dược phẩm &amp; Y tế GMP</a></li>
             </ul>
@@ -1131,37 +1127,29 @@
 
         <div class="nx-mob-group">
           <button type="button" class="nx-mob-trigger" aria-expanded="false" aria-controls="mob-products-sub">
-            <span>Sản phẩm &amp; Thiết bị</span>
+            <span>Sản phẩm</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
           <div class="nx-mob-sub" id="mob-products-sub">
-            <div class="nx-mob-sub-title">Danh mục phần mềm &amp; phần cứng IIoT</div>
+            <div class="nx-mob-sub-title">Danh mục sản phẩm</div>
             <ul>
               <li><a href="Products.html#cat-edge">Bộ thu thập dữ liệu IIoT &amp; Edge</a></li>
-              <li><a href="Products.html#cat-hmi">Màn hình công nghiệp &amp; Panel PC</a></li>
-              <li><a href="Products.html#cat-andon">Hệ thống hiển thị &amp; Đèn Andon</a></li>
-              <li><a href="Products.html#cat-mes-sw">Phần mềm điều hành MES / OEE / EMS</a></li>
               <li><a href="Products.html#cat-scanner">Máy quét mã vạch &amp; PDA</a></li>
-              <li><a href="Products.html#cat-printer">Máy in nhãn mã vạch GS1</a></li>
-              <li><a href="Products.html#cat-sensor">Cảm biến &amp; Đồng hồ năng lượng</a></li>
               <li><a href="Products.html#cat-vision">Thị giác máy (AI Vision)</a></li>
+              <li><a href="Products.html#cat-hmi">Màn hình công nghiệp &amp; Panel PC</a></li>
+              <li><a href="Products.html#cat-printer">Máy in nhãn mã vạch GS1</a></li>
+              <li><a href="Products.html#cat-andon">Hệ thống hiển thị &amp; Đèn Andon</a></li>
+              <li><a href="Products.html#cat-mes-sw">Phần mềm MES &amp; Điều hành</a></li>
+              <li><a href="Products.html#cat-sensor">Cảm biến &amp; Đồng hồ năng lượng</a></li>
             </ul>
-            <a href="Products.html" class="nx-mob-all">Xem toàn bộ 12 danh mục &amp; Sản phẩm mới →</a>
+            <a href="Products.html" class="nx-mob-all">Xem toàn bộ trang Sản phẩm →</a>
           </div>
         </div>
 
-        <a href="#platform" class="nx-mob-link"><span>Nền tảng &amp; Kiến trúc ISA-95</span><span>→</span></a>
-        <a href="#cases" class="nx-mob-link"><span>Dự án tiêu biểu (Case Studies)</span><span>→</span></a>
-        <a href="#roadmap" class="nx-mob-link"><span>Lộ trình triển khai 5 bước</span><span>→</span></a>
-        <a href="#about" class="nx-mob-link"><span>Về chúng tôi &amp; Tiêu chuẩn</span><span>→</span></a>
-
-        <div class="nx-mob-footer">
-          <div class="nx-mob-hotline">Hotline tư vấn: <a href="tel:+84000000000">(+84) 000 000 000</a></div>
-          <div class="nx-mob-actions">
-            <button type="button" class="nx-btn nx-btn--primary" data-modal-trigger="survey">Khảo sát miễn phí</button>
-            <a href="Products.html" class="nx-btn nx-btn--secondary">Xem trang Sản phẩm</a>
-          </div>
-        </div>
+        <a href="#platform" class="nx-mob-link">Nền tảng</a>
+        <a href="#cases" class="nx-mob-link">Dự án</a>
+        <a href="#roadmap" class="nx-mob-link">Triển khai</a>
+        <a href="#about" class="nx-mob-link">Về chúng tôi</a>
       </div>
     </nav>
   </header>
