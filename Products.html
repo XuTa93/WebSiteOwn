@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sản phẩm | BYRA Technologics — Thiết bị IIoT, Auto-ID, Andon & Phần mềm Smart Factory</title>
   <meta name="description" content="Khám phá danh mục sản phẩm và thiết bị công nghiệp chuẩn mở của BYRA Technologics: Bộ thu thập dữ liệu IIoT, máy quét mã vạch & PDA, màn hình Panel PC, bảng Andon, máy in nhãn GS1 và phần mềm MES." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#101714" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -146,13 +151,131 @@
     }
     .nx-link:hover::after, .nx-link:focus-visible::after { transform: scaleX(1); }
 
-    .nx-header-utils { display: flex; align-items: center; gap: 0.5rem; }
+    .nx-header-utils { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+    .nx-cta-short { display: none; }
+    @media (max-width: 439px) {
+      .nx-cta-full { display: none; }
+      .nx-cta-short { display: inline; }
+    }
     .nx-icon-btn {
       width: 38px; height: 38px; border-radius: var(--nx-radius-s); border: none; background: transparent; color: var(--nx-text);
       display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
       transition: background-color 0.15s ease, color 0.15s ease;
     }
     .nx-icon-btn:hover { background: var(--nx-surface-alt); color: var(--nx-text-brand); }
+
+    /* ---------- Mobile Navigation Toggle & Drawer (< 1000px) ---------- */
+    .nx-menu-toggle {
+      width: 40px; height: 40px; padding: 0; border-radius: var(--nx-radius-s);
+      border: 1.5px solid #D4DCD8; border-top: 2.5px solid var(--nx-steel-900);
+      background: var(--nx-surface-alt); color: var(--nx-steel-900);
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; position: relative;
+      transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+    }
+    .nx-menu-toggle:hover, .nx-menu-toggle:focus-visible { border-color: var(--nx-brand); color: var(--nx-text-brand); outline: none; }
+    .nx-menu-toggle .nx-ico-close { display: none; }
+    .nx-menu-toggle.is-open {
+      background: var(--nx-steel-900); border-color: var(--nx-steel-900);
+      border-top-color: var(--nx-brand); color: var(--nx-brand);
+    }
+    .nx-menu-toggle.is-open .nx-ico-menu { display: none; }
+    .nx-menu-toggle.is-open .nx-ico-close { display: block; }
+    @media (min-width: 1000px) { .nx-menu-toggle { display: none; } }
+
+    @media (max-width: 479px) {
+      .nx-header-inner { padding: 0 0.75rem; gap: 0.45rem; }
+      .nx-header-utils { gap: 0.4rem; }
+      .nx-header-utils .nx-btn--sm { padding: 0.42rem 1.1rem 0.42rem 0.72rem; font-size: 0.76rem; }
+      .nx-menu-toggle { width: 38px; height: 38px; }
+      .nx-logo { font-size: 1.02rem; gap: 0.4rem; }
+      .nx-logo-mark { width: 28px; height: 28px; }
+      .nx-logo small { font-size: 0.52rem; letter-spacing: 0.06em; }
+    }
+
+    @keyframes mobSlide { from { transform: translateY(-4px); } to { transform: none; } }
+    .nx-mobile-nav {
+      display: none; position: absolute; top: var(--nx-header-height); left: 0; right: 0; z-index: 195;
+      background: var(--nx-surface); border-top: 1px solid #E6E6E6; border-bottom: 3px solid var(--nx-brand);
+      box-shadow: 0 18px 40px rgba(16, 23, 20, 0.22);
+      max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px);
+      overflow-y: auto; overscroll-behavior: contain;
+    }
+    .nx-mobile-nav.is-open { display: block; animation: mobSlide 0.14s ease-out; }
+    @media (min-width: 1000px) { .nx-mobile-nav, .nx-mobile-nav.is-open { display: none !important; } }
+
+    .nx-mob-inner { padding: 0.5rem 1rem 1.25rem; display: grid; gap: 0.125rem; }
+    @media (min-width: 640px) { .nx-mob-inner { padding: 0.75rem 1.5rem 1.5rem; } }
+
+    .nx-mob-group { border-bottom: 1px solid rgba(16, 23, 20, 0.08); }
+    .nx-mob-trigger {
+      width: 100%; background: none; border: none; padding: 0.9rem 0.25rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+      font-family: var(--nx-ff-body); font-size: 1rem; font-weight: 700; color: var(--nx-text);
+      cursor: pointer; text-align: left; position: relative; transition: color 0.15s ease;
+    }
+    .nx-mob-trigger::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2.5px;
+      background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.2s ease;
+    }
+    .nx-mob-trigger[aria-expanded="true"], .nx-mob-trigger:hover, .nx-mob-trigger.is-current-page { color: var(--nx-text-brand); }
+    .nx-mob-trigger[aria-expanded="true"]::after { transform: scaleX(1); }
+    .nx-mob-trigger svg { transition: transform 0.18s ease; flex-shrink: 0; }
+    .nx-mob-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+    .nx-mob-sub {
+      display: none; padding: 0.35rem 0.75rem 0.95rem 0.9rem; margin-bottom: 0.45rem;
+      background: var(--nx-surface-alt); border-left: 3px solid var(--nx-brand);
+      border-radius: 0 var(--nx-radius-s) var(--nx-radius-s) 0;
+    }
+    .nx-mob-sub.is-open { display: grid; gap: 0.65rem; }
+    .nx-mob-sub-title {
+      font-family: var(--nx-ff-mono); font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em; color: var(--nx-text-muted);
+      margin: 0.25rem 0 0;
+    }
+    .nx-mob-sub ul {
+      list-style: none; padding: 0; margin: 0;
+      display: grid; grid-template-columns: 1fr; gap: 0.35rem;
+    }
+    @media (min-width: 560px) { .nx-mob-sub ul { grid-template-columns: repeat(2, 1fr); gap: 0.4rem 1.25rem; } }
+    .nx-mob-sub a {
+      display: inline-block; padding: 0.28rem 0; color: var(--nx-text); text-decoration: none;
+      font-size: 0.875rem; font-weight: 600; transition: color 0.15s ease;
+    }
+    .nx-mob-sub a:hover, .nx-mob-sub a:focus-visible { color: var(--nx-text-brand); }
+    .nx-mob-all {
+      margin-top: 0.2rem; padding-top: 0.55rem; border-top: 1px dashed rgba(16, 23, 20, 0.14);
+      font-size: 0.85rem !important; font-weight: 700 !important; color: var(--nx-text-brand) !important;
+    }
+
+    .nx-mob-link {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.88rem 0.25rem; border-bottom: 1px solid rgba(16, 23, 20, 0.08);
+      text-decoration: none; font-size: 1rem; font-weight: 600; color: var(--nx-text);
+      position: relative; transition: color 0.15s ease;
+    }
+    .nx-mob-link span:last-child { color: var(--nx-text-brand); font-family: var(--nx-ff-mono); font-size: 0.9rem; }
+    .nx-mob-link::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+      background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.2s ease;
+    }
+    .nx-mob-link:hover, .nx-mob-link:focus-visible { color: var(--nx-text-brand); }
+    .nx-mob-link:hover::after, .nx-mob-link:focus-visible::after { transform: scaleX(1); }
+
+    .nx-mob-footer {
+      margin-top: 0.85rem; padding: 0.9rem; background: var(--nx-surface-alt);
+      border-left: 3px solid var(--nx-brand); border-radius: var(--nx-radius-s);
+      display: grid; gap: 0.75rem;
+    }
+    .nx-mob-actions { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+    @media (min-width: 460px) { .nx-mob-actions { grid-template-columns: repeat(2, 1fr); } }
+    .nx-mob-actions .nx-btn { width: 100%; padding-top: 0.62rem; padding-bottom: 0.62rem; font-size: 0.875rem; }
+    .nx-mob-actions .nx-btn:hover { margin-right: 0; }
+    .nx-mob-hotline { font-family: var(--nx-ff-mono); font-size: 0.78rem; color: var(--nx-text-muted); }
+    .nx-mob-hotline a { color: var(--nx-text); font-weight: 700; text-decoration: none; }
 
     /* ---------- Buttons (8C: Speed Chevron / Automation Flow) ---------- */
     .nx-btn {
@@ -424,7 +547,8 @@
     }
 
     .ac-deck-body { padding: 1.1rem 1.15rem 1.25rem; flex: 1; display: flex; flex-direction: column; background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m); }
-    .ac-deck-body h3 { font-size: 1.125rem; font-weight: 600; margin: 0 0 0.35rem; color: var(--nx-text); transition: color 0.15s ease; }
+    .ac-deck-body h3 { font-size: clamp(0.98rem, 1.25vw, 1.125rem); font-weight: 600; line-height: 1.32; margin: 0 0 0.35rem; color: var(--nx-text); transition: color 0.15s ease; }
+    @media (min-width: 600px) { .ac-deck-body h3 { min-height: 2.7em; } }
     .ac-deck-card:hover .ac-deck-body h3 { color: var(--nx-text-brand); }
     .ac-deck-body p { font-size: 0.875rem; line-height: 1.55; color: var(--nx-text-muted); margin: 0; }
 
@@ -458,7 +582,8 @@
     .ac-spot-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
     .ac-spot-card:hover .ac-spot-media img { transform: scale(1.04); }
     .ac-spot-body { padding: 1.75rem 1.5rem 2rem; display: flex; flex-direction: column; align-items: center; flex: 1; }
-    .ac-spot-body h3 { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.6rem; }
+    .ac-spot-body h3 { font-size: clamp(1.1rem, 1.5vw, 1.35rem); font-weight: 600; line-height: 1.32; margin: 0 0 0.6rem; }
+    @media (min-width: 860px) { .ac-spot-body h3 { min-height: 2.7em; } }
     .ac-spot-body p { font-size: 0.95rem; color: var(--nx-text-muted); margin: 0 0 1.5rem; flex: 1; }
 
     /* Signature Axis .link-cta with left-to-right Emerald Jade underline sweep */
@@ -525,13 +650,16 @@
       font-family: var(--nx-ff-mono); font-size: 0.68rem; color: var(--nx-text-muted);
     }
     .ac-single-card h3 { font-size: 1.05rem; font-weight: 600; line-height: 1.4; margin: 0 0 0.4rem; }
+    @media (min-width: 600px) { .ac-single-card h3 { min-height: 2.8em; } }
     .ac-single-card:hover h3 { color: var(--nx-text-brand); }
     .ac-single-card p { font-size: 0.85rem; color: var(--nx-text-muted); margin: 0 0 1rem; flex: 1; }
     .ac-single-meta {
-      font-family: var(--nx-ff-mono); font-size: 0.75rem; font-weight: 600;
+      font-family: var(--nx-ff-mono); font-size: 0.72rem; font-weight: 600;
       color: var(--nx-text-brand); border-top: 1px solid var(--nx-border); padding-top: 0.65rem;
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
     }
+    .ac-single-meta span:last-child { white-space: nowrap; flex-shrink: 0; }
+    @media (min-width: 600px) and (max-width: 1279px) { .ac-single-meta { min-height: 2.85rem; } }
 
     /* ==========================================================================
        SECTION E: RELATED RESOURCES (3-Column Flat Editorial Blocks)
@@ -544,7 +672,8 @@
     .ac-editorial-media { aspect-ratio: 3 / 2; width: 100%; overflow: hidden; border-radius: 4px; margin-bottom: 1.15rem; background: var(--nx-steel-900); }
     .ac-editorial-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
     .ac-editorial-item:hover .ac-editorial-media img { transform: scale(1.03); }
-    .ac-editorial-item h3 { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.5rem; }
+    .ac-editorial-item h3 { font-size: clamp(1.08rem, 1.5vw, 1.35rem); font-weight: 600; line-height: 1.32; margin: 0 0 0.5rem; }
+    @media (min-width: 860px) and (max-width: 1179px) { .ac-editorial-item h3 { min-height: 2.65em; } }
     .ac-editorial-item p { font-size: 0.95rem; color: var(--nx-text-muted); margin: 0 0 1.25rem; flex: 1; }
 
     /* ---------- Footer ---------- */
@@ -621,7 +750,20 @@
       </nav>
 
       <div class="nx-header-utils">
-        <button type="button" class="nx-btn nx-btn--primary nx-btn--sm" data-quote-item="Tư vấn & Báo giá tổng thể danh mục BYRA">Liên hệ báo giá</button>
+        <button type="button" class="nx-btn nx-btn--primary nx-btn--sm" data-quote-item="Tư vấn & Báo giá tổng thể danh mục BYRA">
+          <span class="nx-cta-full">Liên hệ báo giá</span><span class="nx-cta-short">Báo giá</span>
+        </button>
+        <button type="button" class="nx-menu-toggle" id="nav-mobile-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Mở menu điều hướng">
+          <svg class="nx-ico-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+          <svg class="nx-ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true">
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
 
@@ -711,9 +853,12 @@
                 <li><a href="SmartFactory.html?sol=oee#solutions">Giám sát máy & OEE (IIoT)</a></li>
                 <li><a href="SmartFactory.html?sol=qms#solutions">Quản lý chất lượng (QMS / SPC)</a></li>
                 <li><a href="SmartFactory.html?sol=wms#solutions">Kho thông minh & Intralogistics</a></li>
+                <li><a href="SmartFactory.html?sol=ems#solutions">Quản lý năng lượng (EMS)</a></li>
                 <li><a href="SmartFactory.html?sol=cmms#solutions">Bảo trì thiết bị (CMMS)</a></li>
                 <li><a href="SmartFactory.html?sol=cmms#solutions">Số hóa biểu mẫu (Paperless)</a></li>
                 <li><a href="SmartFactory.html?sol=mes#solutions">Hồ sơ lô điện tử (eBR / eDHR)</a></li>
+                <li><a href="SmartFactory.html?sol=ems#solutions">Kiểm kê Carbon & ESG (ISO 50001)</a></li>
+                <li><a href="SmartFactory.html?sol=qms#solutions">Thị giác máy (AI Vision QC)</a></li>
                 <li><a href="SmartFactory.html#platform">Tích hợp hai chiều ERP ⇄ MES</a></li>
               </ul>
             </div>
@@ -753,6 +898,70 @@
         </div>
       </div>
     </div>
+
+    <!-- MOBILE NAV DRAWER (< 1000px) -->
+    <nav class="nx-mobile-nav" id="mobile-nav-panel" aria-label="Menu điều hướng di động">
+      <div class="nx-mob-inner">
+        <div class="nx-mob-group">
+          <button type="button" class="nx-mob-trigger" aria-expanded="false" aria-controls="mob-solutions-sub">
+            <span>Giải pháp Smart Factory</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="nx-mob-sub" id="mob-solutions-sub">
+            <div class="nx-mob-sub-title">Giải pháp theo phân hệ (7 Mô-đun)</div>
+            <ul>
+              <li><a href="SmartFactory.html?sol=mes#solutions">MES — Điều hành sản xuất</a></li>
+              <li><a href="SmartFactory.html?sol=trace#solutions">Truy xuất nguồn gốc GS1</a></li>
+              <li><a href="SmartFactory.html?sol=oee#solutions">Giám sát máy &amp; OEE (IIoT)</a></li>
+              <li><a href="SmartFactory.html?sol=qms#solutions">Quản lý chất lượng (QMS / SPC)</a></li>
+              <li><a href="SmartFactory.html?sol=wms#solutions">Kho thông minh &amp; Intralogistics</a></li>
+              <li><a href="SmartFactory.html?sol=cmms#solutions">Bảo trì &amp; Số hóa biểu mẫu</a></li>
+              <li><a href="SmartFactory.html?sol=ems#solutions">Quản lý năng lượng &amp; ESG (EMS)</a></li>
+              <li><a href="SmartFactory.html#platform">Tích hợp hai chiều ERP ⇄ MES</a></li>
+            </ul>
+            <a href="SmartFactory.html#solutions" class="nx-mob-all">Xem tổng quan trang Giải pháp →</a>
+          </div>
+        </div>
+
+        <div class="nx-mob-group">
+          <button type="button" class="nx-mob-trigger is-current-page" aria-expanded="true" aria-controls="mob-products-sub">
+            <span>Sản phẩm &amp; Thiết bị (Trang này)</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="nx-mob-sub is-open" id="mob-products-sub">
+            <div class="nx-mob-sub-title">12 Nhóm thiết bị &amp; phần mềm</div>
+            <ul>
+              <li><a href="#cat-edge">Bộ thu thập dữ liệu IIoT &amp; Edge</a></li>
+              <li><a href="#cat-hmi">Màn hình công nghiệp &amp; Panel PC</a></li>
+              <li><a href="#cat-andon">Hệ thống hiển thị &amp; Đèn Andon</a></li>
+              <li><a href="#cat-mes-sw">Phần mềm điều hành sản xuất</a></li>
+              <li><a href="#cat-scanner">Máy quét mã vạch &amp; PDA</a></li>
+              <li><a href="#cat-printer">Máy in nhãn mã vạch GS1</a></li>
+              <li><a href="#cat-rfid">Thiết bị đọc &amp; Thẻ RFID</a></li>
+              <li><a href="#cat-sensor">Cảm biến &amp; Đồng hồ năng lượng</a></li>
+              <li><a href="#cat-vision">Hệ thống thị giác máy (AI Vision)</a></li>
+              <li><a href="#cat-scale">Cân điện tử &amp; Đo lường</a></li>
+              <li><a href="#cat-network">Thiết bị mạng &amp; Switch công nghiệp</a></li>
+              <li><a href="#cat-accessories">Phụ kiện &amp; Tủ rack công nghiệp</a></li>
+            </ul>
+            <a href="#new-products" class="nx-mob-all">Xem 8 Sản phẩm mới ra mắt (NEW) →</a>
+          </div>
+        </div>
+
+        <a href="SmartFactory.html#platform" class="nx-mob-link"><span>Nền tảng &amp; Kiến trúc ISA-95</span><span>→</span></a>
+        <a href="SmartFactory.html#cases" class="nx-mob-link"><span>Dự án tiêu biểu (Case Studies)</span><span>→</span></a>
+        <a href="SmartFactory.html#roadmap" class="nx-mob-link"><span>Lộ trình triển khai 5 bước</span><span>→</span></a>
+        <a href="SmartFactory.html#about" class="nx-mob-link"><span>Về chúng tôi</span><span>→</span></a>
+
+        <div class="nx-mob-footer">
+          <div class="nx-mob-hotline">Tư vấn dự án: <a href="tel:+84000000000">(+84) 000 000 000</a></div>
+          <div class="nx-mob-actions">
+            <button type="button" class="nx-btn nx-btn--primary" data-quote-item="Tư vấn &amp; Báo giá tổng thể danh mục BYRA">Liên hệ báo giá</button>
+            <a href="SmartFactory.html" class="nx-btn nx-btn--secondary">Trang Giải pháp MES</a>
+          </div>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <!-- SECTION A: TWO-TIER HERO (Axis /products structure) -->
@@ -1181,10 +1390,11 @@
         <div>
           <h4>Giải pháp</h4>
           <ul>
-            <li><a href="SmartFactory.html#solutions">Hệ thống MES</a></li>
-            <li><a href="SmartFactory.html#solutions">Truy xuất nguồn gốc</a></li>
-            <li><a href="SmartFactory.html#solutions">Giám sát máy & OEE</a></li>
-            <li><a href="SmartFactory.html#solutions">Quản lý chất lượng</a></li>
+            <li><a href="SmartFactory.html?sol=mes#solutions">Hệ thống MES</a></li>
+            <li><a href="SmartFactory.html?sol=trace#solutions">Truy xuất nguồn gốc</a></li>
+            <li><a href="SmartFactory.html?sol=oee#solutions">Giám sát máy & OEE</a></li>
+            <li><a href="SmartFactory.html?sol=qms#solutions">Quản lý chất lượng</a></li>
+            <li><a href="SmartFactory.html?sol=ems#solutions">Quản lý năng lượng (EMS)</a></li>
           </ul>
         </div>
         <div>
@@ -1311,6 +1521,60 @@
         });
       });
 
+      const mobBtn = document.getElementById('nav-mobile-toggle');
+      const mobNav = document.getElementById('mobile-nav-panel');
+      const headerEl = document.querySelector('.nx-header');
+
+      function closeMobileNav() {
+        if (!mobBtn || !mobNav) return;
+        mobNav.classList.remove('is-open');
+        mobBtn.classList.remove('is-open');
+        mobBtn.setAttribute('aria-expanded', 'false');
+        mobBtn.setAttribute('aria-label', 'Mở menu điều hướng');
+      }
+
+      if (mobBtn && mobNav) {
+        mobBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const willOpen = !mobNav.classList.contains('is-open');
+          closeMega();
+          if (willOpen) {
+            if (headerEl) {
+              const b = Math.max(64, Math.ceil(headerEl.getBoundingClientRect().bottom));
+              mobNav.style.maxHeight = 'calc(100vh - ' + b + 'px)';
+            }
+            mobNav.classList.add('is-open');
+            mobBtn.classList.add('is-open');
+            mobBtn.setAttribute('aria-expanded', 'true');
+            mobBtn.setAttribute('aria-label', 'Đóng menu điều hướng');
+          } else {
+            closeMobileNav();
+          }
+        });
+        mobNav.querySelectorAll('.nx-mob-trigger').forEach(function (trig) {
+          trig.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const sub = document.getElementById(trig.getAttribute('aria-controls'));
+            const willExpand = trig.getAttribute('aria-expanded') !== 'true';
+            mobNav.querySelectorAll('.nx-mob-trigger').forEach(function (other) {
+              const otherSub = document.getElementById(other.getAttribute('aria-controls'));
+              other.setAttribute('aria-expanded', 'false');
+              if (otherSub) otherSub.classList.remove('is-open');
+            });
+            if (willExpand && sub) {
+              trig.setAttribute('aria-expanded', 'true');
+              sub.classList.add('is-open');
+            }
+          });
+        });
+        mobNav.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', closeMobileNav);
+        });
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 1000) closeMobileNav();
+        });
+      }
+
       document.addEventListener('click', function (e) {
         let inside = false;
         megaToggles.forEach(function (m) {
@@ -1319,6 +1583,9 @@
           }
         });
         if (!inside) closeMega();
+        if (mobNav && mobBtn && !mobNav.contains(e.target) && !mobBtn.contains(e.target)) {
+          closeMobileNav();
+        }
       });
 
       // Axis-style Sidebar Tabs scoped cleanly per Mega Menu panel + sliding notch
@@ -1351,6 +1618,8 @@
       const modal = document.getElementById('quote-modal');
       const itemInput = document.getElementById('quote-item-input');
       function openQuote(itemName) {
+        closeMega();
+        closeMobileNav();
         itemInput.value = itemName || '';
         modal.classList.add('is-open');
       }
@@ -1367,7 +1636,7 @@
       document.getElementById('btn-cancel-quote').addEventListener('click', closeQuote);
       modal.addEventListener('click', function (e) { if (e.target === modal) closeQuote(); });
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') { closeQuote(); closeMega(); }
+        if (e.key === 'Escape') { closeQuote(); closeMega(); closeMobileNav(); }
       });
       document.getElementById('quote-form').addEventListener('submit', function (e) {
         e.preventDefault();

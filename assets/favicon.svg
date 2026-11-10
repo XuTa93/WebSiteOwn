@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="byra-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#18C96E" />
+      <stop offset="100%" stop-color="#0A8754" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="10" fill="url(#byra-bg)" />
+  <g transform="translate(9.8 9.8) scale(1.85)" fill="none" stroke="#101714" stroke-width="2.4" stroke-linejoin="round">
+    <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" />
+    <circle cx="12" cy="12" r="2.7" fill="#101714" stroke="none" />
+  </g>
+</svg>

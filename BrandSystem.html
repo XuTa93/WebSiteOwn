@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BYRA Technologics — Brand Identity & Design System (Inter + IBM Plex Mono · Emerald Jade & Steel)</title>
   <meta name="description" content="Hệ thống nhận diện thương hiệu và quy chuẩn thiết kế giao diện (Design System) chính thức của BYRA Technologics cho giải pháp Smart Factory, MES, IIoT và Truy xuất nguồn gốc." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#101714" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -133,6 +138,67 @@
     .nx-nav a:hover, .nx-nav a:focus-visible { color: var(--nx-text-brand); }
     .nx-nav a:hover::after, .nx-nav a:focus-visible::after { transform: scaleX(1); }
 
+    .nx-header-utils { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+    .nx-cta-short { display: none; }
+    @media (max-width: 539px) {
+      .nx-cta-full { display: none; }
+      .nx-cta-short { display: inline; }
+    }
+    .nx-menu-toggle {
+      width: 40px; height: 40px; padding: 0; border-radius: var(--nx-radius-s);
+      border: 1.5px solid #D4DCD8; border-top: 2.5px solid var(--nx-steel-900);
+      background: var(--nx-surface-alt); color: var(--nx-steel-900);
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0;
+      transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+    }
+    .nx-menu-toggle:hover, .nx-menu-toggle:focus-visible { border-color: var(--nx-brand); color: var(--nx-text-brand); outline: none; }
+    .nx-menu-toggle .nx-ico-close { display: none; }
+    .nx-menu-toggle.is-open {
+      background: var(--nx-steel-900); border-color: var(--nx-steel-900);
+      border-top-color: var(--nx-brand); color: var(--nx-brand);
+    }
+    .nx-menu-toggle.is-open .nx-ico-menu { display: none; }
+    .nx-menu-toggle.is-open .nx-ico-close { display: block; }
+    @media (min-width: 900px) { .nx-menu-toggle { display: none; } }
+
+    @media (max-width: 479px) {
+      .nx-header-inner { padding: 0 0.75rem; gap: 0.45rem; }
+      .nx-header-utils { gap: 0.4rem; }
+      .nx-header-utils .nx-btn--sm { padding: 0.42rem 1.1rem 0.42rem 0.72rem; font-size: 0.76rem; }
+      .nx-menu-toggle { width: 38px; height: 38px; }
+      .nx-logo { font-size: 1.02rem; gap: 0.4rem; }
+      .nx-logo-mark { width: 28px; height: 28px; }
+      .nx-logo small { font-size: 0.52rem; letter-spacing: 0.06em; }
+    }
+
+    @keyframes mobSlide { from { transform: translateY(-4px); } to { transform: none; } }
+    .nx-mobile-nav {
+      display: none; position: absolute; top: var(--nx-header-height); left: 0; right: 0; z-index: 95;
+      background: var(--nx-surface); border-top: 1px solid #E6E6E6; border-bottom: 3px solid var(--nx-brand);
+      box-shadow: 0 18px 40px rgba(16, 23, 20, 0.22);
+      max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px);
+      overflow-y: auto; overscroll-behavior: contain;
+    }
+    .nx-mobile-nav.is-open { display: block; animation: mobSlide 0.14s ease-out; }
+    @media (min-width: 900px) { .nx-mobile-nav, .nx-mobile-nav.is-open { display: none !important; } }
+
+    .nx-mob-inner { padding: 0.5rem 1.25rem 1.25rem; display: grid; gap: 0.125rem; }
+    .nx-mob-link {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 0.25rem; border-bottom: 1px solid rgba(16, 23, 20, 0.08);
+      text-decoration: none; font-size: 0.95rem; font-weight: 600; color: var(--nx-text);
+      transition: color 0.15s ease;
+    }
+    .nx-mob-link span:last-child { color: var(--nx-text-brand); font-family: var(--nx-ff-mono); font-size: 0.875rem; }
+    .nx-mob-link:hover, .nx-mob-link:focus-visible { color: var(--nx-text-brand); }
+    .nx-mob-footer {
+      margin-top: 0.75rem; display: grid; grid-template-columns: 1fr; gap: 0.5rem;
+    }
+    @media (min-width: 460px) { .nx-mob-footer { grid-template-columns: repeat(2, 1fr); } }
+    .nx-mob-footer .nx-btn { width: 100%; justify-content: center; }
+    .nx-mob-footer .nx-btn:hover { margin-right: 0; }
+
     /* Hero Banner */
     .bg-hero {
       background: var(--nx-steel-900);
@@ -236,7 +302,7 @@
     .swatch:hover .swatch-copy-hint { opacity: 1; }
     .swatch-body { padding: 0.875rem; }
     .swatch-name { font-weight: 700; font-size: 0.9375rem; color: var(--nx-text); display: block; }
-    .swatch-token { font-family: var(--nx-ff-mono); font-size: 0.75rem; color: var(--nx-text-brand); display: block; margin: 0.15rem 0; }
+    .swatch-token { font-family: var(--nx-ff-mono); font-size: 0.75rem; line-height: 1.35; color: var(--nx-text-brand); display: block; margin: 0.15rem 0; min-height: 2.7em; }
     .swatch-hex { font-family: var(--nx-ff-mono); font-size: 0.8125rem; font-weight: 600; color: var(--nx-text); }
     .swatch-role { font-size: 0.78rem; color: var(--nx-text-muted); margin-top: 0.35rem; display: block; line-height: 1.4; }
 
@@ -346,8 +412,38 @@
         <a href="#tokens">05. CSS Tokens</a>
       </nav>
 
-      <a href="SmartFactory.html" class="nx-btn nx-btn--primary nx-btn--sm">Mở trang SmartFactory.html</a>
+      <div class="nx-header-utils">
+        <a href="SmartFactory.html" class="nx-btn nx-btn--primary nx-btn--sm">
+          <span class="nx-cta-full">Mở trang SmartFactory.html</span><span class="nx-cta-short">SmartFactory</span>
+        </a>
+        <button type="button" class="nx-menu-toggle" id="nav-mobile-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Mở menu điều hướng">
+          <svg class="nx-ico-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+          <svg class="nx-ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true">
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </div>
+
+    <!-- MOBILE NAV DRAWER (< 900px) -->
+    <nav class="nx-mobile-nav" id="mobile-nav-panel" aria-label="Menu điều hướng di động">
+      <div class="nx-mob-inner">
+        <a href="#logo" class="nx-mob-link"><span>01. Logo BYRA Technologics</span><span>→</span></a>
+        <a href="#colors" class="nx-mob-link"><span>02. Bảng màu Emerald Jade &amp; Steel</span><span>→</span></a>
+        <a href="#typography" class="nx-mob-link"><span>03. Phông chữ Inter &amp; IBM Plex Mono</span><span>→</span></a>
+        <a href="#components" class="nx-mob-link"><span>04. UI Kit, 8C Chevron &amp; Andon</span><span>→</span></a>
+        <a href="#tokens" class="nx-mob-link"><span>05. CSS Design Tokens</span><span>→</span></a>
+        <div class="nx-mob-footer">
+          <a href="SmartFactory.html" class="nx-btn nx-btn--primary">Trang Giải pháp MES</a>
+          <a href="Products.html" class="nx-btn nx-btn--secondary">Trang Sản phẩm</a>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <!-- HERO -->
@@ -752,6 +848,47 @@
 
   <script>
     (function () {
+      const mobBtn = document.getElementById('nav-mobile-toggle');
+      const mobNav = document.getElementById('mobile-nav-panel');
+      const headerEl = document.querySelector('.nx-header');
+      function closeMobileNav() {
+        if (!mobBtn || !mobNav) return;
+        mobNav.classList.remove('is-open');
+        mobBtn.classList.remove('is-open');
+        mobBtn.setAttribute('aria-expanded', 'false');
+        mobBtn.setAttribute('aria-label', 'Mở menu điều hướng');
+      }
+      if (mobBtn && mobNav) {
+        mobBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const willOpen = !mobNav.classList.contains('is-open');
+          if (willOpen) {
+            if (headerEl) {
+              const b = Math.max(64, Math.ceil(headerEl.getBoundingClientRect().bottom));
+              mobNav.style.maxHeight = 'calc(100vh - ' + b + 'px)';
+            }
+            mobNav.classList.add('is-open');
+            mobBtn.classList.add('is-open');
+            mobBtn.setAttribute('aria-expanded', 'true');
+            mobBtn.setAttribute('aria-label', 'Đóng menu điều hướng');
+          } else {
+            closeMobileNav();
+          }
+        });
+        mobNav.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', closeMobileNav);
+        });
+        document.addEventListener('click', function (e) {
+          if (!mobNav.contains(e.target) && !mobBtn.contains(e.target)) closeMobileNav();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeMobileNav();
+        });
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 900) closeMobileNav();
+        });
+      }
+
       const toast = document.getElementById('copy-toast');
       let timer = null;
       document.querySelectorAll('[data-copy]').forEach(function (btn) {

@@ -26,7 +26,7 @@ flowchart LR
     A["0. Topbar & Header<br/>Điều hướng + Mega Menu"] --> B["1. Hero Section<br/>Thông điệp chính & CTA"]
     B --> C["2. Promo Strip<br/>3 phễu chuyển đổi nhanh"]
     C --> D["3. Thách thức (Pain Points)<br/>4 điểm nghẽn tại xưởng"]
-    D --> E["4. Bộ giải pháp (6 Mô-đun)<br/>MES · Traceability · OEE · QMS · WMS · CMMS"]
+    D --> E["4. Bộ giải pháp (7 Mô-đun)<br/>MES · Traceability · OEE · QMS · WMS · CMMS · EMS"]
     E --> F["5. Nền tảng & Kiến trúc<br/>Chuẩn ISA-95 (Cấp 0–4)"]
     F --> G["6. Dự án tiêu biểu<br/>Case Studies theo ngành"]
     G --> H["7. Lộ trình triển khai<br/>5 bước: Thí điểm → Nhân rộng"]
@@ -166,6 +166,17 @@ Ba thẻ hành động nổi ngay dưới Hero nhằm thu hút khách hàng ở 
 - **Chỉ số hiệu quả điển hình:** **`-30%`** thời gian dừng máy ngoài kế hoạch.
 - **Điểm nhấn Paperless:** Toàn bộ biểu mẫu lưu trữ tập trung, tìm kiếm tức thì khi audit.
 
+#### Mô-đun 7: Quản lý năng lượng & ESG (`Energy Management · ESG — EMS`)
+- **Tiêu đề:** Giám sát năng lượng thời gian thực & Tối ưu chi phí
+- **Mô tả:** Thu thập liên tục dữ liệu điện năng, khí nén, hơi, nước từ đồng hồ đo thông minh theo từng phân xưởng, chuyền và máy; liên kết mức tiêu thụ với từng lệnh sản xuất và chuẩn bị báo cáo phát thải CO₂.
+- **Tính năng cốt lõi:**
+  - Theo dõi phụ tải đỉnh (Peak Demand), hệ số công suất (cosφ) & cảnh báo quá tải tức thời.
+  - Tính định mức tiêu hao năng lượng (kWh, m³) trên từng sản phẩm và lô sản xuất.
+  - Phát hiện máy chạy không tải, rò rỉ khí nén và thiết bị tiêu thụ điện bất thường.
+  - Tự động tổng hợp báo cáo kiểm kê khí nhà kính Scope 1–2 theo ISO 50001 & ESG.
+- **Chỉ số hiệu quả điển hình:** **`-12–20%`** chi phí điện năng & tổn thất chạy không tải trên mỗi đơn vị sản phẩm.
+- **Điểm nhấn kết nối phần cứng:** Tương thích đồng hồ 3 pha Modbus RTU/TCP, biến dòng CT kẹp mở, cảm biến lưu lượng và BYRA PowerMeter PM-3P.
+
 ---
 
 ### 3.6. Kiến trúc nền tảng theo chuẩn ISA-95 (`#platform`)
@@ -226,6 +237,7 @@ Ba thẻ hành động nổi ngay dưới Hero nhằm thu hút khách hàng ở 
   - `ISO 22000 · HACCP` (An toàn thực phẩm)
   - `GMP · 21 CFR Part 11` (Thực hành sản xuất tốt & hồ sơ/chữ ký điện tử dược phẩm)
   - `IEC 62443` (An ninh mạng cho hệ thống điều khiển và tự động hóa công nghiệp)
+  - `ISO 50001 · ESG` (Hệ thống quản lý năng lượng & kiểm kê phát thải nhà kính)
 
 ---
 
@@ -239,4 +251,4 @@ Ba thẻ hành động nổi ngay dưới Hero nhằm thu hút khách hàng ở 
   - Công ty / Nhà máy *(bắt buộc)*
   - Điện thoại *(bắt buộc)*
   - Email
-  - Mối quan tâm chính: *Hệ thống MES* / *Truy xuất nguồn gốc* / *Giám sát máy & OEE* / *Quản lý chất lượng* / *Số hóa biểu mẫu (Paperless)* / *Chưa rõ — cần tư vấn tổng thể*.
+  - Mối quan tâm chính: *Hệ thống MES* / *Truy xuất nguồn gốc* / *Giám sát máy & OEE* / *Quản lý năng lượng (EMS / ESG)* / *Quản lý chất lượng* / *Số hóa biểu mẫu (Paperless)* / *Chưa rõ — cần tư vấn tổng thể*.
