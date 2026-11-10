@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BYRA Technologics — Brand Identity & Design System (Inter + IBM Plex Mono · Emerald Jade & Steel)</title>
+  <meta name="description" content="Hệ thống nhận diện thương hiệu và quy chuẩn thiết kế giao diện (Design System) chính thức của BYRA Technologics cho giải pháp Smart Factory, MES, IIoT và Truy xuất nguồn gốc." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       BYRA TECHNOLOGICS — MASTER DESIGN TOKENS
+       Single Source of Truth for Typography, Color, Spacing, Radius & Elevation
+       ========================================================================== */
+    :root {
+      /* 1. Layout */
+      --nx-header-height: 64px;
+      --nx-container-max: 1280px;
+
+      /* 2. Typography — Inter + IBM Plex Mono */
+      --nx-ff-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --nx-ff-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --nx-ff-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+
+      /* 3. Brand Palette — Emerald Jade */
+      --nx-brand: #18C96E;
+      --nx-brand-hover: #0A8754;
+      --nx-brand-pressed: #06683F;
+      --nx-brand-subtle: #E6F9F0;
+      --nx-accent-teal: #00A88F;
+
+      /* 4. Industrial Neutrals — Steel & Surfaces */
+      --nx-steel-900: #101714;
+      --nx-steel-800: #1B2420;
+      --nx-steel-700: #2A3530;
+      --nx-surface: #FFFFFF;
+      --nx-surface-alt: #F4F6F5;
+      --nx-border: rgba(16, 23, 20, 0.10);
+      --nx-border-strong: rgba(16, 23, 20, 0.16);
+
+      /* 5. Text Hierarchy */
+      --nx-text: #141A17;
+      --nx-text-muted: #5C6661;
+      --nx-text-inverse: #FFFFFF;
+      --nx-text-brand: #0A8754;
+
+      /* 6. Semantic Shop-floor Status (Andon / SCADA / MES) */
+      --nx-status-run: #18C96E;
+      --nx-status-run-bg: #E6F9F0;
+      --nx-status-run-text: #06683F;
+      --nx-status-idle: #F5A524;
+      --nx-status-idle-bg: #FEF3E2;
+      --nx-status-idle-text: #B54708;
+      --nx-status-down: #D92D20;
+      --nx-status-down-bg: #FEE4E2;
+      --nx-status-down-text: #B42318;
+      --nx-status-info: #2E90FA;
+      --nx-status-info-bg: #EFF8FF;
+      --nx-status-info-text: #175CD3;
+
+      /* 7. Spacing & Radius (8C Industrial Precision Scale) */
+      --nx-radius-xs: 2px;
+      --nx-radius-s: 3px;
+      --nx-radius-m: 4px;
+      --nx-radius-l: 6px;
+      --nx-radius-tag: 2px;
+
+      /* 8. Elevation */
+      --nx-elev-1: 0 0.125rem 0.25rem rgba(16, 23, 20, 0.10), 0 0 0.125rem rgba(16, 23, 20, 0.08);
+      --nx-elev-2: 0 0.25rem 1rem rgba(16, 23, 20, 0.12), 0 0 0.125rem rgba(16, 23, 20, 0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--nx-ff-body);
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      font-size: 1rem;
+      line-height: 1.625;
+      color: var(--nx-text);
+      background: var(--nx-surface-alt);
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { line-height: 1.22; letter-spacing: -0.02em; margin-top: 0; }
+    code, pre { font-family: var(--nx-ff-mono); }
+
+    .nx-container { max-width: var(--nx-container-max); margin: 0 auto; padding: 0 1.5rem; }
+    @media (min-width: 1024px) { .nx-container { padding: 0 3.5rem; } }
+
+    /* Header */
+    .nx-header {
+      height: var(--nx-header-height);
+      background: var(--nx-surface);
+      box-shadow: var(--nx-elev-1);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nx-header-inner {
+      max-width: var(--nx-container-max); height: 100%; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    @media (min-width: 1024px) { .nx-header-inner { padding: 0 3.5rem; } }
+
+    .nx-logo {
+      display: inline-flex; align-items: center; gap: 0.625rem; text-decoration: none;
+      color: var(--nx-text); font-family: var(--nx-ff-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.025em;
+    }
+    .nx-logo-mark {
+      width: 34px; height: 34px; border-radius: 4px;
+      background: linear-gradient(135deg, var(--nx-brand) 0%, var(--nx-brand-hover) 100%);
+      display: inline-flex; align-items: center; justify-content: center; color: var(--nx-steel-900);
+    }
+    .nx-logo small {
+      display: block; font-family: var(--nx-ff-mono); font-size: 0.625rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--nx-text-muted); line-height: 1; margin-top: 2px;
+    }
+    .nx-logo-word { line-height: 1.05; }
+    .nx-logo-word b { color: var(--nx-text-brand); font-weight: 700; }
+
+    .nx-nav { display: none; height: 100%; gap: 0.25rem; align-items: center; }
+    @media (min-width: 900px) { .nx-nav { display: flex; } }
+    .nx-nav a {
+      text-decoration: none; color: var(--nx-text); font-size: 0.875rem; font-weight: 600;
+      height: 100%; padding: 0 0.75rem; display: inline-flex; align-items: center;
+      position: relative; transition: color 0.2s ease;
+    }
+    .nx-nav a::after {
+      content: ""; position: absolute; left: 0.75rem; right: 0.75rem; bottom: 12px;
+      height: 3.5px; background: var(--nx-brand);
+      transform: scaleX(0); transform-origin: left center; transition: transform 0.2s ease;
+    }
+    .nx-nav a:hover, .nx-nav a:focus-visible { color: var(--nx-text-brand); }
+    .nx-nav a:hover::after, .nx-nav a:focus-visible::after { transform: scaleX(1); }
+
+    /* Hero Banner */
+    .bg-hero {
+      background: var(--nx-steel-900);
+      color: var(--nx-text-inverse);
+      padding: 4rem 0 3.5rem;
+      border-bottom: 4px solid var(--nx-brand);
+    }
+    .nx-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.625rem;
+      color: var(--nx-brand); font-family: var(--nx-ff-mono); font-size: 0.78rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;
+    }
+    .nx-eyebrow-tip {
+      display: inline-flex; align-items: center;
+      background: var(--nx-brand); color: var(--nx-steel-900); font-weight: 800;
+      padding: 0.22rem 0.95rem 0.22rem 0.6rem;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
+      letter-spacing: 0.08em;
+    }
+    .bg-hero h1 { font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; margin-bottom: 0.75rem; }
+    .bg-hero h1 span { color: var(--nx-brand); }
+    .bg-hero p { color: rgba(255,255,255,0.78); max-width: 720px; font-size: 1.0625rem; margin: 0; }
+    .hero-meta {
+      margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem;
+      font-family: var(--nx-ff-mono); font-size: 0.8125rem;
+    }
+    .hero-meta span {
+      background: var(--nx-steel-800); border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.35rem 0.8rem; border-radius: var(--nx-radius-s); color: rgba(255,255,255,0.9);
+    }
+
+    /* Section Card Wrapper */
+    .ds-section { padding: 3.5rem 0 0; }
+    .ds-card {
+      background: var(--nx-surface);
+      border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m);
+      box-shadow: var(--nx-elev-1);
+      padding: 2rem;
+      border: 1px solid #D4DCD8;
+      border-top: 3px solid var(--nx-steel-900);
+      position: relative;
+    }
+    .ds-card::after {
+      content: ""; position: absolute; top: -3px; left: -1px; width: 112px; height: 3px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    }
+    @media (min-width: 768px) { .ds-card { padding: 2.5rem; } }
+    .ds-kicker {
+      font-family: var(--nx-ff-mono); font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--nx-text-brand);
+      display: block; margin-bottom: 0.35rem;
+    }
+    .ds-title { font-size: 1.625rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .ds-title::after {
+      content: ""; display: block; width: 56px; height: 4px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%); margin-top: 0.5rem;
+    }
+    .ds-desc { color: var(--nx-text-muted); margin: 0 0 2rem; max-width: 760px; }
+
+    /* 1. Logo Showcase */
+    .logo-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 768px) { .logo-grid { grid-template-columns: repeat(3, 1fr); } }
+    .logo-stage {
+      border-radius: var(--nx-radius-m); padding: 2.25rem 1.5rem;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 170px; position: relative; border: 1px solid var(--nx-border);
+    }
+    .logo-stage--light { background: var(--nx-surface); }
+    .logo-stage--dark { background: var(--nx-steel-900); color: #fff; border-color: var(--nx-steel-700); }
+    .logo-stage--subtle { background: var(--nx-brand-subtle); }
+    .logo-stage-caption {
+      position: absolute; bottom: 0.75rem; left: 1rem; right: 1rem;
+      display: flex; justify-content: space-between; font-family: var(--nx-ff-mono); font-size: 0.75rem; color: var(--nx-text-muted);
+    }
+    .logo-stage--dark .logo-stage-caption { color: rgba(255,255,255,0.6); }
+
+    /* 2. Color Swatches */
+    .swatch-group-title {
+      font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--nx-text-muted); margin: 1.75rem 0 0.875rem;
+    }
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
+    .swatch {
+      border-radius: var(--nx-radius-m); overflow: hidden; border: 1px solid var(--nx-border);
+      background: var(--nx-surface); cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease;
+      text-align: left; padding: 0; font-family: inherit; position: relative;
+      display: flex; flex-direction: column; justify-content: flex-start;
+    }
+    .swatch::after {
+      content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 3.5px; z-index: 3;
+      background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.22s ease;
+    }
+    .swatch:hover, .swatch:focus-visible { transform: translateY(-3px); box-shadow: var(--nx-elev-2); }
+    .swatch:hover::after, .swatch:focus-visible::after { transform: scaleX(1); }
+    .swatch-color { height: 84px; width: 100%; position: relative; display: flex; align-items: flex-end; justify-content: flex-end; padding: 0.5rem; }
+    .swatch-copy-hint {
+      font-family: var(--nx-ff-mono); font-size: 0.6875rem; padding: 0.15rem 0.45rem;
+      border-radius: 4px; background: rgba(16,23,20,0.65); color: #fff; opacity: 0; transition: opacity 0.15s ease;
+    }
+    .swatch:hover .swatch-copy-hint { opacity: 1; }
+    .swatch-body { padding: 0.875rem; }
+    .swatch-name { font-weight: 700; font-size: 0.9375rem; color: var(--nx-text); display: block; }
+    .swatch-token { font-family: var(--nx-ff-mono); font-size: 0.75rem; color: var(--nx-text-brand); display: block; margin: 0.15rem 0; }
+    .swatch-hex { font-family: var(--nx-ff-mono); font-size: 0.8125rem; font-weight: 600; color: var(--nx-text); }
+    .swatch-role { font-size: 0.78rem; color: var(--nx-text-muted); margin-top: 0.35rem; display: block; line-height: 1.4; }
+
+    /* 3. Typography Comparison & Scale */
+    .font-cards { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 2rem; }
+    @media (min-width: 768px) { .font-cards { grid-template-columns: 1.35fr 1fr; } }
+    .font-box {
+      border-radius: var(--nx-radius-m); padding: 1.5rem; border: 1px solid var(--nx-border);
+      background: var(--nx-surface-alt);
+    }
+    .font-sample-big { font-size: 2.5rem; font-weight: 800; line-height: 1.1; margin: 0.35rem 0 0.75rem; letter-spacing: -0.03em; }
+    .type-table { width: 100%; border-collapse: collapse; }
+    .type-table th, .type-table td {
+      padding: 1rem 0.75rem; border-bottom: 1px solid var(--nx-border); text-align: left; vertical-align: middle;
+    }
+    .type-table th { font-family: var(--nx-ff-mono); font-size: 0.75rem; text-transform: uppercase; color: var(--nx-text-muted); }
+    .type-meta { font-family: var(--nx-ff-mono); font-size: 0.78rem; color: var(--nx-text-muted); white-space: nowrap; }
+
+    /* 4. UI Components & Buttons (8C: Speed Chevron) */
+    .nx-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-family: var(--nx-ff-body); font-size: 0.9375rem; font-weight: 700; line-height: 1.45;
+      border-radius: 0; border: none; padding: 0.78rem 1.95rem 0.78rem 1.35rem;
+      cursor: pointer; text-decoration: none; position: relative; white-space: nowrap;
+      clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 50%, calc(100% - 13px) 100%, 0 100%);
+      transition: background-color 0.16s ease, color 0.16s ease, padding-right 0.16s ease, margin-right 0.16s ease;
+    }
+    .nx-btn--primary { color: var(--nx-steel-900); background: var(--nx-brand); }
+    .nx-btn--primary:hover { background: #26E080; color: var(--nx-steel-900); padding-right: 2.2rem; margin-right: -0.25rem; }
+    .nx-btn--secondary { color: var(--nx-text); background: #E3EAE6; font-weight: 600; }
+    .nx-btn--secondary:hover { background: var(--nx-steel-900); color: #fff; padding-right: 2.15rem; margin-right: -0.2rem; }
+    .nx-btn--ghost-light {
+      color: #fff; background: #1E2924; font-weight: 600;
+      padding: 0.78rem 1.85rem 0.78rem 1.65rem;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%);
+    }
+    .nx-btn--ghost-light:hover { background: #2B3B33; color: var(--nx-brand); padding-right: 2.05rem; margin-right: -0.2rem; }
+    .nx-btn--sm {
+      padding: 0.52rem 1.65rem 0.52rem 1.05rem; font-size: 0.85rem;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+    }
+    .nx-btn--sm:hover { padding-right: 1.85rem; margin-right: -0.2rem; }
+
+    .comp-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 900px) { .comp-grid { grid-template-columns: 1fr 1fr; } }
+    .comp-box { border: 1px solid #D4DCD8; border-radius: var(--nx-radius-m); padding: 1.5rem; }
+    .comp-box h4 { font-size: 0.875rem; font-family: var(--nx-ff-mono); text-transform: uppercase; color: var(--nx-text-muted); margin-bottom: 1rem; }
+
+    /* Industrial Status Tags */
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--nx-ff-mono); font-size: 0.78rem; font-weight: 600;
+      padding: 0.3rem 0.65rem; border-radius: var(--nx-radius-tag);
+      border-left: 3px solid transparent;
+    }
+    .status-dot { width: 7px; height: 7px; border-radius: 1px; }
+    .status-pill--run { background: var(--nx-status-run-bg); color: var(--nx-status-run-text); border-left-color: var(--nx-status-run); }
+    .status-pill--run .status-dot { background: var(--nx-status-run); }
+    .status-pill--idle { background: var(--nx-status-idle-bg); color: var(--nx-status-idle-text); border-left-color: var(--nx-status-idle); }
+    .status-pill--idle .status-dot { background: var(--nx-status-idle); }
+    .status-pill--down { background: var(--nx-status-down-bg); color: var(--nx-status-down-text); border-left-color: var(--nx-status-down); }
+    .status-pill--down .status-dot { background: var(--nx-status-down); }
+    .status-pill--info { background: var(--nx-status-info-bg); color: var(--nx-status-info-text); border-left-color: var(--nx-status-info); }
+    .status-pill--info .status-dot { background: var(--nx-status-info); }
+
+    /* Code Export Block */
+    .code-block {
+      background: var(--nx-steel-900); color: #E6F9F0; border-radius: var(--nx-radius-m);
+      padding: 1.25rem 1.5rem; overflow-x: auto; font-size: 0.8125rem; line-height: 1.65;
+      border-left: 4px solid var(--nx-brand); position: relative;
+    }
+
+    /* Toast */
+    .nx-toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--nx-steel-900); color: #fff;
+      border-left: 4px solid var(--nx-brand); padding: 0.75rem 1.15rem; border-radius: var(--nx-radius-s);
+      box-shadow: var(--nx-elev-2); font-family: var(--nx-ff-mono); font-size: 0.8125rem;
+      display: none; z-index: 500;
+    }
+    .nx-toast.is-visible { display: block; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="nx-header">
+    <div class="nx-header-inner">
+      <a href="SmartFactory.html" class="nx-logo" aria-label="BYRA Technologics">
+        <span class="nx-logo-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="2.6" fill="currentColor"></circle>
+          </svg>
+        </span>
+        <span class="nx-logo-word">BYRA<b>Technologics</b><small>Brand & Design System</small></span>
+      </a>
+
+      <nav class="nx-nav" aria-label="Mục lục Brand System">
+        <a href="#logo">01. Logo</a>
+        <a href="#colors">02. Bảng màu</a>
+        <a href="#typography">03. Phông chữ</a>
+        <a href="#components">04. UI Kit & Andon</a>
+        <a href="#tokens">05. CSS Tokens</a>
+      </nav>
+
+      <a href="SmartFactory.html" class="nx-btn nx-btn--primary nx-btn--sm">Mở trang SmartFactory.html</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-hero">
+    <div class="nx-container">
+      <div class="nx-eyebrow"><span class="nx-eyebrow-tip">SYS v2.1</span><span>8C SPEED CHEVRON · BYRA DESIGN SYSTEM</span></div>
+      <h1>Hệ thống nhận diện thương hiệu <span>BYRA Technologics</span></h1>
+      <p>
+        Ngôn ngữ thiết kế công nghiệp hiện đại kết hợp sắc xanh <strong>Emerald Jade (#18C96E)</strong> trên nền thép <strong>Industrial Steel (#101714)</strong>,
+        đồng nhất hoàn toàn từ bộ phông chữ kỹ thuật quốc tế <strong>Inter + IBM Plex Mono</strong> đến các thành phần giao diện MES/Andon tại xưởng.
+      </p>
+      <div class="hero-meta">
+        <span>Primary Color: #18C96E (Emerald Jade)</span>
+        <span>Dark Base: #101714 (Steel 900)</span>
+        <span>UI/Display Font: Inter</span>
+        <span>Technical/Code Font: IBM Plex Mono</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="nx-container" style="padding-bottom: 5rem;">
+
+    <!-- 01. LOGO SYSTEM -->
+    <section class="ds-section" id="logo">
+      <div class="ds-card">
+        <span class="ds-kicker">01 · BRAND MARK & WORDMARK</span>
+        <h2 class="ds-title">Hệ thống Logo BYRA Technologics</h2>
+        <p class="ds-desc">
+          Biểu tượng <strong>Hexagon Core Node</strong> tượng trưng cho nhà máy thông minh nơi thiết bị (OT), con người và hệ thống quản trị (IT/ERP) hội tụ về một tâm điểm dữ liệu duy nhất.
+          Wordmark sử dụng <strong>Inter Bold (700)</strong> với <code>letter-spacing: -0.025em</code> và dòng định danh phụ bằng <strong>IBM Plex Mono</strong>.
+        </p>
+
+        <div class="logo-grid">
+          <!-- Light Stage -->
+          <div class="logo-stage logo-stage--light">
+            <div class="nx-logo" style="font-size: 1.5rem;">
+              <span class="nx-logo-mark" style="width: 42px; height: 42px; border-radius: 4px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+                  <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+                  <circle cx="12" cy="12" r="2.6" fill="currentColor"></circle>
+                </svg>
+              </span>
+              <span class="nx-logo-word">BYRA<b>Technologics</b><small>Smart Manufacturing</small></span>
+            </div>
+            <div class="logo-stage-caption"><span>Phiên bản nền sáng (Chính)</span><span>#FFFFFF</span></div>
+          </div>
+
+          <!-- Dark Stage -->
+          <div class="logo-stage logo-stage--dark">
+            <div class="nx-logo" style="font-size: 1.5rem; color: #FFFFFF;">
+              <span class="nx-logo-mark" style="width: 42px; height: 42px; border-radius: 4px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+                  <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+                  <circle cx="12" cy="12" r="2.6" fill="currentColor"></circle>
+                </svg>
+              </span>
+              <span class="nx-logo-word">BYRA<b style="color: var(--nx-brand);">Technologics</b><small style="color: rgba(255,255,255,0.65);">Smart Manufacturing</small></span>
+            </div>
+            <div class="logo-stage-caption"><span>Phiên bản nền tối (Andon / Dark UI)</span><span>#101714</span></div>
+          </div>
+
+          <!-- App Icon / Monochrome Mark -->
+          <div class="logo-stage logo-stage--subtle">
+            <div style="display: flex; align-items: center; gap: 1.25rem;">
+              <span class="nx-logo-mark" style="width: 56px; height: 56px; border-radius: 6px; box-shadow: var(--nx-elev-2);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+                  <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+                  <circle cx="12" cy="12" r="2.8" fill="currentColor"></circle>
+                </svg>
+              </span>
+              <span class="nx-logo-mark" style="width: 56px; height: 56px; border-radius: 6px; background: var(--nx-steel-900); color: var(--nx-brand);">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+                  <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+                  <circle cx="12" cy="12" r="2.8" fill="currentColor"></circle>
+                </svg>
+              </span>
+            </div>
+            <div class="logo-stage-caption"><span>Logomark độc lập (App Icon / Favicon)</span><span>34px – 56px</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. COLOR PALETTE -->
+    <section class="ds-section" id="colors">
+      <div class="ds-card">
+        <span class="ds-kicker">02 · COLOR SYSTEM (EMERALD JADE & STEEL)</span>
+        <h2 class="ds-title">Bảng màu thương hiệu & Trạng thái công nghiệp</h2>
+        <p class="ds-desc">
+          Nhấn vào bất kỳ ô màu nào bên dưới để sao chép nhanh mã HEX. Bảng màu kết hợp sắc xanh tín hiệu hoạt động tối ưu (<strong>Emerald Jade</strong>) với nền thép công nghiệp độ tương phản cao (<strong>Industrial Steel</strong>).
+        </p>
+
+        <div class="swatch-group-title">A. Màu thương hiệu chủ đạo (Primary Emerald Jade)</div>
+        <div class="swatch-grid">
+          <button type="button" class="swatch" data-copy="#18C96E">
+            <div class="swatch-color" style="background: #18C96E;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Emerald Jade 500</span>
+              <span class="swatch-token">--nx-brand</span>
+              <span class="swatch-hex">#18C96E</span>
+              <span class="swatch-role">Nút Primary CTA, viền nhấn đầu thẻ, đèn tín hiệu RUN, nền Footer.</span>
+            </div>
+          </button>
+          <button type="button" class="swatch" data-copy="#0A8754">
+            <div class="swatch-color" style="background: #0A8754;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Emerald Jade 600</span>
+              <span class="swatch-token">--nx-brand-hover / --nx-text-brand</span>
+              <span class="swatch-hex">#0A8754</span>
+              <span class="swatch-role">Trạng thái Hover nút bấm, màu chữ nhấn thương hiệu (đạt chuẩn WCAG AA trên nền sáng).</span>
+            </div>
+          </button>
+          <button type="button" class="swatch" data-copy="#06683F">
+            <div class="swatch-color" style="background: #06683F;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Emerald Jade 700</span>
+              <span class="swatch-token">--nx-brand-pressed</span>
+              <span class="swatch-hex">#06683F</span>
+              <span class="swatch-role">Trạng thái Active / Pressed khi nhấn giữ nút, chữ trong huy hiệu xanh.</span>
+            </div>
+          </button>
+          <button type="button" class="swatch" data-copy="#E6F9F0">
+            <div class="swatch-color" style="background: #E6F9F0;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Emerald Tint 50</span>
+              <span class="swatch-token">--nx-brand-subtle</span>
+              <span class="swatch-hex">#E6F9F0</span>
+              <span class="swatch-role">Nền nhẹ cho Badge, hộp ghi chú tích hợp và vòng tròn Icon.</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="swatch-group-title">B. Màu trung tính thép công nghiệp & Bề mặt (Industrial Steel & Surfaces)</div>
+        <div class="swatch-grid">
+          <button type="button" class="swatch" data-copy="#101714">
+            <div class="swatch-color" style="background: #101714;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Industrial Steel 900</span>
+              <span class="swatch-token">--nx-steel-900</span>
+              <span class="swatch-hex">#101714</span>
+              <span class="swatch-role">Nền tối chủ đạo (Topbar, Hero, Section ISA-95), chữ trên nút #18C96E.</span>
+            </div>
+          </button>
+          <button type="button" class="swatch" data-copy="#1B2420">
+            <div class="swatch-color" style="background: #1B2420;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Industrial Steel 800</span>
+              <span class="swatch-token">--nx-steel-800</span>
+              <span class="swatch-hex">#1B2420</span>
+              <span class="swatch-role">Bề mặt thẻ tầng kiến trúc ISA-95 trên nền tối.</span>
+            </div>
+          </button>
+          <button type="button" class="swatch" data-copy="#141A17">
+            <div class="swatch-color" style="background: #141A17;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Ink Primary</span>
+              <span class="swatch-token">--nx-text</span>
+              <span class="swatch-hex">#141A17</span>
+              <span class="swatch-role">Chữ tiêu đề và văn bản chính trên nền sáng (tương phản 17.4:1).</span>
+            </div>
+          </button>
+          <button type="button" class="swatch" data-copy="#5C6661">
+            <div class="swatch-color" style="background: #5C6661;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Slate Muted</span>
+              <span class="swatch-token">--nx-text-muted</span>
+              <span class="swatch-hex">#5C6661</span>
+              <span class="swatch-role">Văn bản phụ, mô tả thẻ, mốc thời gian.</span>
+            </div>
+          </button>
+          <button type="button" class="swatch" data-copy="#F4F6F5">
+            <div class="swatch-color" style="background: #F4F6F5;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Surface Alt</span>
+              <span class="swatch-token">--nx-surface-alt</span>
+              <span class="swatch-hex">#F4F6F5</span>
+              <span class="swatch-role">Nền phân khu xen kẽ, nền dòng kết quả truy xuất.</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="swatch-group-title">C. Màu tín hiệu trạng thái nhà máy (Andon / SCADA Semantic Status)</div>
+        <div class="swatch-grid">
+          <button type="button" class="swatch" data-copy="#18C96E">
+            <div class="swatch-color" style="background: #18C96E;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Status RUN / PASS</span>
+              <span class="swatch-token">--nx-status-run</span>
+              <span class="swatch-hex">#18C96E</span>
+              <span class="swatch-role">Máy đang chạy ổn định, lô đạt chuẩn IQC/OQC.</span>
+            </div>
+          </button>
+          <button type="button" class="swatch" data-copy="#F5A524">
+            <div class="swatch-color" style="background: #F5A524;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Status IDLE / WARN</span>
+              <span class="swatch-token">--nx-status-idle</span>
+              <span class="swatch-hex">#F5A524</span>
+              <span class="swatch-role">Máy chờ nguyên liệu/chuyển mã, thông số SPC cận giới hạn.</span>
+            </div>
+          </button>
+          <button type="button" class="swatch" data-copy="#D92D20">
+            <div class="swatch-color" style="background: #D92D20;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Status DOWN / HOLD</span>
+              <span class="swatch-token">--nx-status-down</span>
+              <span class="swatch-hex">#D92D20</span>
+              <span class="swatch-role">Dừng máy sự cố khẩn cấp, khóa lô (Hold) khi phát hiện lỗi.</span>
+            </div>
+          </button>
+          <button type="button" class="swatch" data-copy="#2E90FA">
+            <div class="swatch-color" style="background: #2E90FA;"><span class="swatch-copy-hint">Click để copy</span></div>
+            <div class="swatch-body">
+              <span class="swatch-name">Status PLANNED / INFO</span>
+              <span class="swatch-token">--nx-status-info</span>
+              <span class="swatch-hex">#2E90FA</span>
+              <span class="swatch-role">Lệnh sản xuất đã lập kế hoạch, bảo trì định kỳ theo lịch.</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. TYPOGRAPHY -->
+    <section class="ds-section" id="typography">
+      <div class="ds-card">
+        <span class="ds-kicker">03 · TYPOGRAPHY SYSTEM</span>
+        <h2 class="ds-title">Cặp phông chữ chuẩn kỹ thuật: Inter + IBM Plex Mono</h2>
+        <p class="ds-desc">
+          Sự kết hợp giữa <strong>Inter</strong> (phông chữ giao diện chuẩn quốc tế với các tính năng OpenType <code>cv02, cv03, cv04, cv11</code> sắc nét, hỗ trợ dấu tiếng Việt hoàn hảo)
+          và <strong>IBM Plex Mono</strong> (phông chữ đơn cách mang di sản kỹ thuật công nghiệp dành cho mã lô, lệnh sản xuất, cấp độ ISA-95 và thông số máy).
+        </p>
+
+        <div class="font-cards">
+          <div class="font-box">
+            <span class="ds-kicker">--nx-ff-body / --nx-ff-display</span>
+            <div class="font-sample-big">Inter</div>
+            <p style="margin: 0 0 0.75rem; color: var(--nx-text-muted); font-size: 0.9375rem;">
+              Dùng cho toàn bộ Tiêu đề (H1–H4), Văn bản nội dung, Menu điều hướng, Nút bấm và Con số KPI lớn.
+            </p>
+            <div style="font-size: 1.05rem; font-weight: 500; border-top: 1px solid var(--nx-border); padding-top: 0.75rem;">
+              Aa Bb Cc Dd Đđ Ee Êê Gg Hh Ii Kk Ll Mm Nn Oo Ôô Ơơ Pp Qq Rr Ss Tt Uu Ưư Vv Xx Yy<br/>
+              <span style="color: var(--nx-text-brand); font-weight: 700;">Số hóa nhà máy — Minh bạch từng công đoạn · +18% OEE · -90% Báo cáo giấy</span>
+            </div>
+          </div>
+
+          <div class="font-box" style="font-family: var(--nx-ff-mono);">
+            <span class="ds-kicker">--nx-ff-mono</span>
+            <div class="font-sample-big" style="font-family: var(--nx-ff-mono); font-weight: 700; letter-spacing: -0.02em;">IBM Plex Mono</div>
+            <p style="margin: 0 0 0.75rem; color: var(--nx-text-muted); font-size: 0.875rem; font-family: var(--nx-ff-body);">
+              Dùng cho Mã lô (Lot/Serial), Lệnh sản xuất (Work Order), Mã GS1/SSCC, Thời gian sự kiện và Nhãn tiêu chuẩn kỹ thuật.
+            </p>
+            <div style="font-size: 0.9rem; font-weight: 500; border-top: 1px solid var(--nx-border); padding-top: 0.75rem;">
+              LOT-2611-A07 · WO-26-1182 · M3-02 · 182°C<br/>
+              <span style="color: var(--nx-text-brand); font-weight: 600;">ISA-95 · GS1 GTIN/SSCC · TCVN 12850:2019</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="type-table">
+            <thead>
+              <tr>
+                <th>Cấp độ (Role)</th>
+                <th>Phông & Cỡ chữ</th>
+                <th>Hiển thị thực tế</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hero Display (H1)</strong></td>
+                <td class="type-meta">Inter 700 · clamp(1.75rem, 2.75vw, 2.45rem)<br/>line-height: 1.2 · tracking: -0.015em</td>
+                <td><span style="font-size: clamp(1.6rem, 2.5vw, 2.25rem); font-weight: 700; letter-spacing: -0.015em; line-height: 1.2;">Số hóa nhà máy, minh bạch từng công đoạn</span></td>
+              </tr>
+              <tr>
+                <td><strong>Section Heading (H2)</strong></td>
+                <td class="type-meta">Inter 700 · clamp(1.5rem, 2.4vw, 1.95rem)<br/>line-height: 1.22 · tracking: -0.02em</td>
+                <td><span style="font-size: 1.65rem; font-weight: 700; letter-spacing: -0.02em;">Bộ giải pháp Smart Factory theo mô-đun</span></td>
+              </tr>
+              <tr>
+                <td><strong>Card Title (H3)</strong></td>
+                <td class="type-meta">Inter 600 · 1.2rem – 1.25rem (20px)<br/>line-height: 1.35</td>
+                <td><span style="font-size: 1.2rem; font-weight: 600;">MES + OEE cho 12 chuyền lắp ráp linh kiện ô tô</span></td>
+              </tr>
+              <tr>
+                <td><strong>KPI Metric Display</strong></td>
+                <td class="type-meta">Inter 700 · 2.75rem (44px)<br/>color: --nx-text-brand</td>
+                <td><span style="font-size: 2.5rem; font-weight: 700; color: var(--nx-text-brand); letter-spacing: -0.02em;">+15–25%</span></td>
+              </tr>
+              <tr>
+                <td><strong>Body Copy</strong></td>
+                <td class="type-meta">Inter 400 · 1rem (16px)<br/>line-height: 1.625</td>
+                <td>Kết nối máy móc, con người và dữ liệu trên một nền tảng MES duy nhất theo thời gian thực.</td>
+              </tr>
+              <tr>
+                <td><strong>Technical / Lot Code</strong></td>
+                <td class="type-meta">IBM Plex Mono 500/600 · 0.875rem (14px)</td>
+                <td><code style="background: var(--nx-surface-alt); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 600;">05/11 09:02 · LOT-2611-A07 · WO-26-1182 · M3-02</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. UI COMPONENTS & SHOP-FLOOR SIGNALS -->
+    <section class="ds-section" id="components">
+      <div class="ds-card">
+        <span class="ds-kicker">04 · UI KIT & SHOP-FLOOR COMPONENTS</span>
+        <h2 class="ds-title">Thành phần giao diện & Tín hiệu trạng thái xưởng</h2>
+        <p class="ds-desc">
+          Các thành phần nút bấm, nhãn trạng thái Andon và dòng sự kiện truy xuất nguồn gốc được thiết kế đồng nhất giữa trang giới thiệu sản phẩm và phần mềm điều hành thực tế tại nhà máy.
+        </p>
+
+        <div class="comp-grid">
+          <div class="comp-box">
+            <h4>Hệ thống Nút bấm (Buttons — 8C Speed Chevron)</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1.25rem;">
+              <button type="button" class="nx-btn nx-btn--primary">Đặt lịch demo</button>
+              <button type="button" class="nx-btn nx-btn--secondary">Xem dự án</button>
+              <button type="button" class="nx-btn nx-btn--primary nx-btn--sm">Small CTA</button>
+            </div>
+            <div style="background: var(--nx-steel-900); padding: 1rem; border-radius: var(--nx-radius-s); display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+              <button type="button" class="nx-btn nx-btn--primary">Khám phá giải pháp</button>
+              <button type="button" class="nx-btn nx-btn--ghost-light">Khảo sát nhà máy miễn phí</button>
+            </div>
+          </div>
+
+          <div class="comp-box">
+            <h4>Huy hiệu trạng thái máy & Lô sản xuất (Andon / QC Badges)</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 1.25rem;">
+              <span class="status-pill status-pill--run"><span class="status-dot"></span>RUN · Đang sản xuất</span>
+              <span class="status-pill status-pill--idle"><span class="status-dot"></span>IDLE · Chờ chuyển mã</span>
+              <span class="status-pill status-pill--down"><span class="status-dot"></span>DOWN · Dừng sự cố</span>
+              <span class="status-pill status-pill--info"><span class="status-dot"></span>WO-26-1182 · Planned</span>
+            </div>
+            <div style="background: var(--nx-surface-alt); padding: 0.75rem 1rem; border-radius: var(--nx-radius-s); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+              <code style="color: var(--nx-text-muted); font-size: 0.8125rem;">05/11 09:02</code>
+              <span>Sản xuất · Máy <code>M3-02</code> · Ca A · 182°C</span>
+              <span class="status-pill status-pill--run" style="padding: 0.15rem 0.6rem; font-size: 0.75rem;">Sản xuất</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. CSS DESIGN TOKENS -->
+    <section class="ds-section" id="tokens">
+      <div class="ds-card">
+        <span class="ds-kicker">05 · CSS VARIABLES (SINGLE SOURCE OF TRUTH · 8C v2.1)</span>
+        <h2 class="ds-title">Mã nguồn CSS Design Tokens chuẩn</h2>
+        <p class="ds-desc">
+          Toàn bộ biến CSS dưới đây đã được nhúng trực tiếp vào <code>SmartFactory.html</code> và <code>Products.html</code> để đảm bảo mọi phần tử giao diện tuân thủ tuyệt đối bộ nhận diện thương hiệu 8C Speed Chevron.
+        </p>
+
+        <pre class="code-block"><code>:root {
+  /* Typography: Inter (UI & Display) + IBM Plex Mono (Technical/Code) */
+  --nx-ff-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --nx-ff-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --nx-ff-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  /* Primary Brand — Emerald Jade */
+  --nx-brand: #18C96E;
+  --nx-brand-hover: #0A8754;
+  --nx-brand-pressed: #06683F;
+  --nx-brand-subtle: #E6F9F0;
+  --nx-accent-teal: #00A88F;
+
+  /* Industrial Neutrals — Steel & Surfaces */
+  --nx-steel-900: #101714;
+  --nx-steel-800: #1B2420;
+  --nx-steel-700: #2A3530;
+  --nx-surface: #FFFFFF;
+  --nx-surface-alt: #F4F6F5;
+  --nx-border: rgba(16, 23, 20, 0.10);
+
+  /* Industrial Precision Radius (8C Scale) */
+  --nx-radius-xs: 2px;
+  --nx-radius-s: 3px;
+  --nx-radius-m: 4px;
+  --nx-radius-l: 6px;
+  --nx-radius-tag: 2px;
+
+  /* Text Hierarchy */
+  --nx-text: #141A17;
+  --nx-text-muted: #5C6661;
+  --nx-text-inverse: #FFFFFF;
+  --nx-text-brand: #0A8754;
+
+  /* Shop-floor Andon Status */
+  --nx-status-run: #18C96E;
+  --nx-status-idle: #F5A524;
+  --nx-status-down: #D92D20;
+  --nx-status-info: #2E90FA;
+}</code></pre>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="nx-toast" id="copy-toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      const toast = document.getElementById('copy-toast');
+      let timer = null;
+      document.querySelectorAll('[data-copy]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const hex = btn.getAttribute('data-copy');
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(hex);
+          }
+          toast.textContent = 'Đã sao chép mã màu ' + hex;
+          toast.classList.add('is-visible');
+          clearTimeout(timer);
+          timer = setTimeout(function () { toast.classList.remove('is-visible'); }, 2200);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

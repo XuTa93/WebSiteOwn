@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BYRA Technologics — Giải pháp Smart Factory: Hệ thống MES, Số hóa & Truy xuất nguồn gốc cho nhà máy</title>
+  <meta name="description" content="BYRA Technologics cung cấp giải pháp nhà máy thông minh: hệ thống điều hành sản xuất MES, số hóa quy trình không giấy tờ, giám sát OEE/IIoT và truy xuất nguồn gốc theo lô, theo serial chuẩn GS1." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       BYRA Technologics Design System — tokens (xem BrandSystem.html & docs/BrandGuide_ThietKe.md)
+       ========================================================================== */
+    :root {
+      /* Layout */
+      --nx-header-height: 72px;
+      --nx-container-max: 1300px;
+
+      /* Typography — Inter (UI/Display) + IBM Plex Mono (Industrial/Code) */
+      --nx-ff-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --nx-ff-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --nx-ff-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+
+      /* Brand — Emerald Jade */
+      --nx-brand: #18C96E;
+      --nx-brand-hover: #0A8754;
+      --nx-brand-pressed: #06683F;
+      --nx-brand-subtle: #E6F9F0;
+      --nx-accent-teal: #00A88F;
+
+      /* Industrial neutrals — Steel */
+      --nx-steel-900: #101714;
+      --nx-steel-800: #1B2420;
+      --nx-steel-700: #2A3530;
+      --nx-surface: #FFFFFF;
+      --nx-surface-alt: #F4F6F5;
+      --nx-border: rgba(16, 23, 20, 0.10);
+      --nx-border-strong: rgba(16, 23, 20, 0.16);
+
+      /* Text */
+      --nx-text: #141A17;
+      --nx-text-muted: #5C6661;
+      --nx-text-inverse: #FFFFFF;
+      --nx-text-brand: #0A8754;
+
+      /* Status (dùng cho dashboard / trạng thái máy Andon) */
+      --nx-status-run: #18C96E;
+      --nx-status-idle: #F5A524;
+      --nx-status-idle-bg: #FEF3E2;
+      --nx-status-idle-text: #B54708;
+      --nx-status-down: #D92D20;
+      --nx-status-down-bg: #FEE4E2;
+      --nx-status-down-text: #B42318;
+      --nx-status-info: #2E90FA;
+
+      /* Canonical aliases (--byra-*) */
+      --byra-ff-sans: var(--nx-ff-body);
+      --byra-ff-display: var(--nx-ff-display);
+      --byra-ff-mono: var(--nx-ff-mono);
+      --byra-emerald-500: var(--nx-brand);
+      --byra-emerald-600: var(--nx-brand-hover);
+      --byra-emerald-700: var(--nx-brand-pressed);
+      --byra-emerald-50: var(--nx-brand-subtle);
+      --byra-steel-900: var(--nx-steel-900);
+      --byra-steel-800: var(--nx-steel-800);
+      --byra-steel-700: var(--nx-steel-700);
+
+      /* Spacing */
+      --nx-sp-2xs: 0.25rem;
+      --nx-sp-xs: 0.5rem;
+      --nx-sp-s: 0.75rem;
+      --nx-sp-m: 1rem;
+      --nx-sp-l: 1.5rem;
+      --nx-sp-xl: 2rem;
+      --nx-sp-2xl: 2.5rem;
+      --nx-sp-3xl: 3.5rem;
+      --nx-sp-4xl: 4rem;
+      --nx-section-mobile: 4rem;
+      --nx-section-desktop: 5.5rem;
+
+      /* Radius (8C Industrial Precision Scale) */
+      --nx-radius-xs: 2px;
+      --nx-radius-s: 3px;
+      --nx-radius-m: 4px;
+      --nx-radius-l: 6px;
+      --nx-radius-tag: 2px;
+
+      /* Elevation */
+      --nx-elev-1: 0 0.125rem 0.25rem rgba(16, 23, 20, 0.10), 0 0 0.125rem rgba(16, 23, 20, 0.08);
+      --nx-elev-2: 0 0.25rem 1rem rgba(16, 23, 20, 0.12), 0 0 0.125rem rgba(16, 23, 20, 0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nx-header-height); }
+    body {
+      font-family: var(--nx-ff-body);
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      font-size: 1rem;
+      line-height: 1.625;
+      color: var(--nx-text);
+      background: var(--nx-surface);
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    h1, h2, h3, h4 { line-height: 1.22; letter-spacing: -0.02em; }
+
+    .nx-container { max-width: var(--nx-container-max); margin: 0 auto; padding: 0 1.5rem; }
+    @media (min-width: 1024px) { .nx-container { padding: 0 3rem; } }
+
+    /* ---------- Utility top bar ---------- */
+    .nx-topbar {
+      background: var(--nx-steel-900);
+      color: rgba(255,255,255,0.78);
+      font-size: 0.8125rem;
+    }
+    .nx-topbar .nx-container {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem;
+      padding-top: 0.45rem; padding-bottom: 0.45rem;
+    }
+    .nx-topbar a { color: #fff; text-decoration: none; font-weight: 600; position: relative; display: inline-block; }
+    .nx-topbar a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+      height: 2px; background: var(--nx-brand);
+      transform: scaleX(0); transform-origin: left center; transition: transform 0.2s ease;
+    }
+    .nx-topbar a:hover, .nx-topbar a:focus-visible { color: var(--nx-brand); }
+    .nx-topbar a:hover::after, .nx-topbar a:focus-visible::after { transform: scaleX(1); }
+
+    /* ---------- Header ---------- */
+    .nx-header {
+      height: var(--nx-header-height);
+      background: var(--nx-surface);
+      border-bottom: 1px solid #E6E6E6;
+      box-shadow: var(--nx-elev-1);
+      position: sticky; top: 0; z-index: 200;
+    }
+    .nx-header-inner {
+      max-width: var(--nx-container-max); height: 100%; margin: 0 auto; padding: 0 1rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+    }
+    @media (min-width: 640px) { .nx-header-inner { padding: 0 1.5rem; gap: 1rem; } }
+    @media (min-width: 1024px) { .nx-header-inner { padding: 0 3rem; } }
+
+    .nx-logo {
+      display: inline-flex; align-items: center; gap: 0.625rem; text-decoration: none;
+      color: var(--nx-text); font-family: var(--nx-ff-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em;
+    }
+    .nx-logo-mark {
+      width: 34px; height: 34px; border-radius: 4px;
+      background: linear-gradient(135deg, var(--nx-brand) 0%, var(--nx-brand-hover) 100%);
+      display: inline-flex; align-items: center; justify-content: center; color: var(--nx-steel-900);
+    }
+    .nx-logo small {
+      display: block; font-family: var(--nx-ff-body); font-size: 0.625rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--nx-text-muted); line-height: 1;
+    }
+    .nx-logo-word { line-height: 1.1; }
+    .nx-logo-word b { color: var(--nx-text-brand); font-weight: 700; }
+
+    .nx-nav { display: none; align-items: center; height: 100%; gap: 0.25rem; }
+    @media (min-width: 1000px) { .nx-nav { display: flex; } }
+    .nx-nav-btn {
+      background: none; border: none; height: 100%; padding: 0 0.85rem;
+      font-family: var(--nx-ff-body); font-size: 0.9375rem; font-weight: 600; color: var(--nx-text);
+      cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;
+      text-decoration: none; position: relative;
+      transition: color 0.2s ease;
+    }
+    .nx-nav-btn::after {
+      content: ""; position: absolute; left: 0.85rem; right: 0.85rem; bottom: 14px;
+      height: 3.5px; background: var(--nx-brand); border-radius: 0;
+      transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.2s ease;
+    }
+    .nx-nav-btn:hover, .nx-nav-btn.is-active, .nx-nav-btn.is-current-page { color: var(--nx-text); }
+    .nx-nav-btn:hover::after, .nx-nav-btn.is-active::after, .nx-nav-btn.is-current-page::after { transform: scaleX(1); }
+
+    .nx-header-utils { display: flex; align-items: center; gap: 0.5rem; }
+    .nx-icon-btn {
+      width: 38px; height: 38px; border-radius: var(--nx-radius-s); border: none; background: transparent; color: var(--nx-text);
+      display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .nx-icon-btn:hover { background: var(--nx-surface-alt); color: var(--nx-text-brand); }
+
+    /* Mega menu (Axis-inspired Full-Bleed Split Layout) */
+    .nx-mega {
+      position: absolute; top: var(--nx-header-height); left: 0; right: 0;
+      background: var(--nx-surface); box-shadow: var(--nx-elev-2); border-top: 1px solid #E6E6E6;
+      padding: 0; display: none; z-index: 190;
+    }
+    .nx-mega.is-open { display: block; animation: fadeDown 0.18s ease-out; }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+    @media (min-width: 900px) {
+      .nx-mega--split {
+        background: linear-gradient(90deg, var(--nx-surface-alt) 0%, var(--nx-surface-alt) 50%, var(--nx-surface) 50%, var(--nx-surface) 100%);
+      }
+    }
+
+    .nx-axis-mega {
+      display: grid; grid-template-columns: 1fr; min-height: 410px;
+    }
+    @media (min-width: 900px) {
+      .nx-axis-mega {
+        grid-template-columns: 270px 1fr;
+      }
+    }
+    .nx-axis-sidebar {
+      background: var(--nx-surface-alt);
+      padding: 2rem 1.5rem;
+      display: flex; flex-direction: column; gap: 0.9rem;
+      position: relative; border-right: 1px solid rgba(16, 23, 20, 0.08);
+      --notch-top: 2.25rem;
+    }
+    @media (min-width: 900px) {
+      .nx-axis-sidebar { padding: 2.35rem 2rem 2.25rem 0; }
+    }
+    .nx-axis-tab {
+      background: none; border: none; padding: 0.35rem 0;
+      font-family: var(--nx-ff-body); font-size: 0.9375rem; font-weight: 600;
+      color: var(--nx-text-muted); text-align: left; cursor: pointer;
+      position: relative; align-self: flex-start; transition: color 0.15s ease;
+    }
+    .nx-axis-tab::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+      height: 2.5px; background: var(--nx-brand); border-radius: 0;
+      transform: scaleX(0); transform-origin: left center; transition: transform 0.2s ease;
+    }
+    .nx-axis-tab:hover, .nx-axis-tab:focus-visible { color: var(--nx-text); }
+    .nx-axis-tab.is-active { color: var(--nx-text); font-weight: 700; }
+    .nx-axis-tab:hover::after, .nx-axis-tab:focus-visible::after, .nx-axis-tab.is-active::after { transform: scaleX(1); }
+
+    /* Notch pointer on right border of sidebar */
+    .nx-axis-sidebar::after {
+      content: ""; display: none; position: absolute; right: -8px; top: var(--notch-top);
+      width: 15px; height: 15px; background: var(--nx-surface);
+      border-left: 1px solid rgba(16, 23, 20, 0.08); border-bottom: 1px solid rgba(16, 23, 20, 0.08);
+      box-shadow: -2px 2px 5px rgba(16, 23, 20, 0.04);
+      transform: rotate(45deg); z-index: 2;
+      transition: top 0.18s ease;
+    }
+    @media (min-width: 900px) { .nx-axis-sidebar::after { display: block; } }
+
+    .nx-axis-main {
+      background: var(--nx-surface);
+      padding: 2rem 1.5rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; z-index: 1;
+    }
+    @media (min-width: 900px) {
+      .nx-axis-main { padding: 2.35rem 0 2.25rem 3rem; }
+    }
+    .nx-axis-pane { display: none; }
+    .nx-axis-pane.is-active { display: block; }
+    .nx-axis-pane-header h3 { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.25rem; color: var(--nx-text); }
+    .nx-axis-pane-header p { font-size: 0.875rem; color: var(--nx-text-muted); margin: 0 0 1.5rem; }
+
+    .nx-axis-cats {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem 2rem;
+      list-style: none; padding: 0; margin: 0 0 2rem;
+    }
+    @media (min-width: 768px) { .nx-axis-cats { grid-template-columns: repeat(3, 1fr); } }
+    .nx-axis-cats a {
+      color: var(--nx-text); text-decoration: none; font-weight: 600; font-size: 0.9375rem;
+      display: inline-block; padding: 0.2rem 0; position: relative; transition: color 0.15s ease;
+    }
+    .nx-axis-cats a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+      height: 2px; background: var(--nx-brand);
+      transform: scaleX(0); transform-origin: left center; transition: transform 0.18s ease;
+    }
+    .nx-axis-cats a:hover, .nx-axis-cats a:focus-visible { color: var(--nx-text-brand); }
+    .nx-axis-cats a:hover::after, .nx-axis-cats a:focus-visible::after { transform: scaleX(1); }
+
+    .nx-axis-bottom {
+      border-top: 1px solid var(--nx-border); padding-top: 1.5rem;
+      display: grid; grid-template-columns: 1fr; gap: 1.25rem;
+    }
+    @media (min-width: 768px) { .nx-axis-bottom { grid-template-columns: repeat(3, 1fr); } }
+    .nx-axis-spot {
+      display: flex; align-items: center; gap: 0.9rem; text-decoration: none; color: var(--nx-text);
+      padding: 0.4rem 0.45rem 0.65rem; border-radius: var(--nx-radius-m) var(--nx-radius-m) 0 0;
+      position: relative; transition: background-color 0.15s ease;
+    }
+    .nx-axis-spot::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2.5px;
+      background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.22s ease;
+    }
+    .nx-axis-spot:hover, .nx-axis-spot:focus-visible { background: var(--nx-surface-alt); }
+    .nx-axis-spot:hover::after, .nx-axis-spot:focus-visible::after { transform: scaleX(1); }
+    .nx-axis-spot-thumb {
+      width: 60px; height: 60px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+      background: var(--nx-steel-900); border: 2px solid var(--nx-brand);
+      display: flex; align-items: center; justify-content: center; color: var(--nx-brand);
+    }
+    .nx-axis-spot-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .nx-axis-spot strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .nx-axis-spot span { display: block; font-size: 0.8rem; color: var(--nx-text-muted); line-height: 1.35; }
+
+    /* ---------- Buttons (8C: Speed Chevron / Automation Flow) ---------- */
+    .nx-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-family: var(--nx-ff-body); font-size: 0.9375rem; font-weight: 700; line-height: 1.45;
+      border-radius: 0; border: none; padding: 0.78rem 1.95rem 0.78rem 1.35rem;
+      cursor: pointer; text-decoration: none; position: relative; white-space: nowrap;
+      clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 50%, calc(100% - 13px) 100%, 0 100%);
+      transition: background-color 0.16s ease, color 0.16s ease, padding-right 0.16s ease, margin-right 0.16s ease;
+    }
+    .nx-btn:focus-visible { outline: 2px solid var(--nx-brand); outline-offset: 3px; }
+    .nx-btn--primary { color: var(--nx-steel-900); background: var(--nx-brand); }
+    .nx-btn--primary:hover { background: #26E080; color: var(--nx-steel-900); padding-right: 2.2rem; margin-right: -0.25rem; }
+    .nx-btn--primary:active { background: var(--nx-brand-hover); color: #fff; }
+    .nx-btn--secondary { color: var(--nx-text); background: #E3EAE6; font-weight: 600; }
+    .nx-btn--secondary:hover { background: var(--nx-steel-900); color: #fff; padding-right: 2.15rem; margin-right: -0.2rem; }
+    .nx-btn--ghost-light {
+      color: #fff; background: #1E2924; font-weight: 600;
+      padding: 0.78rem 1.85rem 0.78rem 1.65rem;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%);
+    }
+    .nx-btn--ghost-light:hover { background: #2B3B33; color: var(--nx-brand); padding-right: 2.05rem; margin-right: -0.2rem; }
+    .nx-btn--sm {
+      padding: 0.45rem 1.35rem 0.45rem 0.85rem; font-size: 0.8rem;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+    }
+    @media (min-width: 480px) {
+      .nx-btn--sm { padding: 0.52rem 1.65rem 0.52rem 1.05rem; font-size: 0.85rem; }
+    }
+    .nx-btn--sm:hover { padding-right: 1.85rem; margin-right: -0.2rem; }
+
+    /* ---------- Hero (8C FLOW Eyebrow + Video Background) ---------- */
+    .nx-hero {
+      position: relative; min-height: 520px; display: flex; align-items: center;
+      color: #fff; overflow: hidden; background: var(--nx-steel-900);
+    }
+    .nx-hero-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; filter: brightness(0.84); pointer-events: none;
+    }
+    .nx-hero-overlay {
+      position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(90deg, rgba(16,23,20,0.92) 0%, rgba(16,23,20,0.72) 50%, rgba(16,23,20,0.20) 100%);
+    }
+    .nx-hero-content { position: relative; z-index: 2; max-width: 660px; padding: 3.25rem 0 4.75rem; }
+    .nx-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      color: var(--nx-brand); font-family: var(--nx-ff-mono); font-size: 0.75rem;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: 0.85rem;
+    }
+    .nx-eyebrow-tip {
+      display: inline-flex; align-items: center;
+      background: var(--nx-brand); color: var(--nx-steel-900);
+      font-weight: 800; padding: 0.2rem 0.9rem 0.2rem 0.55rem;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
+      letter-spacing: 0.08em;
+    }
+    .nx-hero h1 { font-size: clamp(1.75rem, 2.75vw, 2.45rem); font-weight: 700; line-height: 1.2; margin: 0 0 0.85rem; letter-spacing: -0.015em; }
+    .nx-hero h1 .hl { color: var(--nx-brand); }
+    .nx-hero p { font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.86); margin: 0 0 1.5rem; max-width: 560px; }
+    .nx-hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+    .nx-hero-trust { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.75rem; color: rgba(255,255,255,0.72); }
+    .nx-hero-trust span::before { content: "✓ "; color: var(--nx-brand); font-weight: 700; }
+
+    /* ---------- Promo strip (8C Split Top Accent) ---------- */
+    .nx-promo-strip { margin-top: -2.75rem; position: relative; z-index: 10; }
+    .nx-promo-grid { display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-l); }
+    @media (min-width: 768px) { .nx-promo-grid { grid-template-columns: repeat(3, 1fr); } }
+    .nx-promo-card {
+      background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m); box-shadow: var(--nx-elev-2);
+      padding: var(--nx-sp-l); border: 1px solid #D4DCD8; border-top: 3px solid var(--nx-steel-900); position: relative;
+      display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease;
+    }
+    .nx-promo-card::after {
+      content: ""; position: absolute; top: -3px; left: -1px; width: 96px; height: 3px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nx-promo-card:hover { transform: translateY(-4px); }
+    .nx-promo-card:hover::after { width: calc(100% + 2px); }
+    .nx-promo-card h3 { font-size: 1.125rem; margin: 0.25rem 0 0.5rem; }
+    .nx-promo-card p { font-size: 0.9rem; color: var(--nx-text-muted); margin: 0 0 1rem; }
+    .nx-tag { font-family: var(--nx-ff-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--nx-text-brand); }
+
+    /* ---------- Sections ---------- */
+    .nx-section { padding: var(--nx-section-mobile) 0; }
+    @media (min-width: 1024px) { .nx-section { padding: var(--nx-section-desktop) 0; } }
+    .nx-section--alt { background: var(--nx-surface-alt); }
+    .nx-section--dark { background: var(--nx-steel-900); color: #fff; }
+    .nx-section-header { max-width: 720px; margin-bottom: var(--nx-sp-2xl); }
+    .nx-section-header h2 { font-size: clamp(1.5rem, 2.4vw, 1.95rem); font-weight: 700; margin: 0 0 0.75rem; }
+    .nx-section-header h2::after {
+      content: ""; display: block; width: 64px; height: 4px; background: var(--nx-brand);
+      clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%); margin-top: 0.6rem;
+    }
+    .nx-section-header p { color: var(--nx-text-muted); font-size: 0.975rem; margin: 0; }
+    .nx-section--dark .nx-section-header p { color: rgba(255,255,255,0.75); }
+    .nx-kicker { display: block; font-family: var(--nx-ff-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nx-text-brand); margin-bottom: 0.5rem; }
+    .nx-section--dark .nx-kicker { color: var(--nx-brand); }
+
+    /* ---------- Pain points ---------- */
+    .nx-pain-grid { display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-l); }
+    @media (min-width: 640px) { .nx-pain-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .nx-pain-grid { grid-template-columns: repeat(4, 1fr); } }
+    .nx-pain {
+      background: var(--nx-surface); border: 1px solid #D4DCD8; border-top: 3px solid var(--nx-steel-900);
+      border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m); padding: var(--nx-sp-l); position: relative;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .nx-pain::after {
+      content: ""; position: absolute; top: -3px; left: -1px; width: 64px; height: 3px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nx-pain:hover::after { width: calc(100% + 2px); }
+    .nx-pain-no { font-family: var(--nx-ff-mono); font-size: 0.8125rem; color: var(--nx-text-muted); }
+    .nx-pain h3 { font-size: 1.0625rem; margin: 0.35rem 0 0.5rem; }
+    .nx-pain p { font-size: 0.9375rem; color: var(--nx-text-muted); margin: 0 0 0.875rem; }
+    .nx-pain-fix {
+      font-size: 0.875rem; font-weight: 600; color: var(--nx-text-brand); background: var(--nx-brand-subtle);
+      padding: 0.5rem 0.75rem; border-radius: var(--nx-radius-xs); border-left: 3px solid var(--nx-brand);
+    }
+
+    /* ---------- Solution tabs ---------- */
+    .nx-tabs { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--nx-sp-s); margin-bottom: var(--nx-sp-xl); }
+    @media (min-width: 640px) { .nx-tabs { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1024px) { .nx-tabs { grid-template-columns: repeat(6, 1fr); } }
+    .nx-tab {
+      background: var(--nx-surface); border: 1.5px solid #D4DCD8; border-top: 3px solid #D4DCD8;
+      border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m);
+      padding: var(--nx-sp-m) var(--nx-sp-s); display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: var(--nx-sp-s); cursor: pointer; font-family: var(--nx-ff-body); position: relative;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .nx-tab::after {
+      content: ""; position: absolute; top: -3px; left: -1.5px; right: -1.5px; height: 3px;
+      background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.22s ease;
+    }
+    .nx-tab .nx-icon-circle {
+      width: 56px; height: 56px; border-radius: var(--nx-radius-m); background: var(--nx-surface-alt); color: var(--nx-text);
+      border: 1px solid #DCE2DF; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;
+    }
+    .nx-tab span { font-size: 0.875rem; font-weight: 600; color: var(--nx-text); line-height: 1.3; }
+    .nx-tab:hover, .nx-tab:focus-visible { border-color: #9FB0A7; border-top-color: var(--nx-steel-900); }
+    .nx-tab:hover .nx-icon-circle { background: var(--nx-brand-subtle); border-color: var(--nx-brand); color: var(--nx-text-brand); transform: translateY(-2px); }
+    .nx-tab:hover::after, .nx-tab:focus-visible::after, .nx-tab.is-active::after { transform: scaleX(1); }
+    .nx-tab.is-active { border-color: var(--nx-steel-900); border-top-color: var(--nx-steel-900); box-shadow: var(--nx-elev-1); }
+    .nx-tab.is-active .nx-icon-circle { background: var(--nx-brand); border-color: var(--nx-brand); color: var(--nx-steel-900); }
+
+    .nx-sol-panel {
+      background: var(--nx-surface-alt); border-radius: var(--nx-radius-l); padding: var(--nx-sp-xl);
+      box-shadow: var(--nx-elev-1); display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-xl);
+      align-items: center; border: 1px solid #D4DCD8; border-left: 5px solid var(--nx-brand);
+    }
+    @media (min-width: 768px) { .nx-sol-panel { grid-template-columns: 1.3fr 1fr; padding: var(--nx-sp-2xl); } }
+    .nx-check-list { list-style: none; padding: 0; margin: var(--nx-sp-m) 0 var(--nx-sp-l); display: grid; gap: 0.625rem; }
+    .nx-check-list li { display: flex; align-items: flex-start; gap: 0.625rem; font-weight: 500; }
+    .nx-check {
+      width: 20px; height: 20px; border-radius: var(--nx-radius-xs); background: var(--nx-brand); color: var(--nx-steel-900);
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 0.72rem; font-weight: 800;
+    }
+    .nx-metric-box {
+      background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m); padding: var(--nx-sp-l);
+      box-shadow: var(--nx-elev-1); border: 1px solid #D4DCD8; border-top: 3px solid var(--nx-steel-900); position: relative;
+    }
+    .nx-metric-box::after {
+      content: ""; position: absolute; top: -3px; left: -1px; width: 96px; height: 3px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    }
+    .nx-metric-label { font-family: var(--nx-ff-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--nx-text-muted); margin-bottom: 0.5rem; }
+    .nx-metric-value { font-family: var(--nx-ff-display); font-size: 2.75rem; font-weight: 700; color: var(--nx-text-brand); line-height: 1.1; }
+    .nx-metric-cap { font-weight: 600; margin: 0.35rem 0 1rem; }
+    .nx-metric-note { background: var(--nx-brand-subtle); padding: 0.875rem; border-radius: var(--nx-radius-xs); border-left: 3px solid var(--nx-brand); font-size: 0.875rem; }
+
+    /* ---------- Architecture (ISA-95 — Clean Stack + Spec Table) ---------- */
+    .nx-arch { display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-xl); align-items: center; }
+    @media (min-width: 1024px) { .nx-arch { grid-template-columns: 5fr 7fr; } }
+    .nx-arch-stack { display: flex; flex-direction: column; gap: 0.4rem; }
+    .nx-tier {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.35rem 0.875rem;
+      padding: 0.9rem 1.15rem; border-radius: var(--nx-radius-m);
+      background: var(--nx-steel-800); border: 1px solid rgba(255,255,255,0.12);
+    }
+    .nx-tier-title { font-size: 0.9375rem; font-weight: 600; color: #fff; }
+    .nx-tier-meta { font-family: var(--nx-ff-mono); font-size: 0.78rem; color: rgba(255,255,255,0.74); }
+    .nx-tier--core {
+      flex-wrap: nowrap;
+      padding: 1.15rem;
+      background: linear-gradient(155deg, rgba(24,201,110,0.16) 0%, #16221C 65%);
+      border: 1.5px solid var(--nx-brand);
+      box-shadow: 0 10px 30px rgba(24,201,110,0.14);
+    }
+    .nx-tier--core > div { flex: 1; min-width: 0; }
+    .nx-tier-core-title { display: block; font-size: 1.05rem; font-weight: 700; color: #fff; line-height: 1.3; }
+    .nx-tier-core-sub { display: block; font-size: 0.8125rem; color: rgba(255,255,255,0.82); margin-top: 0.15rem; }
+    .nx-tier-badge {
+      display: inline-flex; align-items: center; flex-shrink: 0;
+      font-family: var(--nx-ff-mono); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em;
+      padding: 0.25rem 0.9rem 0.25rem 0.55rem; background: var(--nx-brand); color: var(--nx-steel-900);
+      clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 50%, calc(100% - 7px) 100%, 0 100%);
+    }
+    .nx-flow-arrow {
+      text-align: center; font-family: var(--nx-ff-mono); font-size: 0.78rem; font-weight: 600;
+      color: var(--nx-brand); padding: 0.15rem 0; letter-spacing: 0.02em;
+    }
+    .nx-spec-card {
+      background: var(--nx-steel-800); border: 1px solid rgba(255,255,255,0.12);
+      border-top: 3px solid var(--nx-steel-700); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m);
+      position: relative;
+    }
+    .nx-spec-card::after {
+      content: ""; position: absolute; top: -3px; left: -1px; width: 120px; height: 3px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    }
+    .nx-spec-head {
+      padding: 0.9rem 1.35rem; background: rgba(255,255,255,0.045); border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem;
+    }
+    .nx-spec-head-title { font-size: 0.9375rem; font-weight: 700; color: #fff; }
+    .nx-spec-head-tag { font-family: var(--nx-ff-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; color: var(--nx-brand); }
+    .nx-spec-rows {
+      display: grid; overflow: hidden;
+      border-radius: 0 0 calc(var(--nx-radius-m) - 1px) calc(var(--nx-radius-m) - 1px);
+    }
+    .nx-spec-row {
+      padding: 0.95rem 1.35rem; display: grid; grid-template-columns: 1fr; gap: 0.3rem;
+      border-top: 1px solid rgba(255,255,255,0.09); transition: background-color 0.16s ease;
+    }
+    .nx-spec-row:first-child { border-top: none; }
+    .nx-spec-row:hover { background: rgba(255,255,255,0.025); }
+    @media (min-width: 640px) {
+      .nx-spec-row { grid-template-columns: 185px 1fr; gap: 1rem; align-items: baseline; padding: 1rem 1.35rem; }
+    }
+    .nx-spec-label { font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.92); }
+    .nx-spec-val { font-size: 0.875rem; color: rgba(255,255,255,0.82); line-height: 1.5; }
+    .nx-spec-val--mono { font-family: var(--nx-ff-mono); font-size: 0.84rem; color: rgba(255,255,255,0.88); }
+    .nx-spec-val--brand { font-family: var(--nx-ff-mono); font-size: 0.84rem; color: var(--nx-brand); font-weight: 500; }
+
+    /* ---------- Traceability ---------- */
+    .nx-trace { display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-xl); }
+    @media (min-width: 1024px) { .nx-trace { grid-template-columns: 1fr 1fr; } }
+    .nx-flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: step; }
+    .nx-flow li { position: relative; padding: 0 0 1.25rem 3.25rem; }
+    .nx-flow li::before {
+      counter-increment: step; content: counter(step, decimal-leading-zero);
+      position: absolute; left: 0; top: 0; width: 2.25rem; height: 2.25rem; border-radius: var(--nx-radius-s);
+      background: var(--nx-brand-subtle); color: var(--nx-text-brand); font-family: var(--nx-ff-mono); font-size: 0.8125rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; border: 2px solid var(--nx-brand);
+    }
+    .nx-flow li::after { content: ""; position: absolute; left: calc(1.125rem - 1px); top: 2.25rem; bottom: 0; width: 2px; background: var(--nx-border); }
+    .nx-flow li:last-child::after { display: none; }
+    .nx-flow strong { display: block; font-size: 1rem; }
+    .nx-flow span { font-size: 0.9375rem; color: var(--nx-text-muted); }
+
+    .nx-trace-demo {
+      background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-l) var(--nx-radius-l); box-shadow: var(--nx-elev-2);
+      padding: var(--nx-sp-xl); border: 1px solid #D4DCD8; border-top: 4px solid var(--nx-steel-900); position: relative;
+    }
+    .nx-trace-demo::after {
+      content: ""; position: absolute; top: -4px; left: -1px; width: 120px; height: 4px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    }
+    .nx-trace-demo h3 { margin: 0.25rem 0 0.5rem; font-size: 1.25rem; }
+    .nx-trace-form { display: flex; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
+    .nx-input {
+      flex: 1; min-width: 200px; padding: 0.7rem 1rem; border-radius: var(--nx-radius-s);
+      border: 1.5px solid var(--nx-border-strong); font-family: var(--nx-ff-mono); font-size: 0.9375rem; outline: none;
+    }
+    .nx-input:focus { border-color: var(--nx-brand-hover); }
+    .nx-trace-result { display: grid; gap: 0.5rem; }
+    .nx-trace-row {
+      display: grid; grid-template-columns: 92px 1fr auto; gap: 0.75rem; align-items: center;
+      padding: 0.6rem 0.75rem; background: var(--nx-surface-alt); border-radius: var(--nx-radius-s); font-size: 0.875rem;
+    }
+    .nx-trace-row time { font-family: var(--nx-ff-mono); color: var(--nx-text-muted); font-size: 0.8125rem; }
+    .nx-badge { font-family: var(--nx-ff-mono); font-size: 0.75rem; font-weight: 700; padding: 0.18rem 0.55rem; border-radius: var(--nx-radius-tag); background: var(--nx-brand-subtle); color: var(--nx-text-brand); white-space: nowrap; }
+    .nx-badge--warn { background: var(--nx-status-idle-bg); color: var(--nx-status-idle-text); }
+
+    /* ---------- Cases ---------- */
+    .nx-filter-bar { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: var(--nx-sp-xl); }
+    .nx-filter {
+      background: #E3EAE6; border: 1px solid #CED8D3; border-radius: var(--nx-radius-tag);
+      padding: 0.45rem 1.05rem; font-family: var(--nx-ff-body); font-size: 0.875rem; font-weight: 600; color: var(--nx-text);
+      cursor: pointer; position: relative; overflow: hidden;
+      transition: border-color 0.16s ease, color 0.16s ease, background-color 0.16s ease;
+    }
+    .nx-filter::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+      background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.2s ease;
+    }
+    .nx-filter:hover, .nx-filter:focus-visible { border-color: var(--nx-steel-900); color: var(--nx-steel-900); }
+    .nx-filter:hover::after, .nx-filter:focus-visible::after { transform: scaleX(1); }
+    .nx-filter.is-active { background: var(--nx-brand); border-color: var(--nx-brand); color: var(--nx-steel-900); font-weight: 700; }
+    .nx-filter.is-active::after { transform: scaleX(1); }
+    .nx-cards { display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-xl); }
+    @media (min-width: 768px) { .nx-cards { grid-template-columns: repeat(3, 1fr); } }
+    .nx-card {
+      background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m); box-shadow: var(--nx-elev-2);
+      border: 1px solid #D4DCD8; border-top: 3px solid var(--nx-steel-900); position: relative;
+      display: flex; flex-direction: column; transition: transform 0.25s ease;
+    }
+    .nx-card::after {
+      content: ""; position: absolute; top: -3px; left: -1px; width: 112px; height: 3px; z-index: 3;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nx-card:hover { transform: translateY(-5px); }
+    .nx-card:hover::after { width: calc(100% + 2px); }
+    .nx-card-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--nx-steel-800); }
+    .nx-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .nx-card:hover .nx-card-media img { transform: scale(1.04); }
+    .nx-card-cat {
+      position: absolute; top: 14px; left: 0; background: var(--nx-brand); color: var(--nx-steel-900);
+      font-family: var(--nx-ff-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 0.28rem 1.25rem 0.28rem 0.85rem; border-radius: 0;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+    }
+    .nx-card-body { padding: var(--nx-sp-l); display: flex; flex-direction: column; flex: 1; }
+    .nx-card-body h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.35; margin: 0 0 0.75rem; transition: color 0.2s ease; }
+    .nx-card:hover .nx-card-body h3 { color: var(--nx-text-brand); }
+    .nx-card-body p { color: var(--nx-text-muted); font-size: 0.9375rem; margin: 0 0 1rem; flex: 1; }
+    .nx-card-kpis { display: flex; gap: 1rem; margin-bottom: 1rem; }
+    .nx-card-kpis div { font-size: 0.8125rem; color: var(--nx-text-muted); }
+    .nx-card-kpis b { display: block; font-family: var(--nx-ff-display); font-size: 1.25rem; color: var(--nx-text); }
+    .nx-link {
+      display: inline-flex; align-items: center; align-self: flex-start; gap: 0.375rem;
+      font-weight: 600; font-size: 0.9375rem; color: var(--nx-text-brand); text-decoration: none;
+      background: none; border: none; padding: 0 0 2px; cursor: pointer; font-family: var(--nx-ff-body); position: relative;
+    }
+    .nx-link::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+      height: 2px; background: var(--nx-brand);
+      transform: scaleX(0); transform-origin: left center; transition: transform 0.22s ease;
+    }
+    .nx-link:hover::after, .nx-link:focus-visible::after { transform: scaleX(1); }
+
+    /* ---------- Roadmap ---------- */
+    .nx-roadmap { display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-m); }
+    @media (min-width: 900px) { .nx-roadmap { grid-template-columns: repeat(5, 1fr); } }
+    .nx-step {
+      background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m); padding: var(--nx-sp-l);
+      border: 1px solid #D4DCD8; border-top: 3px solid var(--nx-steel-900); position: relative;
+    }
+    .nx-step::after {
+      content: ""; position: absolute; top: -3px; left: -1px; width: 56px; height: 3px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: width 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nx-step:hover::after { width: calc(100% + 2px); }
+    .nx-step-no { font-family: var(--nx-ff-mono); font-size: 1.75rem; font-weight: 700; color: var(--nx-brand); line-height: 1; }
+    .nx-step h3 { font-size: 1rem; margin: 0.5rem 0 0.375rem; }
+    .nx-step p { font-size: 0.875rem; color: var(--nx-text-muted); margin: 0 0 0.75rem; }
+    .nx-step-time {
+      display: inline-block; font-family: var(--nx-ff-mono); font-size: 0.75rem; font-weight: 600;
+      color: var(--nx-text-brand); background: var(--nx-brand-subtle); padding: 0.2rem 0.55rem; border-radius: var(--nx-radius-tag);
+    }
+
+    /* ---------- Numbers ---------- */
+    .nx-numbers { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--nx-sp-l); }
+    @media (min-width: 768px) { .nx-numbers { grid-template-columns: repeat(4, 1fr); } }
+    .nx-number {
+      background: var(--nx-surface-alt); border-radius: var(--nx-radius-m) var(--nx-radius-m) 0 0; padding: var(--nx-sp-xl) var(--nx-sp-l);
+      text-align: center; border: 1px solid #D4DCD8; border-bottom: 3px solid var(--nx-steel-900); position: relative;
+    }
+    .nx-number::after {
+      content: ""; position: absolute; bottom: -3px; left: -1px; width: 88px; height: 3px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nx-number:hover::after { width: calc(100% + 2px); }
+    .nx-number-icon {
+      width: 52px; height: 52px; border-radius: var(--nx-radius-m); background: var(--nx-brand-subtle);
+      border: 1px solid rgba(24,201,110,0.35); color: var(--nx-text-brand);
+      display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;
+    }
+    .nx-number-value { font-family: var(--nx-ff-display); font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.25rem; }
+    .nx-number-label { font-size: 0.9375rem; font-weight: 600; color: var(--nx-text-muted); }
+    .nx-standards { margin-top: var(--nx-sp-2xl); display: flex; flex-wrap: wrap; gap: 0.625rem; justify-content: center; }
+    .nx-std { font-family: var(--nx-ff-mono); font-size: 0.8125rem; padding: 0.4rem 0.9rem; border: 1px solid var(--nx-border); border-radius: var(--nx-radius-tag); color: var(--nx-text-muted); background: var(--nx-surface); }
+
+    /* ---------- CTA band ---------- */
+    .nx-cta {
+      background: linear-gradient(120deg, var(--nx-steel-900) 0%, var(--nx-steel-800) 60%, #0d3b27 100%);
+      color: #fff; border-radius: 0 0 var(--nx-radius-l) var(--nx-radius-l); padding: var(--nx-sp-2xl);
+      border: 1px solid #2A3530; border-top: 3px solid #2A3530; position: relative;
+      display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-l); align-items: center;
+    }
+    .nx-cta::after {
+      content: ""; position: absolute; top: -3px; left: -1px; width: 140px; height: 3px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    }
+    @media (min-width: 900px) { .nx-cta { grid-template-columns: 1.5fr 1fr; padding: var(--nx-sp-3xl); } }
+    .nx-cta h2 { margin: 0 0 0.5rem; font-size: clamp(1.5rem, 2.6vw, 2rem); }
+    .nx-cta p { margin: 0; color: rgba(255,255,255,0.78); }
+    .nx-cta-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: flex-start; }
+    @media (min-width: 900px) { .nx-cta-actions { justify-content: flex-end; } }
+
+    /* ---------- Footer ---------- */
+    .nx-footer { background: var(--nx-brand); color: var(--nx-steel-900); padding: var(--nx-sp-4xl) 0 var(--nx-sp-2xl); }
+    .nx-footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--nx-sp-xl); margin-bottom: var(--nx-sp-3xl); }
+    @media (min-width: 768px) { .nx-footer-grid { grid-template-columns: repeat(5, 1fr); } }
+    .nx-footer h4 { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; }
+    .nx-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+    .nx-footer a { color: inherit; text-decoration: none; font-size: 0.9375rem; font-weight: 500; opacity: 0.9; position: relative; display: inline-block; }
+    .nx-footer a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+      background: var(--nx-steel-900); transform: scaleX(0); transform-origin: left center; transition: transform 0.2s ease;
+    }
+    .nx-footer a:hover, .nx-footer a:focus-visible { opacity: 1; }
+    .nx-footer a:hover::after, .nx-footer a:focus-visible::after { transform: scaleX(1); }
+    .nx-footer-bottom { padding-top: var(--nx-sp-l); border-top: 1px solid rgba(0,0,0,0.18); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-size: 0.875rem; }
+
+    /* ---------- Modal & toast ---------- */
+    .nx-modal-backdrop { position: fixed; inset: 0; background: rgba(16,23,20,0.65); display: none; align-items: center; justify-content: center; padding: 1.5rem; z-index: 500; }
+    .nx-modal-backdrop.is-open { display: flex; }
+    .nx-modal {
+      background: linear-gradient(122deg, var(--nx-brand) 124px, var(--nx-steel-900) 125px) top left / 100% 4px no-repeat, var(--nx-surface);
+      border-radius: var(--nx-radius-l); max-width: 580px; width: 100%; padding: calc(var(--nx-sp-xl) + 4px) var(--nx-sp-xl) var(--nx-sp-xl);
+      box-shadow: var(--nx-elev-2); border: 1px solid #D4DCD8; max-height: 92vh; overflow: auto;
+    }
+    .nx-form { display: grid; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .nx-form label { font-size: 0.8125rem; font-weight: 600; display: grid; gap: 0.3rem; }
+    .nx-form input, .nx-form select { padding: 0.65rem 0.9rem; border-radius: var(--nx-radius-s); border: 1.5px solid rgba(0,0,0,0.15); font-family: var(--nx-ff-body); font-size: 0.9375rem; }
+    .nx-form input:focus, .nx-form select:focus { outline: none; border-color: var(--nx-brand-hover); }
+    .nx-form-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .nx-toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--nx-steel-900); color: #fff; border-left: 4px solid var(--nx-brand); padding: 0.875rem 1.25rem; border-radius: var(--nx-radius-s); box-shadow: var(--nx-elev-2); font-size: 0.875rem; font-weight: 600; display: none; z-index: 600; }
+    .nx-toast.is-visible { display: block; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UTILITY TOP BAR -->
+  <div class="nx-topbar">
+    <div class="nx-container">
+      <span>Giải pháp Smart Factory cho nhà máy Việt Nam — MES · Số hóa · Truy xuất nguồn gốc</span>
+      <span>Hotline: <a href="tel:+84000000000">(+84) 000 000 000</a> · <a href="#contact" data-modal-trigger="survey">Đăng ký khảo sát miễn phí</a></span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="nx-header">
+    <div class="nx-header-inner">
+      <a href="#hero" class="nx-logo" aria-label="BYRA Technologics — Trang chủ">
+        <span class="nx-logo-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="2.6" fill="currentColor"></circle>
+          </svg>
+        </span>
+        <span class="nx-logo-word">BYRA<b>Technologics</b><small>Smart Manufacturing</small></span>
+      </a>
+
+      <nav class="nx-nav" aria-label="Điều hướng chính">
+        <button type="button" class="nx-nav-btn" id="nav-solutions-btn" aria-expanded="false" aria-controls="mega-solutions-panel">
+          <span>Giải pháp</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <button type="button" class="nx-nav-btn" id="nav-products-btn" aria-expanded="false" aria-controls="mega-products-panel">
+          <span>Sản phẩm</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <a href="#platform" class="nx-nav-btn">Nền tảng</a>
+        <a href="#cases" class="nx-nav-btn">Dự án</a>
+        <a href="#roadmap" class="nx-nav-btn">Triển khai</a>
+        <a href="#about" class="nx-nav-btn">Về chúng tôi</a>
+      </nav>
+
+      <div class="nx-header-utils">
+        <button type="button" class="nx-btn nx-btn--primary nx-btn--sm" data-modal-trigger="demo">Đặt lịch demo</button>
+      </div>
+    </div>
+
+    <!-- MEGA MENU: SẢN PHẨM (Axis-style Full-Bleed Split Layout) -->
+    <div class="nx-mega nx-mega--split" id="mega-products-panel">
+      <div class="nx-container">
+        <div class="nx-axis-mega">
+          <div class="nx-axis-sidebar" role="tablist" aria-label="Phân nhóm sản phẩm">
+            <button type="button" class="nx-axis-tab is-active" data-axis-tab="prod-cat" role="tab" aria-selected="true">Danh mục sản phẩm</button>
+            <button type="button" class="nx-axis-tab" data-axis-tab="prod-col" role="tab" aria-selected="false">Bộ giải pháp phần cứng trọn gói</button>
+            <div style="margin-top: auto; padding-top: 1.5rem;">
+              <a href="Products.html" class="nx-link" style="font-size: 0.875rem;">Xem toàn bộ trang Sản phẩm →</a>
+            </div>
+          </div>
+
+          <div class="nx-axis-main">
+            <!-- Pane 1: Danh mục sản phẩm (12 categories) -->
+            <div class="nx-axis-pane is-active" data-axis-pane="prod-cat">
+              <div class="nx-axis-pane-header">
+                <h3>Danh mục sản phẩm</h3>
+                <p>Hệ sinh thái phần mềm và thiết bị công nghiệp chuẩn mở cho nhà máy thông minh</p>
+              </div>
+              <ul class="nx-axis-cats">
+                <li><a href="Products.html#cat-edge">Bộ thu thập dữ liệu IIoT & Edge</a></li>
+                <li><a href="Products.html#cat-scanner">Máy quét mã vạch & PDA</a></li>
+                <li><a href="Products.html#cat-vision">Thị giác máy (AI Vision)</a></li>
+                <li><a href="Products.html#cat-hmi">Màn hình công nghiệp & Panel PC</a></li>
+                <li><a href="Products.html#cat-printer">Máy in nhãn mã vạch GS1</a></li>
+                <li><a href="Products.html#cat-scale">Cân điện tử & Đo lường</a></li>
+                <li><a href="Products.html#cat-andon">Hệ thống hiển thị & Đèn Andon</a></li>
+                <li><a href="Products.html#cat-rfid">Thiết bị đọc & Thẻ RFID</a></li>
+                <li><a href="Products.html#cat-network">Thiết bị mạng & Switch công nghiệp</a></li>
+                <li><a href="Products.html#cat-mes-sw">Phần mềm MES & Điều hành</a></li>
+                <li><a href="Products.html#cat-sensor">Cảm biến & Đồng hồ năng lượng</a></li>
+                <li><a href="Products.html#cat-accessories">Phụ kiện & Tủ rack công nghiệp</a></li>
+              </ul>
+            </div>
+
+            <!-- Pane 2: Bộ giải pháp phần cứng trọn gói -->
+            <div class="nx-axis-pane" data-axis-pane="prod-col">
+              <div class="nx-axis-pane-header">
+                <h3>Bộ giải pháp phần cứng trọn gói</h3>
+                <p>Các bộ thiết bị được đóng gói đồng bộ để giải quyết trọn vẹn từng bài toán tại xưởng</p>
+              </div>
+              <ul class="nx-axis-cats">
+                <li><a href="Products.html#cross-category-collections">Trạm phòng sạch & Chống cháy nổ</a></li>
+                <li><a href="Products.html#cross-category-collections">Thiết bị gắn xe nâng & Kho vận</a></li>
+                <li><a href="Products.html#cross-category-collections">Gói nâng cấp máy cơ đời cũ</a></li>
+              </ul>
+            </div>
+
+            <!-- Bottom 3 Circular Spotlights (Axis signature) -->
+            <div class="nx-axis-bottom">
+              <a href="Products.html#new-products" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb">
+                  <img src="assets/images/card-mes-assembly.jpg" alt="Sản phẩm mới" />
+                </div>
+                <div>
+                  <strong>Sản phẩm mới ra mắt</strong>
+                  <span>Khám phá các thiết bị IIoT & phần mềm thế hệ mới nhất</span>
+                </div>
+              </a>
+              <a href="#solutions" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb">
+                  <img src="assets/images/card-traceability.jpg" alt="Giải pháp" />
+                </div>
+                <div>
+                  <strong>Giải pháp theo ngành</strong>
+                  <span>Giải pháp đồng bộ cho Điện tử, Thực phẩm và Dược phẩm</span>
+                </div>
+              </a>
+              <a href="Products.html#related-resources" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb">
+                  <img src="assets/images/card-digital-ops.jpg" alt="Công cụ" />
+                </div>
+                <div>
+                  <strong>Công cụ chọn cấu hình</strong>
+                  <span>Tính toán số lượng Gateway, trạm HMI & ước tính ROI</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEGA MENU: GIẢI PHÁP (Axis-style Full-Bleed Split Layout) -->
+    <div class="nx-mega nx-mega--split" id="mega-solutions-panel">
+      <div class="nx-container">
+        <div class="nx-axis-mega">
+          <div class="nx-axis-sidebar" role="tablist" aria-label="Phân nhóm giải pháp">
+            <button type="button" class="nx-axis-tab is-active" data-axis-tab="sol-mod" role="tab" aria-selected="true">Giải pháp theo phân hệ</button>
+            <button type="button" class="nx-axis-tab" data-axis-tab="sol-ind" role="tab" aria-selected="false">Giải pháp theo ngành</button>
+            <div style="margin-top: auto; padding-top: 1.5rem;">
+              <a href="#roadmap" class="nx-link" style="font-size: 0.875rem;">Lộ trình triển khai 5 bước →</a>
+            </div>
+          </div>
+
+          <div class="nx-axis-main">
+            <!-- Pane 1: Giải pháp theo phân hệ -->
+            <div class="nx-axis-pane is-active" data-axis-pane="sol-mod">
+              <div class="nx-axis-pane-header">
+                <h3>Giải pháp theo phân hệ</h3>
+                <p>Hệ thống mô-đun Smart Factory linh hoạt — bắt đầu từ điểm nghẽn cấp thiết nhất</p>
+              </div>
+              <ul class="nx-axis-cats">
+                <li><a href="#solutions" data-sol-jump="mes">MES — Điều hành sản xuất</a></li>
+                <li><a href="#solutions" data-sol-jump="trace">Truy xuất nguồn gốc GS1</a></li>
+                <li><a href="#solutions" data-sol-jump="oee">Giám sát máy & OEE (IIoT)</a></li>
+                <li><a href="#solutions" data-sol-jump="qms">Quản lý chất lượng (QMS / SPC)</a></li>
+                <li><a href="#solutions" data-sol-jump="wms">Kho thông minh & Intralogistics</a></li>
+                <li><a href="#solutions" data-sol-jump="cmms">Bảo trì thiết bị (CMMS)</a></li>
+                <li><a href="#solutions" data-sol-jump="cmms">Số hóa biểu mẫu (Paperless)</a></li>
+                <li><a href="#solutions" data-sol-jump="mes">Hồ sơ lô điện tử (eBR / eDHR)</a></li>
+                <li><a href="#platform">Tích hợp hai chiều ERP ⇄ MES</a></li>
+              </ul>
+            </div>
+
+            <!-- Pane 2: Giải pháp theo ngành -->
+            <div class="nx-axis-pane" data-axis-pane="sol-ind">
+              <div class="nx-axis-pane-header">
+                <h3>Giải pháp theo ngành công nghiệp</h3>
+                <p>Chuẩn hóa quy trình vận hành, truy xuất và tuân thủ kiểm toán theo đặc thù từng ngành</p>
+              </div>
+              <ul class="nx-axis-cats">
+                <li><a href="#cases" data-filter-jump="electronics">Điện tử & Lắp ráp SMT</a></li>
+                <li><a href="#cases" data-filter-jump="electronics">Cơ khí chính xác & Ô tô</a></li>
+                <li><a href="#cases" data-filter-jump="fnb">Thực phẩm & Đồ uống (F&B)</a></li>
+                <li><a href="#cases" data-filter-jump="fnb">Nông thủy sản xuất khẩu</a></li>
+                <li><a href="#cases" data-filter-jump="pharma">Dược phẩm & Y tế GMP</a></li>
+                <li><a href="#cases" data-filter-jump="pharma">Mỹ phẩm & Hóa mỹ phẩm</a></li>
+                <li><a href="#cases">Bao bì, Nhựa & Ép phun</a></li>
+                <li><a href="#cases">Dệt may & Da giày</a></li>
+              </ul>
+            </div>
+
+            <!-- Bottom 3 Circular Spotlights -->
+            <div class="nx-axis-bottom">
+              <a href="#contact" class="nx-axis-spot" data-modal-trigger="survey">
+                <div class="nx-axis-spot-thumb">
+                  <img src="assets/images/card-digital-ops.jpg" alt="Khảo sát miễn phí" />
+                </div>
+                <div>
+                  <strong>Khảo sát nhà máy miễn phí</strong>
+                  <span>Đánh giá 1 ngày tại xưởng & nhận lộ trình ROI chi tiết</span>
+                </div>
+              </a>
+              <a href="#platform" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb">
+                  <img src="assets/images/hero-smart-factory.jpg" alt="Kiến trúc ISA-95" />
+                </div>
+                <div>
+                  <strong>Kiến trúc chuẩn ISA-95</strong>
+                  <span>Kết nối xuyên suốt từ PLC/Cảm biến lên ERP</span>
+                </div>
+              </a>
+              <a href="#cases" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb">
+                  <img src="assets/images/card-traceability.jpg" alt="Dự án thực tế" />
+                </div>
+                <div>
+                  <strong>Kết quả thực tế tại VN</strong>
+                  <span>Tăng 18% OEE & truy xuất nguồn gốc dưới 30 giây</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="nx-hero" id="hero">
+    <video class="nx-hero-bg" autoplay muted loop playsinline preload="auto" poster="assets/images/hero-smart-factory.jpg" aria-hidden="true">
+      <source src="assets/images/gemini_generated_video_d2e6fa73.mp4" type="video/mp4" />
+    </video>
+    <div class="nx-hero-overlay"></div>
+    <div class="nx-container" style="width:100%;">
+      <div class="nx-hero-content">
+        <div class="nx-eyebrow"><span class="nx-eyebrow-tip">FLOW</span><span>SMART FACTORY · MES · TRACEABILITY</span></div>
+        <h1>Số hóa nhà máy, <span class="hl">minh bạch từng công đoạn</span> sản xuất</h1>
+        <p>
+          BYRA Technologics kết nối máy móc, con người và dữ liệu trên một nền tảng MES duy nhất — giúp nhà máy theo dõi sản lượng theo thời gian thực,
+          nâng hiệu suất thiết bị (OEE) và truy xuất nguồn gốc mọi lô hàng chỉ trong vài giây.
+        </p>
+        <div class="nx-hero-actions">
+          <a href="#solutions" class="nx-btn nx-btn--primary">Khám phá giải pháp</a>
+          <button type="button" class="nx-btn nx-btn--ghost-light" data-modal-trigger="survey">Khảo sát nhà máy miễn phí</button>
+        </div>
+        <div class="nx-hero-trust">
+          <span>Chuẩn kiến trúc ISA-95</span>
+          <span>Mã hóa GS1 (QR / DataMatrix)</span>
+          <span>Tích hợp ERP: SAP, Oracle, Odoo…</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO STRIP -->
+  <div class="nx-promo-strip">
+    <div class="nx-container">
+      <div class="nx-promo-grid">
+        <div class="nx-promo-card">
+          <div>
+            <span class="nx-tag">Công cụ đánh giá</span>
+            <h3>Nhà máy của bạn đang ở cấp độ số hóa nào?</h3>
+            <p>Trả lời 12 câu hỏi để biết mức độ trưởng thành số (cấp 1–5) và ưu tiên đầu tư phù hợp.</p>
+          </div>
+          <button type="button" class="nx-link" data-modal-trigger="assessment">Làm bài đánh giá →</button>
+        </div>
+        <div class="nx-promo-card">
+          <div>
+            <span class="nx-tag">Demo trực tiếp</span>
+            <h3>Trải nghiệm MES với dữ liệu dây chuyền thực</h3>
+            <p>Xem lệnh sản xuất, OEE, cảnh báo dừng máy và hồ sơ lô điện tử chạy trên màn hình xưởng.</p>
+          </div>
+          <button type="button" class="nx-link" data-modal-trigger="demo">Đặt lịch demo 45 phút →</button>
+        </div>
+        <div class="nx-promo-card">
+          <div>
+            <span class="nx-tag">Tài liệu chuyên sâu</span>
+            <h3>Cẩm nang truy xuất nguồn gốc cho nhà máy xuất khẩu</h3>
+            <p>Yêu cầu từ thị trường EU, Mỹ, Nhật và cách đáp ứng bằng mã định danh GS1 + MES.</p>
+          </div>
+          <button type="button" class="nx-link" data-modal-trigger="ebook">Tải cẩm nang (PDF) →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAIN POINTS -->
+  <section class="nx-section" id="challenges">
+    <div class="nx-container">
+      <div class="nx-section-header">
+        <span class="nx-kicker">Thách thức thường gặp</span>
+        <h2>Nhà máy vẫn đang vận hành bằng giấy, Excel và kinh nghiệm?</h2>
+        <p>Dữ liệu sản xuất rời rạc khiến ban điều hành ra quyết định chậm, khó chứng minh chất lượng với khách hàng và tốn kém khi xảy ra sự cố.</p>
+      </div>
+      <div class="nx-pain-grid">
+        <article class="nx-pain">
+          <span class="nx-pain-no">01</span>
+          <h3>Báo cáo sản xuất trễ 1–2 ngày</h3>
+          <p>Số liệu ghi tay cuối ca, nhập lại vào Excel — sai lệch, thiếu và không ai tin hoàn toàn.</p>
+          <div class="nx-pain-fix">→ MES ghi nhận tự động theo thời gian thực</div>
+        </article>
+        <article class="nx-pain">
+          <span class="nx-pain-no">02</span>
+          <h3>Không biết OEE thực tế</h3>
+          <p>Thời gian dừng máy, chạy chậm, hàng lỗi bị "ẩn" — năng lực thật của xưởng chưa được khai thác.</p>
+          <div class="nx-pain-fix">→ Kết nối máy (IIoT) & phân tích tổn thất</div>
+        </article>
+        <article class="nx-pain">
+          <span class="nx-pain-no">03</span>
+          <h3>Truy xuất lô mất hàng giờ</h3>
+          <p>Khi khách hàng khiếu nại hoặc cần thu hồi, phải lục sổ sách nhiều bộ phận mới khoanh vùng được lô lỗi.</p>
+          <div class="nx-pain-fix">→ Phả hệ lô (genealogy) tra cứu trong vài giây</div>
+        </article>
+        <article class="nx-pain">
+          <span class="nx-pain-no">04</span>
+          <h3>ERP và xưởng không "nói chuyện"</h3>
+          <p>Kế hoạch trên ERP không phản ánh tiến độ thực tế dưới xưởng; tồn kho WIP luôn chênh lệch.</p>
+          <div class="nx-pain-fix">→ Tích hợp hai chiều ERP ⇄ MES ⇄ Máy</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS TABS -->
+  <section class="nx-section nx-section--alt" id="solutions">
+    <div class="nx-container">
+      <div class="nx-section-header">
+        <span class="nx-kicker">Giải pháp</span>
+        <h2>Bộ giải pháp Smart Factory theo mô-đun</h2>
+        <p>Bắt đầu từ bài toán cấp thiết nhất, mở rộng dần trên cùng một nền tảng dữ liệu. Chọn từng mô-đun để xem chi tiết.</p>
+      </div>
+
+      <div class="nx-tabs" role="tablist" aria-label="Danh mục giải pháp">
+        <button type="button" class="nx-tab is-active" data-sol="mes" role="tab" aria-selected="true">
+          <div class="nx-icon-circle">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 17.5h7M17.5 14v7"></path></svg>
+          </div>
+          <span>MES — Điều hành sản xuất</span>
+        </button>
+        <button type="button" class="nx-tab" data-sol="trace" role="tab" aria-selected="false">
+          <div class="nx-icon-circle">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M7 8v8M10 8v8M13 8v8M16 8v8"></path></svg>
+          </div>
+          <span>Truy xuất nguồn gốc</span>
+        </button>
+        <button type="button" class="nx-tab" data-sol="oee" role="tab" aria-selected="false">
+          <div class="nx-icon-circle">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+          </div>
+          <span>Giám sát máy & OEE</span>
+        </button>
+        <button type="button" class="nx-tab" data-sol="qms" role="tab" aria-selected="false">
+          <div class="nx-icon-circle">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          </div>
+          <span>Quản lý chất lượng</span>
+        </button>
+        <button type="button" class="nx-tab" data-sol="wms" role="tab" aria-selected="false">
+          <div class="nx-icon-circle">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+          <span>Kho & Logistics (WMS)</span>
+        </button>
+        <button type="button" class="nx-tab" data-sol="cmms" role="tab" aria-selected="false">
+          <div class="nx-icon-circle">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+          </div>
+          <span>Bảo trì & Số hóa biểu mẫu</span>
+        </button>
+      </div>
+
+      <div class="nx-sol-panel" id="solution-panel" role="tabpanel" aria-live="polite">
+        <div>
+          <span class="nx-tag" id="sol-badge">Manufacturing Execution System</span>
+          <h3 id="sol-title" style="font-size:1.65rem;margin:0.35rem 0 0.75rem;">Điều hành sản xuất theo thời gian thực, không giấy tờ</h3>
+          <p id="sol-desc" style="color:var(--nx-text-muted);margin:0;">
+            Số hóa toàn bộ vòng đời lệnh sản xuất: từ kế hoạch nhận từ ERP, điều độ xuống từng chuyền/máy, cấp phát nguyên vật liệu, ghi nhận sản lượng – phế phẩm đến đóng lệnh và hồ sơ lô điện tử.
+          </p>
+          <ul class="nx-check-list" id="sol-bullets">
+            <li><span class="nx-check">✓</span><span>Lập và điều độ lệnh sản xuất theo năng lực chuyền, ca, công nhân</span></li>
+            <li><span class="nx-check">✓</span><span>Hướng dẫn công việc điện tử (eWI) & ghi nhận sản lượng bằng máy quét, tablet</span></li>
+            <li><span class="nx-check">✓</span><span>Theo dõi WIP, tiến độ đơn hàng và năng suất lao động tức thời</span></li>
+            <li><span class="nx-check">✓</span><span>Hồ sơ lô điện tử (eBR/eDHR) tự động tổng hợp khi đóng lệnh</span></li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+            <button type="button" class="nx-btn nx-btn--primary" id="btn-sol-explore">Nhận tài liệu giải pháp</button>
+            <a href="#cases" class="nx-btn nx-btn--secondary">Xem dự án thực tế</a>
+          </div>
+        </div>
+        <div class="nx-metric-box">
+          <div class="nx-metric-label">Hiệu quả điển hình</div>
+          <div class="nx-metric-value" id="sol-metric-value">-90%</div>
+          <div class="nx-metric-cap" id="sol-metric-caption">Thời gian lập báo cáo sản xuất cuối ca, cuối tháng</div>
+          <div class="nx-metric-note" id="sol-metric-note">
+            <strong>Tích hợp:</strong> đồng bộ lệnh, BOM, routing và tồn kho hai chiều với ERP qua REST API / middleware.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM / ARCHITECTURE -->
+  <section class="nx-section nx-section--dark" id="platform">
+    <div class="nx-container">
+      <div class="nx-section-header">
+        <span class="nx-kicker">Nền tảng BYRA Technologics</span>
+        <h2>Kiến trúc mở ISA-95 &amp; Chuẩn tương thích</h2>
+      </div>
+
+      <div class="nx-arch">
+        <div class="nx-arch-stack" aria-label="Sơ đồ 3 tầng kiến trúc ISA-95">
+          <div class="nx-tier">
+            <span class="nx-tier-title">Cấp 4 · ERP Quản trị</span>
+            <span class="nx-tier-meta">SAP / Oracle / Odoo</span>
+          </div>
+          <div class="nx-flow-arrow" aria-hidden="true">&#8593;&#8595; API Đồng bộ hai chiều</div>
+          <div class="nx-tier nx-tier--core">
+            <div>
+              <strong class="nx-tier-core-title">Cấp 3 · BYRA MES / MOM</strong>
+              <span class="nx-tier-core-sub">Trung tâm điều hành &amp; dữ liệu nhà máy</span>
+            </div>
+            <span class="nx-tier-badge">CORE</span>
+          </div>
+          <div class="nx-flow-arrow" aria-hidden="true">&#8593;&#8595; Thu thập thời gian thực</div>
+          <div class="nx-tier">
+            <span class="nx-tier-title">Cấp 0–2 · Edge, PLC &amp; Hiện trường</span>
+            <span class="nx-tier-meta">Máy móc &amp; Cảm biến</span>
+          </div>
+        </div>
+
+        <div class="nx-spec-card">
+          <div class="nx-spec-head">
+            <span class="nx-spec-head-title">Bảng Chuẩn Kết nối &amp; Triển khai</span>
+            <span class="nx-spec-head-tag">OPEN ARCHITECTURE</span>
+          </div>
+          <div class="nx-spec-rows">
+            <div class="nx-spec-row">
+              <div class="nx-spec-label">Giao thức Máy (OT)</div>
+              <div class="nx-spec-val nx-spec-val--brand">OPC UA · MQTT · Modbus TCP/RTU · Siemens S7 · EtherNet/IP · MTConnect</div>
+            </div>
+            <div class="nx-spec-row">
+              <div class="nx-spec-label">Phần mềm ERP (IT)</div>
+              <div class="nx-spec-val nx-spec-val--mono">SAP · Oracle · MS Dynamics · Odoo · REST / Webhook</div>
+            </div>
+            <div class="nx-spec-row">
+              <div class="nx-spec-label">Thiết bị Hiện trường</div>
+              <div class="nx-spec-val">Robot / AGV · PLC · IoT Devices · Cảm biến · AI Vision · Máy quét DPM · Máy in GS1 · UHF RFID · Cân điện tử · Tablet / Andon</div>
+            </div>
+            <div class="nx-spec-row">
+              <div class="nx-spec-label">Mô hình Hạ tầng</div>
+              <div class="nx-spec-val">On-premise tại nhà máy, Cloud hoặc Hybrid — tương thích cả máy đời cũ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section class="nx-section nx-section--alt" id="cases">
+    <div class="nx-container">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:var(--nx-sp-l);">
+        <div class="nx-section-header" style="margin-bottom:0;">
+          <span class="nx-kicker">Dự án tiêu biểu</span>
+          <h2>Kết quả đo được tại nhà máy</h2>
+          <p>Mỗi dự án bắt đầu từ một dây chuyền thí điểm và mở rộng khi hiệu quả đã được chứng minh.</p>
+        </div>
+        <div class="nx-filter-bar" role="group" aria-label="Lọc theo ngành">
+          <button type="button" class="nx-filter is-active" data-filter="all">Tất cả</button>
+          <button type="button" class="nx-filter" data-filter="electronics">Điện tử & Cơ khí</button>
+          <button type="button" class="nx-filter" data-filter="fnb">Thực phẩm & Đồ uống</button>
+          <button type="button" class="nx-filter" data-filter="pharma">Dược & Mỹ phẩm</button>
+        </div>
+      </div>
+
+      <div class="nx-cards" id="cases-grid">
+        <article class="nx-card" data-category="electronics">
+          <div class="nx-card-media">
+            <img src="assets/images/card-mes-assembly.jpg" alt="Dây chuyền lắp ráp tự động với robot và màn hình giám sát" loading="lazy" />
+            <span class="nx-card-cat">Linh kiện cơ điện tử</span>
+          </div>
+          <div class="nx-card-body">
+            <h3>MES + OEE cho 12 chuyền lắp ráp linh kiện ô tô</h3>
+            <p>Kết nối 85 máy qua OPC UA, thay thế báo cáo giấy bằng màn hình Andon và phân tích nguyên nhân dừng máy theo Pareto.</p>
+            <div class="nx-card-kpis"><div><b>+18%</b>OEE</div><div><b>-35%</b>Dừng máy</div><div><b>100%</b>Paperless</div></div>
+            <button type="button" class="nx-link" data-story-id="electronics"><span>Đọc case study</span><span>→</span></button>
+          </div>
+        </article>
+
+        <article class="nx-card" data-category="fnb">
+          <div class="nx-card-media">
+            <img src="assets/images/card-traceability.jpg" alt="Máy quét đọc mã QR trên thùng sản phẩm tại dây chuyền đóng gói" loading="lazy" />
+            <span class="nx-card-cat">Thực phẩm xuất khẩu</span>
+          </div>
+          <div class="nx-card-body">
+            <h3>Truy xuất nguồn gốc từ vùng nguyên liệu đến container</h3>
+            <p>Mã hóa GS1 cho từng thùng – pallet, liên kết lô nguyên liệu, thông số chế biến và chứng từ xuất khẩu sang EU, Nhật Bản.</p>
+            <div class="nx-card-kpis"><div><b>&lt; 30s</b>Truy xuất lô</div><div><b>-70%</b>Thời gian audit</div></div>
+            <button type="button" class="nx-link" data-story-id="fnb"><span>Đọc case study</span><span>→</span></button>
+          </div>
+        </article>
+
+        <article class="nx-card" data-category="pharma">
+          <div class="nx-card-media">
+            <img src="assets/images/card-digital-ops.jpg" alt="Nhân viên vận hành sử dụng tablet với hướng dẫn công việc điện tử tại xưởng" loading="lazy" />
+            <span class="nx-card-cat">Dược phẩm GMP</span>
+          </div>
+          <div class="nx-card-body">
+            <h3>Hồ sơ lô điện tử (eBR) cho nhà máy đạt chuẩn GMP</h3>
+            <p>Số hóa 140 biểu mẫu sản xuất – kiểm nghiệm, chữ ký điện tử và audit trail, rút ngắn thời gian duyệt xuất xưởng lô thuốc.</p>
+            <div class="nx-card-kpis"><div><b>-60%</b>Thời gian duyệt lô</div><div><b>0</b>Lỗi ghi chép</div></div>
+            <button type="button" class="nx-link" data-story-id="pharma"><span>Đọc case study</span><span>→</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="nx-section" id="roadmap">
+    <div class="nx-container">
+      <div class="nx-section-header">
+        <span class="nx-kicker">Phương pháp triển khai</span>
+        <h2>Lộ trình 5 bước — bắt đầu nhỏ, nhân rộng nhanh</h2>
+        <p>Giảm rủi ro đầu tư bằng mô hình thí điểm có mục tiêu đo lường rõ ràng trước khi mở rộng toàn nhà máy.</p>
+      </div>
+      <div class="nx-roadmap">
+        <div class="nx-step"><div class="nx-step-no">01</div><h3>Khảo sát & đánh giá</h3><p>Đánh giá hiện trạng quy trình, thiết bị, dữ liệu; xác định bài toán ưu tiên và KPI mục tiêu.</p><span class="nx-step-time">1–2 tuần</span></div>
+        <div class="nx-step"><div class="nx-step-no">02</div><h3>Thiết kế giải pháp</h3><p>Thiết kế quy trình số, kiến trúc kết nối máy, tích hợp ERP và phương án mã hóa.</p><span class="nx-step-time">2–4 tuần</span></div>
+        <div class="nx-step"><div class="nx-step-no">03</div><h3>Thí điểm 1 chuyền</h3><p>Triển khai trên dây chuyền đại diện, đào tạo người dùng, đo lường so với KPI ban đầu.</p><span class="nx-step-time">8–12 tuần</span></div>
+        <div class="nx-step"><div class="nx-step-no">04</div><h3>Mở rộng toàn nhà máy</h3><p>Nhân rộng theo mẫu chuẩn đã kiểm chứng sang các xưởng, chuyền và nhà máy khác.</p><span class="nx-step-time">3–6 tháng</span></div>
+        <div class="nx-step"><div class="nx-step-no">05</div><h3>Vận hành & tối ưu</h3><p>Hỗ trợ kỹ thuật, giám sát hệ thống, cải tiến liên tục dựa trên dữ liệu.</p><span class="nx-step-time">Liên tục</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERS & STANDARDS -->
+  <section class="nx-section nx-section--alt" id="about">
+    <div class="nx-container">
+      <div class="nx-section-header">
+        <span class="nx-kicker">Năng lực</span>
+        <h2>Đối tác chuyển đổi số sản xuất đáng tin cậy</h2>
+        <p>Đội ngũ kỹ sư am hiểu cả công nghệ thông tin (IT) lẫn công nghệ vận hành (OT) tại xưởng sản xuất.</p>
+      </div>
+      <div class="nx-numbers">
+        <div class="nx-number">
+          <div class="nx-number-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 20h20M4 20V10l5 3V10l5 3V6l6 4v10"></path></svg></div>
+          <div class="nx-number-value">50+</div><div class="nx-number-label">Nhà máy triển khai</div>
+        </div>
+        <div class="nx-number">
+          <div class="nx-number-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="10" rx="2"></rect><path d="M6 7V4M18 7V4M6 20v-3M18 20v-3"></path></svg></div>
+          <div class="nx-number-value">3.000+</div><div class="nx-number-label">Máy móc được kết nối</div>
+        </div>
+        <div class="nx-number">
+          <div class="nx-number-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg></div>
+          <div class="nx-number-value">+15–25%</div><div class="nx-number-label">Cải thiện OEE trung bình</div>
+        </div>
+        <div class="nx-number">
+          <div class="nx-number-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+          <div class="nx-number-value">&lt; 30s</div><div class="nx-number-label">Truy xuất một lô hàng</div>
+        </div>
+      </div>
+      <div class="nx-standards" aria-label="Tiêu chuẩn tuân thủ">
+        <span class="nx-std">ISA-95 / IEC 62264</span>
+        <span class="nx-std">GS1 · GTIN · SSCC</span>
+        <span class="nx-std">TCVN 12850:2019</span>
+        <span class="nx-std">ISO 9001 · IATF 16949</span>
+        <span class="nx-std">ISO 22000 · HACCP</span>
+        <span class="nx-std">GMP · 21 CFR Part 11</span>
+        <span class="nx-std">IEC 62443</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="nx-section" id="contact">
+    <div class="nx-container">
+      <div class="nx-cta">
+        <div>
+          <h2>Sẵn sàng bắt đầu hành trình Smart Factory?</h2>
+          <p>Đăng ký khảo sát miễn phí 1 ngày tại nhà máy. Chuyên gia của chúng tôi sẽ đề xuất lộ trình số hóa và ước tính ROI cụ thể cho doanh nghiệp bạn.</p>
+        </div>
+        <div class="nx-cta-actions">
+          <button type="button" class="nx-btn nx-btn--primary" data-modal-trigger="survey">Đăng ký khảo sát</button>
+          <button type="button" class="nx-btn nx-btn--ghost-light" data-modal-trigger="demo">Đặt lịch demo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="nx-footer" id="site-footer">
+    <div class="nx-container">
+      <div class="nx-footer-grid">
+        <div>
+          <h4>Sản phẩm & Thiết bị</h4>
+          <ul>
+            <li><a href="Products.html#cat-mes-sw">Phần mềm MES / Trace / OEE</a></li>
+            <li><a href="Products.html#cat-edge">BYRA Edge Gateway (IIoT)</a></li>
+            <li><a href="Products.html#cat-hmi">Màn hình Andon & Panel PC</a></li>
+            <li><a href="Products.html#cat-scanner">Máy quét PDA & In nhãn GS1</a></li>
+            <li><a href="Products.html#cat-sensor">Cảm biến & Tháp đèn Andon</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Giải pháp & Ngành</h4>
+          <ul>
+            <li><a href="#challenges">Nhà máy không giấy tờ</a></li>
+            <li><a href="#cases" data-filter-jump="electronics">Điện tử & Cơ khí</a></li>
+            <li><a href="#cases" data-filter-jump="fnb">Thực phẩm & Đồ uống</a></li>
+            <li><a href="#cases" data-filter-jump="pharma">Dược phẩm GMP</a></li>
+            <li><a href="#platform">Tích hợp xưởng ⇄ ERP</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Tài nguyên</h4>
+          <ul>
+            <li><a href="#cases">Case study</a></li>
+            <li><a href="#contact" data-modal-trigger="ebook">Cẩm nang truy xuất</a></li>
+            <li><a href="#contact" data-modal-trigger="assessment">Đánh giá mức độ số hóa</a></li>
+            <li><a href="#roadmap">Phương pháp triển khai</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Công ty</h4>
+          <ul>
+            <li><a href="#about">Về BYRA Technologics</a></li>
+            <li><a href="BrandSystem.html">Hệ thống nhận diện (Brand Guide)</a></li>
+            <li><a href="#about">Đối tác công nghệ</a></li>
+            <li><a href="#about">Tin tức</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Liên hệ</h4>
+          <ul>
+            <li><a href="tel:+84000000000">(+84) 000 000 000</a></li>
+            <li><a href="mailto:hello@byratech.vn">hello@byratech.vn</a></li>
+            <li><a href="#contact" data-modal-trigger="survey">Đăng ký khảo sát</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nx-footer-bottom">
+        <div><strong>BYRA Technologics</strong> — Số hóa nhà máy, minh bạch từng công đoạn. © 2026</div>
+        <a href="#hero" style="font-weight:600;">Lên đầu trang ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="nx-modal-backdrop" id="app-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="nx-modal">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;">
+        <div>
+          <span class="nx-tag" id="modal-tag">Liên hệ</span>
+          <h3 id="modal-title" style="margin:0.25rem 0 0.75rem;font-size:1.4rem;">Đăng ký khảo sát nhà máy</h3>
+        </div>
+        <button type="button" class="nx-icon-btn" id="btn-close-modal" aria-label="Đóng">✕</button>
+      </div>
+      <p id="modal-body" style="color:var(--nx-text-muted);margin:0 0 1.25rem;">Để lại thông tin, chuyên gia sẽ liên hệ trong 24 giờ làm việc.</p>
+      <form class="nx-form" id="lead-form">
+        <div class="nx-form-2">
+          <label>Họ và tên<input name="name" required /></label>
+          <label>Chức vụ<input name="title" /></label>
+        </div>
+        <div class="nx-form-2">
+          <label>Công ty / Nhà máy<input name="company" required /></label>
+          <label>Điện thoại<input name="phone" type="tel" required /></label>
+        </div>
+        <label>Email<input name="email" type="email" /></label>
+        <label>Mối quan tâm chính
+          <select name="interest">
+            <option>Hệ thống MES</option>
+            <option>Truy xuất nguồn gốc</option>
+            <option>Giám sát máy & OEE</option>
+            <option>Quản lý chất lượng</option>
+            <option>Số hóa biểu mẫu / Paperless</option>
+            <option>Chưa rõ — cần tư vấn tổng thể</option>
+          </select>
+        </label>
+        <div style="display:flex;justify-content:flex-end;gap:0.75rem;margin-top:0.5rem;">
+          <button type="button" class="nx-btn nx-btn--secondary" id="btn-modal-cancel">Đóng</button>
+          <button type="submit" class="nx-btn nx-btn--primary">Gửi yêu cầu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="nx-toast" id="app-toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      const heroVid = document.querySelector('video.nx-hero-bg');
+      if (heroVid && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        heroVid.pause();
+        heroVid.removeAttribute('autoplay');
+      }
+
+      const toastEl = document.getElementById('app-toast');
+      let toastTimer = null;
+      function showToast(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add('is-visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toastEl.classList.remove('is-visible'); }, 3000);
+      }
+
+      // Mega menus handling (Sản phẩm & Giải pháp)
+      const megaToggles = [
+        { btn: document.getElementById('nav-products-btn'), panel: document.getElementById('mega-products-panel') },
+        { btn: document.getElementById('nav-solutions-btn'), panel: document.getElementById('mega-solutions-panel') }
+      ];
+
+      function closeAllMega() {
+        megaToggles.forEach(function (m) {
+          if (m.panel && m.btn) {
+            m.panel.classList.remove('is-open');
+            m.btn.classList.remove('is-active');
+            m.btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      megaToggles.forEach(function (m) {
+        if (!m.btn || !m.panel) return;
+        m.btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const isOpen = m.panel.classList.contains('is-open');
+          closeAllMega();
+          if (!isOpen) {
+            m.panel.classList.add('is-open');
+            m.btn.classList.add('is-active');
+            m.btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+        m.panel.querySelectorAll('a, button:not([data-axis-tab])').forEach(function (el) {
+          el.addEventListener('click', closeAllMega);
+        });
+      });
+
+      // Axis-style Sidebar Tabs scoped cleanly per Mega Menu panel + sliding notch
+      function syncNotch(sidebar, activeTab) {
+        if (!sidebar || !activeTab) return;
+        const topPx = activeTab.offsetTop + (activeTab.offsetHeight / 2) - 8;
+        sidebar.style.setProperty('--notch-top', topPx + 'px');
+      }
+
+      document.querySelectorAll('.nx-axis-mega').forEach(function (megaBox) {
+        const sidebar = megaBox.querySelector('.nx-axis-sidebar');
+        const tabs = megaBox.querySelectorAll('[data-axis-tab]');
+        const panes = megaBox.querySelectorAll('[data-axis-pane]');
+
+        const initialActive = megaBox.querySelector('.nx-axis-tab.is-active');
+        if (initialActive) syncNotch(sidebar, initialActive);
+
+        tabs.forEach(function (tab) {
+          tab.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const target = tab.getAttribute('data-axis-tab');
+            tabs.forEach(function (t) {
+              const active = t === tab;
+              t.classList.toggle('is-active', active);
+              t.setAttribute('aria-selected', String(active));
+            });
+            panes.forEach(function (p) {
+              p.classList.toggle('is-active', p.getAttribute('data-axis-pane') === target);
+            });
+            syncNotch(sidebar, tab);
+          });
+        });
+      });
+
+      megaToggles.forEach(function (m) {
+        if (!m.btn || !m.panel) return;
+        m.btn.addEventListener('click', function () {
+          setTimeout(function () {
+            if (m.panel.classList.contains('is-open')) {
+              const sb = m.panel.querySelector('.nx-axis-sidebar');
+              const at = m.panel.querySelector('.nx-axis-tab.is-active');
+              syncNotch(sb, at);
+            }
+          }, 10);
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        let inside = false;
+        megaToggles.forEach(function (m) {
+          if ((m.panel && m.panel.contains(e.target)) || (m.btn && m.btn.contains(e.target))) {
+            inside = true;
+          }
+        });
+        if (!inside) closeAllMega();
+      });
+
+      // Solutions data
+      const solutionsData = {
+        mes: {
+          badge: 'Manufacturing Execution System',
+          title: 'Điều hành sản xuất theo thời gian thực, không giấy tờ',
+          desc: 'Số hóa toàn bộ vòng đời lệnh sản xuất: từ kế hoạch nhận từ ERP, điều độ xuống từng chuyền/máy, cấp phát nguyên vật liệu, ghi nhận sản lượng – phế phẩm đến đóng lệnh và hồ sơ lô điện tử.',
+          bullets: [
+            'Lập và điều độ lệnh sản xuất theo năng lực chuyền, ca, công nhân',
+            'Hướng dẫn công việc điện tử (eWI) & ghi nhận sản lượng bằng máy quét, tablet',
+            'Theo dõi WIP, tiến độ đơn hàng và năng suất lao động tức thời',
+            'Hồ sơ lô điện tử (eBR/eDHR) tự động tổng hợp khi đóng lệnh'
+          ],
+          metricVal: '-90%',
+          metricCap: 'Thời gian lập báo cáo sản xuất cuối ca, cuối tháng',
+          note: '<strong>Tích hợp:</strong> đồng bộ lệnh, BOM, routing và tồn kho hai chiều với ERP qua REST API / middleware.'
+        },
+        trace: {
+          badge: 'Traceability & Genealogy',
+          title: 'Truy xuất nguồn gốc theo lô, theo serial chuẩn GS1',
+          desc: 'Xây dựng phả hệ đầy đủ toàn trình (End-to-End): từ lô nguyên liệu NCC, lệnh sản xuất, máy móc vận hành, kết quả kiểm tra chất lượng đến đóng gói dán nhãn pallet và phân phối.',
+          bullets: [
+            'Sinh và in mã định danh GS1: GTIN, SSCC, QR, DataMatrix, GS1-128',
+            'Liên kết phả hệ cha – con: đơn vị → hộp → thùng → pallet (aggregation)',
+            'Truy xuất xuôi – ngược 6 bước, khoanh vùng chính xác lô ảnh hưởng < 30 giây khi thu hồi',
+            'Cổng tra cứu cho khách hàng/người tiêu dùng & xác thực hàng chính hãng qua QR'
+          ],
+          metricVal: '< 30s',
+          metricCap: 'Thời gian khoanh vùng một lô hàng thay vì nhiều giờ tra sổ sách',
+          note: '<strong>Tuân thủ:</strong> định hướng theo TCVN 12850:2019, ISO 22000/HACCP, GMP và yêu cầu xuất khẩu EU/Mỹ/Nhật.'
+        },
+        oee: {
+          badge: 'IIoT · Machine Monitoring',
+          title: 'Giám sát máy và tối ưu hiệu suất thiết bị tổng thể (OEE)',
+          desc: 'Thu thập tự động trạng thái chạy/dừng, tốc độ, sản lượng và cảnh báo từ PLC, cảm biến — kể cả máy đời cũ — để thấy rõ mọi tổn thất năng lực.',
+          bullets: [
+            'Dashboard OEE theo máy, chuyền, ca: Availability · Performance · Quality',
+            'Phân loại nguyên nhân dừng máy, biểu đồ Pareto 6 tổn thất lớn',
+            'Màn hình Andon tại xưởng, cảnh báo qua Zalo/Email/SMS',
+            'Edge gateway kết nối OPC UA, Modbus, MQTT, Siemens S7…'
+          ],
+          metricVal: '+15–25%',
+          metricCap: 'Mức cải thiện OEE điển hình sau 6 tháng vận hành',
+          note: '<strong>Không cần thay máy:</strong> bổ sung cảm biến/IO module cho máy chưa có PLC.'
+        },
+        qms: {
+          badge: 'Quality Management · SPC',
+          title: 'Kiểm soát chất lượng ngay tại công đoạn',
+          desc: 'Đưa kế hoạch kiểm tra lên tablet, thu thập kết quả đo trực tiếp từ thiết bị và cảnh báo sớm khi quá trình có xu hướng vượt giới hạn kiểm soát.',
+          bullets: [
+            'Kế hoạch kiểm tra IQC – IPQC – OQC số hóa theo sản phẩm, công đoạn',
+            'Biểu đồ kiểm soát SPC, Cp/Cpk tự động',
+            'Quản lý hàng không phù hợp (NCR), CAPA, 8D',
+            'Khóa lô (hold) tự động khi phát hiện bất thường'
+          ],
+          metricVal: '-40%',
+          metricCap: 'Tỷ lệ phế phẩm và làm lại nhờ phát hiện sớm sai lệch',
+          note: '<strong>Hỗ trợ:</strong> ISO 9001, IATF 16949, HACCP/ISO 22000, GMP.'
+        },
+        wms: {
+          badge: 'Warehouse & Intralogistics',
+          title: 'Kho nguyên liệu, bán thành phẩm và thành phẩm chính xác',
+          desc: 'Quản lý vị trí, lô, hạn dùng bằng mã vạch/RFID; đồng bộ cấp phát nguyên vật liệu theo lệnh sản xuất và xuất hàng theo đơn.',
+          bullets: [
+            'Nhập – xuất – chuyển kho bằng thiết bị cầm tay (PDA)',
+            'Quản lý FIFO/FEFO, hạn sử dụng, vị trí kệ',
+            'Cấp phát theo lệnh (kitting) & bổ sung nguyên liệu cho chuyền',
+            'Kiểm kê nhanh, đối soát tồn kho với ERP'
+          ],
+          metricVal: '99,8%',
+          metricCap: 'Độ chính xác tồn kho sau khi áp dụng quét mã toàn trình',
+          note: '<strong>Kết nối:</strong> máy in nhãn, PDA, RFID, cân điện tử, AGV/AMR.'
+        },
+        cmms: {
+          badge: 'Maintenance · Digital Forms',
+          title: 'Bảo trì chủ động và số hóa biểu mẫu xưởng',
+          desc: 'Lập kế hoạch bảo trì định kỳ dựa trên giờ chạy thực tế từ máy; số hóa checklist, nhật ký ca, biểu mẫu 5S/an toàn thay cho giấy tờ.',
+          bullets: [
+            'Lịch bảo trì phòng ngừa theo thời gian hoặc theo bộ đếm máy',
+            'Yêu cầu sửa chữa từ Andon, theo dõi MTTR/MTBF',
+            'Quản lý phụ tùng thay thế và chi phí bảo trì',
+            'Trình thiết kế biểu mẫu điện tử kéo – thả, chữ ký số, audit trail'
+          ],
+          metricVal: '-30%',
+          metricCap: 'Thời gian dừng máy ngoài kế hoạch',
+          note: '<strong>Paperless:</strong> toàn bộ biểu mẫu lưu trữ tập trung, tìm kiếm tức thì khi audit.'
+        }
+      };
+
+      const solTabs = document.querySelectorAll('.nx-tab');
+      const $ = function (id) { return document.getElementById(id); };
+      function selectSolution(key) {
+        const d = solutionsData[key];
+        if (!d) return;
+        solTabs.forEach(function (t) {
+          const active = t.getAttribute('data-sol') === key;
+          t.classList.toggle('is-active', active);
+          t.setAttribute('aria-selected', String(active));
+        });
+        $('sol-badge').textContent = d.badge;
+        $('sol-title').textContent = d.title;
+        $('sol-desc').textContent = d.desc;
+        $('sol-bullets').innerHTML = d.bullets.map(function (b) {
+          return '<li><span class="nx-check">✓</span><span>' + b + '</span></li>';
+        }).join('');
+        $('sol-metric-value').textContent = d.metricVal;
+        $('sol-metric-caption').textContent = d.metricCap;
+        $('sol-metric-note').innerHTML = d.note;
+      }
+      solTabs.forEach(function (tab) {
+        tab.addEventListener('click', function () { selectSolution(tab.getAttribute('data-sol')); });
+      });
+      document.querySelectorAll('[data-sol-jump]').forEach(function (link) {
+        link.addEventListener('click', function () { selectSolution(link.getAttribute('data-sol-jump')); });
+      });
+
+      // Case filters
+      const filters = document.querySelectorAll('.nx-filter');
+      const cards = document.querySelectorAll('.nx-card[data-category]');
+      function applyFilter(f) {
+        filters.forEach(function (c) { c.classList.toggle('is-active', c.getAttribute('data-filter') === f); });
+        cards.forEach(function (card) {
+          card.style.display = (f === 'all' || card.getAttribute('data-category') === f) ? 'flex' : 'none';
+        });
+      }
+      filters.forEach(function (chip) {
+        chip.addEventListener('click', function () { applyFilter(chip.getAttribute('data-filter')); });
+      });
+      document.querySelectorAll('[data-filter-jump]').forEach(function (link) {
+        link.addEventListener('click', function () { applyFilter(link.getAttribute('data-filter-jump')); });
+      });
+
+      // Modal
+      const modal = $('app-modal');
+      const modalContent = {
+        survey: ['Miễn phí', 'Đăng ký khảo sát nhà máy', 'Chuyên gia khảo sát 1 ngày tại xưởng và gửi báo cáo hiện trạng số hóa kèm lộ trình đề xuất.'],
+        demo: ['Demo trực tiếp', 'Đặt lịch demo hệ thống MES', 'Buổi demo 45 phút (online hoặc tại văn phòng) với kịch bản theo ngành của bạn.'],
+        assessment: ['Công cụ đánh giá', 'Đánh giá mức độ sẵn sàng Smart Factory', 'Nhận bộ câu hỏi đánh giá và báo cáo mức độ trưởng thành số qua email.'],
+        ebook: ['Tài liệu', 'Tải cẩm nang truy xuất nguồn gốc', 'Để lại thông tin để nhận đường dẫn tải tài liệu PDF qua email.']
+      };
+      const caseContent = {
+        electronics: ['Case study · Linh kiện ô tô', 'MES + OEE cho 12 chuyền lắp ráp', 'Kết nối 85 máy, Andon theo thời gian thực và phân tích nguyên nhân dừng máy giúp tăng 18% OEE sau 6 tháng. Để lại thông tin để nhận bản case study đầy đủ.'],
+        fnb: ['Case study · Thực phẩm xuất khẩu', 'Truy xuất từ vùng nguyên liệu đến container', 'Mã hóa GS1 cho thùng – pallet, liên kết lô nguyên liệu và hồ sơ chế biến; truy xuất một lô dưới 30 giây. Để lại thông tin để nhận bản đầy đủ.'],
+        pharma: ['Case study · Dược phẩm GMP', 'Hồ sơ lô điện tử (eBR)', 'Số hóa 140 biểu mẫu với chữ ký điện tử và audit trail, rút ngắn 60% thời gian duyệt lô. Để lại thông tin để nhận bản đầy đủ.']
+      };
+      function openModal(tag, title, body) {
+        $('modal-tag').textContent = tag;
+        $('modal-title').textContent = title;
+        $('modal-body').textContent = body;
+        modal.classList.add('is-open');
+        const first = modal.querySelector('input');
+        if (first) setTimeout(function () { first.focus(); }, 50);
+      }
+      function closeModal() { modal.classList.remove('is-open'); }
+
+      document.querySelectorAll('[data-modal-trigger]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const c = modalContent[btn.getAttribute('data-modal-trigger')];
+          if (c) openModal(c[0], c[1], c[2]);
+        });
+      });
+      document.querySelectorAll('[data-story-id]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const c = caseContent[btn.getAttribute('data-story-id')];
+          if (c) openModal(c[0], c[1], c[2]);
+        });
+      });
+      $('btn-sol-explore').addEventListener('click', function () {
+        openModal($('sol-badge').textContent, 'Nhận tài liệu: ' + $('sol-title').textContent, 'Để lại thông tin để nhận tài liệu giải pháp chi tiết và bảng tính ROI tham khảo.');
+      });
+      $('btn-close-modal').addEventListener('click', closeModal);
+      $('btn-modal-cancel').addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeModal(); closeAllMega(); } });
+      $('lead-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        closeModal();
+        e.target.reset();
+        showToast('Đã ghi nhận yêu cầu! Chuyên gia sẽ liên hệ trong 24 giờ làm việc.');
+      });
+
+      // Handle cross-page deep links (?sol=mes, ?filter=fnb, ?modal=survey)
+      const params = new URLSearchParams(window.location.search);
+      const solParam = params.get('sol');
+      if (solParam && solutionsData[solParam]) selectSolution(solParam);
+      const filterParam = params.get('filter');
+      if (filterParam) applyFilter(filterParam);
+      const modalParam = params.get('modal');
+      if (modalParam && modalContent[modalParam]) {
+        const c = modalContent[modalParam];
+        openModal(c[0], c[1], c[2]);
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+_backup/
+graphify-out/
+*.db-wal
+*.db-shm

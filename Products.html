@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sản phẩm | BYRA Technologics — Thiết bị IIoT, Auto-ID, Andon & Phần mềm Smart Factory</title>
+  <meta name="description" content="Khám phá danh mục sản phẩm và thiết bị công nghiệp chuẩn mở của BYRA Technologics: Bộ thu thập dữ liệu IIoT, máy quét mã vạch & PDA, màn hình Panel PC, bảng Andon, máy in nhãn GS1 và phần mềm MES." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       BYRA Technologics Design System — tokens (xem docs/BrandGuide_ThietKe.md)
+       ========================================================================== */
+    :root {
+      --nx-header-height: 72px;
+      --nx-container-max: 1300px;
+
+      /* Typography — Inter + IBM Plex Mono */
+      --nx-ff-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --nx-ff-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --nx-ff-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+
+      /* Brand — Emerald Jade */
+      --nx-brand: #18C96E;
+      --nx-brand-hover: #0A8754;
+      --nx-brand-pressed: #06683F;
+      --nx-brand-subtle: #E6F9F0;
+      --nx-accent-teal: #00A88F;
+
+      /* Industrial neutrals — Steel & Surfaces */
+      --nx-steel-900: #101714;
+      --nx-steel-800: #1B2420;
+      --nx-steel-700: #2A3530;
+      --nx-surface: #FFFFFF;
+      --nx-surface-alt: #F4F6F5;
+      --nx-border: rgba(16, 23, 20, 0.10);
+      --nx-border-rule: #CCCCCC;
+
+      /* Text */
+      --nx-text: #141A17;
+      --nx-text-muted: #5C6661;
+      --nx-text-inverse: #FFFFFF;
+      --nx-text-brand: #0A8754;
+
+      /* Radius & Elevation (8C Industrial Precision Scale) */
+      --nx-radius-xs: 2px;
+      --nx-radius-s: 3px;
+      --nx-radius-m: 4px;
+      --nx-radius-l: 6px;
+      --nx-radius-tag: 2px;
+      --nx-elev-1: 0 2px 6px rgba(16, 23, 20, 0.10);
+      --nx-elev-2: 0 4px 16px rgba(16, 23, 20, 0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      font-family: var(--nx-ff-body);
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      font-size: 1rem;
+      line-height: 1.625;
+      color: var(--nx-text);
+      background: var(--nx-surface);
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    h1, h2, h3, h4 { line-height: 1.25; letter-spacing: -0.02em; margin-top: 0; }
+
+    .nx-container { max-width: var(--nx-container-max); margin: 0 auto; padding: 0 1.5rem; }
+    @media (min-width: 1024px) { .nx-container { padding: 0 3rem; } }
+
+    /* ---------- Utility Topbar ---------- */
+    .nx-topbar { background: var(--nx-steel-900); color: rgba(255,255,255,0.78); font-size: 0.8125rem; }
+    .nx-topbar .nx-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; padding-top: 0.45rem; padding-bottom: 0.45rem; }
+    .nx-topbar a { color: #fff; text-decoration: none; font-weight: 600; position: relative; display: inline-block; }
+    .nx-topbar a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+      height: 2px; background: var(--nx-brand);
+      transform: scaleX(0); transform-origin: left center; transition: transform 0.2s ease;
+    }
+    .nx-topbar a:hover, .nx-topbar a:focus-visible { color: var(--nx-brand); }
+    .nx-topbar a:hover::after, .nx-topbar a:focus-visible::after { transform: scaleX(1); }
+
+    /* ---------- Header (Axis-inspired with Emerald Jade underline) ---------- */
+    .nx-header {
+      height: var(--nx-header-height);
+      background: var(--nx-surface);
+      border-bottom: 1px solid #E6E6E6;
+      box-shadow: 0 2px 4px rgba(16, 23, 20, 0.08);
+      position: sticky; top: 0; z-index: 200;
+    }
+    .nx-header-inner {
+      max-width: var(--nx-container-max); height: 100%; margin: 0 auto; padding: 0 1rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+    }
+    @media (min-width: 640px) { .nx-header-inner { padding: 0 1.5rem; gap: 1rem; } }
+    @media (min-width: 1024px) { .nx-header-inner { padding: 0 3rem; } }
+
+    .nx-logo {
+      display: inline-flex; align-items: center; gap: 0.625rem; text-decoration: none;
+      color: var(--nx-text); font-family: var(--nx-ff-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.025em;
+    }
+    .nx-logo-mark {
+      width: 34px; height: 34px; border-radius: 4px;
+      background: linear-gradient(135deg, var(--nx-brand) 0%, var(--nx-brand-hover) 100%);
+      display: inline-flex; align-items: center; justify-content: center; color: var(--nx-steel-900);
+    }
+    .nx-logo small {
+      display: block; font-family: var(--nx-ff-mono); font-size: 0.625rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--nx-text-muted); line-height: 1; margin-top: 2px;
+    }
+    .nx-logo-word { line-height: 1.05; }
+    .nx-logo-word b { color: var(--nx-text-brand); font-weight: 700; }
+
+    .nx-nav { display: none; align-items: center; height: 100%; gap: 0.35rem; }
+    @media (min-width: 1000px) { .nx-nav { display: flex; } }
+    .nx-nav-btn {
+      background: none; border: none; height: 100%; padding: 0 0.85rem;
+      font-family: var(--nx-ff-body); font-size: 0.9375rem; font-weight: 600; color: var(--nx-text);
+      cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;
+      text-decoration: none; position: relative;
+      transition: color 0.2s ease;
+    }
+    /* Axis-style crisp 3.5px bottom bar in Emerald Jade (#18C96E) */
+    .nx-nav-btn::after {
+      content: ""; position: absolute; left: 0.85rem; right: 0.85rem; bottom: 14px;
+      height: 3.5px; background: var(--nx-brand); border-radius: 0;
+      transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.2s ease;
+    }
+    .nx-nav-btn:hover, .nx-nav-btn.is-active, .nx-nav-btn.is-current-page { color: var(--nx-text); }
+    .nx-nav-btn:hover::after, .nx-nav-btn.is-active::after, .nx-nav-btn.is-current-page::after { transform: scaleX(1); }
+
+    .nx-link {
+      display: inline-flex; align-items: center; align-self: flex-start; gap: 0.375rem; font-weight: 600; font-size: 0.9375rem;
+      color: var(--nx-text-brand); text-decoration: none; background: none; border: none; padding: 0 0 2px;
+      cursor: pointer; font-family: var(--nx-ff-body); position: relative;
+    }
+    .nx-link::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+      height: 2px; background: var(--nx-brand);
+      transform: scaleX(0); transform-origin: left center; transition: transform 0.22s ease;
+    }
+    .nx-link:hover::after, .nx-link:focus-visible::after { transform: scaleX(1); }
+
+    .nx-header-utils { display: flex; align-items: center; gap: 0.5rem; }
+    .nx-icon-btn {
+      width: 38px; height: 38px; border-radius: var(--nx-radius-s); border: none; background: transparent; color: var(--nx-text);
+      display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .nx-icon-btn:hover { background: var(--nx-surface-alt); color: var(--nx-text-brand); }
+
+    /* ---------- Buttons (8C: Speed Chevron / Automation Flow) ---------- */
+    .nx-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-family: var(--nx-ff-body); font-size: 0.9375rem; font-weight: 700; line-height: 1.45;
+      border-radius: 0; border: none; padding: 0.72rem 1.85rem 0.72rem 1.25rem;
+      cursor: pointer; text-decoration: none; position: relative; white-space: nowrap;
+      clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 50%, calc(100% - 13px) 100%, 0 100%);
+      transition: background-color 0.16s ease, color 0.16s ease, padding-right 0.16s ease, margin-right 0.16s ease;
+    }
+    .nx-btn:focus-visible { outline: 2px solid var(--nx-brand); outline-offset: 3px; }
+    .nx-btn--primary { color: var(--nx-steel-900); background: var(--nx-brand); }
+    .nx-btn--primary:hover { background: #26E080; color: var(--nx-steel-900); padding-right: 2.1rem; margin-right: -0.25rem; }
+    .nx-btn--primary:active { background: var(--nx-brand-hover); color: #fff; }
+    .nx-btn--secondary { color: var(--nx-text); background: #E3EAE6; font-weight: 600; }
+    .nx-btn--secondary:hover { background: var(--nx-steel-900); color: #fff; padding-right: 2.05rem; margin-right: -0.2rem; }
+    .nx-btn--ghost-light {
+      color: #fff; background: #1E2924; font-weight: 600;
+      padding: 0.72rem 1.85rem 0.72rem 1.65rem;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%);
+    }
+    .nx-btn--ghost-light:hover { background: #2B3B33; color: var(--nx-brand); padding-right: 2.05rem; margin-right: -0.2rem; }
+    .nx-btn--sm {
+      padding: 0.45rem 1.35rem 0.45rem 0.85rem; font-size: 0.8rem;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+    }
+    @media (min-width: 480px) {
+      .nx-btn--sm { padding: 0.52rem 1.65rem 0.52rem 1.05rem; font-size: 0.85rem; }
+    }
+    .nx-btn--sm:hover { padding-right: 1.85rem; margin-right: -0.2rem; }
+
+    /* ---------- Axis-Style Full-Bleed Split Mega Menu ---------- */
+    .nx-mega {
+      position: absolute; top: var(--nx-header-height); left: 0; right: 0;
+      background: var(--nx-surface); box-shadow: var(--nx-elev-2); border-top: 1px solid #E6E6E6;
+      padding: 0; display: none; z-index: 190;
+    }
+    .nx-mega.is-open { display: block; animation: fadeDown 0.18s ease-out; }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+    @media (min-width: 900px) {
+      .nx-mega--split {
+        background: linear-gradient(90deg, var(--nx-surface-alt) 0%, var(--nx-surface-alt) 50%, var(--nx-surface) 50%, var(--nx-surface) 100%);
+      }
+    }
+
+    .nx-axis-mega { display: grid; grid-template-columns: 1fr; min-height: 410px; }
+    @media (min-width: 900px) {
+      .nx-axis-mega { grid-template-columns: 270px 1fr; }
+    }
+    .nx-axis-sidebar {
+      background: var(--nx-surface-alt);
+      padding: 2rem 1.5rem;
+      display: flex; flex-direction: column; gap: 0.9rem;
+      position: relative; border-right: 1px solid rgba(16, 23, 20, 0.08);
+      --notch-top: 2.25rem;
+    }
+    @media (min-width: 900px) {
+      .nx-axis-sidebar { padding: 2.35rem 2rem 2.25rem 0; }
+    }
+    .nx-axis-tab {
+      background: none; border: none; padding: 0.35rem 0;
+      font-family: var(--nx-ff-body); font-size: 0.9375rem; font-weight: 600;
+      color: var(--nx-text-muted); text-align: left; cursor: pointer;
+      position: relative; align-self: flex-start; transition: color 0.15s ease;
+    }
+    .nx-axis-tab::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+      height: 2.5px; background: var(--nx-brand); border-radius: 0;
+      transform: scaleX(0); transform-origin: left center; transition: transform 0.2s ease;
+    }
+    .nx-axis-tab:hover, .nx-axis-tab:focus-visible { color: var(--nx-text); }
+    .nx-axis-tab.is-active { color: var(--nx-text); font-weight: 700; }
+    .nx-axis-tab:hover::after, .nx-axis-tab:focus-visible::after, .nx-axis-tab.is-active::after { transform: scaleX(1); }
+
+    /* Pointer notch from white right panel into gray left sidebar (like Axis screenshot) */
+    .nx-axis-sidebar::after {
+      content: ""; display: none; position: absolute; right: -8px; top: var(--notch-top);
+      width: 15px; height: 15px; background: var(--nx-surface);
+      border-left: 1px solid rgba(16, 23, 20, 0.08); border-bottom: 1px solid rgba(16, 23, 20, 0.08);
+      box-shadow: -2px 2px 5px rgba(16, 23, 20, 0.04);
+      transform: rotate(45deg); z-index: 2;
+      transition: top 0.18s ease;
+    }
+    @media (min-width: 900px) { .nx-axis-sidebar::after { display: block; } }
+
+    .nx-axis-main {
+      background: var(--nx-surface);
+      padding: 2rem 1.5rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; z-index: 1;
+    }
+    @media (min-width: 900px) {
+      .nx-axis-main { padding: 2.35rem 0 2.25rem 3rem; }
+    }
+    .nx-axis-pane { display: none; }
+    .nx-axis-pane.is-active { display: block; }
+    .nx-axis-pane-header h3 { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.25rem; color: var(--nx-text); }
+    .nx-axis-pane-header p { font-size: 0.875rem; color: var(--nx-text-muted); margin: 0 0 1.5rem; }
+
+    .nx-axis-cats {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem 2rem;
+      list-style: none; padding: 0; margin: 0 0 2rem;
+    }
+    @media (min-width: 768px) { .nx-axis-cats { grid-template-columns: repeat(3, 1fr); } }
+    .nx-axis-cats a {
+      color: var(--nx-text); text-decoration: none; font-weight: 600; font-size: 0.9375rem;
+      display: inline-block; padding: 0.2rem 0; position: relative; transition: color 0.15s ease;
+    }
+    .nx-axis-cats a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+      height: 2px; background: var(--nx-brand);
+      transform: scaleX(0); transform-origin: left center; transition: transform 0.18s ease;
+    }
+    .nx-axis-cats a:hover, .nx-axis-cats a:focus-visible { color: var(--nx-text-brand); }
+    .nx-axis-cats a:hover::after, .nx-axis-cats a:focus-visible::after { transform: scaleX(1); }
+
+    .nx-axis-bottom {
+      border-top: 1px solid var(--nx-border); padding-top: 1.5rem;
+      display: grid; grid-template-columns: 1fr; gap: 1.25rem;
+    }
+    @media (min-width: 768px) { .nx-axis-bottom { grid-template-columns: repeat(3, 1fr); } }
+    .nx-axis-spot {
+      display: flex; align-items: center; gap: 0.9rem; text-decoration: none; color: var(--nx-text);
+      padding: 0.4rem 0.45rem 0.65rem; border-radius: var(--nx-radius-m) var(--nx-radius-m) 0 0;
+      position: relative; transition: background-color 0.15s ease;
+    }
+    .nx-axis-spot::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2.5px;
+      background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.22s ease;
+    }
+    .nx-axis-spot:hover, .nx-axis-spot:focus-visible { background: var(--nx-surface-alt); }
+    .nx-axis-spot:hover::after, .nx-axis-spot:focus-visible::after { transform: scaleX(1); }
+    .nx-axis-spot-thumb {
+      width: 60px; height: 60px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+      background: var(--nx-steel-900); border: 2px solid var(--nx-brand);
+    }
+    .nx-axis-spot-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .nx-axis-spot strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .nx-axis-spot span { display: block; font-size: 0.8rem; color: var(--nx-text-muted); line-height: 1.35; }
+
+    /* ==========================================================================
+       SECTION A: TWO-TIER HERO (Axis /products style)
+       1. 400px Dark Hardware Skyline Banner with single Emerald-highlighted word
+       2. Clean White Page Title H1 + 28px Light Preamble
+       ========================================================================== */
+    .ac-banner {
+      position: relative; height: 380px; background: var(--nx-steel-900);
+      display: flex; align-items: center; overflow: hidden; color: #fff;
+    }
+    .ac-banner-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.65);
+    }
+    .ac-banner-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(16,23,20,0.92) 0%, rgba(16,23,20,0.72) 55%, rgba(16,23,20,0.28) 100%);
+    }
+    .ac-banner-content {
+      position: relative; z-index: 2; max-width: 740px;
+    }
+    .ac-banner-selling {
+      font-size: clamp(2.1rem, 3.8vw, 2.85rem);
+      font-weight: 600; line-height: 1.3; margin: 0; letter-spacing: -0.02em;
+    }
+    .ac-banner-selling em {
+      font-style: normal; font-weight: 800; color: var(--nx-brand);
+    }
+
+    .ac-intro {
+      background: var(--nx-surface);
+      padding: 3.25rem 0 2.75rem;
+    }
+    .ac-intro h1 {
+      font-size: clamp(2.25rem, 3.8vw, 2.75rem);
+      font-weight: 700; line-height: 1.25; margin: 0 0 1rem; color: var(--nx-text);
+    }
+    .ac-preamble {
+      font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+      font-weight: 300; line-height: 1.55; max-width: 880px; margin: 0; color: var(--nx-text);
+    }
+
+    /* ==========================================================================
+       SECTION B: PRODUCT CATEGORIES (4-Column "Stacked Deck" Cards)
+       ========================================================================== */
+    .ac-section { padding: 1.5rem 0 4.5rem; }
+    .ac-section--gray { background: var(--nx-surface-alt); padding: 4.5rem 0; }
+
+    /* Left-aligned underlined sub-heading (Axis .products-collection__title) */
+    .ac-collection-title {
+      font-size: 1.375rem; font-weight: 600; line-height: 1.45; color: var(--nx-text);
+      border-bottom: 1px solid var(--nx-border-rule);
+      padding-bottom: 0.9rem; margin: 0 0 2.5rem;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .ac-collection-title span { font-family: var(--nx-ff-mono); font-size: 0.8125rem; font-weight: 500; color: var(--nx-text-muted); }
+
+    /* 4-column Category Deck Grid */
+    .ac-deck-grid {
+      display: grid; grid-template-columns: 1fr; gap: 2.75rem 2.25rem;
+    }
+    @media (min-width: 600px) { .ac-deck-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .ac-deck-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    /* Signature Axis "Stacked Deck of Cards" Effect */
+    .ac-deck-card {
+      position: relative; z-index: 1;
+      background: var(--nx-surface);
+      border-radius: var(--nx-radius-m);
+      box-shadow: 0 4px 12px rgba(16, 23, 20, 0.14);
+      display: flex; flex-direction: column;
+      text-decoration: none; color: var(--nx-text);
+      min-height: 320px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .ac-deck-card::before,
+    .ac-deck-card::after {
+      content: ""; position: absolute; inset: 0;
+      background: var(--nx-surface); border-radius: var(--nx-radius-m);
+      box-shadow: 0 1px 6px rgba(16, 23, 20, 0.14);
+      transition: transform 0.22s ease;
+    }
+    .ac-deck-card::before {
+      top: -1px; left: 4px; z-index: -1; transform: rotate(-1.6deg);
+    }
+    .ac-deck-card::after {
+      top: -1px; left: -4px; z-index: -2; transform: rotate(2deg);
+    }
+    .ac-deck-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(16, 23, 20, 0.18);
+    }
+    .ac-deck-card:hover::before { transform: rotate(-2.8deg) translate(2px, -2px); }
+    .ac-deck-card:hover::after { transform: rotate(3.2deg) translate(-2px, -2px); }
+
+    /* 5:3 Top Visual inside Category Card */
+    .ac-deck-media {
+      aspect-ratio: 5 / 3; width: 100%; overflow: hidden;
+      border-radius: var(--nx-radius-m) var(--nx-radius-m) 0 0; position: relative;
+      background: linear-gradient(145deg, var(--nx-steel-900) 0%, var(--nx-steel-800) 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ac-deck-media::before {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; z-index: 3;
+      background: var(--nx-steel-900);
+    }
+    .ac-deck-media::after {
+      content: ""; position: absolute; left: 0; bottom: 0; width: 84px; height: 3px; z-index: 4;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .ac-deck-card:hover .ac-deck-media::after, .ac-deck-card:focus-visible .ac-deck-media::after { width: 100%; }
+    .ac-deck-media img {
+      width: 100%; height: 100%; object-fit: cover; opacity: 0.42; position: absolute; inset: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+    .ac-deck-card:hover .ac-deck-media img { transform: scale(1.05); opacity: 0.55; }
+    .ac-deck-icon {
+      position: relative; z-index: 2; width: 64px; height: 64px; border-radius: var(--nx-radius-m);
+      background: rgba(16, 23, 20, 0.78); border: 1.5px solid var(--nx-brand);
+      color: var(--nx-brand); display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    }
+    .ac-deck-count {
+      position: absolute; bottom: 0.6rem; right: 0.75rem; z-index: 2;
+      font-family: var(--nx-ff-mono); font-size: 0.7rem; font-weight: 600;
+      color: #fff; background: rgba(16, 23, 20, 0.82); padding: 0.15rem 0.5rem; border-radius: var(--nx-radius-xs);
+    }
+
+    .ac-deck-body { padding: 1.1rem 1.15rem 1.25rem; flex: 1; display: flex; flex-direction: column; background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m); }
+    .ac-deck-body h3 { font-size: 1.125rem; font-weight: 600; margin: 0 0 0.35rem; color: var(--nx-text); transition: color 0.15s ease; }
+    .ac-deck-card:hover .ac-deck-body h3 { color: var(--nx-text-brand); }
+    .ac-deck-body p { font-size: 0.875rem; line-height: 1.55; color: var(--nx-text-muted); margin: 0; }
+
+    /* ==========================================================================
+       SECTION C: CROSS-CATEGORY COLLECTIONS (Centered Header + 3 Spotlight Cards)
+       ========================================================================== */
+    .ac-center-header { text-align: center; max-width: 760px; margin: 0 auto 3rem; }
+    .ac-center-header h2 { font-size: clamp(1.85rem, 3.2vw, 2.5rem); font-weight: 600; margin: 0 0 0.6rem; color: var(--nx-text); }
+    .ac-center-header p { font-size: 1.0625rem; color: var(--nx-text-muted); margin: 0; }
+
+    .ac-spotlights-grid {
+      display: grid; grid-template-columns: 1fr; gap: 2rem;
+    }
+    @media (min-width: 860px) { .ac-spotlights-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .ac-spot-card {
+      background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m);
+      border: 1px solid #D4DCD8; border-top: 3px solid var(--nx-steel-900); position: relative;
+      box-shadow: 0 10px 24px rgba(16, 23, 20, 0.10);
+      display: flex; flex-direction: column;
+      text-align: center; transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .ac-spot-card::after {
+      content: ""; position: absolute; top: -3px; left: -1px; width: 104px; height: 3px; z-index: 3;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .ac-spot-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(16, 23, 20, 0.15); }
+    .ac-spot-card:hover::after { width: calc(100% + 2px); }
+    .ac-spot-media { aspect-ratio: 3 / 2; overflow: hidden; background: var(--nx-steel-900); position: relative; }
+    .ac-spot-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .ac-spot-card:hover .ac-spot-media img { transform: scale(1.04); }
+    .ac-spot-body { padding: 1.75rem 1.5rem 2rem; display: flex; flex-direction: column; align-items: center; flex: 1; }
+    .ac-spot-body h3 { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.6rem; }
+    .ac-spot-body p { font-size: 0.95rem; color: var(--nx-text-muted); margin: 0 0 1.5rem; flex: 1; }
+
+    /* Signature Axis .link-cta with left-to-right Emerald Jade underline sweep */
+    .ac-link-cta {
+      display: inline-block; font-size: 0.84rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--nx-text);
+      text-decoration: none; padding-bottom: 0.35rem; position: relative;
+      background: none; border: none; cursor: pointer; font-family: var(--nx-ff-body);
+      transition: color 0.2s ease;
+    }
+    .ac-link-cta::before {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+      background: var(--nx-brand);
+    }
+    .ac-link-cta::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+      background: var(--nx-brand-hover); transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.24s ease;
+    }
+    .ac-link-cta:hover, .ac-link-cta:focus-visible { color: var(--nx-text-brand); }
+    .ac-link-cta:hover::after, .ac-link-cta:focus-visible::after { transform: scaleX(1); }
+
+    /* ==========================================================================
+       SECTION D: NEW PRODUCTS / LATEST HARDWARE LAUNCHES (Single Cards with 8C Chevron NEW Ribbon)
+       ========================================================================== */
+    .ac-single-grid {
+      display: grid; grid-template-columns: 1fr; gap: 2rem;
+    }
+    @media (min-width: 600px) { .ac-single-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .ac-single-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .ac-single-card {
+      position: relative; background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m);
+      border: 1px solid #D4DCD8; border-top: 3px solid var(--nx-steel-900);
+      box-shadow: 0 4px 10px rgba(16, 23, 20, 0.12);
+      padding: 1.35rem; display: flex; flex-direction: column;
+      text-decoration: none; color: var(--nx-text); min-height: 330px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer;
+    }
+    .ac-single-card::after {
+      content: ""; position: absolute; top: -3px; left: -1px; width: 84px; height: 3px; z-index: 3;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: width 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .ac-single-card:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(16, 23, 20, 0.16); }
+    .ac-single-card:hover::after, .ac-single-card:focus-visible::after { width: calc(100% + 2px); }
+
+    /* 8C Speed Chevron "NEW" Ribbon Badge in Emerald Jade */
+    .ac-badge-new {
+      position: absolute; top: 14px; left: 0; z-index: 3;
+      background: var(--nx-brand); color: var(--nx-steel-900);
+      font-family: var(--nx-ff-mono); font-size: 0.72rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.26rem 1.15rem 0.26rem 0.85rem; border-radius: 0;
+      clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 50%, calc(100% - 9px) 100%, 0 100%);
+    }
+    .ac-single-media {
+      height: 145px; display: flex; align-items: center; justify-content: center;
+      margin: 0.5rem 0 1rem; background: var(--nx-surface-alt); border-radius: var(--nx-radius-s);
+      color: var(--nx-text-brand); position: relative;
+    }
+    .ac-single-sku {
+      position: absolute; bottom: 0.45rem; right: 0.6rem;
+      font-family: var(--nx-ff-mono); font-size: 0.68rem; color: var(--nx-text-muted);
+    }
+    .ac-single-card h3 { font-size: 1.05rem; font-weight: 600; line-height: 1.4; margin: 0 0 0.4rem; }
+    .ac-single-card:hover h3 { color: var(--nx-text-brand); }
+    .ac-single-card p { font-size: 0.85rem; color: var(--nx-text-muted); margin: 0 0 1rem; flex: 1; }
+    .ac-single-meta {
+      font-family: var(--nx-ff-mono); font-size: 0.75rem; font-weight: 600;
+      color: var(--nx-text-brand); border-top: 1px solid var(--nx-border); padding-top: 0.65rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    /* ==========================================================================
+       SECTION E: RELATED RESOURCES (3-Column Flat Editorial Blocks)
+       ========================================================================== */
+    .ac-editorial-grid {
+      display: grid; grid-template-columns: 1fr; gap: 2.25rem;
+    }
+    @media (min-width: 860px) { .ac-editorial-grid { grid-template-columns: repeat(3, 1fr); } }
+    .ac-editorial-item { display: flex; flex-direction: column; align-items: flex-start; }
+    .ac-editorial-media { aspect-ratio: 3 / 2; width: 100%; overflow: hidden; border-radius: 4px; margin-bottom: 1.15rem; background: var(--nx-steel-900); }
+    .ac-editorial-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
+    .ac-editorial-item:hover .ac-editorial-media img { transform: scale(1.03); }
+    .ac-editorial-item h3 { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.5rem; }
+    .ac-editorial-item p { font-size: 0.95rem; color: var(--nx-text-muted); margin: 0 0 1.25rem; flex: 1; }
+
+    /* ---------- Footer ---------- */
+    .nx-footer { background: var(--nx-brand); color: var(--nx-steel-900); padding: 3.5rem 0 2rem; }
+    .nx-footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2.5rem; }
+    @media (min-width: 768px) { .nx-footer-grid { grid-template-columns: repeat(5, 1fr); } }
+    .nx-footer h4 { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; }
+    .nx-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+    .nx-footer a { color: inherit; text-decoration: none; font-size: 0.9375rem; font-weight: 500; opacity: 0.9; position: relative; display: inline-block; }
+    .nx-footer a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+      background: var(--nx-steel-900); transform: scaleX(0); transform-origin: left center; transition: transform 0.2s ease;
+    }
+    .nx-footer a:hover, .nx-footer a:focus-visible { opacity: 1; }
+    .nx-footer a:hover::after, .nx-footer a:focus-visible::after { transform: scaleX(1); }
+    .nx-footer-bottom { padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,0.18); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-size: 0.875rem; }
+
+    /* ---------- Modal & Toast ---------- */
+    .nx-modal-backdrop { position: fixed; inset: 0; background: rgba(16,23,20,0.65); display: none; align-items: center; justify-content: center; padding: 1.5rem; z-index: 500; }
+    .nx-modal-backdrop.is-open { display: flex; }
+    .nx-modal {
+      background: linear-gradient(122deg, var(--nx-brand) 124px, var(--nx-steel-900) 125px) top left / 100% 4px no-repeat, var(--nx-surface);
+      border-radius: var(--nx-radius-l); max-width: 600px; width: 100%; padding: calc(2rem + 4px) 2rem 2rem;
+      box-shadow: var(--nx-elev-2); border: 1px solid #D4DCD8; max-height: 92vh; overflow: auto;
+    }
+    .nx-form { display: grid; gap: 0.75rem; }
+    .nx-form label { font-size: 0.8125rem; font-weight: 600; display: grid; gap: 0.3rem; }
+    .nx-form input, .nx-form select, .nx-form textarea { padding: 0.65rem 0.9rem; border-radius: var(--nx-radius-s); border: 1.5px solid rgba(16,23,20,0.18); font-family: var(--nx-ff-body); font-size: 0.9375rem; }
+    .nx-form-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .nx-toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--nx-steel-900); color: #fff; border-left: 4px solid var(--nx-brand); padding: 0.85rem 1.25rem; border-radius: var(--nx-radius-s); box-shadow: var(--nx-elev-2); font-size: 0.875rem; font-weight: 600; display: none; z-index: 600; }
+    .nx-toast.is-visible { display: block; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="nx-topbar">
+    <div class="nx-container">
+      <span>Giải pháp & Thiết bị Smart Factory chuẩn mở — BYRA Technologics</span>
+      <span>Tư vấn & Báo giá dự án: <a href="tel:+84000000000">(+84) 000 000 000</a> · <a href="SmartFactory.html">Trang Giải pháp MES</a></span>
+    </div>
+  </div>
+
+  <!-- HEADER (Axis style with Emerald Jade active underline bar) -->
+  <header class="nx-header">
+    <div class="nx-header-inner">
+      <a href="SmartFactory.html" class="nx-logo" aria-label="BYRA Technologics — Trang chủ">
+        <span class="nx-logo-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="2.6" fill="currentColor"></circle>
+          </svg>
+        </span>
+        <span class="nx-logo-word">BYRA<b>Technologics</b><small>Smart Manufacturing</small></span>
+      </a>
+
+      <nav class="nx-nav" aria-label="Điều hướng chính">
+        <button type="button" class="nx-nav-btn" id="nav-solutions-btn" aria-expanded="false" aria-controls="mega-solutions-panel">
+          <span>Giải pháp</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <button type="button" class="nx-nav-btn is-current-page" id="nav-products-btn" aria-expanded="false" aria-controls="mega-products-panel">
+          <span>Sản phẩm</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <a href="SmartFactory.html#platform" class="nx-nav-btn">Nền tảng</a>
+        <a href="SmartFactory.html#cases" class="nx-nav-btn">Dự án</a>
+        <a href="SmartFactory.html#roadmap" class="nx-nav-btn">Triển khai</a>
+        <a href="SmartFactory.html#about" class="nx-nav-btn">Về chúng tôi</a>
+      </nav>
+
+      <div class="nx-header-utils">
+        <button type="button" class="nx-btn nx-btn--primary nx-btn--sm" data-quote-item="Tư vấn & Báo giá tổng thể danh mục BYRA">Liên hệ báo giá</button>
+      </div>
+    </div>
+
+    <!-- AXIS-STYLE FULL-BLEED SPLIT MEGA MENU: SẢN PHẨM -->
+    <div class="nx-mega nx-mega--split" id="mega-products-panel">
+      <div class="nx-container">
+        <div class="nx-axis-mega">
+          <div class="nx-axis-sidebar" role="tablist" aria-label="Phân nhóm sản phẩm">
+            <button type="button" class="nx-axis-tab is-active" data-axis-tab="prod-cat" role="tab" aria-selected="true">Danh mục sản phẩm</button>
+            <button type="button" class="nx-axis-tab" data-axis-tab="prod-col" role="tab" aria-selected="false">Bộ giải pháp phần cứng trọn gói</button>
+          </div>
+
+          <div class="nx-axis-main">
+            <div class="nx-axis-pane is-active" data-axis-pane="prod-cat">
+              <div class="nx-axis-pane-header">
+                <h3>Danh mục sản phẩm</h3>
+                <p>Hệ sinh thái phần mềm và thiết bị công nghiệp chuẩn mở cho nhà máy thông minh</p>
+              </div>
+              <ul class="nx-axis-cats">
+                <li><a href="#cat-edge">Bộ thu thập dữ liệu IIoT & Edge</a></li>
+                <li><a href="#cat-scanner">Máy quét mã vạch & PDA</a></li>
+                <li><a href="#cat-vision">Thị giác máy (AI Vision)</a></li>
+                <li><a href="#cat-hmi">Màn hình công nghiệp & Panel PC</a></li>
+                <li><a href="#cat-printer">Máy in nhãn mã vạch GS1</a></li>
+                <li><a href="#cat-scale">Cân điện tử & Đo lường</a></li>
+                <li><a href="#cat-andon">Hệ thống hiển thị & Đèn Andon</a></li>
+                <li><a href="#cat-rfid">Thiết bị đọc & Thẻ RFID</a></li>
+                <li><a href="#cat-network">Thiết bị mạng & Switch công nghiệp</a></li>
+                <li><a href="#cat-mes-sw">Phần mềm MES & Điều hành</a></li>
+                <li><a href="#cat-sensor">Cảm biến & Đồng hồ năng lượng</a></li>
+                <li><a href="#cat-accessories">Phụ kiện & Tủ rack công nghiệp</a></li>
+              </ul>
+            </div>
+
+            <div class="nx-axis-pane" data-axis-pane="prod-col">
+              <div class="nx-axis-pane-header">
+                <h3>Bộ giải pháp phần cứng trọn gói</h3>
+                <p>Các bộ thiết bị được đóng gói đồng bộ để giải quyết trọn vẹn từng bài toán tại xưởng</p>
+              </div>
+              <ul class="nx-axis-cats">
+                <li><a href="#cross-category-collections">Trạm phòng sạch & Chống cháy nổ</a></li>
+                <li><a href="#cross-category-collections">Thiết bị gắn xe nâng & Kho vận</a></li>
+                <li><a href="#cross-category-collections">Gói nâng cấp máy cơ đời cũ</a></li>
+              </ul>
+            </div>
+
+            <div class="nx-axis-bottom">
+              <a href="#new-products" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb"><img src="assets/images/card-mes-assembly.jpg" alt="Sản phẩm mới" /></div>
+                <div><strong>Sản phẩm mới ra mắt</strong><span>Khám phá các thiết bị IIoT & phần mềm thế hệ mới nhất</span></div>
+              </a>
+              <a href="SmartFactory.html#solutions" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb"><img src="assets/images/card-traceability.jpg" alt="Giải pháp" /></div>
+                <div><strong>Giải pháp theo ngành</strong><span>Giải pháp đồng bộ cho Điện tử, Thực phẩm và Dược phẩm</span></div>
+              </a>
+              <a href="#related-resources" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb"><img src="assets/images/card-digital-ops.jpg" alt="Công cụ" /></div>
+                <div><strong>Công cụ chọn cấu hình</strong><span>Tính toán số lượng Gateway, trạm HMI & ước tính ROI</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AXIS-STYLE FULL-BLEED SPLIT MEGA MENU: GIẢI PHÁP -->
+    <div class="nx-mega nx-mega--split" id="mega-solutions-panel">
+      <div class="nx-container">
+        <div class="nx-axis-mega">
+          <div class="nx-axis-sidebar" role="tablist" aria-label="Phân nhóm giải pháp">
+            <button type="button" class="nx-axis-tab is-active" data-axis-tab="sol-mod" role="tab" aria-selected="true">Giải pháp theo phân hệ</button>
+            <button type="button" class="nx-axis-tab" data-axis-tab="sol-ind" role="tab" aria-selected="false">Giải pháp theo ngành</button>
+            <div style="margin-top: auto; padding-top: 1.5rem;">
+              <a href="SmartFactory.html#roadmap" class="nx-link" style="font-size: 0.875rem;">Lộ trình triển khai 5 bước →</a>
+            </div>
+          </div>
+
+          <div class="nx-axis-main">
+            <div class="nx-axis-pane is-active" data-axis-pane="sol-mod">
+              <div class="nx-axis-pane-header">
+                <h3>Giải pháp theo phân hệ</h3>
+                <p>Hệ thống mô-đun Smart Factory linh hoạt — bắt đầu từ điểm nghẽn cấp thiết nhất</p>
+              </div>
+              <ul class="nx-axis-cats">
+                <li><a href="SmartFactory.html?sol=mes#solutions">MES — Điều hành sản xuất</a></li>
+                <li><a href="SmartFactory.html?sol=trace#solutions">Truy xuất nguồn gốc GS1</a></li>
+                <li><a href="SmartFactory.html?sol=oee#solutions">Giám sát máy & OEE (IIoT)</a></li>
+                <li><a href="SmartFactory.html?sol=qms#solutions">Quản lý chất lượng (QMS / SPC)</a></li>
+                <li><a href="SmartFactory.html?sol=wms#solutions">Kho thông minh & Intralogistics</a></li>
+                <li><a href="SmartFactory.html?sol=cmms#solutions">Bảo trì thiết bị (CMMS)</a></li>
+                <li><a href="SmartFactory.html?sol=cmms#solutions">Số hóa biểu mẫu (Paperless)</a></li>
+                <li><a href="SmartFactory.html?sol=mes#solutions">Hồ sơ lô điện tử (eBR / eDHR)</a></li>
+                <li><a href="SmartFactory.html#platform">Tích hợp hai chiều ERP ⇄ MES</a></li>
+              </ul>
+            </div>
+
+            <div class="nx-axis-pane" data-axis-pane="sol-ind">
+              <div class="nx-axis-pane-header">
+                <h3>Giải pháp theo ngành công nghiệp</h3>
+                <p>Chuẩn hóa quy trình vận hành, truy xuất và tuân thủ kiểm toán theo đặc thù từng ngành</p>
+              </div>
+              <ul class="nx-axis-cats">
+                <li><a href="SmartFactory.html?filter=electronics#cases">Điện tử & Lắp ráp SMT</a></li>
+                <li><a href="SmartFactory.html?filter=electronics#cases">Cơ khí chính xác & Ô tô</a></li>
+                <li><a href="SmartFactory.html?filter=fnb#cases">Thực phẩm & Đồ uống (F&B)</a></li>
+                <li><a href="SmartFactory.html?filter=fnb#cases">Nông thủy sản xuất khẩu</a></li>
+                <li><a href="SmartFactory.html?filter=pharma#cases">Dược phẩm & Y tế GMP</a></li>
+                <li><a href="SmartFactory.html?filter=pharma#cases">Mỹ phẩm & Hóa mỹ phẩm</a></li>
+                <li><a href="SmartFactory.html#cases">Bao bì, Nhựa & Ép phun</a></li>
+                <li><a href="SmartFactory.html#cases">Dệt may & Da giày</a></li>
+              </ul>
+            </div>
+
+            <div class="nx-axis-bottom">
+              <a href="SmartFactory.html?modal=survey#contact" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb"><img src="assets/images/card-digital-ops.jpg" alt="Khảo sát miễn phí" /></div>
+                <div><strong>Khảo sát nhà máy miễn phí</strong><span>Đánh giá 1 ngày tại xưởng & nhận lộ trình ROI chi tiết</span></div>
+              </a>
+              <a href="SmartFactory.html#platform" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb"><img src="assets/images/hero-smart-factory.jpg" alt="Kiến trúc ISA-95" /></div>
+                <div><strong>Kiến trúc chuẩn ISA-95</strong><span>Kết nối xuyên suốt từ PLC/Cảm biến lên ERP</span></div>
+              </a>
+              <a href="SmartFactory.html#cases" class="nx-axis-spot">
+                <div class="nx-axis-spot-thumb"><img src="assets/images/card-traceability.jpg" alt="Dự án thực tế" /></div>
+                <div><strong>Kết quả thực tế tại VN</strong><span>Tăng 18% OEE & truy xuất nguồn gốc dưới 30 giây</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION A: TWO-TIER HERO (Axis /products structure) -->
+  <section class="ac-banner">
+    <img src="assets/images/hero-smart-factory.jpg" alt="Hệ sinh thái thiết bị công nghiệp và phần mềm BYRA Technologics" class="ac-banner-bg" />
+    <div class="ac-banner-overlay"></div>
+    <div class="nx-container" style="width: 100%;">
+      <div class="ac-banner-content">
+        <p class="ac-banner-selling">Thiết bị & Phần mềm cho <em>mọi nhu cầu</em> nhà máy thông minh</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ac-intro">
+    <div class="nx-container">
+      <h1>Sản phẩm</h1>
+      <p class="ac-preamble">
+        Lựa chọn từ danh mục thiết bị công nghiệp chuẩn mở và phần mềm đóng gói của BYRA Technologics cho thu thập dữ liệu IIoT, điều hành sản xuất MES, kiểm soát chất lượng, truy xuất nguồn gốc GS1 và hiển thị Andon tại xưởng.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION B: 12 PRODUCT CATEGORIES (Axis Stacked Deck Cards) -->
+  <section class="ac-section" id="product-categories">
+    <div class="nx-container">
+      <h2 class="ac-collection-title">
+        <strong>Danh mục sản phẩm</strong>
+        <span>12 nhóm sản phẩm & thiết bị công nghiệp</span>
+      </h2>
+
+      <div class="ac-deck-grid">
+        <!-- 1 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-edge" data-quote-item="Danh mục: Bộ thu thập dữ liệu IIoT & Edge Gateway">
+          <div class="ac-deck-media">
+            <img src="assets/images/hero-smart-factory.jpg" alt="IIoT Edge Gateway" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><line x1="6" y1="10" x2="6" y2="14"></line><line x1="10" y1="10" x2="10" y2="14"></line><circle cx="17" cy="12" r="2"></circle></svg>
+            </div>
+            <span class="ac-deck-count">8 sản phẩm</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Bộ thu thập dữ liệu IIoT & Edge</h3>
+            <p>Kết nối đa giao thức PLC (OPC UA, Modbus, S7) và bộ đếm xung I/O cho máy cơ đời cũ.</p>
+          </div>
+        </a>
+
+        <!-- 2 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-hmi" data-quote-item="Danh mục: Màn hình công nghiệp & Panel PC">
+          <div class="ac-deck-media">
+            <img src="assets/images/card-digital-ops.jpg" alt="Màn hình công nghiệp Panel PC" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <span class="ac-deck-count">6 sản phẩm</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Màn hình công nghiệp & Panel PC</h3>
+            <p>Trạm thao tác cảm ứng chuẩn IP65 tại chuyền hiển thị hướng dẫn công việc điện tử (eWI).</p>
+          </div>
+        </a>
+
+        <!-- 3 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-andon" data-quote-item="Danh mục: Hệ thống hiển thị & Đèn Andon">
+          <div class="ac-deck-media">
+            <img src="assets/images/card-mes-assembly.jpg" alt="Hệ thống hiển thị Andon" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="14" rx="2"></rect><line x1="9" y1="7" x2="15" y2="7"></line><line x1="9" y1="11" x2="15" y2="11"></line><line x1="12" y1="16" x2="12" y2="22"></line><line x1="8" y1="22" x2="16" y2="22"></line></svg>
+            </div>
+            <span class="ac-deck-count">9 sản phẩm</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Hệ thống hiển thị & Đèn Andon</h3>
+            <p>Bảng LED/TV giám sát năng suất đầu chuyền, đèn tháp không dây và hộp nút gọi hỗ trợ.</p>
+          </div>
+        </a>
+
+        <!-- 4 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-mes-sw" data-quote-item="Danh mục: Phần mềm điều hành sản xuất (MES)">
+          <div class="ac-deck-media">
+            <img src="assets/images/hero-smart-factory.jpg" alt="Phần mềm điều hành sản xuất" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 17.5h7M17.5 14v7"></path></svg>
+            </div>
+            <span class="ac-deck-count">6 mô-đun</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Phần mềm điều hành sản xuất</h3>
+            <p>Các gói bản quyền BYRA MES, Traceability GS1, OEE, QMS, WMS và CMMS linh hoạt.</p>
+          </div>
+        </a>
+
+        <!-- 5 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-scanner" data-quote-item="Danh mục: Máy quét mã vạch & PDA kiểm kho">
+          <div class="ac-deck-media">
+            <img src="assets/images/card-traceability.jpg" alt="Máy quét mã vạch & PDA" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"></rect><line x1="10" y1="18" x2="14" y2="18"></line><path d="M9 6h6v5H9z"></path></svg>
+            </div>
+            <span class="ac-deck-count">11 sản phẩm</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Máy quét mã vạch & PDA</h3>
+            <p>Thiết bị kiểm kho Android IP67, súng quét 2D không dây và đầu đọc cố định trên băng tải.</p>
+          </div>
+        </a>
+
+        <!-- 6 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-printer" data-quote-item="Danh mục: Máy in nhãn mã vạch GS1">
+          <div class="ac-deck-media">
+            <img src="assets/images/card-traceability.jpg" alt="Máy in nhãn mã vạch GS1" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            </div>
+            <span class="ac-deck-count">7 sản phẩm</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Máy in nhãn mã vạch GS1</h3>
+            <p>Máy in tem công nghiệp tốc độ cao 300/600 DPI và hệ thống in – dán nhãn Pallet tự động.</p>
+          </div>
+        </a>
+
+        <!-- 7 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-rfid" data-quote-item="Danh mục: Thiết bị đọc & Thẻ RFID">
+          <div class="ac-deck-media">
+            <img src="assets/images/card-mes-assembly.jpg" alt="Thiết bị RFID" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12a10 10 0 0 1 20 0"></path><path d="M5 12a7 7 0 0 1 14 0"></path><path d="M8 12a4 4 0 0 1 8 0"></path><circle cx="12" cy="12" r="1"></circle></svg>
+            </div>
+            <span class="ac-deck-count">8 sản phẩm</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Thiết bị đọc & Thẻ RFID</h3>
+            <p>Cổng đọc UHF RFID cửa kho, ăng-ten công nghiệp và thẻ gắn khuôn/xe đẩy WIP chịu nhiệt.</p>
+          </div>
+        </a>
+
+        <!-- 8 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-sensor" data-quote-item="Danh mục: Cảm biến & Đồng hồ năng lượng">
+          <div class="ac-deck-media">
+            <img src="assets/images/hero-smart-factory.jpg" alt="Cảm biến công nghiệp" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <span class="ac-deck-count">10 sản phẩm</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Cảm biến & Đồng hồ năng lượng</h3>
+            <p>Đồng hồ đo điện 3 pha thông minh, cảm biến rung động, nhiệt ẩm phòng sạch và lưu lượng.</p>
+          </div>
+        </a>
+
+        <!-- 9 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-vision" data-quote-item="Danh mục: Hệ thống thị giác máy (AI Vision)">
+          <div class="ac-deck-media">
+            <img src="assets/images/card-mes-assembly.jpg" alt="AI Machine Vision" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path></svg>
+            </div>
+            <span class="ac-deck-count">5 sản phẩm</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Hệ thống thị giác máy (AI Vision)</h3>
+            <p>Camera công nghiệp kiểm tra ngoại quan tự động, phát hiện lỗi lắp ráp, thiếu linh kiện và OCR.</p>
+          </div>
+        </a>
+
+        <!-- 10 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-scale" data-quote-item="Danh mục: Cân điện tử & Đo lường">
+          <div class="ac-deck-media">
+            <img src="assets/images/card-digital-ops.jpg" alt="Cân điện tử công nghiệp" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8l7-5 7 5M3 14h6l-3 6-3-6zM15 14h6l-3 6-3-6z"></path></svg>
+            </div>
+            <span class="ac-deck-count">6 sản phẩm</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Cân điện tử & Đo lường</h3>
+            <p>Cân bàn, cân sàn Inox IP68 tích hợp RS-232/TCP truyền trực tiếp khối lượng vào lệnh MES.</p>
+          </div>
+        </a>
+
+        <!-- 11 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-network" data-quote-item="Danh mục: Thiết bị mạng & Switch công nghiệp">
+          <div class="ac-deck-media">
+            <img src="assets/images/hero-smart-factory.jpg" alt="Switch công nghiệp" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            </div>
+            <span class="ac-deck-count">7 sản phẩm</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Thiết bị mạng & Switch công nghiệp</h3>
+            <p>Switch PoE gắn DIN-rail, bộ phát Wi-Fi công nghiệp Roaming và tường lửa bảo mật OT/IT.</p>
+          </div>
+        </a>
+
+        <!-- 12 -->
+        <a href="#new-products" class="ac-deck-card" id="cat-accessories" data-quote-item="Danh mục: Phụ kiện & Tủ rack công nghiệp">
+          <div class="ac-deck-media">
+            <img src="assets/images/card-traceability.jpg" alt="Phụ kiện công nghiệp" loading="lazy" />
+            <div class="ac-deck-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </div>
+            <span class="ac-deck-count">15+ phụ kiện</span>
+          </div>
+          <div class="ac-deck-body">
+            <h3>Phụ kiện & Tủ rack công nghiệp</h3>
+            <p>Mọi phụ kiện cần thiết để hoàn thiện hệ thống: tay đỡ VESA, cáp M12, nguồn 24VDC và tem nhãn.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION C: CROSS-CATEGORY COLLECTIONS (Axis 3-Column Centered Spotlights) -->
+  <section class="ac-section" id="cross-category-collections" style="padding-top: 1rem;">
+    <div class="nx-container">
+      <div class="ac-center-header">
+        <h2>Bộ giải pháp phần cứng trọn gói</h2>
+        <p>Khám phá các tổ hợp sản phẩm từ nhiều danh mục, được thiết kế chuyên biệt để đáp ứng trọn vẹn một môi trường vận hành.</p>
+      </div>
+
+      <div class="ac-spotlights-grid">
+        <article class="ac-spot-card">
+          <div class="ac-spot-media">
+            <img src="assets/images/card-digital-ops.jpg" alt="Thiết bị chuẩn phòng sạch GMP và chống cháy nổ" loading="lazy" />
+          </div>
+          <div class="ac-spot-body">
+            <h3>Trạm phòng sạch & Chống cháy nổ (GMP / ATEX)</h3>
+            <p>Trọn bộ Panel PC Inox 316L IP69K, cân điện tử và máy quét kháng khuẩn đạt chuẩn dược phẩm GMP, thực phẩm và hóa chất.</p>
+            <button type="button" class="ac-link-cta" data-quote-item="Bộ giải pháp Trạm phòng sạch & Chống cháy nổ (GMP / ATEX)">XEM CHI TIẾT</button>
+          </div>
+        </article>
+
+        <article class="ac-spot-card">
+          <div class="ac-spot-media">
+            <img src="assets/images/card-traceability.jpg" alt="Thiết bị gắn xe nâng kho vận" loading="lazy" />
+          </div>
+          <div class="ac-spot-body">
+            <h3>Thiết bị gắn xe nâng & Kho vận (Onboard)</h3>
+            <p>Máy tính cảm ứng chống rung chuẩn MIL-STD-810G gắn trên xe nâng, đầu đọc mã vạch tầm xa 15m và bộ nguồn DC-DC ổn áp.</p>
+            <button type="button" class="ac-link-cta" data-quote-item="Bộ giải pháp Thiết bị gắn xe nâng & Kho vận (Onboard)">XEM CHI TIẾT</button>
+          </div>
+        </article>
+
+        <article class="ac-spot-card">
+          <div class="ac-spot-media">
+            <img src="assets/images/card-mes-assembly.jpg" alt="Gói nâng cấp máy cơ đời cũ" loading="lazy" />
+          </div>
+          <div class="ac-spot-body">
+            <h3>Gói nâng cấp máy cơ đời cũ (Legacy Retrofit)</h3>
+            <p>Kết hợp cảm biến đếm sản phẩm, mô-đun Remote I/O, đồng hồ dòng điện CT và EdgeBox giúp số hóa mọi máy cũ trong 2 giờ.</p>
+            <button type="button" class="ac-link-cta" data-quote-item="Bộ giải pháp Nâng cấp máy cơ đời cũ (Legacy Retrofit)">XEM CHI TIẾT</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION D: NEW PRODUCTS / LATEST LAUNCHES (Axis Warm Gray Full-Bleed Wrapper + 8 Single Hardware Cards) -->
+  <section class="ac-section--gray" id="new-products">
+    <div class="nx-container">
+      <div class="ac-center-header">
+        <h2>Sản phẩm mới</h2>
+        <p>Cập nhật những thiết bị phần cứng IIoT và phiên bản phần mềm mới nhất từ hệ sinh thái BYRA Technologics.</p>
+      </div>
+
+      <h3 class="ac-collection-title">
+        <strong>Sản phẩm vừa ra mắt</strong>
+        <span>Nhấp vào sản phẩm để nhận Datasheet & Báo giá</span>
+      </h3>
+
+      <div class="ac-single-grid">
+        <!-- Item 1 -->
+        <div class="ac-single-card" data-quote-item="BYRA EdgeBox X2 AI Gateway (BYRA-HW-GW220)">
+          <span class="ac-badge-new">NEW</span>
+          <div class="ac-single-media">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"></rect><line x1="6" y1="10" x2="6" y2="14"></line><line x1="10" y1="10" x2="10" y2="14"></line><circle cx="17" cy="12" r="2"></circle></svg>
+            <span class="ac-single-sku">BYRA-HW-GW220</span>
+          </div>
+          <h3>BYRA EdgeBox X2 AI Gateway</h3>
+          <p>Bộ thu thập dữ liệu PLC tích hợp NPU 6 TOPS, bộ đệm SQLite WAL 60 ngày và 5G/Wi-Fi 6.</p>
+          <div class="ac-single-meta"><span>OPC UA · S7 · Modbus</span><span>Báo giá →</span></div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="ac-single-card" data-quote-item="BYRA PanelPC P15-Pro IP66 (BYRA-HW-PPC15P)">
+          <span class="ac-badge-new">NEW</span>
+          <div class="ac-single-media">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <span class="ac-single-sku">BYRA-HW-PPC15P</span>
+          </div>
+          <h3>BYRA PanelPC P15-Pro IP66</h3>
+          <p>Màn hình cảm ứng công nghiệp 15.6" FHD viền mỏng, tích hợp sẵn đầu đọc thẻ nhân viên NFC/RFID.</p>
+          <div class="ac-single-meta"><span>Core i5 · 16GB · IP66</span><span>Báo giá →</span></div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="ac-single-card" data-quote-item="BYRA SmartPDA H65 5G Scanner (BYRA-HW-PDA65)">
+          <span class="ac-badge-new">NEW</span>
+          <div class="ac-single-media">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2" width="12" height="20" rx="2"></rect><line x1="10" y1="18" x2="14" y2="18"></line><path d="M9 6h6v5H9z"></path></svg>
+            <span class="ac-single-sku">BYRA-HW-PDA65</span>
+          </div>
+          <h3>BYRA SmartPDA H65 2D/DPM</h3>
+          <p>Thiết bị kiểm kho Android 14 siêu bền IP67, đọc mã DataMatrix khắc laser và mã GS1 tốc độ cao.</p>
+          <div class="ac-single-meta"><span>Pin 6000mAh · IP67</span><span>Báo giá →</span></div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="ac-single-card" data-quote-item="BYRA VisionCam V800 DPM/OCR (BYRA-HW-VSN80)">
+          <span class="ac-badge-new">NEW</span>
+          <div class="ac-single-media">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"></path></svg>
+            <span class="ac-single-sku">BYRA-HW-VSN80</span>
+          </div>
+          <h3>BYRA VisionCam V800 AI</h3>
+          <p>Camera thông minh đọc mã vạch băng tải 60 sản phẩm/giây kết hợp kiểm tra lỗi nhãn dán và hạn dùng OCR.</p>
+          <div class="ac-single-meta"><span>PROFINET · EtherNet/IP</span><span>Báo giá →</span></div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="ac-single-card" data-quote-item="BYRA AndonTower W4 LoRa (BYRA-HW-TLW04)">
+          <span class="ac-badge-new">NEW</span>
+          <div class="ac-single-media">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="2" width="6" height="14" rx="2"></rect><line x1="9" y1="7" x2="15" y2="7"></line><line x1="9" y1="11" x2="15" y2="11"></line><line x1="12" y1="16" x2="12" y2="22"></line><line x1="8" y1="22" x2="16" y2="22"></line></svg>
+            <span class="ac-single-sku">BYRA-HW-TLW04</span>
+          </div>
+          <h3>BYRA AndonTower W4 LoRa</h3>
+          <p>Đèn tháp LED 4 tầng tích hợp truyền thông không dây Sub-1GHz và hộp 4 nút gọi hỗ trợ tại trạm.</p>
+          <div class="ac-single-meta"><span>Phủ sóng 500m · 85dB</span><span>Báo giá →</span></div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="ac-single-card" data-quote-item="BYRA LabelPrint Z600 GS1 (BYRA-HW-PRT600)">
+          <span class="ac-badge-new">NEW</span>
+          <div class="ac-single-media">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span class="ac-single-sku">BYRA-HW-PRT600</span>
+          </div>
+          <h3>BYRA LabelPrint Z600 GS1</h3>
+          <p>Máy in nhãn công nghiệp 600 DPI khung kim loại nguyên khối chuyên in tem vi mạch PCB và nhãn SSCC.</p>
+          <div class="ac-single-meta"><span>600 DPI · ZPL II / LAN</span><span>Báo giá →</span></div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="ac-single-card" data-quote-item="BYRA PowerMeter PM-3P ESG (BYRA-HW-PM3P)">
+          <span class="ac-badge-new">NEW</span>
+          <div class="ac-single-media">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span class="ac-single-sku">BYRA-HW-PM3P</span>
+          </div>
+          <h3>BYRA PowerMeter PM-3P</h3>
+          <p>Đồng hồ đo điện năng 3 pha kèm 3 biến dòng CT kẹp mở, tính toán định mức kWh/sản phẩm và phát thải CO₂.</p>
+          <div class="ac-single-meta"><span>Modbus RTU · MQTT</span><span>Báo giá →</span></div>
+        </div>
+
+        <!-- Item 8 -->
+        <div class="ac-single-card" data-quote-item="BYRA MES & Trace Suite v4.2 (BYRA-SW-MES42)">
+          <span class="ac-badge-new">NEW</span>
+          <div class="ac-single-media">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 17.5h7M17.5 14v7"></path></svg>
+            <span class="ac-single-sku">BYRA-SW-MES42</span>
+          </div>
+          <h3>BYRA MES & Trace Suite v4.2</h3>
+          <p>Phiên bản phần mềm hợp nhất điều hành sản xuất, phả hệ lô GS1 và kiểm soát SPC thời gian thực.</p>
+          <div class="ac-single-meta"><span>ISA-95 · 21 CFR Part 11</span><span>Báo giá →</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION E: RELATED RESOURCES (Axis 3-Column Flat Editorial Media-with-Text) -->
+  <section class="ac-section" id="related-resources" style="padding-top: 4.5rem;">
+    <div class="nx-container">
+      <div class="ac-center-header">
+        <h2>Tài nguyên liên quan</h2>
+        <p>Bạn cũng có thể quan tâm đến các giải pháp và câu chuyện triển khai thực tế của chúng tôi</p>
+      </div>
+
+      <div class="ac-editorial-grid">
+        <article class="ac-editorial-item">
+          <div class="ac-editorial-media">
+            <img src="assets/images/hero-smart-factory.jpg" alt="Giải pháp theo công nghệ" loading="lazy" />
+          </div>
+          <h3>Giải pháp theo công nghệ cốt lõi</h3>
+          <p>Từ kết nối IIoT đa giao thức, giám sát OEE thời gian thực đến phả hệ truy xuất nguồn gốc chuẩn GS1 — công nghệ của BYRA giúp nhà máy minh bạch từng công đoạn.</p>
+          <a href="SmartFactory.html#solutions" class="ac-link-cta">XEM THÊM</a>
+        </article>
+
+        <article class="ac-editorial-item">
+          <div class="ac-editorial-media">
+            <img src="assets/images/card-traceability.jpg" alt="Giải pháp theo ngành sản xuất" loading="lazy" />
+          </div>
+          <h3>Giải pháp theo ngành công nghiệp</h3>
+          <p>Mỗi ngành sản xuất có đặc thù riêng. Khám phá kiến trúc mở được thiết kế chuẩn xác cho Điện tử, Cơ khí, Thực phẩm xuất khẩu và Dược phẩm GMP.</p>
+          <a href="SmartFactory.html#platform" class="ac-link-cta">XEM THÊM</a>
+        </article>
+
+        <article class="ac-editorial-item">
+          <div class="ac-editorial-media">
+            <img src="assets/images/card-mes-assembly.jpg" alt="Câu chuyện khách hàng" loading="lazy" />
+          </div>
+          <h3>Dự án & Câu chuyện khách hàng</h3>
+          <p>Xem cách các nhà máy tại Việt Nam vận hành thực tế hệ thống phần mềm và thiết bị BYRA để tăng 18% OEE và rút ngắn truy xuất lô xuống dưới 30 giây.</p>
+          <a href="SmartFactory.html#cases" class="ac-link-cta">XEM THÊM</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="nx-footer">
+    <div class="nx-container">
+      <div class="nx-footer-grid">
+        <div>
+          <h4>Danh mục sản phẩm</h4>
+          <ul>
+            <li><a href="#cat-edge">IIoT & Edge Gateway</a></li>
+            <li><a href="#cat-hmi">Màn hình Panel PC</a></li>
+            <li><a href="#cat-andon">Hệ thống Andon</a></li>
+            <li><a href="#cat-scanner">Máy quét PDA & DPM</a></li>
+            <li><a href="#cat-printer">Máy in nhãn GS1</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Giải pháp</h4>
+          <ul>
+            <li><a href="SmartFactory.html#solutions">Hệ thống MES</a></li>
+            <li><a href="SmartFactory.html#solutions">Truy xuất nguồn gốc</a></li>
+            <li><a href="SmartFactory.html#solutions">Giám sát máy & OEE</a></li>
+            <li><a href="SmartFactory.html#solutions">Quản lý chất lượng</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Bộ sưu tập</h4>
+          <ul>
+            <li><a href="#cross-category-collections">Trạm phòng sạch GMP</a></li>
+            <li><a href="#cross-category-collections">Thiết bị gắn xe nâng</a></li>
+            <li><a href="#cross-category-collections">Nâng cấp máy cơ cũ</a></li>
+            <li><a href="#new-products">Sản phẩm mới ra mắt</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Công ty</h4>
+          <ul>
+            <li><a href="SmartFactory.html#about">Về BYRA Technologics</a></li>
+            <li><a href="BrandSystem.html">Hệ thống nhận diện (Brand Guide)</a></li>
+            <li><a href="SmartFactory.html#cases">Dự án tiêu biểu</a></li>
+            <li><a href="SmartFactory.html#roadmap">Phương pháp triển khai</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Liên hệ</h4>
+          <ul>
+            <li><a href="tel:+84000000000">(+84) 000 000 000</a></li>
+            <li><a href="mailto:hello@byratech.vn">hello@byratech.vn</a></li>
+            <li><a href="#new-products" data-quote-item="Đăng ký tư vấn cấu hình thiết bị">Nhận báo giá dự án</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nx-footer-bottom">
+        <div><strong>BYRA Technologics</strong> — Số hóa nhà máy, minh bạch từng công đoạn. © 2026</div>
+        <a href="#" style="font-weight: 600;">Lên đầu trang ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- QUOTE MODAL -->
+  <div class="nx-modal-backdrop" id="quote-modal" role="dialog" aria-modal="true" aria-labelledby="quote-modal-title">
+    <div class="nx-modal">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;">
+        <div>
+          <span style="font-family:var(--nx-ff-mono);font-size:0.75rem;font-weight:700;color:var(--nx-text-brand);text-transform:uppercase;">BYRA COMMERCIAL QUOTATION</span>
+          <h3 id="quote-modal-title" style="margin:0.2rem 0 0.5rem;font-size:1.35rem;">Yêu cầu Báo giá & Datasheet kỹ thuật</h3>
+        </div>
+        <button type="button" class="nx-icon-btn" id="btn-close-quote" aria-label="Đóng">✕</button>
+      </div>
+      <p style="color:var(--nx-text-muted);font-size:0.9rem;margin:0 0 1rem;">
+        Kỹ sư giải pháp của <strong>BYRA Technologics</strong> sẽ gửi bảng báo giá thương mại kèm Datasheet thông số kỹ thuật (PDF) trong 24 giờ làm việc.
+      </p>
+      <form class="nx-form" id="quote-form">
+        <div class="nx-form-2">
+          <label>Họ và tên *<input name="name" required /></label>
+          <label>Điện thoại *<input name="phone" type="tel" required /></label>
+        </div>
+        <div class="nx-form-2">
+          <label>Công ty / Nhà máy *<input name="company" required /></label>
+          <label>Email nhận báo giá *<input name="email" type="email" required /></label>
+        </div>
+        <label>Danh mục / Sản phẩm quan tâm
+          <textarea name="items" id="quote-item-input" rows="3"></textarea>
+        </label>
+        <div style="display:flex;justify-content:flex-end;gap:0.75rem;margin-top:0.5rem;">
+          <button type="button" class="nx-btn nx-btn--secondary" id="btn-cancel-quote">Đóng</button>
+          <button type="submit" class="nx-btn nx-btn--primary">Gửi yêu cầu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="nx-toast" id="app-toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      const toastEl = document.getElementById('app-toast');
+      let toastTimer = null;
+      function showToast(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add('is-visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toastEl.classList.remove('is-visible'); }, 2800);
+      }
+
+      // Mega menus handling (Sản phẩm & Giải pháp)
+      const megaToggles = [
+        { btn: document.getElementById('nav-products-btn'), panel: document.getElementById('mega-products-panel') },
+        { btn: document.getElementById('nav-solutions-btn'), panel: document.getElementById('mega-solutions-panel') }
+      ];
+
+      function syncNotch(sidebar, activeTab) {
+        if (!sidebar || !activeTab) return;
+        const topPx = activeTab.offsetTop + (activeTab.offsetHeight / 2) - 8;
+        sidebar.style.setProperty('--notch-top', topPx + 'px');
+      }
+
+      function closeMega() {
+        megaToggles.forEach(function (m) {
+          if (m.panel && m.btn) {
+            m.panel.classList.remove('is-open');
+            m.btn.classList.remove('is-active');
+            m.btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      megaToggles.forEach(function (m) {
+        if (!m.btn || !m.panel) return;
+        m.btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const isOpen = m.panel.classList.contains('is-open');
+          closeMega();
+          if (!isOpen) {
+            m.panel.classList.add('is-open');
+            m.btn.classList.add('is-active');
+            m.btn.setAttribute('aria-expanded', 'true');
+            setTimeout(function () {
+              const sb = m.panel.querySelector('.nx-axis-sidebar');
+              const at = m.panel.querySelector('.nx-axis-tab.is-active');
+              syncNotch(sb, at);
+            }, 10);
+          }
+        });
+        m.panel.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', closeMega);
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        let inside = false;
+        megaToggles.forEach(function (m) {
+          if ((m.panel && m.panel.contains(e.target)) || (m.btn && m.btn.contains(e.target))) {
+            inside = true;
+          }
+        });
+        if (!inside) closeMega();
+      });
+
+      // Axis-style Sidebar Tabs scoped cleanly per Mega Menu panel + sliding notch
+      document.querySelectorAll('.nx-axis-mega').forEach(function (megaBox) {
+        const sidebar = megaBox.querySelector('.nx-axis-sidebar');
+        const tabs = megaBox.querySelectorAll('[data-axis-tab]');
+        const panes = megaBox.querySelectorAll('[data-axis-pane]');
+
+        const initialActive = megaBox.querySelector('.nx-axis-tab.is-active');
+        if (initialActive) syncNotch(sidebar, initialActive);
+
+        tabs.forEach(function (tab) {
+          tab.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const target = tab.getAttribute('data-axis-tab');
+            tabs.forEach(function (t) {
+              const active = t === tab;
+              t.classList.toggle('is-active', active);
+              t.setAttribute('aria-selected', String(active));
+            });
+            panes.forEach(function (p) {
+              p.classList.toggle('is-active', p.getAttribute('data-axis-pane') === target);
+            });
+            syncNotch(sidebar, tab);
+          });
+        });
+      });
+
+      // Quote Modal
+      const modal = document.getElementById('quote-modal');
+      const itemInput = document.getElementById('quote-item-input');
+      function openQuote(itemName) {
+        itemInput.value = itemName || '';
+        modal.classList.add('is-open');
+      }
+      function closeQuote() {
+        modal.classList.remove('is-open');
+      }
+      document.querySelectorAll('[data-quote-item]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          openQuote(el.getAttribute('data-quote-item'));
+        });
+      });
+      document.getElementById('btn-close-quote').addEventListener('click', closeQuote);
+      document.getElementById('btn-cancel-quote').addEventListener('click', closeQuote);
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeQuote(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { closeQuote(); closeMega(); }
+      });
+      document.getElementById('quote-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        closeQuote();
+        e.target.reset();
+        showToast('Đã ghi nhận yêu cầu báo giá & Datasheet! Chuyên gia sẽ phản hồi trong 24h.');
+      });
+    })();
+  </script>
+</body>
+</html>
