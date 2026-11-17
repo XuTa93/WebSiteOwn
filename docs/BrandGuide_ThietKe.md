@@ -1,14 +1,14 @@
-# Cẩm nang Phong cách Thiết kế & Bộ nhận diện Thương hiệu: BYRA Technologics
+# Cẩm nang Phong cách Thiết kế & Bộ nhận diện Thương hiệu: DFS — Digital Factory Solutions
 
-> **Tài liệu quy chuẩn thiết kế (Brand Identity & Design System Guide · Phiên bản 8C Speed Chevron)** dành cho website [SmartFactory.html](file:///d:/Project/WebSite/SmartFactory.html), [Products.html](file:///d:/Project/WebSite/Products.html), giao diện phần mềm MES/Andon và toàn bộ ấn phẩm truyền thông của **BYRA Technologics**.
+> **Tài liệu quy chuẩn thiết kế (Brand Identity & Design System Guide · Phiên bản 8C Speed Chevron)** dành cho website [SmartFactory.html](file:///d:/Project/WebSite/SmartFactory.html), [Products.html](file:///d:/Project/WebSite/Products.html), giao diện phần mềm MES/Andon và toàn bộ ấn phẩm truyền thông của **DFS — Digital Factory Solutions**.
 
 ---
 
 ## 1. Tinh thần & Định vị Thương hiệu (Brand Essence)
 
 ### 1.1. Tên thương hiệu & Tagline
-- **Tên thương hiệu:** **BYRA Technologics** *(Descriptor phụ: `Smart Manufacturing`)*
-- **Ý nghĩa tên gọi:** **BYRA Technologics** đại diện cho năng lực công nghệ cốt lõi trong kỷ nguyên công nghiệp số — lớp nền tảng kết nối liền mạch giữa **Con người – Máy móc (OT) – Hệ thống quản trị (IT/ERP)** trong nhà máy hiện đại.
+- **Tên thương hiệu:** **DFS** *(Descriptor phụ: `Digital Factory Solutions`)*
+- **Ý nghĩa tên gọi:** **DFS — Digital Factory Solutions** đại diện cho năng lực công nghệ và giải pháp nhà máy số toàn diện trong kỷ nguyên công nghiệp 4.0 — lớp nền tảng kết nối liền mạch giữa **Con người – Máy móc (OT) – Hệ thống quản trị (IT/ERP)** trong nhà máy hiện đại.
 - **Khẩu hiệu (Tagline):** *“Số hóa nhà máy, minh bạch từng công đoạn.”*
 
 ### 1.2. Tính cách thương hiệu (Brand Personality)
@@ -23,13 +23,13 @@
 ## 2. Hệ thống Logo & Biểu tượng (Logo System)
 
 ### 2.1. Cấu tạo Logo
-Logo **BYRA Technologics** là sự kết hợp giữa **Biểu tượng (Logomark)** và **Chữ (Wordmark)**:
+Logo **DFS** là sự kết hợp giữa **Biểu tượng (Logomark)** và **Chữ (Wordmark)**:
 1. **Logomark (Khối lục giác tâm điểm):**
    - Khung vuông công nghiệp bo sắc `4px` (`34×34px` trên Header) phủ dải chuyển sắc `135deg` từ `#18C96E` sang `#0A8754`.
    - Bên trong là hình **lục giác công nghiệp (Hexagon)** kết hợp **tâm điểm kết nối (Core Node)** ở chính giữa — tượng trưng cho nhà máy thông minh nơi mọi thiết bị quy tụ về một nền tảng dữ liệu duy nhất.
-2. **Wordmark (`BYRATechnologics`):**
+2. **Wordmark (`DFS` / `DF<b>S</b>`):**
    - Sử dụng kiểu chữ **Inter Bold (`700`)**, tracking `-0.025em`.
-   - `BYRA` viết hoa màu đen thép (`#141A17` trên nền sáng, `#FFFFFF` trên nền tối); `Technologics` tô điểm nhấn màu xanh thương hiệu (`#0A8754` hoặc `#18C96E`).
+   - Chữ `DF` màu đen thép (`#141A17` trên nền sáng, `#FFFFFF` trên nền tối); ký tự `S` tô điểm nhấn màu xanh ngọc bích thương hiệu (`#0A8754` hoặc `#18C96E`). Dòng phụ đề nhỏ hiển thị `Digital Factory Solutions`.
    - Dòng phụ đề `SMART MANUFACTURING` đặt phía dưới bằng phông **IBM Plex Mono SemiBold (`600`)**, cỡ chữ `10px` (`0.625rem`), in hoa, giãn cách chữ rộng `0.12em`.
 
 ### 2.2. Quy tắc khoảng trống an toàn & Kích thước tối thiểu
@@ -122,15 +122,18 @@ Loại bỏ hoàn toàn nút bo tròn viên thuốc (`pill radius`) và các bo 
 ### 5.3. Ngôn ngữ Hình khối nhận diện riêng: **8C Speed Chevron (Mũi tên Tốc độ Automation)**
 1. **Nút bấm Mũi nhọn Dẫn hướng (`.nx-btn` — Speed Chevron `>`):**
    - Toàn bộ nút CTA chính/phụ không dùng `border-radius` hay viền mảnh `1px`; cắt `clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 50%, calc(100% - 13px) 100%, 0 100%)` tạo mũi tên hướng tiến về phía trước gợi luồng băng chuyền tự động.
-   - **Primary CTA (`.nx-btn--primary`):** Nền `#18C96E`, chữ `#101714` (`font-weight: 700`), khi hover sáng lên `#26E080` và vươn nhẹ mũi tên sang phải (không cần đặt thêm ký hiệu `→` trùng lặp bên trong nút).
-   - **Secondary trên nền sáng (`.nx-btn--secondary`):** Nền xám thép dịu `#E3EAE6`, chữ `#141A17`; hover chuyển nền `#101714`, chữ `#FFFFFF`.
-   - **Secondary trên nền tối (`.nx-btn--ghost-light`):** Khoang thép `#1E2924` cắt vát lõm cạnh trái (`9px 50%`) khớp nối cơ học với đuôi mũi nhọn của nút Primary đặt cạnh trên Hero và CTA band.
+   - **Primary CTA (`.nx-btn--primary`):** Nền `#18C96E`, chữ `#101714` (`font-weight: 700`), khi hover sáng lên `#26E080` và vươn nhẹ mũi nhọn sang phải (`padding-right: 2.2rem; margin-right: -0.25rem;`).
+   - **Secondary trên nền sáng (`.nx-btn--secondary` — Precision Hairline 1px):** Hình khối chevron 6 cạnh có rãnh chữ V bên trái (`clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%)`). Cấu trúc viền siêu mảnh 1px toàn bộ chu vi: lớp ngoài `rgba(16, 23, 20, 0.18)`, lớp trong `::before` nền trắng `#FFFFFF` co lùi chính xác 1px. Đảm bảo toàn bộ 6 cạnh hiển thị sắc nét, đồng đều (kể cả rãnh chữ V bên trái và mũi tên nhọn bên phải). Khi hover: lớp ngoài chuyển `var(--nx-brand)`, lớp trong `var(--nx-brand-subtle)`, chữ `var(--nx-text-brand)`.
+   - **Secondary trên nền tối (`.nx-btn--ghost-light` — Precision Hairline 1px):** Hình khối chevron 6 cạnh có rãnh chữ V bên trái. Cấu trúc viền siêu mảnh 1px toàn bộ chu vi: lớp ngoài trắng mờ `rgba(255, 255, 255, 0.45)`, lớp trong `::before` nền thép đậm `#16231D` co lùi chính xác 1px. Đảm bảo toàn bộ 6 cạnh hiển thị sắc nét, khắc phục hiện tượng mất nét viền ở rãnh chữ V bên trái và đầu nhọn bên phải. Khi hover: lớp ngoài chuyển `var(--nx-brand)`, lớp trong `#1B2F25`, chữ `var(--nx-brand)`.
+   - **Nút cỡ nhỏ (`.nx-btn--sm`):** Dùng cho Topbar/Header CTA: `padding: 0.45rem 1.35rem 0.45rem 0.85rem; font-size: 0.8rem;` (`clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);`).
 2. **Nhãn Hero & Ribbon `FLOW` / `NEW` Cắt xéo:**
    - Thay thế nhãn viền phát sáng + chấm tròn nhấp nháy bằng khối nhãn mũi nhọn `FLOW` / `NEW` / `SYS v2.1` nền `#18C96E`, chữ đen thép `#101714` in hoa `IBM Plex Mono`.
-3. **Vạch nhấn Kép Tách chéo trên Đỉnh Thẻ (Split Top Chevron Accent):**
-   - Các thẻ nội dung (Promo Card, Pain Point, Case Study, Solution Metric, Roadmap, Spotlight & New Products Card) dùng `border: 1px solid #D4DCD8; border-top: 3px solid #101714` kết hợp thanh `::after` màu `#18C96E` cắt xéo cạnh phải ở góc trên-trái.
+3. **Quy chuẩn Mép Bắt Sáng Quang Học (Phương Án 1B: Inset Specular Highlight — Apple Pro Style):**
+   - Các thẻ nội dung (Promo Card, Pain Point, Solution Tab, Solution Metric, Roadmap, Spotlight & New Products Card) loại bỏ hoàn toàn viền đóng hộp thô cứng (`border: none;`), mép đỉnh bắt sáng kim loại `box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(16, 23, 20, 0.05), 0 3px 10px rgba(16, 23, 20, 0.05);`.
+   - Đỉnh thẻ sử dụng vạch xanh ngọc bích siêu mảnh `2px` (`#18C96E`) vát xéo 8C (`clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%);`), mở rộng toàn dải khi hover.
+   - Nút Secondary (`.nx-btn--secondary`): Sử dụng cấu trúc Precision Hairline 1px với lớp lót `::before` co lùi 1px, hiển thị viền mảnh 1px tinh tế trên toàn bộ 6 cạnh chevron mà không dùng viền chì 1.5px thô cứng.
 4. **Sơ đồ tầng kiến trúc ISA-95 & Bảng thông số mở (`#platform`):**
-   - Tháp 3 tầng thu gọn (`Cấp 4 ERP ⇄ Cấp 3 BYRA MES/MOM ⇄ Cấp 0–2 Edge/PLC`) với mũi tên luồng dữ liệu `↑↓` màu `#18C96E`; tầng lõi **Cấp 3** nổi bật bằng viền `#18C96E`, hào quang xanh (`0 10px 30px rgba(24, 201, 110, 0.14)`) và nhãn mũi nhọn `CORE` cắt xéo 8C.
+   - Tháp 3 tầng thu gọn (`Cấp 4 ERP ⇄ Cấp 3 DFS MES/MOM ⇄ Cấp 0–2 Edge/PLC`) với mũi tên luồng dữ liệu `↑↓` màu `#18C96E`; tầng lõi **Cấp 3** nổi bật bằng viền `#18C96E`, hào quang xanh (`0 10px 30px rgba(24, 201, 110, 0.14)`) và nhãn mũi nhọn `CORE` cắt xéo 8C.
    - Bên cạnh là **Bảng Chuẩn Kết nối & Triển khai (`.nx-spec-card`)** vạch kép cắt xéo 8C trên đầu thẻ, phân chia 4 hàng gọn gàng (`Giao thức Máy (OT)`, `Phần mềm ERP (IT)`, `Thiết bị Hiện trường`, `Mô hình Hạ tầng`) thay cho nhóm thẻ chip rời rạc.
 5. **Chuyển động Viền Gạch Xanh Trái-Sang-Phải (Left-to-Right Green Sweep Motion):**
    - Thống nhất hiệu ứng chạy thanh gạch xanh từ trái sang phải (`transform: scaleX(0) → scaleX(1)` với `transform-origin: left center` hoặc mở rộng dải vạch 8C `width → 100%`) khi rê chuột (`:hover`) hoặc focus (`:focus-visible`) trên toàn bộ điểm lựa chọn:

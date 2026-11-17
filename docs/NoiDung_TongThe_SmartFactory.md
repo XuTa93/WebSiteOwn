@@ -1,13 +1,13 @@
-# Nội dung tổng thể Website: BYRA Technologics — Giải pháp Smart Factory (MES, Số hóa & Truy xuất nguồn gốc)
+# Nội dung tổng thể Website: DFS — Digital Factory Solutions — Giải pháp Smart Factory (MES, Số hóa & Truy xuất nguồn gốc)
 
-> **Tài liệu này là nguồn nội dung chuẩn (Master Copy & Content Architecture)** cho trang landing page [SmartFactory.html](file:///d:/Project/WebSite/SmartFactory.html) và các ấn phẩm truyền thông đi kèm của thương hiệu **BYRA Technologics**.
+> **Tài liệu này là nguồn nội dung chuẩn (Master Copy & Content Architecture)** cho trang landing page [SmartFactory.html](file:///d:/Project/WebSite/SmartFactory.html) và các ấn phẩm truyền thông đi kèm của thương hiệu **DFS — Digital Factory Solutions**.
 
 ---
 
 ## 1. Định vị nội dung & Chân dung khách hàng (Target Audience)
 
 ### 1.1. Tuyên ngôn giá trị cốt lõi (Core Value Proposition)
-**BYRA Technologics** cung cấp nền tảng điều hành sản xuất thực thi (MES/MOM), số hóa quy trình không giấy tờ (Paperless), giám sát thiết bị IIoT/OEE và truy xuất nguồn gốc chuẩn GS1 — kết nối xuyên suốt từ thiết bị hiện trường (PLC, cảm biến, máy quét) đến hệ thống quản trị doanh nghiệp (ERP).
+**DFS — Digital Factory Solutions** cung cấp nền tảng điều hành sản xuất thực thi (MES/MOM), số hóa quy trình không giấy tờ (Paperless), giám sát thiết bị IIoT/OEE và truy xuất nguồn gốc chuẩn GS1 — kết nối xuyên suốt từ thiết bị hiện trường (PLC, cảm biến, máy quét) đến hệ thống quản trị doanh nghiệp (ERP).
 
 ### 1.2. Đối tượng độc giả mục tiêu (B2B Personas)
 | Nhóm độc giả | Mối quan tâm chính | Thông điệp chạm đúng nhu cầu |
@@ -39,8 +39,8 @@ flowchart LR
 ## 3. Nội dung chi tiết từng phần (CopyDeck)
 
 ### 3.1. Meta SEO & Thanh tiện ích đầu trang (Topbar & Header)
-- **Meta Title:** `BYRA Technologics — Giải pháp Smart Factory: Hệ thống MES, Số hóa & Truy xuất nguồn gốc cho nhà máy`
-- **Meta Description:** `BYRA Technologics cung cấp giải pháp nhà máy thông minh: hệ thống điều hành sản xuất MES, số hóa quy trình không giấy tờ, giám sát OEE/IIoT và truy xuất nguồn gốc theo lô, theo serial chuẩn GS1.`
+- **Meta Title:** `DFS — Digital Factory Solutions — Giải pháp Smart Factory: Hệ thống MES, Số hóa & Truy xuất nguồn gốc cho nhà máy`
+- **Meta Description:** `DFS — Digital Factory Solutions cung cấp giải pháp nhà máy thông minh: hệ thống điều hành sản xuất MES, số hóa quy trình không giấy tờ, giám sát OEE/IIoT và truy xuất nguồn gốc theo lô, theo serial chuẩn GS1.`
 - **Utility Topbar:**
   - Trái: *Giải pháp Smart Factory cho nhà máy Việt Nam — MES · Số hóa · Truy xuất nguồn gốc*
   - Phải: *Hotline: (+84) 000 000 000 · Đăng ký khảo sát miễn phí*
@@ -59,7 +59,7 @@ flowchart LR
 - **Nhãn Eyebrow:** `SMART FACTORY · MES · TRACEABILITY`
 - **Tiêu đề chính (H1):** **Số hóa nhà máy, minh bạch từng công đoạn sản xuất**
 - **Đoạn mô tả (Lead):**
-  > BYRA Technologics kết nối máy móc, con người và dữ liệu trên một nền tảng MES duy nhất — giúp nhà máy theo dõi sản lượng theo thời gian thực, nâng hiệu suất thiết bị (OEE) và truy xuất nguồn gốc mọi lô hàng chỉ trong vài giây.
+  > DFS — Digital Factory Solutions kết nối máy móc, con người và dữ liệu trên một nền tảng MES duy nhất — giúp nhà máy theo dõi sản lượng theo thời gian thực, nâng hiệu suất thiết bị (OEE) và truy xuất nguồn gốc mọi lô hàng chỉ trong vài giây.
 - **Cụm nút CTA:**
   - CTA Chính: `Khám phá giải pháp →`
   - CTA Phụ: `Khảo sát nhà máy miễn phí`
@@ -86,7 +86,7 @@ Ba thẻ hành động nổi ngay dưới Hero nhằm thu hút khách hàng ở 
 - **Tiêu đề (H2):** **Nhà máy vẫn đang vận hành bằng giấy, Excel và kinh nghiệm?**
 - **Mô tả:** Dữ liệu sản xuất rời rạc khiến ban điều hành ra quyết định chậm, khó chứng minh chất lượng với khách hàng và tốn kém khi xảy ra sự cố.
 
-| Mã | Vấn đề tại xưởng | Hệ lụy thực tế | Giải pháp từ BYRA Technologics |
+| Mã | Vấn đề tại xưởng | Hệ lụy thực tế | Giải pháp từ DFS — Digital Factory Solutions |
 | :---: | :--- | :--- | :--- |
 | **01** | **Báo cáo sản xuất trễ 1–2 ngày** | Số liệu ghi tay cuối ca, nhập lại vào Excel — sai lệch, thiếu và không ai tin hoàn toàn. | `→ MES ghi nhận tự động theo thời gian thực` |
 | **02** | **Không biết OEE thực tế** | Thời gian dừng máy, chạy chậm, hàng lỗi bị "ẩn" — năng lực thật của xưởng chưa được khai thác. | `→ Kết nối máy (IIoT) & phân tích tổn thất` |
@@ -175,18 +175,18 @@ Ba thẻ hành động nổi ngay dưới Hero nhằm thu hút khách hàng ở 
   - Phát hiện máy chạy không tải, rò rỉ khí nén và thiết bị tiêu thụ điện bất thường.
   - Tự động tổng hợp báo cáo kiểm kê khí nhà kính Scope 1–2 theo ISO 50001 & ESG.
 - **Chỉ số hiệu quả điển hình:** **`-12–20%`** chi phí điện năng & tổn thất chạy không tải trên mỗi đơn vị sản phẩm.
-- **Điểm nhấn kết nối phần cứng:** Tương thích đồng hồ 3 pha Modbus RTU/TCP, biến dòng CT kẹp mở, cảm biến lưu lượng và BYRA PowerMeter PM-3P.
+- **Điểm nhấn kết nối phần cứng:** Tương thích đồng hồ 3 pha Modbus RTU/TCP, biến dòng CT kẹp mở, cảm biến lưu lượng và DFS PowerMeter PM-3P.
 
 ---
 
 ### 3.6. Kiến trúc nền tảng theo chuẩn ISA-95 (`#platform`)
-- **Kicker:** `NỀN TẢNG BYRA TECHNOLOGICS`
+- **Kicker:** `NỀN TẢNG DFS — DIGITAL FACTORY SOLUTIONS`
 - **Tiêu đề (H2):** **Kiến trúc mở ISA-95 & Chuẩn tương thích**
 
 | Khối trong tháp thu gọn | Hệ thống / Vai trò | Ghi chú |
 | :---: | :--- | :--- |
 | **Cấp 4** | **ERP Quản trị** | `SAP / Oracle / Odoo` &mdash; `↑↓ API Đồng bộ hai chiều` |
-| **Cấp 3 (`CORE`)** | **BYRA MES / MOM** | **Trung tâm điều hành & dữ liệu nhà máy** |
+| **Cấp 3 (`CORE`)** | **DFS MES / MOM** | **Trung tâm điều hành & dữ liệu nhà máy** |
 | **Cấp 0–2** | **Edge, PLC & Hiện trường** | `Máy móc & Cảm biến` &mdash; `↑↓ Thu thập thời gian thực` |
 
 - **Bảng Chuẩn Kết nối & Triển khai (`OPEN ARCHITECTURE` — 4 hàng):**

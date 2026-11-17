@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BYRA Technologics — Brand Identity & Design System (Inter + IBM Plex Mono · Emerald Jade & Steel)</title>
-  <meta name="description" content="Hệ thống nhận diện thương hiệu và quy chuẩn thiết kế giao diện (Design System) chính thức của BYRA Technologics cho giải pháp Smart Factory, MES, IIoT và Truy xuất nguồn gốc." />
+  <title>DFS — Brand Identity & Design System (Inter + IBM Plex Mono · Emerald Jade & Steel)</title>
+  <meta name="description" content="Hệ thống nhận diện thương hiệu và quy chuẩn thiết kế giao diện (Design System) chính thức của DFS — Digital Factory Solutions cho giải pháp Smart Factory, MES, IIoT và Truy xuất nguồn gốc." />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/favicon-32x32.png" type="image/png" sizes="32x32" />
@@ -15,13 +15,13 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ==========================================================================
-       BYRA TECHNOLOGICS — MASTER DESIGN TOKENS
+       DFS — DIGITAL FACTORY SOLUTIONS — MASTER DESIGN TOKENS
        Single Source of Truth for Typography, Color, Spacing, Radius & Elevation
        ========================================================================== */
     :root {
       /* 1. Layout */
-      --nx-header-height: 64px;
-      --nx-container-max: 1280px;
+      --nx-header-height: 72px;
+      --nx-container-max: 1300px;
 
       /* 2. Typography — Inter + IBM Plex Mono */
       --nx-ff-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -147,7 +147,7 @@
     }
     .nx-menu-toggle {
       width: 40px; height: 40px; padding: 0; border-radius: var(--nx-radius-s);
-      border: 1.5px solid #D4DCD8; border-top: 2.5px solid var(--nx-steel-900);
+      border: 1px solid var(--nx-border-strong);
       background: var(--nx-surface-alt); color: var(--nx-steel-900);
       display: inline-flex; align-items: center; justify-content: center;
       cursor: pointer; flex-shrink: 0;
@@ -176,7 +176,7 @@
     @keyframes mobSlide { from { transform: translateY(-4px); } to { transform: none; } }
     .nx-mobile-nav {
       display: none; position: absolute; top: var(--nx-header-height); left: 0; right: 0; z-index: 95;
-      background: var(--nx-surface); border-top: 1px solid #E6E6E6; border-bottom: 3px solid var(--nx-brand);
+      background: var(--nx-surface); border-top: 1px solid var(--nx-border); border-bottom: 2px solid var(--nx-brand);
       box-shadow: 0 18px 40px rgba(16, 23, 20, 0.22);
       max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px);
       overflow-y: auto; overscroll-behavior: contain;
@@ -205,7 +205,7 @@
       background: var(--nx-steel-900);
       color: var(--nx-text-inverse);
       padding: 4rem 0 3.5rem;
-      border-bottom: 4px solid var(--nx-brand);
+      border-bottom: 2px solid var(--nx-brand);
     }
     .nx-eyebrow {
       display: inline-flex; align-items: center; gap: 0.625rem;
@@ -235,16 +235,15 @@
     .ds-section { padding: 3.5rem 0 0; }
     .ds-card {
       background: var(--nx-surface);
-      border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m);
-      box-shadow: var(--nx-elev-1);
+      border-radius: var(--nx-radius-m);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(16, 23, 20, 0.05), 0 3px 10px rgba(16, 23, 20, 0.05);
       padding: 2rem;
-      border: 1px solid #D4DCD8;
-      border-top: 3px solid var(--nx-steel-900);
+      border: none;
       position: relative;
     }
     .ds-card::after {
-      content: ""; position: absolute; top: -3px; left: -1px; width: 112px; height: 3px;
-      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      content: ""; position: absolute; top: 0; left: 0; width: 88px; height: 2px;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
     }
     @media (min-width: 768px) { .ds-card { padding: 2.5rem; } }
     .ds-kicker {
@@ -334,33 +333,43 @@
     .nx-btn--primary { color: var(--nx-steel-900); background: var(--nx-brand); }
     .nx-btn--primary:hover { background: #26E080; color: var(--nx-steel-900); padding-right: 2.2rem; margin-right: -0.25rem; }
     .nx-btn--secondary {
-      color: var(--nx-text); background: #82968C; font-weight: 600;
+      color: var(--nx-text); background: rgba(16, 23, 20, 0.18); font-weight: 600;
       padding: 0.78rem 1.85rem 0.78rem 1.65rem; isolation: isolate;
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%);
+      transition: background-color 0.16s ease, color 0.16s ease, padding-right 0.16s ease, margin-right 0.16s ease;
     }
     .nx-btn--secondary::before {
-      content: ""; position: absolute; top: 1.5px; bottom: 1.5px; left: 2.2px; right: 1.8px; z-index: -1;
-      background: #EAF0ED;
-      clip-path: polygon(0 0, calc(100% - 11.2px) 0, 100% 50%, calc(100% - 11.2px) 100%, 0 100%, 8.5px 50%);
+      content: ""; position: absolute;
+      top: 1px; bottom: 1px; left: 1.2px; right: 1.2px; z-index: -1;
+      background: #FFFFFF;
+      clip-path: polygon(0 0, calc(100% - 11.4px) 0, 100% 50%, calc(100% - 11.4px) 100%, 0 100%, 8.7px 50%);
       transition: background-color 0.16s ease;
     }
-    .nx-btn--secondary:hover { background: var(--nx-brand-hover); color: var(--nx-text-brand); padding-right: 2.05rem; margin-right: -0.2rem; }
+    .nx-btn--secondary:hover {
+      background: var(--nx-brand); color: var(--nx-text-brand);
+      padding-right: 2.05rem; margin-right: -0.2rem;
+    }
     .nx-btn--secondary:hover::before { background: var(--nx-brand-subtle); }
     .nx-btn--secondary:active { background: var(--nx-brand-pressed); color: var(--nx-brand-pressed); }
     .nx-btn--secondary:active::before { background: #D5F3E4; }
     .nx-btn--ghost-light {
-      color: #fff; background: rgba(255, 255, 255, 0.44); font-weight: 600;
+      color: #fff; background: rgba(255, 255, 255, 0.45); font-weight: 600;
       padding: 0.78rem 1.85rem 0.78rem 1.65rem; isolation: isolate;
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%);
+      transition: background-color 0.16s ease, color 0.16s ease, padding-right 0.16s ease, margin-right 0.16s ease;
     }
     .nx-btn--ghost-light::before {
-      content: ""; position: absolute; top: 1.5px; bottom: 1.5px; left: 2.2px; right: 1.8px; z-index: -1;
-      background: #22302A;
-      clip-path: polygon(0 0, calc(100% - 11.2px) 0, 100% 50%, calc(100% - 11.2px) 100%, 0 100%, 8.5px 50%);
+      content: ""; position: absolute;
+      top: 1px; bottom: 1px; left: 1.2px; right: 1.2px; z-index: -1;
+      background: #16231D;
+      clip-path: polygon(0 0, calc(100% - 11.4px) 0, 100% 50%, calc(100% - 11.4px) 100%, 0 100%, 8.7px 50%);
       transition: background-color 0.16s ease;
     }
-    .nx-btn--ghost-light:hover { background: var(--nx-brand); color: var(--nx-brand); padding-right: 2.05rem; margin-right: -0.2rem; }
-    .nx-btn--ghost-light:hover::before { background: #293A32; }
+    .nx-btn--ghost-light:hover {
+      background: var(--nx-brand); color: var(--nx-brand);
+      padding-right: 2.05rem; margin-right: -0.2rem;
+    }
+    .nx-btn--ghost-light:hover::before { background: #1B2F25; }
     .nx-btn--sm {
       padding: 0.52rem 1.65rem 0.52rem 1.05rem; font-size: 0.85rem;
       clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
@@ -369,7 +378,7 @@
 
     .comp-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
     @media (min-width: 900px) { .comp-grid { grid-template-columns: 1fr 1fr; } }
-    .comp-box { border: 1px solid #D4DCD8; border-radius: var(--nx-radius-m); padding: 1.5rem; min-width: 0; }
+    .comp-box { border: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(16, 23, 20, 0.05), 0 3px 10px rgba(16, 23, 20, 0.05); border-radius: var(--nx-radius-m); padding: 1.5rem; min-width: 0; background: var(--nx-surface); }
     .comp-box h4 { font-size: 0.875rem; font-family: var(--nx-ff-mono); text-transform: uppercase; color: var(--nx-text-muted); margin-bottom: 1rem; }
 
     /* Industrial Status Tags */
@@ -377,7 +386,7 @@
       display: inline-flex; align-items: center; gap: 0.45rem;
       font-family: var(--nx-ff-mono); font-size: 0.78rem; font-weight: 600;
       padding: 0.3rem 0.65rem; border-radius: var(--nx-radius-tag);
-      border-left: 3px solid transparent;
+      border-left: 2px solid transparent;
     }
     .status-dot { width: 7px; height: 7px; border-radius: 1px; }
     .status-pill--run { background: var(--nx-status-run-bg); color: var(--nx-status-run-text); border-left-color: var(--nx-status-run); }
@@ -393,13 +402,13 @@
     .code-block {
       background: var(--nx-steel-900); color: #E6F9F0; border-radius: var(--nx-radius-m);
       padding: 1.25rem 1.5rem; overflow-x: auto; font-size: 0.8125rem; line-height: 1.65;
-      border-left: 4px solid var(--nx-brand); position: relative;
+      border-left: 2px solid var(--nx-brand); position: relative;
     }
 
     /* Toast */
     .nx-toast {
       position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--nx-steel-900); color: #fff;
-      border-left: 4px solid var(--nx-brand); padding: 0.75rem 1.15rem; border-radius: var(--nx-radius-s);
+      border-left: 2px solid var(--nx-brand); padding: 0.75rem 1.15rem; border-radius: var(--nx-radius-s);
       box-shadow: var(--nx-elev-2); font-family: var(--nx-ff-mono); font-size: 0.8125rem;
       display: none; z-index: 500;
     }
@@ -415,14 +424,14 @@
   <!-- HEADER -->
   <header class="nx-header">
     <div class="nx-header-inner">
-      <a href="SmartFactory.html" class="nx-logo" aria-label="BYRA Technologics">
+      <a href="SmartFactory.html" class="nx-logo" aria-label="DFS — Digital Factory Solutions">
         <span class="nx-logo-mark" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
             <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
             <circle cx="12" cy="12" r="2.6" fill="currentColor"></circle>
           </svg>
         </span>
-        <span class="nx-logo-word">BYRA<b>Technologics</b><small>Brand & Design System</small></span>
+        <span class="nx-logo-word">DF<b>S</b><small>Digital Factory Solutions</small></span>
       </a>
 
       <nav class="nx-nav" aria-label="Mục lục Brand System">
@@ -466,8 +475,8 @@
   <!-- HERO -->
   <section class="bg-hero">
     <div class="nx-container">
-      <div class="nx-eyebrow"><span class="nx-eyebrow-tip">SYS v2.1</span><span>8C SPEED CHEVRON · BYRA DESIGN SYSTEM</span></div>
-      <h1>Hệ thống nhận diện thương hiệu <span>BYRA Technologics</span></h1>
+      <div class="nx-eyebrow"><span class="nx-eyebrow-tip">SYS v2.1</span><span>8C SPEED CHEVRON · DFS DESIGN SYSTEM</span></div>
+      <h1>Hệ thống nhận diện thương hiệu <span>DFS — Digital Factory Solutions</span></h1>
       <p>
         Ngôn ngữ thiết kế công nghiệp hiện đại kết hợp sắc xanh <strong>Emerald Jade (#18C96E)</strong> trên nền thép <strong>Industrial Steel (#101714)</strong>,
         đồng nhất hoàn toàn từ bộ phông chữ kỹ thuật quốc tế <strong>Inter + IBM Plex Mono</strong> đến các thành phần giao diện MES/Andon tại xưởng.
@@ -487,7 +496,7 @@
     <section class="ds-section" id="logo">
       <div class="ds-card">
         <span class="ds-kicker">01 · BRAND MARK & WORDMARK</span>
-        <h2 class="ds-title">Hệ thống Logo BYRA Technologics</h2>
+        <h2 class="ds-title">Hệ thống Logo DFS — Digital Factory Solutions</h2>
         <p class="ds-desc">
           Biểu tượng <strong>Hexagon Core Node</strong> tượng trưng cho nhà máy thông minh nơi thiết bị (OT), con người và hệ thống quản trị (IT/ERP) hội tụ về một tâm điểm dữ liệu duy nhất.
           Wordmark sử dụng <strong>Inter Bold (700)</strong> với <code>letter-spacing: -0.025em</code> và dòng định danh phụ bằng <strong>IBM Plex Mono</strong>.
@@ -503,7 +512,7 @@
                   <circle cx="12" cy="12" r="2.6" fill="currentColor"></circle>
                 </svg>
               </span>
-              <span class="nx-logo-word">BYRA<b>Technologics</b><small>Smart Manufacturing</small></span>
+              <span class="nx-logo-word">DF<b>S</b><small>Digital Factory Solutions</small></span>
             </div>
             <div class="logo-stage-caption"><span>Phiên bản nền sáng (Chính)</span><span>#FFFFFF</span></div>
           </div>
@@ -517,7 +526,7 @@
                   <circle cx="12" cy="12" r="2.6" fill="currentColor"></circle>
                 </svg>
               </span>
-              <span class="nx-logo-word">BYRA<b style="color: var(--nx-brand);">Technologics</b><small style="color: rgba(255,255,255,0.65);">Smart Manufacturing</small></span>
+              <span class="nx-logo-word">DF<b style="color: var(--nx-brand);">S</b><small style="color: rgba(255,255,255,0.65);">Digital Factory Solutions</small></span>
             </div>
             <div class="logo-stage-caption"><span>Phiên bản nền tối (Andon / Dark UI)</span><span>#101714</span></div>
           </div>
@@ -836,6 +845,7 @@
   --nx-surface: #FFFFFF;
   --nx-surface-alt: #F4F6F5;
   --nx-border: rgba(16, 23, 20, 0.10);
+  --nx-border-strong: rgba(16, 23, 20, 0.16);
 
   /* Industrial Precision Radius (8C Scale) */
   --nx-radius-xs: 2px;

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sản phẩm | BYRA Technologics — Thiết bị IIoT, Auto-ID, Andon & Phần mềm Smart Factory</title>
-  <meta name="description" content="Khám phá danh mục sản phẩm và thiết bị công nghiệp chuẩn mở của BYRA Technologics: Bộ thu thập dữ liệu IIoT, máy quét mã vạch & PDA, màn hình Panel PC, bảng Andon, máy in nhãn GS1 và phần mềm MES." />
+  <title>Sản phẩm | DFS — Thiết bị IIoT, Auto-ID, Andon & Phần mềm Smart Factory</title>
+  <meta name="description" content="Khám phá danh mục sản phẩm và thiết bị công nghiệp chuẩn mở của DFS: Bộ thu thập dữ liệu IIoT, máy quét mã vạch & PDA, màn hình Panel PC, bảng Andon, máy in nhãn GS1 và phần mềm MES." />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/favicon-32x32.png" type="image/png" sizes="32x32" />
@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ==========================================================================
-       BYRA Technologics Design System — tokens (xem docs/BrandGuide_ThietKe.md)
+       DFS Design System — tokens (xem docs/BrandGuide_ThietKe.md)
        ========================================================================== */
     :root {
       --nx-header-height: 72px;
@@ -40,6 +40,7 @@
       --nx-surface: #FFFFFF;
       --nx-surface-alt: #F4F6F5;
       --nx-border: rgba(16, 23, 20, 0.10);
+      --nx-border-strong: rgba(16, 23, 20, 0.16);
       --nx-border-rule: #CCCCCC;
 
       /* Text */
@@ -47,6 +48,20 @@
       --nx-text-muted: #5C6661;
       --nx-text-inverse: #FFFFFF;
       --nx-text-brand: #0A8754;
+
+      /* Semantic Shop-floor Status (Andon / MES) */
+      --nx-status-run: #18C96E;
+      --nx-status-run-bg: #E6F9F0;
+      --nx-status-run-text: #06683F;
+      --nx-status-idle: #F5A524;
+      --nx-status-idle-bg: #FEF3E2;
+      --nx-status-idle-text: #B54708;
+      --nx-status-down: #D92D20;
+      --nx-status-down-bg: #FEE4E2;
+      --nx-status-down-text: #B42318;
+      --nx-status-info: #2E90FA;
+      --nx-status-info-bg: #EFF8FF;
+      --nx-status-info-text: #175CD3;
 
       /* Radius & Elevation (8C Industrial Precision Scale) */
       --nx-radius-xs: 2px;
@@ -121,6 +136,7 @@
     .nx-logo small {
       display: block; font-family: var(--nx-ff-mono); font-size: 0.625rem; font-weight: 600;
       letter-spacing: 0.12em; text-transform: uppercase; color: var(--nx-text-muted); line-height: 1; margin-top: 2px;
+      white-space: nowrap;
     }
     .nx-logo-word { line-height: 1.05; }
     .nx-logo-word b { color: var(--nx-text-brand); font-weight: 700; }
@@ -137,7 +153,7 @@
     /* Axis-style crisp 3.5px bottom bar in Emerald Jade (#18C96E) */
     .nx-nav-btn::after {
       content: ""; position: absolute; left: 0.85rem; right: 0.85rem; bottom: 14px;
-      height: 3.5px; background: var(--nx-brand); border-radius: 0;
+      height: 2px; background: var(--nx-brand); border-radius: 0;
       transform: scaleX(0); transform-origin: left center;
       transition: transform 0.2s ease;
     }
@@ -157,6 +173,20 @@
     .nx-link:hover::after, .nx-link:focus-visible::after { transform: scaleX(1); }
 
     .nx-header-utils { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+    .nx-lang-switch {
+      display: inline-flex; align-items: center;
+      border: 1px solid var(--nx-border-strong); border-radius: var(--nx-radius-s);
+      background: var(--nx-surface-alt); padding: 2px; gap: 2px; height: 34px;
+    }
+    .nx-lang-btn {
+      border: none; background: transparent; color: var(--nx-text-muted);
+      font-family: var(--nx-ff-mono); font-size: 0.74rem; font-weight: 700;
+      padding: 0 0.48rem; height: 100%; border-radius: var(--nx-radius-xs);
+      cursor: pointer; transition: background-color 0.15s ease, color 0.15s ease;
+      display: inline-flex; align-items: center; justify-content: center; letter-spacing: 0.04em;
+    }
+    .nx-lang-btn:hover { color: var(--nx-text); }
+    .nx-lang-btn.is-active { background: var(--nx-steel-900); color: var(--nx-brand); }
     .nx-cta-short { display: none; }
     @media (max-width: 439px) {
       .nx-cta-full { display: none; }
@@ -172,7 +202,7 @@
     /* ---------- Mobile Navigation Toggle & Drawer (< 1000px) ---------- */
     .nx-menu-toggle {
       width: 40px; height: 40px; padding: 0; border-radius: var(--nx-radius-s);
-      border: 1.5px solid #D4DCD8; border-top: 2.5px solid var(--nx-steel-900);
+      border: 1px solid var(--nx-border-strong);
       background: var(--nx-surface-alt); color: var(--nx-steel-900);
       display: inline-flex; align-items: center; justify-content: center;
       cursor: pointer; flex-shrink: 0; position: relative;
@@ -189,19 +219,21 @@
     @media (min-width: 1000px) { .nx-menu-toggle { display: none; } }
 
     @media (max-width: 479px) {
-      .nx-header-inner { padding: 0 0.75rem; gap: 0.45rem; }
-      .nx-header-utils { gap: 0.4rem; }
-      .nx-header-utils .nx-btn--sm { padding: 0.42rem 1.1rem 0.42rem 0.72rem; font-size: 0.76rem; }
-      .nx-menu-toggle { width: 38px; height: 38px; }
-      .nx-logo { font-size: 1.02rem; gap: 0.4rem; }
-      .nx-logo-mark { width: 28px; height: 28px; }
-      .nx-logo small { font-size: 0.52rem; letter-spacing: 0.06em; }
+      .nx-header-inner { padding: 0 0.65rem; gap: 0.35rem; }
+      .nx-header-utils { gap: 0.32rem; }
+      .nx-header-utils .nx-btn--sm { padding: 0.38rem 0.92rem 0.38rem 0.58rem; font-size: 0.72rem; }
+      .nx-menu-toggle { width: 34px; height: 34px; }
+      .nx-lang-switch { height: 30px; padding: 1px; gap: 1px; }
+      .nx-lang-btn { padding: 0 0.32rem; font-size: 0.65rem; }
+      .nx-logo { font-size: 0.98rem; gap: 0.35rem; }
+      .nx-logo-mark { width: 26px; height: 26px; }
+      .nx-logo small { font-size: 0.46rem; letter-spacing: 0.03em; }
     }
 
     @keyframes mobSlide { from { transform: translateY(-4px); } to { transform: none; } }
     .nx-mobile-nav {
       display: none; position: absolute; top: var(--nx-header-height); left: 0; right: 0; z-index: 195;
-      background: var(--nx-surface); border-top: 1px solid #E6E6E6; border-bottom: 3px solid var(--nx-brand);
+      background: var(--nx-surface); border-top: 1px solid var(--nx-border); border-bottom: 2px solid var(--nx-brand);
       box-shadow: 0 18px 40px rgba(16, 23, 20, 0.22);
       max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px);
       overflow-y: auto; overscroll-behavior: contain;
@@ -231,7 +263,7 @@
 
     .nx-mob-sub {
       display: none; padding: 0.35rem 0.75rem 0.95rem 0.9rem; margin-bottom: 0.45rem;
-      background: var(--nx-surface-alt); border-left: 3px solid var(--nx-brand);
+      background: var(--nx-surface-alt); border-left: 2px solid var(--nx-brand);
       border-radius: 0 var(--nx-radius-s) var(--nx-radius-s) 0;
     }
     .nx-mob-sub.is-open { display: grid; gap: 0.65rem; }
@@ -284,33 +316,43 @@
     .nx-btn--primary:hover { background: #26E080; color: var(--nx-steel-900); padding-right: 2.1rem; margin-right: -0.25rem; }
     .nx-btn--primary:active { background: var(--nx-brand-hover); color: #fff; }
     .nx-btn--secondary {
-      color: var(--nx-text); background: #82968C; font-weight: 600;
+      color: var(--nx-text); background: rgba(16, 23, 20, 0.18); font-weight: 600;
       padding: 0.72rem 1.85rem 0.72rem 1.65rem; isolation: isolate;
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%);
+      transition: background-color 0.16s ease, color 0.16s ease, padding-right 0.16s ease, margin-right 0.16s ease;
     }
     .nx-btn--secondary::before {
-      content: ""; position: absolute; top: 1.5px; bottom: 1.5px; left: 2.2px; right: 1.8px; z-index: -1;
-      background: #EAF0ED;
-      clip-path: polygon(0 0, calc(100% - 11.2px) 0, 100% 50%, calc(100% - 11.2px) 100%, 0 100%, 8.5px 50%);
+      content: ""; position: absolute;
+      top: 1px; bottom: 1px; left: 1.2px; right: 1.2px; z-index: -1;
+      background: #FFFFFF;
+      clip-path: polygon(0 0, calc(100% - 11.4px) 0, 100% 50%, calc(100% - 11.4px) 100%, 0 100%, 8.7px 50%);
       transition: background-color 0.16s ease;
     }
-    .nx-btn--secondary:hover { background: var(--nx-brand-hover); color: var(--nx-text-brand); padding-right: 2.05rem; margin-right: -0.2rem; }
+    .nx-btn--secondary:hover {
+      background: var(--nx-brand); color: var(--nx-text-brand);
+      padding-right: 2.05rem; margin-right: -0.2rem;
+    }
     .nx-btn--secondary:hover::before { background: var(--nx-brand-subtle); }
     .nx-btn--secondary:active { background: var(--nx-brand-pressed); color: var(--nx-brand-pressed); }
     .nx-btn--secondary:active::before { background: #D5F3E4; }
     .nx-btn--ghost-light {
-      color: #fff; background: rgba(255, 255, 255, 0.44); font-weight: 600;
+      color: #fff; background: rgba(255, 255, 255, 0.45); font-weight: 600;
       padding: 0.72rem 1.85rem 0.72rem 1.65rem; isolation: isolate;
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%);
+      transition: background-color 0.16s ease, color 0.16s ease, padding-right 0.16s ease, margin-right 0.16s ease;
     }
     .nx-btn--ghost-light::before {
-      content: ""; position: absolute; top: 1.5px; bottom: 1.5px; left: 2.2px; right: 1.8px; z-index: -1;
-      background: #22302A;
-      clip-path: polygon(0 0, calc(100% - 11.2px) 0, 100% 50%, calc(100% - 11.2px) 100%, 0 100%, 8.5px 50%);
+      content: ""; position: absolute;
+      top: 1px; bottom: 1px; left: 1.2px; right: 1.2px; z-index: -1;
+      background: #16231D;
+      clip-path: polygon(0 0, calc(100% - 11.4px) 0, 100% 50%, calc(100% - 11.4px) 100%, 0 100%, 8.7px 50%);
       transition: background-color 0.16s ease;
     }
-    .nx-btn--ghost-light:hover { background: var(--nx-brand); color: var(--nx-brand); padding-right: 2.05rem; margin-right: -0.2rem; }
-    .nx-btn--ghost-light:hover::before { background: #293A32; }
+    .nx-btn--ghost-light:hover {
+      background: var(--nx-brand); color: var(--nx-brand);
+      padding-right: 2.05rem; margin-right: -0.2rem;
+    }
+    .nx-btn--ghost-light:hover::before { background: #1B2F25; }
     .nx-btn--sm {
       padding: 0.45rem 1.35rem 0.45rem 0.85rem; font-size: 0.8rem;
       clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
@@ -425,7 +467,13 @@
     .nx-axis-spot:hover::after, .nx-axis-spot:focus-visible::after { transform: scaleX(1); }
     .nx-axis-spot-thumb {
       width: 60px; height: 60px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
-      background: var(--nx-steel-900); border: 2px solid var(--nx-brand);
+      background: var(--nx-steel-900); border: 1px solid var(--nx-brand);
+      box-shadow: 0 0 0 1px rgba(24, 201, 110, 0.18), 0 2px 6px rgba(16, 23, 20, 0.08);
+      transition: border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+    .nx-axis-spot:hover .nx-axis-spot-thumb {
+      border-color: var(--nx-brand-hover);
+      box-shadow: 0 0 0 1px var(--nx-brand), 0 4px 12px rgba(24, 201, 110, 0.25);
     }
     .nx-axis-spot-thumb img { width: 100%; height: 100%; object-fit: cover; }
     .nx-axis-spot strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; }
@@ -549,7 +597,7 @@
     .ac-deck-card:hover .ac-deck-media img { transform: scale(1.05); opacity: 0.55; }
     .ac-deck-icon {
       position: relative; z-index: 2; width: 64px; height: 64px; border-radius: var(--nx-radius-m);
-      background: rgba(16, 23, 20, 0.78); border: 1.5px solid var(--nx-brand);
+      background: rgba(16, 23, 20, 0.78); border: 1px solid var(--nx-brand);
       color: var(--nx-brand); display: flex; align-items: center; justify-content: center;
       box-shadow: 0 4px 14px rgba(0,0,0,0.3);
     }
@@ -578,19 +626,19 @@
     @media (min-width: 860px) { .ac-spotlights-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .ac-spot-card {
-      background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m);
-      border: 1px solid #D4DCD8; border-top: 3px solid var(--nx-steel-900); position: relative;
-      box-shadow: 0 10px 24px rgba(16, 23, 20, 0.10);
+      background: var(--nx-surface); border-radius: var(--nx-radius-m);
+      border: none; position: relative;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(16, 23, 20, 0.05), 0 3px 10px rgba(16, 23, 20, 0.05);
       display: flex; flex-direction: column;
       text-align: center; transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
     .ac-spot-card::after {
-      content: ""; position: absolute; top: -3px; left: -1px; width: 104px; height: 3px; z-index: 3;
-      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      content: ""; position: absolute; top: 0; left: 0; width: 72px; height: 2px; z-index: 3;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
       transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .ac-spot-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(16, 23, 20, 0.15); }
-    .ac-spot-card:hover::after { width: calc(100% + 2px); }
+    .ac-spot-card:hover { transform: translateY(-3px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(24, 201, 110, 0.28), 0 6px 18px rgba(16, 23, 20, 0.08); }
+    .ac-spot-card:hover::after { width: 100%; }
     .ac-spot-media { aspect-ratio: 3 / 2; overflow: hidden; background: var(--nx-steel-900); position: relative; }
     .ac-spot-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
     .ac-spot-card:hover .ac-spot-media img { transform: scale(1.04); }
@@ -629,20 +677,20 @@
     @media (min-width: 1024px) { .ac-single-grid { grid-template-columns: repeat(4, 1fr); } }
 
     .ac-single-card {
-      position: relative; background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m);
-      border: 1px solid #D4DCD8; border-top: 3px solid var(--nx-steel-900);
-      box-shadow: 0 4px 10px rgba(16, 23, 20, 0.12);
+      position: relative; background: var(--nx-surface); border-radius: var(--nx-radius-m);
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(16, 23, 20, 0.05), 0 3px 10px rgba(16, 23, 20, 0.05);
       padding: 1.35rem; display: flex; flex-direction: column;
       text-decoration: none; color: var(--nx-text); min-height: 330px;
       transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer;
     }
     .ac-single-card::after {
-      content: ""; position: absolute; top: -3px; left: -1px; width: 84px; height: 3px; z-index: 3;
-      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      content: ""; position: absolute; top: 0; left: 0; width: 56px; height: 2px; z-index: 3;
+      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
       transition: width 0.26s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .ac-single-card:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(16, 23, 20, 0.16); }
-    .ac-single-card:hover::after, .ac-single-card:focus-visible::after { width: calc(100% + 2px); }
+    .ac-single-card:hover { transform: translateY(-3px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(24, 201, 110, 0.28), 0 6px 18px rgba(16, 23, 20, 0.08); }
+    .ac-single-card:hover::after, .ac-single-card:focus-visible::after { width: 100%; }
 
     /* 8C Speed Chevron "NEW" Ribbon Badge in Emerald Jade */
     .ac-badge-new {
@@ -693,7 +741,7 @@
     .nx-footer { background: var(--nx-brand); color: var(--nx-steel-900); padding: 3.5rem 0 2rem; }
     .nx-footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2.5rem; }
     @media (min-width: 768px) { .nx-footer-grid { grid-template-columns: repeat(5, 1fr); } }
-    .nx-footer h4 { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; }
+    .nx-footer h4 { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--nx-border); }
     .nx-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
     .nx-footer a { color: inherit; text-decoration: none; font-size: 0.9375rem; font-weight: 500; opacity: 0.9; position: relative; display: inline-block; }
     .nx-footer a::after {
@@ -714,10 +762,10 @@
     }
     .nx-form { display: grid; gap: 0.75rem; }
     .nx-form label { font-size: 0.8125rem; font-weight: 600; display: grid; gap: 0.3rem; }
-    .nx-form input, .nx-form select, .nx-form textarea { padding: 0.65rem 0.9rem; border-radius: var(--nx-radius-s); border: 1.5px solid rgba(16,23,20,0.18); font-family: var(--nx-ff-body); font-size: 0.9375rem; }
+    .nx-form input, .nx-form select, .nx-form textarea { padding: 0.65rem 0.9rem; border-radius: var(--nx-radius-s); border: 1px solid var(--nx-border-strong); font-family: var(--nx-ff-body); font-size: 0.9375rem; }
     .nx-form-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     @media (max-width: 519px) { .nx-form-2 { grid-template-columns: 1fr; } }
-    .nx-toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--nx-steel-900); color: #fff; border-left: 4px solid var(--nx-brand); padding: 0.85rem 1.25rem; border-radius: var(--nx-radius-s); box-shadow: var(--nx-elev-2); font-size: 0.875rem; font-weight: 600; display: none; z-index: 600; }
+    .nx-toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--nx-steel-900); color: #fff; border-left: 2px solid var(--nx-brand); padding: 0.85rem 1.25rem; border-radius: var(--nx-radius-s); box-shadow: var(--nx-elev-2); font-size: 0.875rem; font-weight: 600; display: none; z-index: 600; }
     .nx-toast.is-visible { display: block; }
 
     @media (prefers-reduced-motion: reduce) {
@@ -730,42 +778,46 @@
   <!-- TOPBAR -->
   <div class="nx-topbar">
     <div class="nx-container">
-      <span class="nx-topbar-tagline">Giải pháp & Thiết bị Smart Factory chuẩn mở — BYRA Technologics</span>
-      <span>Tư vấn & Báo giá dự án: <a href="tel:+84000000000">(+84) 000 000 000</a> · <a href="SmartFactory.html">Trang Giải pháp MES</a></span>
+      <span class="nx-topbar-tagline" data-i18n="topbar.pr.tagline">Giải pháp & Thiết bị Smart Factory chuẩn mở — DFS</span>
+      <span>Tư vấn & Báo giá dự án: <a href="tel:+84000000000">(+84) 000 000 000</a> · <a href="SmartFactory.html" data-i18n="topbar.pr.back_mes">Trang Giải pháp MES</a></span>
     </div>
   </div>
 
   <!-- HEADER (Axis style with Emerald Jade active underline bar) -->
   <header class="nx-header">
     <div class="nx-header-inner">
-      <a href="SmartFactory.html" class="nx-logo" aria-label="BYRA Technologics — Trang chủ">
+      <a href="SmartFactory.html" class="nx-logo" aria-label="DFS — Digital Factory Solutions — Trang chủ">
         <span class="nx-logo-mark" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
             <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
             <circle cx="12" cy="12" r="2.6" fill="currentColor"></circle>
           </svg>
         </span>
-        <span class="nx-logo-word">BYRA<b>Technologics</b><small>Smart Manufacturing</small></span>
+        <span class="nx-logo-word">DF<b>S</b><small>Digital Factory Solutions</small></span>
       </a>
 
       <nav class="nx-nav" aria-label="Điều hướng chính">
         <button type="button" class="nx-nav-btn" id="nav-solutions-btn" aria-expanded="false" aria-controls="mega-solutions-panel">
-          <span>Giải pháp</span>
+          <span data-i18n="nav.solutions">Giải pháp</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <button type="button" class="nx-nav-btn is-current-page" id="nav-products-btn" aria-expanded="false" aria-controls="mega-products-panel">
-          <span>Sản phẩm</span>
+          <span data-i18n="nav.products">Sản phẩm</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
-        <a href="SmartFactory.html#platform" class="nx-nav-btn">Nền tảng</a>
-        <a href="SmartFactory.html#cases" class="nx-nav-btn">Dự án</a>
-        <a href="SmartFactory.html#roadmap" class="nx-nav-btn">Triển khai</a>
-        <a href="SmartFactory.html#about" class="nx-nav-btn">Về chúng tôi</a>
+        <a href="SmartFactory.html#platform" class="nx-nav-btn" data-i18n="nav.platform">Nền tảng</a>
+        <a href="SmartFactory.html#cases" class="nx-nav-btn" data-i18n="nav.cases">Dự án</a>
+        <a href="SmartFactory.html#roadmap" class="nx-nav-btn" data-i18n="nav.roadmap">Triển khai</a>
+        <a href="SmartFactory.html#about" class="nx-nav-btn" data-i18n="nav.about">Về chúng tôi</a>
       </nav>
 
       <div class="nx-header-utils">
-        <button type="button" class="nx-btn nx-btn--primary nx-btn--sm" data-quote-item="Tư vấn & Báo giá tổng thể danh mục BYRA">
-          <span class="nx-cta-full">Liên hệ báo giá</span><span class="nx-cta-short">Báo giá</span>
+        <div class="nx-lang-switch" role="group" aria-label="Language switcher">
+          <button type="button" class="nx-lang-btn is-active" data-lang-btn="vi" aria-pressed="true">VI</button>
+          <button type="button" class="nx-lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
+        </div>
+        <button type="button" class="nx-btn nx-btn--primary nx-btn--sm" data-quote-item="Tư vấn & Báo giá tổng thể danh mục DFS">
+          <span class="nx-cta-full" data-i18n="nav.quote_full">Liên hệ báo giá</span><span class="nx-cta-short" data-i18n="nav.quote_short">Báo giá</span>
         </button>
         <button type="button" class="nx-menu-toggle" id="nav-mobile-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Mở menu điều hướng">
           <svg class="nx-ico-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true">
@@ -973,7 +1025,7 @@
 
   <!-- SECTION A: TWO-TIER HERO (Axis /products structure) -->
   <section class="ac-banner">
-    <img src="assets/images/hero-smart-factory.jpg" alt="Hệ sinh thái thiết bị công nghiệp và phần mềm BYRA Technologics" class="ac-banner-bg" />
+    <img src="assets/images/hero-smart-factory.jpg" alt="Hệ sinh thái thiết bị công nghiệp và phần mềm DFS" class="ac-banner-bg" />
     <div class="ac-banner-overlay"></div>
     <div class="nx-container" style="width: 100%;">
       <div class="ac-banner-content">
@@ -986,7 +1038,7 @@
     <div class="nx-container">
       <h1>Sản phẩm</h1>
       <p class="ac-preamble">
-        Lựa chọn từ danh mục thiết bị công nghiệp chuẩn mở và phần mềm đóng gói của BYRA Technologics cho thu thập dữ liệu IIoT, điều hành sản xuất MES, kiểm soát chất lượng, truy xuất nguồn gốc GS1 và hiển thị Andon tại xưởng.
+        Lựa chọn từ danh mục thiết bị công nghiệp chuẩn mở và phần mềm đóng gói của DFS cho thu thập dữ liệu IIoT, điều hành sản xuất MES, kiểm soát chất lượng, truy xuất nguồn gốc GS1 và hiển thị Andon tại xưởng.
       </p>
     </div>
   </section>
@@ -1056,7 +1108,7 @@
           </div>
           <div class="ac-deck-body">
             <h3>Phần mềm điều hành sản xuất</h3>
-            <p>Các gói bản quyền BYRA MES, Traceability GS1, OEE, QMS, WMS và CMMS linh hoạt.</p>
+            <p>Các gói bản quyền DFS MES, Traceability GS1, OEE, QMS, WMS và CMMS linh hoạt.</p>
           </div>
         </a>
 
@@ -1233,7 +1285,7 @@
     <div class="nx-container">
       <div class="ac-center-header">
         <h2>Sản phẩm mới</h2>
-        <p>Cập nhật những thiết bị phần cứng IIoT và phiên bản phần mềm mới nhất từ hệ sinh thái BYRA Technologics.</p>
+        <p>Cập nhật những thiết bị phần cứng IIoT và phiên bản phần mềm mới nhất từ hệ sinh thái DFS.</p>
       </div>
 
       <h3 class="ac-collection-title">
@@ -1243,97 +1295,97 @@
 
       <div class="ac-single-grid">
         <!-- Item 1 -->
-        <div class="ac-single-card" data-quote-item="BYRA EdgeBox X2 AI Gateway (BYRA-HW-GW220)">
+        <div class="ac-single-card" data-quote-item="DFS EdgeBox X2 AI Gateway (DFS-HW-GW220)">
           <span class="ac-badge-new">NEW</span>
           <div class="ac-single-media">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"></rect><line x1="6" y1="10" x2="6" y2="14"></line><line x1="10" y1="10" x2="10" y2="14"></line><circle cx="17" cy="12" r="2"></circle></svg>
-            <span class="ac-single-sku">BYRA-HW-GW220</span>
+            <span class="ac-single-sku">DFS-HW-GW220</span>
           </div>
-          <h3>BYRA EdgeBox X2 AI Gateway</h3>
+          <h3>DFS EdgeBox X2 AI Gateway</h3>
           <p>Bộ thu thập dữ liệu PLC tích hợp NPU 6 TOPS, bộ đệm SQLite WAL 60 ngày và 5G/Wi-Fi 6.</p>
           <div class="ac-single-meta"><span>OPC UA · S7 · Modbus</span><span>Báo giá →</span></div>
         </div>
 
         <!-- Item 2 -->
-        <div class="ac-single-card" data-quote-item="BYRA PanelPC P15-Pro IP66 (BYRA-HW-PPC15P)">
+        <div class="ac-single-card" data-quote-item="DFS PanelPC P15-Pro IP66 (DFS-HW-PPC15P)">
           <span class="ac-badge-new">NEW</span>
           <div class="ac-single-media">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            <span class="ac-single-sku">BYRA-HW-PPC15P</span>
+            <span class="ac-single-sku">DFS-HW-PPC15P</span>
           </div>
-          <h3>BYRA PanelPC P15-Pro IP66</h3>
+          <h3>DFS PanelPC P15-Pro IP66</h3>
           <p>Màn hình cảm ứng công nghiệp 15.6" FHD viền mỏng, tích hợp sẵn đầu đọc thẻ nhân viên NFC/RFID.</p>
           <div class="ac-single-meta"><span>Core i5 · 16GB · IP66</span><span>Báo giá →</span></div>
         </div>
 
         <!-- Item 3 -->
-        <div class="ac-single-card" data-quote-item="BYRA SmartPDA H65 5G Scanner (BYRA-HW-PDA65)">
+        <div class="ac-single-card" data-quote-item="DFS SmartPDA H65 5G Scanner (DFS-HW-PDA65)">
           <span class="ac-badge-new">NEW</span>
           <div class="ac-single-media">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2" width="12" height="20" rx="2"></rect><line x1="10" y1="18" x2="14" y2="18"></line><path d="M9 6h6v5H9z"></path></svg>
-            <span class="ac-single-sku">BYRA-HW-PDA65</span>
+            <span class="ac-single-sku">DFS-HW-PDA65</span>
           </div>
-          <h3>BYRA SmartPDA H65 2D/DPM</h3>
+          <h3>DFS SmartPDA H65 2D/DPM</h3>
           <p>Thiết bị kiểm kho Android 14 siêu bền IP67, đọc mã DataMatrix khắc laser và mã GS1 tốc độ cao.</p>
           <div class="ac-single-meta"><span>Pin 6000mAh · IP67</span><span>Báo giá →</span></div>
         </div>
 
         <!-- Item 4 -->
-        <div class="ac-single-card" data-quote-item="BYRA VisionCam V800 DPM/OCR (BYRA-HW-VSN80)">
+        <div class="ac-single-card" data-quote-item="DFS VisionCam V800 DPM/OCR (DFS-HW-VSN80)">
           <span class="ac-badge-new">NEW</span>
           <div class="ac-single-media">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"></path></svg>
-            <span class="ac-single-sku">BYRA-HW-VSN80</span>
+            <span class="ac-single-sku">DFS-HW-VSN80</span>
           </div>
-          <h3>BYRA VisionCam V800 AI</h3>
+          <h3>DFS VisionCam V800 AI</h3>
           <p>Camera thông minh đọc mã vạch băng tải 60 sản phẩm/giây kết hợp kiểm tra lỗi nhãn dán và hạn dùng OCR.</p>
           <div class="ac-single-meta"><span>PROFINET · EtherNet/IP</span><span>Báo giá →</span></div>
         </div>
 
         <!-- Item 5 -->
-        <div class="ac-single-card" data-quote-item="BYRA AndonTower W4 LoRa (BYRA-HW-TLW04)">
+        <div class="ac-single-card" data-quote-item="DFS AndonTower W4 LoRa (DFS-HW-TLW04)">
           <span class="ac-badge-new">NEW</span>
           <div class="ac-single-media">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="2" width="6" height="14" rx="2"></rect><line x1="9" y1="7" x2="15" y2="7"></line><line x1="9" y1="11" x2="15" y2="11"></line><line x1="12" y1="16" x2="12" y2="22"></line><line x1="8" y1="22" x2="16" y2="22"></line></svg>
-            <span class="ac-single-sku">BYRA-HW-TLW04</span>
+            <span class="ac-single-sku">DFS-HW-TLW04</span>
           </div>
-          <h3>BYRA AndonTower W4 LoRa</h3>
+          <h3>DFS AndonTower W4 LoRa</h3>
           <p>Đèn tháp LED 4 tầng tích hợp truyền thông không dây Sub-1GHz và hộp 4 nút gọi hỗ trợ tại trạm.</p>
           <div class="ac-single-meta"><span>Phủ sóng 500m · 85dB</span><span>Báo giá →</span></div>
         </div>
 
         <!-- Item 6 -->
-        <div class="ac-single-card" data-quote-item="BYRA LabelPrint Z600 GS1 (BYRA-HW-PRT600)">
+        <div class="ac-single-card" data-quote-item="DFS LabelPrint Z600 GS1 (DFS-HW-PRT600)">
           <span class="ac-badge-new">NEW</span>
           <div class="ac-single-media">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-            <span class="ac-single-sku">BYRA-HW-PRT600</span>
+            <span class="ac-single-sku">DFS-HW-PRT600</span>
           </div>
-          <h3>BYRA LabelPrint Z600 GS1</h3>
+          <h3>DFS LabelPrint Z600 GS1</h3>
           <p>Máy in nhãn công nghiệp 600 DPI khung kim loại nguyên khối chuyên in tem vi mạch PCB và nhãn SSCC.</p>
           <div class="ac-single-meta"><span>600 DPI · ZPL II / LAN</span><span>Báo giá →</span></div>
         </div>
 
         <!-- Item 7 -->
-        <div class="ac-single-card" data-quote-item="BYRA PowerMeter PM-3P ESG (BYRA-HW-PM3P)">
+        <div class="ac-single-card" data-quote-item="DFS PowerMeter PM-3P ESG (DFS-HW-PM3P)">
           <span class="ac-badge-new">NEW</span>
           <div class="ac-single-media">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            <span class="ac-single-sku">BYRA-HW-PM3P</span>
+            <span class="ac-single-sku">DFS-HW-PM3P</span>
           </div>
-          <h3>BYRA PowerMeter PM-3P</h3>
+          <h3>DFS PowerMeter PM-3P</h3>
           <p>Đồng hồ đo điện năng 3 pha kèm 3 biến dòng CT kẹp mở, tính toán định mức kWh/sản phẩm và phát thải CO₂.</p>
           <div class="ac-single-meta"><span>Modbus RTU · MQTT</span><span>Báo giá →</span></div>
         </div>
 
         <!-- Item 8 -->
-        <div class="ac-single-card" data-quote-item="BYRA MES & Trace Suite v4.2 (BYRA-SW-MES42)">
+        <div class="ac-single-card" data-quote-item="DFS MES & Trace Suite v4.2 (DFS-SW-MES42)">
           <span class="ac-badge-new">NEW</span>
           <div class="ac-single-media">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 17.5h7M17.5 14v7"></path></svg>
-            <span class="ac-single-sku">BYRA-SW-MES42</span>
+            <span class="ac-single-sku">DFS-SW-MES42</span>
           </div>
-          <h3>BYRA MES & Trace Suite v4.2</h3>
+          <h3>DFS MES & Trace Suite v4.2</h3>
           <p>Phiên bản phần mềm hợp nhất điều hành sản xuất, phả hệ lô GS1 và kiểm soát SPC thời gian thực.</p>
           <div class="ac-single-meta"><span>ISA-95 · 21 CFR Part 11</span><span>Báo giá →</span></div>
         </div>
@@ -1355,7 +1407,7 @@
             <img src="assets/images/hero-smart-factory.jpg" alt="Giải pháp theo công nghệ" loading="lazy" />
           </div>
           <h3>Giải pháp theo công nghệ cốt lõi</h3>
-          <p>Từ kết nối IIoT đa giao thức, giám sát OEE thời gian thực đến phả hệ truy xuất nguồn gốc chuẩn GS1 — công nghệ của BYRA giúp nhà máy minh bạch từng công đoạn.</p>
+          <p>Từ kết nối IIoT đa giao thức, giám sát OEE thời gian thực đến phả hệ truy xuất nguồn gốc chuẩn GS1 — công nghệ của DFS giúp nhà máy minh bạch từng công đoạn.</p>
           <a href="SmartFactory.html#solutions" class="ac-link-cta">XEM THÊM</a>
         </article>
 
@@ -1373,7 +1425,7 @@
             <img src="assets/images/card-mes-assembly.jpg" alt="Câu chuyện khách hàng" loading="lazy" />
           </div>
           <h3>Dự án & Câu chuyện khách hàng</h3>
-          <p>Xem cách các nhà máy tại Việt Nam vận hành thực tế hệ thống phần mềm và thiết bị BYRA để tăng 18% OEE và rút ngắn truy xuất lô xuống dưới 30 giây.</p>
+          <p>Xem cách các nhà máy tại Việt Nam vận hành thực tế hệ thống phần mềm và thiết bị DFS để tăng 18% OEE và rút ngắn truy xuất lô xuống dưới 30 giây.</p>
           <a href="SmartFactory.html#cases" class="ac-link-cta">XEM THÊM</a>
         </article>
       </div>
@@ -1416,7 +1468,7 @@
         <div>
           <h4>Công ty</h4>
           <ul>
-            <li><a href="SmartFactory.html#about">Về BYRA Technologics</a></li>
+            <li><a href="SmartFactory.html#about">Về DFS</a></li>
             <li><a href="BrandSystem.html">Hệ thống nhận diện (Brand Guide)</a></li>
             <li><a href="SmartFactory.html#cases">Dự án tiêu biểu</a></li>
             <li><a href="SmartFactory.html#roadmap">Phương pháp triển khai</a></li>
@@ -1426,13 +1478,13 @@
           <h4>Liên hệ</h4>
           <ul>
             <li><a href="tel:+84000000000">(+84) 000 000 000</a></li>
-            <li><a href="mailto:hello@byratech.vn">hello@byratech.vn</a></li>
+            <li><a href="mailto:hello@dfs.vn">hello@dfs.vn</a></li>
             <li><a href="#new-products" data-quote-item="Đăng ký tư vấn cấu hình thiết bị">Nhận báo giá dự án</a></li>
           </ul>
         </div>
       </div>
       <div class="nx-footer-bottom">
-        <div><strong>BYRA Technologics</strong> — Số hóa nhà máy, minh bạch từng công đoạn. © 2026</div>
+        <div><strong>DFS — Digital Factory Solutions</strong> — Số hóa nhà máy, minh bạch từng công đoạn. © 2026</div>
         <a href="#" style="font-weight: 600;">Lên đầu trang ↑</a>
       </div>
     </div>
@@ -1443,13 +1495,13 @@
     <div class="nx-modal">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;">
         <div>
-          <span style="font-family:var(--nx-ff-mono);font-size:0.75rem;font-weight:700;color:var(--nx-text-brand);text-transform:uppercase;">BYRA COMMERCIAL QUOTATION</span>
+          <span style="font-family:var(--nx-ff-mono);font-size:0.75rem;font-weight:700;color:var(--nx-text-brand);text-transform:uppercase;">DFS COMMERCIAL QUOTATION</span>
           <h3 id="quote-modal-title" style="margin:0.2rem 0 0.5rem;font-size:1.35rem;">Yêu cầu Báo giá & Datasheet kỹ thuật</h3>
         </div>
         <button type="button" class="nx-icon-btn" id="btn-close-quote" aria-label="Đóng">✕</button>
       </div>
       <p style="color:var(--nx-text-muted);font-size:0.9rem;margin:0 0 1rem;">
-        Kỹ sư giải pháp của <strong>BYRA Technologics</strong> sẽ gửi bảng báo giá thương mại kèm Datasheet thông số kỹ thuật (PDF) trong 24 giờ làm việc.
+        Kỹ sư giải pháp của <strong>DFS</strong> sẽ gửi bảng báo giá thương mại kèm Datasheet thông số kỹ thuật (PDF) trong 24 giờ làm việc.
       </p>
       <form class="nx-form" id="quote-form">
         <div class="nx-form-2">
@@ -1473,6 +1525,7 @@
 
   <div class="nx-toast" id="app-toast" role="status" aria-live="polite"></div>
 
+  <script src="assets/js/i18n.js"></script>
   <script>
     (function () {
       const toastEl = document.getElementById('app-toast');
