@@ -1023,6 +1023,31 @@ window.DFS_I18N = {
     return "green";
   },
 
+  updateFavicon: function (theme) {
+    const c1 = theme === "teal" ? "#0E7485" : "#008B45";
+    const c2 = theme === "teal" ? "#00A0B0" : "#2E8B57";
+    const svg =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">' +
+      '<defs><linearGradient id="dfs-bg" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0%" stop-color="' + c1 + '"/>' +
+      '<stop offset="100%" stop-color="' + c2 + '"/>' +
+      '</linearGradient></defs>' +
+      '<rect width="64" height="64" rx="6" fill="url(#dfs-bg)"/>' +
+      '<g transform="translate(7.68 23.52) scale(0.06627)" fill="#FFFFFF">' +
+      '<path fill-rule="evenodd" d="M55 0.5 H224 L266 54.5 L235 201.5 L169.5 255.5 H1 Z M105 63.5 H182 L197 82.5 L177 174 L155 192.5 H78 Z"/>' +
+      '<path d="M306 0.5 H494.5 L481 63.5 H355.5 L348 99.5 H445 L432.5 158.5 H335.5 L315 255.5 H252 Z"/>' +
+      '<path d="M569 0.5 H732.5 L719 63.5 H582 L571 73.5 L568 87.5 L575 96.5 H672.5 L707.5 142 L693 210 L638.5 255.5 H469.5 L483 192.5 H626 L636 183.5 L639 168 L632 159.5 H534.5 L499.5 114 L514 46 Z"/>' +
+      '</g></svg>';
+    const iconLink = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+    if (iconLink) {
+      iconLink.setAttribute("href", "data:image/svg+xml," + encodeURIComponent(svg));
+    }
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) {
+      metaTheme.setAttribute("content", "#262626");
+    }
+  },
+
   setTheme: function (theme) {
     const t = theme === "teal" ? "teal" : "green";
     this.currentTheme = t;
@@ -1030,6 +1055,7 @@ window.DFS_I18N = {
     try {
       localStorage.setItem("dfs_theme", t);
     } catch (e) {}
+    this.updateFavicon(t);
     document.querySelectorAll("[data-theme-btn]").forEach(function (btn) {
       const isMatch = btn.getAttribute("data-theme-btn") === t;
       btn.classList.toggle("is-active", isMatch);

@@ -22,19 +22,22 @@
 
 ## 2. Hệ thống Logo & Biểu tượng (Logo System)
 
-### 2.1. Cấu tạo Logo
-Logo **DFS** là sự kết hợp giữa **Biểu tượng (Logomark)** và **Chữ (Wordmark)**:
-1. **Logomark (Khối lục giác tâm điểm):**
-   - Khung vuông công nghiệp bo sắc `4px` (`34×34px` trên Header) phủ dải chuyển sắc `135deg` từ `#18C96E` sang `#0A8754`.
-   - Bên trong là hình **lục giác công nghiệp (Hexagon)** kết hợp **tâm điểm kết nối (Core Node)** ở chính giữa — tượng trưng cho nhà máy thông minh nơi mọi thiết bị quy tụ về một nền tảng dữ liệu duy nhất.
-2. **Wordmark (`DFS` / `DF<b>S</b>`):**
-   - Sử dụng kiểu chữ **Inter Bold (`700`)**, tracking `-0.025em`.
-   - Chữ `DF` màu đen thép (`#141A17` trên nền sáng, `#FFFFFF` trên nền tối); ký tự `S` tô điểm nhấn màu xanh ngọc bích thương hiệu (`#0A8754` hoặc `#18C96E`). Dòng phụ đề nhỏ hiển thị `Digital Factory Solutions`.
-   - Dòng phụ đề `SMART MANUFACTURING` đặt phía dưới bằng phông **IBM Plex Mono SemiBold (`600`)**, cỡ chữ `10px` (`0.625rem`), in hoa, giãn cách chữ rộng `0.12em`.
+### 2.1. Cấu tạo Logo (2 Biến thể Đồng bộ 2 Tông màu `green` & `teal`)
+Hệ thống nhận diện **DFS** sử dụng **chữ hình học nghiêng `12°` vát cạnh cơ khí (Geometric Chamfered Wordmark)** làm tâm điểm, triển khai qua 2 biến thể chính:
+1. **Wordmark ngang (`DFS` + `Digital Factory Solutions`):**
+   - Sử dụng làm logo chính trên Header và các ấn phẩm trình bày ngang (`viewBox="0 0 734 256"`).
+   - Phủ dải chuyển sắc từ đậm (trái) sang sáng (phải) tự động thích ứng theo tông màu đang chọn:
+     - **Phiên bản Xanh lá (`green`):** `#128243` → `#008B45` → `#38B870` (trên nền sáng) hoặc `#2E8B57` → `#38B870` (trên nền tối).
+     - **Phiên bản Xanh lục bảo (`teal`):** `#006C7A` → `#0E7485` → `#00B8CA` (trên nền sáng) hoặc `#00A0B0` → `#00B8CA` (trên nền tối).
+   - Dòng định danh phụ `DIGITAL FACTORY SOLUTIONS` đặt bên dưới bằng phông **IBM Plex Mono SemiBold (`600`)**, in hoa, màu `#5C6661` trên nền sáng hoặc trắng mờ trên nền tối.
+2. **App Icon / Favicon vuông bo góc:**
+   - Khung vuông bo góc (~`9.5%` bán kính góc, `rx="6"` trên khung `64×64`), nền chuyển sắc thương hiệu (`#008B45 → #2E8B57` ở tông Xanh lá hoặc `#0E7485 → #00A0B0` ở tông Xanh lục bảo), đặt biểu tượng chữ **DFS** màu trắng `#FFFFFF` căn giữa (`76%` bề ngang).
+   - Biến thể đơn sắc nền tối dùng nền `#262626` kết hợp chữ **DFS** sáng (`#38B870` / `#00B8CA`).
+   - Trên trình duyệt, `assets/js/i18n.js` và `BrandSystem.html` tự động cập nhật SVG Favicon động theo tông màu người dùng chọn.
 
 ### 2.2. Quy tắc khoảng trống an toàn & Kích thước tối thiểu
-- **Khoảng trống an toàn (Clear Space):** Tối thiểu bằng `0.5×` chiều cao của biểu tượng Logomark tính từ 4 cạnh.
-- **Kích thước tối thiểu:** Chiều cao tổng thể không nhỏ hơn `28px` trên môi trường kỹ thuật số (hoặc `10mm` khi in ấn).
+- **Khoảng trống an toàn (Clear Space):** Tối thiểu bằng `0.5×` chiều cao của chữ `DFS` tính từ 4 cạnh.
+- **Kích thước tối thiểu:** Chiều cao Wordmark không nhỏ hơn `18px` trên màn hình di động (`24px` trên Desktop); Favicon tối thiểu `16×16px` / `32×32px`.
 
 ---
 
