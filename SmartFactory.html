@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="meta.sf.title">DFS — Giải pháp Smart Factory: Hệ thống MES, Số hóa & Truy xuất nguồn gốc cho nhà máy</title>
   <meta name="description" data-i18n-meta="meta.sf.desc" content="DFS — Digital Factory Solutions cung cấp giải pháp nhà máy thông minh: hệ thống điều hành sản xuất MES, số hóa quy trình không giấy tờ, giám sát OEE/IIoT và truy xuất nguồn gốc theo lô, theo serial chuẩn GS1." />
-  <link rel="icon" href="favicon.ico" sizes="any" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="assets/favicon-32x32.png" type="image/png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="icon" href="favicon.ico?v=20261119" sizes="32x32" />
+  <link rel="icon" href="assets/favicon-32x32.png?v=20261119" type="image/png" sizes="32x32" />
+  <link rel="icon" href="assets/favicon.svg?v=20261119" type="image/svg+xml" sizes="any" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20261119" />
   <meta name="theme-color" content="#262626" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -760,14 +760,53 @@
     .nx-metric-box {
       background: var(--nx-surface); border-radius: var(--nx-radius-m); padding: var(--nx-sp-l);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(38, 38, 38, 0.05), 0 3px 10px rgba(38, 38, 38, 0.05);
-      border: none; position: relative;
+      border: none; position: relative; overflow: hidden;
+      transition: box-shadow 0.28s ease, transform 0.28s ease;
+    }
+    .nx-metric-box::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(105deg, transparent 20%, rgba(var(--nx-brand-rgb), 0.14) 50%, transparent 80%);
+      transform: translateX(-110%);
     }
     .nx-metric-box::after {
       content: ""; position: absolute; top: 0; left: 0; width: 64px; height: 2px;
       background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+      transition: width 0.36s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .nx-metric-label { font-family: var(--nx-ff-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--nx-text-muted); margin-bottom: 0.5rem; }
-    .nx-metric-value { font-family: var(--nx-ff-display); font-size: 2.75rem; font-weight: 700; color: var(--nx-text-brand); line-height: 1.1; }
+    .nx-metric-box.is-updating {
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(var(--nx-brand-rgb), 0.36), 0 8px 22px rgba(var(--nx-brand-rgb), 0.14);
+    }
+    .nx-metric-box.is-updating::before { animation: nx-sheen-sweep 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    .nx-metric-box.is-updating::after, .nx-metric-box:hover::after { width: 100%; }
+    .nx-metric-label {
+      display: flex; align-items: center; gap: 0.45rem;
+      font-family: var(--nx-ff-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--nx-text-muted); margin-bottom: 0.5rem;
+    }
+    .nx-metric-label::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--nx-brand); flex-shrink: 0;
+      animation: nx-kpi-pulse 2.2s ease-in-out infinite;
+    }
+    .nx-metric-value {
+      font-family: var(--nx-ff-display); font-size: 2.75rem; font-weight: 800; line-height: 1.1;
+      font-variant-numeric: tabular-nums; display: inline-block;
+      color: var(--nx-text-brand); background: var(--nx-brand-gradient);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      transform-origin: left center;
+    }
+    .is-metric-pop { animation: nx-metric-pop 0.42s cubic-bezier(0.22, 1, 0.36, 1); }
+    @keyframes nx-kpi-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--nx-brand-rgb), 0.45); }
+      50% { opacity: 0.72; transform: scale(1.15); box-shadow: 0 0 0 5px rgba(var(--nx-brand-rgb), 0); }
+    }
+    @keyframes nx-metric-pop {
+      0% { transform: translateY(4px) scale(0.94); }
+      60% { transform: translateY(-1px) scale(1.03); }
+      100% { transform: translateY(0) scale(1); }
+    }
+    @keyframes nx-sheen-sweep {
+      0% { transform: translateX(-110%); }
+      100% { transform: translateX(110%); }
+    }
     .nx-metric-cap { font-weight: 600; margin: 0.35rem 0 1rem; }
     .nx-metric-note { background: var(--nx-brand-subtle); padding: 0.875rem; border-radius: var(--nx-radius-xs); border-left: 2px solid var(--nx-brand); font-size: 0.875rem; }
 
@@ -928,9 +967,21 @@
     @media (min-width: 900px) { .nx-card-body h3 { min-height: 2.75em; } }
     .nx-card:hover .nx-card-body h3 { color: var(--nx-text-brand); }
     .nx-card-body p { color: var(--nx-text-muted); font-size: 0.9375rem; margin: 0 0 1rem; flex: 1; }
-    .nx-card-kpis { display: flex; gap: 1rem; margin-bottom: 1rem; }
-    .nx-card-kpis div { font-size: 0.8125rem; color: var(--nx-text-muted); }
-    .nx-card-kpis b { display: block; font-family: var(--nx-ff-display); font-size: 1.25rem; color: var(--nx-text); }
+    .nx-card-kpis { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.15rem; }
+    .nx-card-kpis > div {
+      background: var(--nx-brand-subtle); border-left: 2px solid var(--nx-brand);
+      border-radius: var(--nx-radius-s); padding: 0.42rem 0.65rem;
+      flex: 1 1 auto; min-width: 82px;
+      font-size: 0.78rem; line-height: 1.3; color: var(--nx-text-muted);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .nx-card:hover .nx-card-kpis > div { background: var(--nx-brand-subtle-active); }
+    .nx-card-kpis b {
+      display: block; font-family: var(--nx-ff-display); font-size: 1.25rem; font-weight: 800;
+      line-height: 1.15; margin-bottom: 0.12rem; color: var(--nx-text-brand);
+      font-variant-numeric: tabular-nums; transform-origin: left center;
+    }
     .nx-link {
       display: inline-flex; align-items: center; align-self: flex-start; gap: 0.375rem;
       font-weight: 600; font-size: clamp(0.84rem, 1.15vw, 0.9375rem); color: var(--nx-text-brand); text-decoration: none; white-space: nowrap;
@@ -989,6 +1040,12 @@
       position: relative; overflow: hidden;
       display: flex; flex-direction: column; align-items: center; transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
+    .nx-number::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(105deg, transparent 20%, rgba(var(--nx-brand-rgb), 0.12) 50%, transparent 80%);
+      transform: translateX(-110%);
+    }
+    .nx-number.is-revealed::before { animation: nx-sheen-sweep 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
     .nx-number::after {
       content: ""; position: absolute; bottom: 0; left: 0; width: 64px; height: 2px;
       background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
@@ -1003,8 +1060,20 @@
       width: 52px; height: 52px; border-radius: var(--nx-radius-m); background: var(--nx-brand-subtle);
       border: 1px solid rgba(var(--nx-brand-rgb), 0.35); color: var(--nx-text-brand);
       display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;
+      transition: background-color 0.22s ease, color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
     }
-    .nx-number-value { font-family: var(--nx-ff-display); font-size: clamp(1.65rem, 3.2vw, 2.75rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.25rem; white-space: nowrap; }
+    .nx-number:hover .nx-number-icon {
+      background: var(--nx-brand); color: var(--nx-on-brand); border-color: var(--nx-brand);
+      transform: translateY(-2px); box-shadow: 0 6px 14px rgba(var(--nx-brand-rgb), 0.25);
+    }
+    .nx-number-value {
+      font-family: var(--nx-ff-display); font-size: clamp(1.65rem, 3.2vw, 2.75rem); font-weight: 800; line-height: 1.1;
+      margin-bottom: 0.25rem; white-space: nowrap; font-variant-numeric: tabular-nums;
+      color: var(--nx-text-brand); background: var(--nx-brand-gradient);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nx-number:hover .nx-number-value { transform: scale(1.05); }
     .nx-number-label { font-size: 0.9375rem; font-weight: 600; color: var(--nx-text-muted); }
     .nx-standards { margin-top: var(--nx-sp-2xl); display: flex; flex-wrap: wrap; gap: 0.625rem; justify-content: center; }
     .nx-std { font-family: var(--nx-ff-mono); font-size: 0.8125rem; padding: 0.4rem 0.9rem; border: 1px solid var(--nx-border); border-radius: var(--nx-radius-tag); color: var(--nx-text-muted); background: var(--nx-surface); }
@@ -1843,7 +1912,7 @@
 
   <div class="nx-toast" id="app-toast" role="status" aria-live="polite"></div>
 
-  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/i18n.js?v=20261119"></script>
   <script>
     (function () {
       const heroVid = document.querySelector('video.nx-hero-bg');
@@ -2110,8 +2179,123 @@
 
       const solTabs = document.querySelectorAll('.nx-tab');
       const $ = function (id) { return document.getElementById(id); };
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const metricBoxEl = document.querySelector('.nx-metric-box');
       let currentSolKey = 'mes';
-      function selectSolution(key) {
+      let solRevealed = false;
+      let metricBoxTimer = null;
+
+      function triggerMetricPop(el) {
+        if (!el) return;
+        el.classList.remove('is-metric-pop');
+        void el.offsetWidth;
+        el.classList.add('is-metric-pop');
+      }
+
+      function parseMetricSpec(str) {
+        const target = String(str || '').trim();
+        const rangeMatch = target.match(/^([^\d]*)(\d+(?:[.,]\d+)?)\s*([–-])\s*(\d+(?:[.,]\d+)?)(.*)$/);
+        if (rangeMatch) {
+          return {
+            kind: 'range',
+            target: target,
+            prefix: rangeMatch[1],
+            v1: parseFloat(rangeMatch[2].replace(',', '.')),
+            dash: rangeMatch[3],
+            v2: parseFloat(rangeMatch[4].replace(',', '.')),
+            suffix: rangeMatch[5]
+          };
+        }
+        const singleMatch = target.match(/^([^\d]*)(\d+(?:[.,]\d+)?)(.*)$/);
+        if (!singleMatch) return { kind: 'static', target: target };
+        const numStr = singleMatch[2];
+        const sepMatch = numStr.match(/^(\d+)([.,])(\d+)$/);
+        const isThousandsDot = Boolean(sepMatch && sepMatch[2] === '.' && sepMatch[3].length === 3);
+        const numericVal = isThousandsDot ? parseInt(numStr.replace(/\./g, ''), 10) : parseFloat(numStr.replace(',', '.'));
+        const decimals = (!isThousandsDot && sepMatch) ? sepMatch[3].length : 0;
+        const decSep = (!isThousandsDot && sepMatch) ? sepMatch[2] : '.';
+        return {
+          kind: 'single',
+          target: target,
+          prefix: singleMatch[1],
+          startVal: numericVal === 0 ? 15 : 0,
+          endVal: numericVal,
+          decimals: decimals,
+          decSep: decSep,
+          useThousandsDot: isThousandsDot,
+          suffix: singleMatch[3]
+        };
+      }
+
+      function formatSingleMetric(val, spec) {
+        if (spec.useThousandsDot) {
+          return Math.round(val).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+        if (spec.decimals > 0) {
+          return val.toFixed(spec.decimals).replace('.', spec.decSep);
+        }
+        return String(Math.round(val));
+      }
+
+      function animateMetricValue(el, rawTarget, opts) {
+        if (!el) return;
+        if (el._metricRaf) { cancelAnimationFrame(el._metricRaf); el._metricRaf = null; }
+        if (el._metricDelayTimer) { clearTimeout(el._metricDelayTimer); el._metricDelayTimer = null; }
+        const spec = parseMetricSpec(rawTarget != null ? rawTarget : el.textContent);
+        if (prefersReducedMotion || spec.kind === 'static') {
+          el.textContent = spec.target;
+          return;
+        }
+        const duration = (opts && opts.duration) || 680;
+        const delay = (opts && opts.delay) || 0;
+        const startFrame = function () {
+          el._metricDelayTimer = null;
+          let startTime = null;
+          function tick(now) {
+            if (!startTime) startTime = now;
+            const progress = Math.min(1, (now - startTime) / duration);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            if (progress >= 1) {
+              el.textContent = spec.target;
+              el._metricRaf = null;
+              triggerMetricPop(el);
+              return;
+            }
+            if (spec.kind === 'range') {
+              const c1 = Math.round(spec.v1 * eased);
+              const c2 = Math.round(spec.v2 * eased);
+              el.textContent = spec.prefix + c1 + spec.dash + c2 + spec.suffix;
+            } else {
+              const current = spec.startVal + (spec.endVal - spec.startVal) * eased;
+              el.textContent = spec.prefix + formatSingleMetric(current, spec) + spec.suffix;
+            }
+            el._metricRaf = requestAnimationFrame(tick);
+          }
+          el._metricRaf = requestAnimationFrame(tick);
+        };
+        if (spec.kind === 'range') {
+          el.textContent = spec.prefix + '0' + spec.dash + '0' + spec.suffix;
+        } else {
+          el.textContent = spec.prefix + formatSingleMetric(spec.startVal, spec) + spec.suffix;
+        }
+        if (delay > 0) {
+          el._metricDelayTimer = setTimeout(startFrame, delay);
+        } else {
+          startFrame();
+        }
+      }
+
+      function highlightMetricBox() {
+        if (!metricBoxEl || prefersReducedMotion) return;
+        metricBoxEl.classList.remove('is-updating');
+        void metricBoxEl.offsetWidth;
+        metricBoxEl.classList.add('is-updating');
+        clearTimeout(metricBoxTimer);
+        metricBoxTimer = setTimeout(function () { metricBoxEl.classList.remove('is-updating'); }, 680);
+      }
+
+      function selectSolution(key, opts) {
+        const shouldAnimate = !opts || opts.animate !== false;
         currentSolKey = key;
         const lang = (window.DFS_I18N && window.DFS_I18N.currentLang) || 'vi';
         const i18nSol = window.DFS_I18N && window.DFS_I18N.solutionsData && window.DFS_I18N.solutionsData[key];
@@ -2128,12 +2312,22 @@
         $('sol-bullets').innerHTML = d.bullets.map(function (b) {
           return '<li><span class="nx-check">✓</span><span>' + b + '</span></li>';
         }).join('');
-        $('sol-metric-value').textContent = d.metricVal;
         $('sol-metric-caption').textContent = d.metricCap;
         $('sol-metric-note').innerHTML = d.note;
+
+        const metricEl = $('sol-metric-value');
+        if (shouldAnimate) {
+          solRevealed = true;
+          highlightMetricBox();
+          animateMetricValue(metricEl, d.metricVal, { duration: 560 });
+        } else {
+          if (metricEl._metricRaf) { cancelAnimationFrame(metricEl._metricRaf); metricEl._metricRaf = null; }
+          if (metricEl._metricDelayTimer) { clearTimeout(metricEl._metricDelayTimer); metricEl._metricDelayTimer = null; }
+          metricEl.textContent = d.metricVal;
+        }
       }
       window.addEventListener('dfs:langchange', function () {
-        selectSolution(currentSolKey);
+        selectSolution(currentSolKey, { animate: false });
       });
       function syncSolutionIcons(theme) {
         const t = theme || document.documentElement.getAttribute('data-theme') || (window.DFS_I18N && window.DFS_I18N.getTheme && window.DFS_I18N.getTheme()) || 'green';
@@ -2150,27 +2344,100 @@
         syncSolutionIcons(e && e.detail && e.detail.theme);
       });
       solTabs.forEach(function (tab) {
-        tab.addEventListener('click', function () { selectSolution(tab.getAttribute('data-sol')); });
+        tab.addEventListener('click', function () { selectSolution(tab.getAttribute('data-sol'), { animate: true }); });
       });
       document.querySelectorAll('[data-sol-jump]').forEach(function (link) {
-        link.addEventListener('click', function () { selectSolution(link.getAttribute('data-sol-jump')); });
+        link.addEventListener('click', function () { selectSolution(link.getAttribute('data-sol-jump'), { animate: true }); });
       });
 
-      // Case filters
+      const solSectionEl = $('solutions');
+      if (solSectionEl && 'IntersectionObserver' in window) {
+        const solObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && !solRevealed) {
+              solRevealed = true;
+              selectSolution(currentSolKey, { animate: true });
+              solObs.disconnect();
+            }
+          });
+        }, { threshold: 0.25 });
+        solObs.observe(solSectionEl);
+      }
+
+      // Case filters + Case KPI counter
       const filters = document.querySelectorAll('.nx-filter');
       const cards = document.querySelectorAll('.nx-card[data-category]');
-      function applyFilter(f) {
+      let casesRevealed = false;
+      function runCaseKpiAnimations(cardList, duration) {
+        let idx = 0;
+        cardList.forEach(function (card) {
+          if (card.style.display === 'none') return;
+          card.querySelectorAll('.nx-card-kpis b').forEach(function (b) {
+            const target = ((b._metricRaf || b._metricDelayTimer) && b.dataset.metricTarget)
+              ? b.dataset.metricTarget
+              : b.textContent.trim();
+            b.dataset.metricTarget = target;
+            animateMetricValue(b, target, { duration: duration || 760, delay: idx * 70 });
+            idx++;
+          });
+        });
+      }
+      function applyFilter(f, opts) {
         filters.forEach(function (c) { c.classList.toggle('is-active', c.getAttribute('data-filter') === f); });
         cards.forEach(function (card) {
           card.style.display = (f === 'all' || card.getAttribute('data-category') === f) ? 'flex' : 'none';
         });
+        if (!opts || opts.animate !== false) {
+          casesRevealed = true;
+          runCaseKpiAnimations(cards, 540);
+        }
       }
       filters.forEach(function (chip) {
-        chip.addEventListener('click', function () { applyFilter(chip.getAttribute('data-filter')); });
+        chip.addEventListener('click', function () { applyFilter(chip.getAttribute('data-filter'), { animate: true }); });
       });
       document.querySelectorAll('[data-filter-jump]').forEach(function (link) {
-        link.addEventListener('click', function () { applyFilter(link.getAttribute('data-filter-jump')); });
+        link.addEventListener('click', function () { applyFilter(link.getAttribute('data-filter-jump'), { animate: true }); });
       });
+      const casesGridEl = $('cases-grid');
+      if (casesGridEl && 'IntersectionObserver' in window) {
+        const casesObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && !casesRevealed) {
+              casesRevealed = true;
+              runCaseKpiAnimations(cards, 780);
+              casesObs.disconnect();
+            }
+          });
+        }, { threshold: 0.2 });
+        casesObs.observe(casesGridEl);
+      }
+
+      // About / Numbers KPI counter
+      const numbersWrap = document.querySelector('.nx-numbers');
+      const numberCards = document.querySelectorAll('.nx-numbers .nx-number');
+      numberCards.forEach(function (card) {
+        const valEl = card.querySelector('.nx-number-value');
+        if (valEl) valEl.dataset.metricTarget = valEl.textContent.trim();
+      });
+      let numbersRevealed = false;
+      if (numbersWrap && 'IntersectionObserver' in window) {
+        const numObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && !numbersRevealed) {
+              numbersRevealed = true;
+              numberCards.forEach(function (card, idx) {
+                card.classList.add('is-revealed');
+                const valEl = card.querySelector('.nx-number-value');
+                if (valEl) {
+                  animateMetricValue(valEl, valEl.dataset.metricTarget || valEl.textContent, { duration: 920, delay: idx * 90 });
+                }
+              });
+              numObs.disconnect();
+            }
+          });
+        }, { threshold: 0.25 });
+        numObs.observe(numbersWrap);
+      }
 
       // Modal
       const modal = $('app-modal');
@@ -2237,9 +2504,9 @@
       // Handle cross-page deep links (?sol=mes, ?filter=fnb, ?modal=survey)
       const params = new URLSearchParams(window.location.search);
       const solParam = params.get('sol');
-      if (solParam && solutionsData[solParam]) selectSolution(solParam);
+      if (solParam && solutionsData[solParam]) selectSolution(solParam, { animate: false });
       const filterParam = params.get('filter');
-      if (filterParam) applyFilter(filterParam);
+      if (filterParam) applyFilter(filterParam, { animate: false });
       const modalParam = params.get('modal');
       if (modalParam && modalContent[modalParam]) {
         const c = modalContent[modalParam];

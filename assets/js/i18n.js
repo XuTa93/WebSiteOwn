@@ -1038,10 +1038,16 @@ window.DFS_I18N = {
       '<path d="M306 0.5 H494.5 L481 63.5 H355.5 L348 99.5 H445 L432.5 158.5 H335.5 L315 255.5 H252 Z"/>' +
       '<path d="M569 0.5 H732.5 L719 63.5 H582 L571 73.5 L568 87.5 L575 96.5 H672.5 L707.5 142 L693 210 L638.5 255.5 H469.5 L483 192.5 H626 L636 183.5 L639 168 L632 159.5 H534.5 L499.5 114 L514 46 Z"/>' +
       '</g></svg>';
-    const iconLink = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
-    if (iconLink) {
-      iconLink.setAttribute("href", "data:image/svg+xml," + encodeURIComponent(svg));
-    }
+    const dataUrl = "data:image/svg+xml," + encodeURIComponent(svg);
+    document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]').forEach(function (el) {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    });
+    const link = document.createElement("link");
+    link.rel = "icon";
+    link.type = "image/svg+xml";
+    link.setAttribute("sizes", "any");
+    link.href = dataUrl;
+    document.head.appendChild(link);
     const metaTheme = document.querySelector('meta[name="theme-color"]');
     if (metaTheme) {
       metaTheme.setAttribute("content", "#262626");
