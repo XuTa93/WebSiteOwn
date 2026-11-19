@@ -13,12 +13,13 @@ Tài liệu này là quy chuẩn bắt buộc (Binding Design & Architecture Rul
 
 ---
 
-## 2. Bảng Token CSS Chuẩn (`:root`)
+## 2. Bảng Token CSS Chuẩn (`:root` — 2 Phiên Bản Tông Màu `green` & `teal`)
 
-Mọi trang HTML mới phải khai báo hoặc import chính xác bộ Design Tokens sau trong `:root`:
+Mọi trang HTML mới phải khai báo chính xác bộ Design Tokens hỗ trợ 2 phiên bản tông màu (**Tông màu Xanh lá — Green** và **Tông màu Xanh lục bảo — Teal**) cùng bộ trung tính nền tảng (`#262626` & `#F5F5F5`) trong `:root`:
 
 ```css
-:root {
+:root,
+:root[data-theme="green"] {
   /* 1. Layout */
   --nx-header-height: 72px;
   --nx-container-max: 1300px;
@@ -28,32 +29,40 @@ Mọi trang HTML mới phải khai báo hoặc import chính xác bộ Design To
   --nx-ff-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --nx-ff-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
 
-  /* 3. Primary Brand — Emerald Jade */
-  --nx-brand: #18C96E;
-  --nx-brand-hover: #0A8754;
-  --nx-brand-pressed: #06683F;
-  --nx-brand-subtle: #E6F9F0;
-  --nx-accent-teal: #00A88F;
+  /* 3. Brand Palette — Phiên bản 1: Tông màu Xanh lá (Green) */
+  --nx-brand: #008B45;               /* Xanh lá chủ đạo (DFS & icon) */
+  --nx-brand-alt: #128243;           /* Biến thể xanh lá chủ đạo */
+  --nx-brand-secondary: #2E8B57;     /* Xanh lá phụ / chuyển sắc */
+  --nx-brand-secondary-alt: #228B22; /* Biến thể xanh lá phụ */
+  --nx-brand-hover: #2E8B57;
+  --nx-brand-pressed: #128243;
+  --nx-brand-subtle: #E6F4EC;
+  --nx-brand-subtle-active: #CFEAD9;
+  --nx-accent-teal: #2E8B57;
+  --nx-brand-on-dark: #38B870;
+  --nx-on-brand: #FFFFFF;
+  --nx-brand-rgb: 0, 139, 69;
+  --nx-brand-gradient: linear-gradient(135deg, #008B45 0%, #2E8B57 100%);
 
-  /* 4. Industrial Neutrals — Steel & Surfaces */
-  --nx-steel-900: #101714;
-  --nx-steel-800: #1B2420;
-  --nx-steel-700: #2A3530;
+  /* 4. Industrial Neutrals — Đen mờ #262626 & Trắng ngà #F5F5F5 */
+  --nx-steel-900: #262626;
+  --nx-steel-800: #303030;
+  --nx-steel-700: #3D3D3D;
   --nx-surface: #FFFFFF;
-  --nx-surface-alt: #F4F6F5;
-  --nx-border: rgba(16, 23, 20, 0.10);
-  --nx-border-strong: rgba(16, 23, 20, 0.16);
+  --nx-surface-alt: #F5F5F5;
+  --nx-border: rgba(38, 38, 38, 0.10);
+  --nx-border-strong: rgba(38, 38, 38, 0.18);
 
   /* 5. Text Hierarchy */
-  --nx-text: #141A17;
+  --nx-text: #262626;
   --nx-text-muted: #5C6661;
   --nx-text-inverse: #FFFFFF;
-  --nx-text-brand: #0A8754;
+  --nx-text-brand: #008B45;
 
   /* 6. Semantic Shop-floor Status (Andon / MES) */
-  --nx-status-run: #18C96E;
-  --nx-status-run-bg: #E6F9F0;
-  --nx-status-run-text: #06683F;
+  --nx-status-run: #008B45;
+  --nx-status-run-bg: #E6F4EC;
+  --nx-status-run-text: #128243;
   --nx-status-idle: #F5A524;
   --nx-status-idle-bg: #FEF3E2;
   --nx-status-idle-text: #B54708;
@@ -72,8 +81,29 @@ Mọi trang HTML mới phải khai báo hoặc import chính xác bộ Design To
   --nx-radius-tag: 2px;
 
   /* 8. Elevation */
-  --nx-elev-1: 0 0.125rem 0.25rem rgba(16, 23, 20, 0.10), 0 0 0.125rem rgba(16, 23, 20, 0.08);
-  --nx-elev-2: 0 0.25rem 1rem rgba(16, 23, 20, 0.12), 0 0 0.125rem rgba(16, 23, 20, 0.10);
+  --nx-elev-1: 0 0.125rem 0.25rem rgba(38, 38, 38, 0.10), 0 0 0.125rem rgba(38, 38, 38, 0.08);
+  --nx-elev-2: 0 0.25rem 1rem rgba(38, 38, 38, 0.12), 0 0 0.125rem rgba(38, 38, 38, 0.10);
+}
+
+:root[data-theme="teal"] {
+  /* 3. Brand Palette — Phiên bản 2: Tông màu Xanh lục bảo (Teal) */
+  --nx-brand: #0E7485;               /* Xanh lục bảo chủ đạo (DFS & icon) */
+  --nx-brand-alt: #006C7A;           /* Biến thể xanh lục bảo chủ đạo */
+  --nx-brand-secondary: #00A0B0;     /* Xanh lục bảo phụ / chuyển sắc */
+  --nx-brand-secondary-alt: #008EA0; /* Biến thể xanh lục bảo phụ */
+  --nx-brand-hover: #00A0B0;
+  --nx-brand-pressed: #006C7A;
+  --nx-brand-subtle: #E6F4F7;
+  --nx-brand-subtle-active: #CCE8EE;
+  --nx-accent-teal: #00A0B0;
+  --nx-brand-on-dark: #00B8CA;
+  --nx-on-brand: #FFFFFF;
+  --nx-brand-rgb: 14, 116, 133;
+  --nx-brand-gradient: linear-gradient(135deg, #0E7485 0%, #00A0B0 100%);
+  --nx-text-brand: #0E7485;
+  --nx-status-run: #0E7485;
+  --nx-status-run-bg: #E6F4F7;
+  --nx-status-run-text: #006C7A;
 }
 ```
 

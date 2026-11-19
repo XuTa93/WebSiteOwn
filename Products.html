@@ -17,7 +17,8 @@
     /* ==========================================================================
        DFS Design System — tokens (xem docs/BrandGuide_ThietKe.md)
        ========================================================================== */
-    :root {
+    :root,
+    :root[data-theme="green"] {
       --nx-header-height: 72px;
       --nx-container-max: 1300px;
 
@@ -26,33 +27,43 @@
       --nx-ff-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
       --nx-ff-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
 
-      /* Brand — Emerald Jade */
-      --nx-brand: #18C96E;
-      --nx-brand-hover: #0A8754;
-      --nx-brand-pressed: #06683F;
-      --nx-brand-subtle: #E6F9F0;
-      --nx-accent-teal: #00A88F;
+      /* Brand — Phiên bản 1: Tông màu Xanh lá (Green) */
+      --nx-brand: #008B45;
+      --nx-brand-alt: #128243;
+      --nx-brand-secondary: #2E8B57;
+      --nx-brand-secondary-alt: #228B22;
+      --nx-brand-hover: #2E8B57;
+      --nx-brand-pressed: #128243;
+      --nx-brand-subtle: #E6F4EC;
+      --nx-brand-subtle-active: #CFEAD9;
+      --nx-accent-teal: #2E8B57;
+      --nx-brand-on-dark: #38B870;
+      --nx-on-brand: #FFFFFF;
+      --nx-brand-rgb: 0, 139, 69;
+      --nx-brand-gradient: linear-gradient(135deg, #008B45 0%, #2E8B57 100%);
+      --nx-ghost-dark-bg: #1D2822;
+      --nx-ghost-dark-hover: #22352A;
 
-      /* Industrial neutrals — Steel & Surfaces */
-      --nx-steel-900: #101714;
-      --nx-steel-800: #1B2420;
-      --nx-steel-700: #2A3530;
+      /* Industrial neutrals — Đen mờ #262626 & Trắng ngà #F5F5F5 */
+      --nx-steel-900: #262626;
+      --nx-steel-800: #303030;
+      --nx-steel-700: #3D3D3D;
       --nx-surface: #FFFFFF;
-      --nx-surface-alt: #F4F6F5;
-      --nx-border: rgba(16, 23, 20, 0.10);
-      --nx-border-strong: rgba(16, 23, 20, 0.16);
+      --nx-surface-alt: #F5F5F5;
+      --nx-border: rgba(38, 38, 38, 0.10);
+      --nx-border-strong: rgba(38, 38, 38, 0.18);
       --nx-border-rule: #CCCCCC;
 
       /* Text */
-      --nx-text: #141A17;
+      --nx-text: #262626;
       --nx-text-muted: #5C6661;
       --nx-text-inverse: #FFFFFF;
-      --nx-text-brand: #0A8754;
+      --nx-text-brand: #008B45;
 
       /* Semantic Shop-floor Status (Andon / MES) */
-      --nx-status-run: #18C96E;
-      --nx-status-run-bg: #E6F9F0;
-      --nx-status-run-text: #06683F;
+      --nx-status-run: #008B45;
+      --nx-status-run-bg: #E6F4EC;
+      --nx-status-run-text: #128243;
       --nx-status-idle: #F5A524;
       --nx-status-idle-bg: #FEF3E2;
       --nx-status-idle-text: #B54708;
@@ -69,8 +80,35 @@
       --nx-radius-m: 4px;
       --nx-radius-l: 6px;
       --nx-radius-tag: 2px;
-      --nx-elev-1: 0 2px 6px rgba(16, 23, 20, 0.10);
-      --nx-elev-2: 0 4px 16px rgba(16, 23, 20, 0.12);
+      --nx-elev-1: 0 2px 6px rgba(38, 38, 38, 0.10);
+      --nx-elev-2: 0 4px 16px rgba(38, 38, 38, 0.12);
+    }
+
+    :root[data-theme="teal"] {
+      /* Brand — Phiên bản 2: Tông màu Xanh lục bảo (Teal) */
+      --nx-brand: #0E7485;
+      --nx-brand-alt: #006C7A;
+      --nx-brand-secondary: #00A0B0;
+      --nx-brand-secondary-alt: #008EA0;
+      --nx-brand-hover: #00A0B0;
+      --nx-brand-pressed: #006C7A;
+      --nx-brand-subtle: #E6F4F7;
+      --nx-brand-subtle-active: #CCE8EE;
+      --nx-accent-teal: #00A0B0;
+      --nx-brand-on-dark: #00B8CA;
+      --nx-on-brand: #FFFFFF;
+      --nx-brand-rgb: 14, 116, 133;
+      --nx-brand-gradient: linear-gradient(135deg, #0E7485 0%, #00A0B0 100%);
+      --nx-ghost-dark-bg: #1B272A;
+      --nx-ghost-dark-hover: #203338;
+
+      /* Text */
+      --nx-text-brand: #0E7485;
+
+      /* Status Run */
+      --nx-status-run: #0E7485;
+      --nx-status-run-bg: #E6F4F7;
+      --nx-status-run-text: #006C7A;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -130,8 +168,8 @@
     }
     .nx-logo-mark {
       width: 34px; height: 34px; border-radius: 4px;
-      background: linear-gradient(135deg, var(--nx-brand) 0%, var(--nx-brand-hover) 100%);
-      display: inline-flex; align-items: center; justify-content: center; color: var(--nx-steel-900);
+      background: var(--nx-brand-gradient);
+      display: inline-flex; align-items: center; justify-content: center; color: var(--nx-on-brand);
     }
     .nx-logo small {
       display: block; font-family: var(--nx-ff-mono); font-size: 0.625rem; font-weight: 600;
@@ -150,7 +188,7 @@
       text-decoration: none; position: relative;
       transition: color 0.2s ease;
     }
-    /* Axis-style crisp 3.5px bottom bar in Emerald Jade (#18C96E) */
+    /* Axis-style crisp 2px bottom bar in active Brand Color */
     .nx-nav-btn::after {
       content: ""; position: absolute; left: 0.85rem; right: 0.85rem; bottom: 14px;
       height: 2px; background: var(--nx-brand); border-radius: 0;
@@ -172,21 +210,35 @@
     }
     .nx-link:hover::after, .nx-link:focus-visible::after { transform: scaleX(1); }
 
-    .nx-header-utils { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+    .nx-header-utils { display: flex; align-items: center; gap: 0.45rem; flex-shrink: 0; }
+    .nx-theme-switch,
     .nx-lang-switch {
       display: inline-flex; align-items: center;
       border: 1px solid var(--nx-border-strong); border-radius: var(--nx-radius-s);
       background: var(--nx-surface-alt); padding: 2px; gap: 2px; height: 34px;
     }
+    .nx-theme-btn,
     .nx-lang-btn {
       border: none; background: transparent; color: var(--nx-text-muted);
-      font-family: var(--nx-ff-mono); font-size: 0.74rem; font-weight: 700;
-      padding: 0 0.48rem; height: 100%; border-radius: var(--nx-radius-xs);
+      font-family: var(--nx-ff-mono); font-size: 0.72rem; font-weight: 700;
+      padding: 0 0.45rem; height: 100%; border-radius: var(--nx-radius-xs);
       cursor: pointer; transition: background-color 0.15s ease, color 0.15s ease;
-      display: inline-flex; align-items: center; justify-content: center; letter-spacing: 0.04em;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; letter-spacing: 0.03em; white-space: nowrap;
     }
+    .nx-theme-btn:hover,
     .nx-lang-btn:hover { color: var(--nx-text); }
-    .nx-lang-btn.is-active { background: var(--nx-steel-900); color: var(--nx-brand); }
+    .nx-theme-btn.is-active { background: var(--nx-steel-900); color: #FFFFFF; }
+    .nx-lang-btn.is-active { background: var(--nx-steel-900); color: var(--nx-brand-on-dark); }
+    .nx-theme-dot {
+      width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+    .nx-theme-dot--green { background: linear-gradient(135deg, #2E8B57 45%, #008B45 45%); }
+    .nx-theme-dot--teal { background: linear-gradient(135deg, #00A0B0 45%, #0E7485 45%); }
+    @media (max-width: 639px) {
+      .nx-theme-txt { display: none; }
+      .nx-theme-btn { padding: 0 0.38rem; }
+    }
     .nx-cta-short { display: none; }
     @media (max-width: 439px) {
       .nx-cta-full { display: none; }
@@ -212,22 +264,23 @@
     .nx-menu-toggle .nx-ico-close { display: none; }
     .nx-menu-toggle.is-open {
       background: var(--nx-steel-900); border-color: var(--nx-steel-900);
-      border-top-color: var(--nx-brand); color: var(--nx-brand);
+      border-top-color: var(--nx-brand); color: var(--nx-brand-on-dark);
     }
     .nx-menu-toggle.is-open .nx-ico-menu { display: none; }
     .nx-menu-toggle.is-open .nx-ico-close { display: block; }
     @media (min-width: 1000px) { .nx-menu-toggle { display: none; } }
 
     @media (max-width: 479px) {
-      .nx-header-inner { padding: 0 0.65rem; gap: 0.35rem; }
-      .nx-header-utils { gap: 0.32rem; }
-      .nx-header-utils .nx-btn--sm { padding: 0.38rem 0.92rem 0.38rem 0.58rem; font-size: 0.72rem; }
+      .nx-header-inner { padding: 0 0.6rem; gap: 0.3rem; }
+      .nx-header-utils { gap: 0.28rem; }
+      .nx-header-utils .nx-btn--sm { padding: 0.36rem 0.85rem 0.36rem 0.52rem; font-size: 0.7rem; }
       .nx-menu-toggle { width: 34px; height: 34px; }
-      .nx-lang-switch { height: 30px; padding: 1px; gap: 1px; }
-      .nx-lang-btn { padding: 0 0.32rem; font-size: 0.65rem; }
-      .nx-logo { font-size: 0.98rem; gap: 0.35rem; }
+      .nx-theme-switch, .nx-lang-switch { height: 30px; padding: 1px; gap: 1px; }
+      .nx-lang-btn { padding: 0 0.3rem; font-size: 0.64rem; }
+      .nx-theme-btn { padding: 0 0.3rem; }
+      .nx-logo { font-size: 0.96rem; gap: 0.32rem; }
       .nx-logo-mark { width: 26px; height: 26px; }
-      .nx-logo small { font-size: 0.46rem; letter-spacing: 0.03em; }
+      .nx-logo small { font-size: 0.44rem; letter-spacing: 0.02em; }
     }
 
     @keyframes mobSlide { from { transform: translateY(-4px); } to { transform: none; } }
@@ -312,11 +365,11 @@
       transition: background-color 0.16s ease, color 0.16s ease, padding-right 0.16s ease, margin-right 0.16s ease;
     }
     .nx-btn:focus-visible { outline: 2px solid var(--nx-brand); outline-offset: 3px; }
-    .nx-btn--primary { color: var(--nx-steel-900); background: var(--nx-brand); }
-    .nx-btn--primary:hover { background: #26E080; color: var(--nx-steel-900); padding-right: 2.1rem; margin-right: -0.25rem; }
-    .nx-btn--primary:active { background: var(--nx-brand-hover); color: #fff; }
+    .nx-btn--primary { color: var(--nx-on-brand); background: var(--nx-brand); }
+    .nx-btn--primary:hover { background: var(--nx-brand-hover); color: var(--nx-on-brand); padding-right: 2.1rem; margin-right: -0.25rem; }
+    .nx-btn--primary:active { background: var(--nx-brand-pressed); color: var(--nx-on-brand); }
     .nx-btn--secondary {
-      color: var(--nx-text); background: rgba(16, 23, 20, 0.18); font-weight: 600;
+      color: var(--nx-text); background: rgba(38, 38, 38, 0.20); font-weight: 600;
       padding: 0.72rem 1.85rem 0.72rem 1.65rem; isolation: isolate;
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 9px 50%);
       transition: background-color 0.16s ease, color 0.16s ease, padding-right 0.16s ease, margin-right 0.16s ease;
@@ -334,7 +387,7 @@
     }
     .nx-btn--secondary:hover::before { background: var(--nx-brand-subtle); }
     .nx-btn--secondary:active { background: var(--nx-brand-pressed); color: var(--nx-brand-pressed); }
-    .nx-btn--secondary:active::before { background: #D5F3E4; }
+    .nx-btn--secondary:active::before { background: var(--nx-brand-subtle-active); }
     .nx-btn--ghost-light {
       color: #fff; background: rgba(255, 255, 255, 0.45); font-weight: 600;
       padding: 0.72rem 1.85rem 0.72rem 1.65rem; isolation: isolate;
@@ -344,15 +397,15 @@
     .nx-btn--ghost-light::before {
       content: ""; position: absolute;
       top: 1px; bottom: 1px; left: 1.2px; right: 1.2px; z-index: -1;
-      background: #16231D;
+      background: var(--nx-ghost-dark-bg);
       clip-path: polygon(0 0, calc(100% - 11.4px) 0, 100% 50%, calc(100% - 11.4px) 100%, 0 100%, 8.7px 50%);
       transition: background-color 0.16s ease;
     }
     .nx-btn--ghost-light:hover {
-      background: var(--nx-brand); color: var(--nx-brand);
+      background: var(--nx-brand-on-dark); color: var(--nx-brand-on-dark);
       padding-right: 2.05rem; margin-right: -0.2rem;
     }
-    .nx-btn--ghost-light:hover::before { background: #1B2F25; }
+    .nx-btn--ghost-light:hover::before { background: var(--nx-ghost-dark-hover); }
     .nx-btn--sm {
       padding: 0.45rem 1.35rem 0.45rem 0.85rem; font-size: 0.8rem;
       clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
@@ -468,12 +521,12 @@
     .nx-axis-spot-thumb {
       width: 60px; height: 60px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
       background: var(--nx-steel-900); border: 1px solid var(--nx-brand);
-      box-shadow: 0 0 0 1px rgba(24, 201, 110, 0.18), 0 2px 6px rgba(16, 23, 20, 0.08);
+      box-shadow: 0 0 0 1px rgba(var(--nx-brand-rgb), 0.18), 0 2px 6px rgba(38, 38, 38, 0.08);
       transition: border-color 0.16s ease, box-shadow 0.16s ease;
     }
     .nx-axis-spot:hover .nx-axis-spot-thumb {
       border-color: var(--nx-brand-hover);
-      box-shadow: 0 0 0 1px var(--nx-brand), 0 4px 12px rgba(24, 201, 110, 0.25);
+      box-shadow: 0 0 0 1px var(--nx-brand), 0 4px 12px rgba(var(--nx-brand-rgb), 0.25);
     }
     .nx-axis-spot-thumb img { width: 100%; height: 100%; object-fit: cover; }
     .nx-axis-spot strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; }
@@ -494,7 +547,7 @@
     }
     .ac-banner-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(16,23,20,0.92) 0%, rgba(16,23,20,0.72) 55%, rgba(16,23,20,0.28) 100%);
+      background: linear-gradient(90deg, rgba(38,38,38,0.92) 0%, rgba(38,38,38,0.72) 55%, rgba(38,38,38,0.28) 100%);
     }
     .ac-banner-content {
       position: relative; z-index: 2; max-width: 740px;
@@ -504,7 +557,7 @@
       font-weight: 600; line-height: 1.3; margin: 0; letter-spacing: -0.02em;
     }
     .ac-banner-selling em {
-      font-style: normal; font-weight: 800; color: var(--nx-brand);
+      font-style: normal; font-weight: 800; color: var(--nx-brand-on-dark);
     }
 
     .ac-intro {
@@ -547,7 +600,7 @@
       position: relative; z-index: 1;
       background: var(--nx-surface);
       border-radius: var(--nx-radius-m);
-      box-shadow: 0 4px 12px rgba(16, 23, 20, 0.14);
+      box-shadow: 0 4px 12px rgba(38, 38, 38, 0.14);
       display: flex; flex-direction: column;
       text-decoration: none; color: var(--nx-text);
       min-height: 320px;
@@ -557,7 +610,7 @@
     .ac-deck-card::after {
       content: ""; position: absolute; inset: 0;
       background: var(--nx-surface); border-radius: var(--nx-radius-m);
-      box-shadow: 0 1px 6px rgba(16, 23, 20, 0.14);
+      box-shadow: 0 1px 6px rgba(38, 38, 38, 0.14);
       transition: transform 0.22s ease;
     }
     .ac-deck-card::before {
@@ -568,7 +621,7 @@
     }
     .ac-deck-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(16, 23, 20, 0.18);
+      box-shadow: 0 10px 24px rgba(38, 38, 38, 0.18);
     }
     .ac-deck-card:hover::before { transform: rotate(-2.8deg) translate(2px, -2px); }
     .ac-deck-card:hover::after { transform: rotate(3.2deg) translate(-2px, -2px); }
@@ -597,14 +650,14 @@
     .ac-deck-card:hover .ac-deck-media img { transform: scale(1.05); opacity: 0.55; }
     .ac-deck-icon {
       position: relative; z-index: 2; width: 64px; height: 64px; border-radius: var(--nx-radius-m);
-      background: rgba(16, 23, 20, 0.78); border: 1px solid var(--nx-brand);
-      color: var(--nx-brand); display: flex; align-items: center; justify-content: center;
+      background: rgba(38, 38, 38, 0.78); border: 1px solid var(--nx-brand-on-dark);
+      color: var(--nx-brand-on-dark); display: flex; align-items: center; justify-content: center;
       box-shadow: 0 4px 14px rgba(0,0,0,0.3);
     }
     .ac-deck-count {
       position: absolute; bottom: 0.6rem; right: 0.75rem; z-index: 2;
       font-family: var(--nx-ff-mono); font-size: 0.7rem; font-weight: 600;
-      color: #fff; background: rgba(16, 23, 20, 0.82); padding: 0.15rem 0.5rem; border-radius: var(--nx-radius-xs);
+      color: #fff; background: rgba(38, 38, 38, 0.82); padding: 0.15rem 0.5rem; border-radius: var(--nx-radius-xs);
     }
 
     .ac-deck-body { padding: 1.1rem 1.15rem 1.25rem; flex: 1; display: flex; flex-direction: column; background: var(--nx-surface); border-radius: 0 0 var(--nx-radius-m) var(--nx-radius-m); }
@@ -628,7 +681,7 @@
     .ac-spot-card {
       background: var(--nx-surface); border-radius: var(--nx-radius-m);
       border: none; position: relative;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(16, 23, 20, 0.05), 0 3px 10px rgba(16, 23, 20, 0.05);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(38, 38, 38, 0.05), 0 3px 10px rgba(38, 38, 38, 0.05);
       display: flex; flex-direction: column;
       text-align: center; transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
@@ -637,7 +690,7 @@
       background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
       transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .ac-spot-card:hover { transform: translateY(-3px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(24, 201, 110, 0.28), 0 6px 18px rgba(16, 23, 20, 0.08); }
+    .ac-spot-card:hover { transform: translateY(-3px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(var(--nx-brand-rgb), 0.28), 0 6px 18px rgba(38, 38, 38, 0.08); }
     .ac-spot-card:hover::after { width: 100%; }
     .ac-spot-media { aspect-ratio: 3 / 2; overflow: hidden; background: var(--nx-steel-900); position: relative; }
     .ac-spot-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
@@ -679,7 +732,7 @@
     .ac-single-card {
       position: relative; background: var(--nx-surface); border-radius: var(--nx-radius-m);
       border: none;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(16, 23, 20, 0.05), 0 3px 10px rgba(16, 23, 20, 0.05);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(38, 38, 38, 0.05), 0 3px 10px rgba(38, 38, 38, 0.05);
       padding: 1.35rem; display: flex; flex-direction: column;
       text-decoration: none; color: var(--nx-text); min-height: 330px;
       transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer;
@@ -689,13 +742,13 @@
       background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
       transition: width 0.26s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .ac-single-card:hover { transform: translateY(-3px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(24, 201, 110, 0.28), 0 6px 18px rgba(16, 23, 20, 0.08); }
+    .ac-single-card:hover { transform: translateY(-3px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(var(--nx-brand-rgb), 0.28), 0 6px 18px rgba(38, 38, 38, 0.08); }
     .ac-single-card:hover::after, .ac-single-card:focus-visible::after { width: 100%; }
 
-    /* 8C Speed Chevron "NEW" Ribbon Badge in Emerald Jade */
+    /* 8C Speed Chevron "NEW" Ribbon Badge */
     .ac-badge-new {
       position: absolute; top: 14px; left: 0; z-index: 3;
-      background: var(--nx-brand); color: var(--nx-steel-900);
+      background: var(--nx-brand); color: var(--nx-on-brand);
       font-family: var(--nx-ff-mono); font-size: 0.72rem; font-weight: 800;
       text-transform: uppercase; letter-spacing: 0.08em;
       padding: 0.26rem 1.15rem 0.26rem 0.85rem; border-radius: 0;
@@ -738,22 +791,22 @@
     .ac-editorial-item p { font-size: 0.95rem; color: var(--nx-text-muted); margin: 0 0 1.25rem; flex: 1; }
 
     /* ---------- Footer ---------- */
-    .nx-footer { background: var(--nx-brand); color: var(--nx-steel-900); padding: 3.5rem 0 2rem; }
+    .nx-footer { background: var(--nx-brand); color: var(--nx-on-brand); padding: 3.5rem 0 2rem; }
     .nx-footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2.5rem; }
     @media (min-width: 768px) { .nx-footer-grid { grid-template-columns: repeat(5, 1fr); } }
-    .nx-footer h4 { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--nx-border); }
+    .nx-footer h4 { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.22); }
     .nx-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
-    .nx-footer a { color: inherit; text-decoration: none; font-size: 0.9375rem; font-weight: 500; opacity: 0.9; position: relative; display: inline-block; }
+    .nx-footer a { color: inherit; text-decoration: none; font-size: 0.9375rem; font-weight: 500; opacity: 0.92; position: relative; display: inline-block; }
     .nx-footer a::after {
       content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
-      background: var(--nx-steel-900); transform: scaleX(0); transform-origin: left center; transition: transform 0.2s ease;
+      background: var(--nx-on-brand); transform: scaleX(0); transform-origin: left center; transition: transform 0.2s ease;
     }
     .nx-footer a:hover, .nx-footer a:focus-visible { opacity: 1; }
     .nx-footer a:hover::after, .nx-footer a:focus-visible::after { transform: scaleX(1); }
-    .nx-footer-bottom { padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,0.18); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-size: 0.875rem; }
+    .nx-footer-bottom { padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.22); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-size: 0.875rem; }
 
     /* ---------- Modal & Toast ---------- */
-    .nx-modal-backdrop { position: fixed; inset: 0; background: rgba(16,23,20,0.65); display: none; align-items: center; justify-content: center; padding: 1.5rem; z-index: 500; }
+    .nx-modal-backdrop { position: fixed; inset: 0; background: rgba(38,38,38,0.65); display: none; align-items: center; justify-content: center; padding: 1.5rem; z-index: 500; }
     .nx-modal-backdrop.is-open { display: flex; }
     .nx-modal {
       background: linear-gradient(122deg, var(--nx-brand) 124px, var(--nx-steel-900) 125px) top left / 100% 4px no-repeat, var(--nx-surface);
@@ -783,7 +836,7 @@
     </div>
   </div>
 
-  <!-- HEADER (Axis style with Emerald Jade active underline bar) -->
+  <!-- HEADER (Axis style with active underline bar) -->
   <header class="nx-header">
     <div class="nx-header-inner">
       <a href="SmartFactory.html" class="nx-logo" aria-label="DFS — Digital Factory Solutions — Trang chủ">
@@ -812,6 +865,16 @@
       </nav>
 
       <div class="nx-header-utils">
+        <div class="nx-theme-switch" role="group" aria-label="Chọn phiên bản tông màu">
+          <button type="button" class="nx-theme-btn is-active" data-theme-btn="green" aria-pressed="true" title="Tông màu Xanh lá (Green — #008B45 / #2E8B57)">
+            <span class="nx-theme-dot nx-theme-dot--green" aria-hidden="true"></span>
+            <span class="nx-theme-txt">XANH LÁ</span>
+          </button>
+          <button type="button" class="nx-theme-btn" data-theme-btn="teal" aria-pressed="false" title="Tông màu Xanh lục bảo (Teal — #0E7485 / #00A0B0)">
+            <span class="nx-theme-dot nx-theme-dot--teal" aria-hidden="true"></span>
+            <span class="nx-theme-txt">LỤC BẢO</span>
+          </button>
+        </div>
         <div class="nx-lang-switch" role="group" aria-label="Language switcher">
           <button type="button" class="nx-lang-btn is-active" data-lang-btn="vi" aria-pressed="true">VI</button>
           <button type="button" class="nx-lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>

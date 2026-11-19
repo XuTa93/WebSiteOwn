@@ -848,25 +848,118 @@ window.DFS_I18N = {
   },
 
   // ==========================================================================
-  // PHẦN D: BỘ MÁY CHUYỂN ĐỔI NGÔN NGỮ TỰ ĐỘNG (Không cần chỉnh sửa phần này)
+  // PHẦN D: BỘ MÁY CHUYỂN ĐỔI NGÔN NGỮ & NHẬN DIỆN QUỐC GIA TỰ ĐỘNG
+  // Quy tắc ưu tiên:
+  //   1. Tham số URL (?lang=en | ?lang=vi) hoặc test quốc gia (?country=US | ?country=VN)
+  //   2. Lựa chọn thủ công của người dùng khi bấm nút VI | EN (dfs_lang_manual)
+  //   3. Quốc gia xác định qua IP (nếu ngoài VN -> tự động vào Tiếng Anh 'en')
+  //   4. Nhận diện tức thì 0ms qua Múi giờ hệ thống (nếu ngoài Asia/Ho_Chi_Minh -> 'en')
   // ==========================================================================
   currentLang: "vi",
 
+  isVietnamTimezone: function () {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+      if (tz === "Asia/Ho_Chi_Minh" || tz === "Asia/Saigon" || tz === "Asia/Hanoi") {
+        return true;
+      }
+      // Một số máy tính tại VN cài Windows để múi giờ chung UTC+7 (Asia/Bangkok) kèm ngôn ngữ trình duyệt Tiếng Việt
+      const navLang = (navigator.language || navigator.userLanguage || "").toLowerCase();
+      if (tz === "Asia/Bangkok" && navLang.indexOf("vi") === 0) {
+        return true;
+      }
+      return false;
+    } catch (e) {
+      return true;
+    }
+  },
+
   getLang: function () {
     try {
-      const urlLang = new URLSearchParams(window.location.search).get("lang");
+      const params = new URLSearchParams(window.location.search);
+
+      // 1. Ưu tiên tham số ?lang=vi hoặc ?lang=en trên URL
+      const urlLang = params.get("lang");
       if (urlLang === "en" || urlLang === "vi") return urlLang;
-      const saved = localStorage.getItem("dfs_lang");
-      if (saved === "en" || saved === "vi") return saved;
+
+      // Cho phép kiểm thử nhanh bằng ?country=US, ?country=JP, ?country=VN...
+      const urlCountry = params.get("country");
+      if (urlCountry) {
+        return urlCountry.toUpperCase() === "VN" ? "vi" : "en";
+      }
+
+      // 2. Nếu người dùng đã chủ động bấm nút chọn ngôn ngữ trên thanh Header
+      const manual = localStorage.getItem("dfs_lang_manual");
+      if (manual === "en" || manual === "vi") return manual;
+
+      // 3. Nếu đã có kết quả nhận diện quốc gia qua IP trong phiên làm việc
+      const cachedCountry = sessionStorage.getItem("dfs_geo_country");
+      if (cachedCountry) {
+        return cachedCountry.toUpperCase() === "VN" ? "vi" : "en";
+      }
+
+      // 4. Nhận diện tức thì (0ms) dựa trên múi giờ: ngoài VN -> vào thẳng Tiếng Anh
+      return this.isVietnamTimezone() ? "vi" : "en";
     } catch (e) {}
     return this.defaultLang;
   },
 
-  setLang: function (lang) {
+  detectCountryByIP: function () {
+    const self = this;
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("lang") || params.get("country")) return;
+      if (localStorage.getItem("dfs_lang_manual")) return;
+      if (sessionStorage.getItem("dfs_geo_country")) return;
+    } catch (e) {}
+
+    function applyCountryCode(countryCode) {
+      if (!countryCode || typeof countryCode !== "string") return;
+      const code = countryCode.trim().toUpperCase();
+      if (code.length !== 2) return;
+      try {
+        sessionStorage.setItem("dfs_geo_country", code);
+      } catch (e) {}
+      // Nếu người dùng chưa tự bấm đổi ngôn ngữ trong lúc chờ API trả về
+      try {
+        if (localStorage.getItem("dfs_lang_manual")) return;
+      } catch (e) {}
+      const targetLang = code === "VN" ? "vi" : "en";
+      if (self.currentLang !== targetLang) {
+        self.setLang(targetLang, false);
+      }
+    }
+
+    // Gọi Geo-IP siêu nhẹ (api.country.is), nếu lỗi mạng tự động fallback sang geojs.io
+    fetch("https://api.country.is/", { cache: "no-store" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("GeoIP primary failed");
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && data.country) applyCountryCode(data.country);
+      })
+      .catch(function () {
+        fetch("https://get.geojs.io/v1/ip/country.json", { cache: "no-store" })
+          .then(function (res) {
+            if (!res.ok) throw new Error("GeoIP fallback failed");
+            return res.json();
+          })
+          .then(function (data) {
+            if (data && data.country) applyCountryCode(data.country);
+          })
+          .catch(function () {});
+      });
+  },
+
+  setLang: function (lang, isManual) {
     if (lang !== "vi" && lang !== "en") return;
     this.currentLang = lang;
     try {
       localStorage.setItem("dfs_lang", lang);
+      if (isManual) {
+        localStorage.setItem("dfs_lang_manual", lang);
+      }
     } catch (e) {}
 
     document.documentElement.setAttribute("lang", lang);
@@ -901,18 +994,70 @@ window.DFS_I18N = {
       btn.setAttribute("aria-pressed", String(isMatch));
     });
 
+    // 3b. Cập nhật nhãn nút chọn tông màu theo ngôn ngữ VI | EN
+    document.querySelectorAll("[data-theme-btn] .nx-theme-txt").forEach(function (span) {
+      const btn = span.closest("[data-theme-btn]");
+      if (!btn) return;
+      const t = btn.getAttribute("data-theme-btn");
+      if (t === "green") {
+        span.textContent = lang === "en" ? "GREEN" : "XANH LÁ";
+      } else if (t === "teal") {
+        span.textContent = lang === "en" ? "TEAL" : "LỤC BẢO";
+      }
+    });
+
     // 4. Phát sự kiện để các thành phần động (như Tab Giải pháp) tự làm mới
     window.dispatchEvent(new CustomEvent("dfs:langchange", { detail: { lang: lang } }));
   },
 
+  currentTheme: "green",
+
+  getTheme: function () {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const urlTheme = params.get("theme");
+      if (urlTheme === "green" || urlTheme === "teal") return urlTheme;
+      const saved = localStorage.getItem("dfs_theme");
+      if (saved === "green" || saved === "teal") return saved;
+    } catch (e) {}
+    return "green";
+  },
+
+  setTheme: function (theme) {
+    const t = theme === "teal" ? "teal" : "green";
+    this.currentTheme = t;
+    document.documentElement.setAttribute("data-theme", t);
+    try {
+      localStorage.setItem("dfs_theme", t);
+    } catch (e) {}
+    document.querySelectorAll("[data-theme-btn]").forEach(function (btn) {
+      const isMatch = btn.getAttribute("data-theme-btn") === t;
+      btn.classList.toggle("is-active", isMatch);
+      btn.setAttribute("aria-pressed", String(isMatch));
+    });
+    window.dispatchEvent(new CustomEvent("dfs:themechange", { detail: { theme: t } }));
+  },
+
   init: function () {
     const self = this;
+    const initialTheme = this.getTheme();
+    this.setTheme(initialTheme);
+
     const initial = this.getLang();
-    this.setLang(initial);
+    this.setLang(initial, false);
+
+    // Kiểm tra thêm bằng IP thực tế để đảm bảo khách ngoài VN luôn vào Tiếng Anh
+    this.detectCountryByIP();
 
     document.querySelectorAll("[data-lang-btn]").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        self.setLang(btn.getAttribute("data-lang-btn"));
+        self.setLang(btn.getAttribute("data-lang-btn"), true);
+      });
+    });
+
+    document.querySelectorAll("[data-theme-btn]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        self.setTheme(btn.getAttribute("data-theme-btn"));
       });
     });
   }
