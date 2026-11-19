@@ -675,36 +675,74 @@
       .nx-tabs .nx-tab:last-child:nth-child(odd) {
         grid-column: 1 / -1; flex-direction: row; justify-content: center; gap: 0.75rem; padding: 0.75rem 1rem;
       }
+      .nx-tabs .nx-tab:last-child:nth-child(odd) .nx-icon-circle {
+        width: 56px; height: 56px; flex-shrink: 0;
+      }
     }
     @media (min-width: 640px) and (max-width: 1023px) {
       .nx-tabs .nx-tab:last-child:nth-child(3n+1) {
         grid-column: 1 / -1; flex-direction: row; justify-content: center; gap: 0.85rem; padding: 0.85rem 1.25rem;
       }
+      .nx-tabs .nx-tab:last-child:nth-child(3n+1) .nx-icon-circle {
+        width: 56px; height: 56px; flex-shrink: 0;
+      }
     }
     .nx-tab {
       background: var(--nx-surface); border: none;
-      border-radius: var(--nx-radius-m);
+      border-radius: var(--nx-radius-m); overflow: hidden;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 0 0 1px rgba(38, 38, 38, 0.04), 0 2px 6px rgba(38, 38, 38, 0.03);
       padding: var(--nx-sp-m) var(--nx-sp-s); display: flex; flex-direction: column; align-items: center; text-align: center;
       gap: var(--nx-sp-s); cursor: pointer; font-family: var(--nx-ff-body); position: relative;
       transition: all 0.2s ease;
     }
     .nx-tab::after {
-      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2.5px;
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
       transition: transform 0.22s ease;
     }
     .nx-tab .nx-icon-circle {
-      width: 56px; height: 56px; border-radius: var(--nx-radius-m); background: var(--nx-surface-alt); color: var(--nx-text);
-      border: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 0 0 1px rgba(38, 38, 38, 0.06);
-      display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;
+      width: 72px; height: 72px; padding: 4px; border-radius: var(--nx-radius-m);
+      background: linear-gradient(160deg, #FFFFFF 0%, var(--nx-surface-alt) 100%);
+      color: var(--nx-text); border: none; position: relative; overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 0 0 1px rgba(38, 38, 38, 0.06);
+      display: flex; align-items: center; justify-content: center; transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .nx-tab span { font-size: 0.875rem; font-weight: 600; color: var(--nx-text); line-height: 1.3; }
+    @media (max-width: 639px) { .nx-tab .nx-icon-circle { width: 68px; height: 68px; } }
+    @media (min-width: 1200px) { .nx-tab .nx-icon-circle { width: 80px; height: 80px; } }
+    .nx-sol-art {
+      width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0.94;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.22s ease, filter 0.28s ease;
+    }
+    .nx-tab span { font-size: 0.875rem; font-weight: 600; color: var(--nx-text); line-height: 1.3; transition: color 0.2s ease; }
     .nx-tab:hover, .nx-tab:focus-visible { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(var(--nx-brand-rgb), 0.22), 0 3px 10px rgba(38, 38, 38, 0.06); }
-    .nx-tab:hover .nx-icon-circle { background: var(--nx-brand-subtle); color: var(--nx-text-brand); transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--nx-brand); }
+    .nx-tab:hover .nx-icon-circle, .nx-tab:focus-visible .nx-icon-circle {
+      background: linear-gradient(155deg, #FFFFFF 0%, var(--nx-brand-subtle) 100%);
+      transform: translateY(-3px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 0 0 1px rgba(var(--nx-brand-rgb), 0.48), 0 6px 14px rgba(var(--nx-brand-rgb), 0.14);
+    }
+    .nx-tab:hover .nx-sol-art, .nx-tab:focus-visible .nx-sol-art {
+      transform: scale(1.07); opacity: 1;
+      filter: drop-shadow(0 3px 6px rgba(var(--nx-brand-rgb), 0.18));
+    }
     .nx-tab:hover::after, .nx-tab:focus-visible::after, .nx-tab.is-active::after { transform: scaleX(1); }
-    .nx-tab.is-active { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(var(--nx-brand-rgb), 0.35), 0 4px 14px rgba(38, 38, 38, 0.10); }
-    .nx-tab.is-active .nx-icon-circle { background: var(--nx-brand); color: var(--nx-on-brand); box-shadow: none; }
+    .nx-tab.is-active {
+      background: linear-gradient(180deg, var(--nx-brand-subtle) 0%, var(--nx-surface) 56%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(var(--nx-brand-rgb), 0.42), 0 6px 18px rgba(var(--nx-brand-rgb), 0.14);
+    }
+    .nx-tab.is-active .nx-icon-circle {
+      background: radial-gradient(circle at 50% 35%, #FFFFFF 0%, var(--nx-brand-subtle) 76%, var(--nx-brand-subtle-active) 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 0 0 1px var(--nx-brand), 0 4px 12px rgba(var(--nx-brand-rgb), 0.22);
+    }
+    .nx-tab.is-active .nx-sol-art {
+      opacity: 1;
+      filter: drop-shadow(0 4px 8px rgba(var(--nx-brand-rgb), 0.22));
+      animation: nx-sol-float 3.2s ease-in-out infinite;
+    }
+    .nx-tab.is-active span { color: var(--nx-text-brand); font-weight: 700; }
+    @keyframes nx-sol-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2.5px); }
+    }
 
     .nx-sol-panel {
       background: var(--nx-surface-alt); border-radius: var(--nx-radius-l); padding: var(--nx-sp-xl);
@@ -1393,45 +1431,8 @@
     </div>
   </div>
 
-  <!-- PAIN POINTS -->
-  <section class="nx-section" id="challenges">
-    <div class="nx-container">
-      <div class="nx-section-header">
-        <span class="nx-kicker" data-i18n="pain.kicker">Thách thức thường gặp</span>
-        <h2 data-i18n="pain.title">Nhà máy vẫn đang vận hành bằng giấy, Excel và kinh nghiệm?</h2>
-        <p data-i18n="pain.desc">Dữ liệu sản xuất rời rạc khiến ban điều hành ra quyết định chậm, khó chứng minh chất lượng với khách hàng và tốn kém khi xảy ra sự cố.</p>
-      </div>
-      <div class="nx-pain-grid">
-        <article class="nx-pain">
-          <span class="nx-pain-no">01</span>
-          <h3 data-i18n="pain.1.title">Báo cáo sản xuất trễ 1–2 ngày</h3>
-          <p data-i18n="pain.1.desc">Số liệu ghi tay cuối ca, nhập lại vào Excel — sai lệch, thiếu và không ai tin hoàn toàn.</p>
-          <div class="nx-pain-fix" data-i18n="pain.1.fix">→ MES ghi nhận tự động theo thời gian thực</div>
-        </article>
-        <article class="nx-pain">
-          <span class="nx-pain-no">02</span>
-          <h3 data-i18n="pain.2.title">Không biết OEE thực tế</h3>
-          <p data-i18n="pain.2.desc">Thời gian dừng máy, chạy chậm, hàng lỗi bị "ẩn" — năng lực thật của xưởng chưa được khai thác.</p>
-          <div class="nx-pain-fix" data-i18n="pain.2.fix">→ Kết nối máy (IIoT) & phân tích tổn thất</div>
-        </article>
-        <article class="nx-pain">
-          <span class="nx-pain-no">03</span>
-          <h3 data-i18n="pain.3.title">Truy xuất lô mất hàng giờ</h3>
-          <p data-i18n="pain.3.desc">Khi khách hàng khiếu nại hoặc cần thu hồi, phải lục sổ sách nhiều bộ phận mới khoanh vùng được lô lỗi.</p>
-          <div class="nx-pain-fix" data-i18n="pain.3.fix">→ Phả hệ lô (genealogy) tra cứu trong vài giây</div>
-        </article>
-        <article class="nx-pain">
-          <span class="nx-pain-no">04</span>
-          <h3 data-i18n="pain.4.title">ERP và xưởng không "nói chuyện"</h3>
-          <p data-i18n="pain.4.desc">Kế hoạch trên ERP không phản ánh tiến độ thực tế dưới xưởng; tồn kho WIP luôn chênh lệch.</p>
-          <div class="nx-pain-fix" data-i18n="pain.4.fix">→ Tích hợp hai chiều ERP ⇄ MES ⇄ Máy</div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- SOLUTIONS TABS -->
-  <section class="nx-section nx-section--alt" id="solutions">
+  <section class="nx-section" id="solutions">
     <div class="nx-container">
       <div class="nx-section-header">
         <span class="nx-kicker" data-i18n="sol.kicker">Giải pháp</span>
@@ -1442,43 +1443,43 @@
       <div class="nx-tabs" role="tablist" aria-label="Danh mục giải pháp">
         <button type="button" class="nx-tab is-active" data-sol="mes" role="tab" aria-selected="true">
           <div class="nx-icon-circle">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 17.5h7M17.5 14v7"></path></svg>
+            <img class="nx-sol-art" src="assets/images/solutions/sol-mes.svg" data-sol-img="mes" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
           </div>
           <span data-i18n="sol.tab.mes">MES — Điều hành sản xuất</span>
         </button>
         <button type="button" class="nx-tab" data-sol="trace" role="tab" aria-selected="false">
           <div class="nx-icon-circle">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M7 8v8M10 8v8M13 8v8M16 8v8"></path></svg>
+            <img class="nx-sol-art" src="assets/images/solutions/sol-trace.svg" data-sol-img="trace" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
           </div>
           <span data-i18n="sol.tab.trace">Truy xuất nguồn gốc</span>
         </button>
         <button type="button" class="nx-tab" data-sol="oee" role="tab" aria-selected="false">
           <div class="nx-icon-circle">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+            <img class="nx-sol-art" src="assets/images/solutions/sol-oee.svg" data-sol-img="oee" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
           </div>
           <span data-i18n="sol.tab.oee">Giám sát máy & OEE</span>
         </button>
         <button type="button" class="nx-tab" data-sol="qms" role="tab" aria-selected="false">
           <div class="nx-icon-circle">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+            <img class="nx-sol-art" src="assets/images/solutions/sol-qms.svg" data-sol-img="qms" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
           </div>
           <span data-i18n="sol.tab.qms">Quản lý chất lượng</span>
         </button>
         <button type="button" class="nx-tab" data-sol="wms" role="tab" aria-selected="false">
           <div class="nx-icon-circle">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            <img class="nx-sol-art" src="assets/images/solutions/sol-wms.svg" data-sol-img="wms" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
           </div>
           <span data-i18n="sol.tab.wms">Kho & Logistics (WMS)</span>
         </button>
         <button type="button" class="nx-tab" data-sol="cmms" role="tab" aria-selected="false">
           <div class="nx-icon-circle">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            <img class="nx-sol-art" src="assets/images/solutions/sol-cmms.svg" data-sol-img="cmms" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
           </div>
           <span data-i18n="sol.tab.cmms">Bảo trì & Số hóa biểu mẫu</span>
         </button>
         <button type="button" class="nx-tab" data-sol="ems" role="tab" aria-selected="false">
           <div class="nx-icon-circle">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <img class="nx-sol-art" src="assets/images/solutions/sol-ems.svg" data-sol-img="ems" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
           </div>
           <span data-i18n="sol.tab.ems">Quản lý năng lượng (EMS)</span>
         </button>
@@ -1510,6 +1511,43 @@
             <strong>Tích hợp:</strong> đồng bộ lệnh, BOM, routing và tồn kho hai chiều với ERP qua REST API / middleware.
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="nx-section nx-section--alt" id="challenges">
+    <div class="nx-container">
+      <div class="nx-section-header">
+        <span class="nx-kicker" data-i18n="pain.kicker">Thách thức thường gặp</span>
+        <h2 data-i18n="pain.title">Nhà máy vẫn đang vận hành bằng giấy, Excel và kinh nghiệm?</h2>
+        <p data-i18n="pain.desc">Dữ liệu sản xuất rời rạc khiến ban điều hành ra quyết định chậm, khó chứng minh chất lượng với khách hàng và tốn kém khi xảy ra sự cố.</p>
+      </div>
+      <div class="nx-pain-grid">
+        <article class="nx-pain">
+          <span class="nx-pain-no">01</span>
+          <h3 data-i18n="pain.1.title">Báo cáo sản xuất trễ 1–2 ngày</h3>
+          <p data-i18n="pain.1.desc">Số liệu ghi tay cuối ca, nhập lại vào Excel — sai lệch, thiếu và không ai tin hoàn toàn.</p>
+          <div class="nx-pain-fix" data-i18n="pain.1.fix">→ MES ghi nhận tự động theo thời gian thực</div>
+        </article>
+        <article class="nx-pain">
+          <span class="nx-pain-no">02</span>
+          <h3 data-i18n="pain.2.title">Không biết OEE thực tế</h3>
+          <p data-i18n="pain.2.desc">Thời gian dừng máy, chạy chậm, hàng lỗi bị "ẩn" — năng lực thật của xưởng chưa được khai thác.</p>
+          <div class="nx-pain-fix" data-i18n="pain.2.fix">→ Kết nối máy (IIoT) & phân tích tổn thất</div>
+        </article>
+        <article class="nx-pain">
+          <span class="nx-pain-no">03</span>
+          <h3 data-i18n="pain.3.title">Truy xuất lô mất hàng giờ</h3>
+          <p data-i18n="pain.3.desc">Khi khách hàng khiếu nại hoặc cần thu hồi, phải lục sổ sách nhiều bộ phận mới khoanh vùng được lô lỗi.</p>
+          <div class="nx-pain-fix" data-i18n="pain.3.fix">→ Phả hệ lô (genealogy) tra cứu trong vài giây</div>
+        </article>
+        <article class="nx-pain">
+          <span class="nx-pain-no">04</span>
+          <h3 data-i18n="pain.4.title">ERP và xưởng không "nói chuyện"</h3>
+          <p data-i18n="pain.4.desc">Kế hoạch trên ERP không phản ánh tiến độ thực tế dưới xưởng; tồn kho WIP luôn chênh lệch.</p>
+          <div class="nx-pain-fix" data-i18n="pain.4.fix">→ Tích hợp hai chiều ERP ⇄ MES ⇄ Máy</div>
+        </article>
       </div>
     </div>
   </section>
@@ -2096,6 +2134,20 @@
       }
       window.addEventListener('dfs:langchange', function () {
         selectSolution(currentSolKey);
+      });
+      function syncSolutionIcons(theme) {
+        const t = theme || document.documentElement.getAttribute('data-theme') || (window.DFS_I18N && window.DFS_I18N.getTheme && window.DFS_I18N.getTheme()) || 'green';
+        const prefix = t === 'teal' ? 'assets/images/solutions/teal/sol-' : 'assets/images/solutions/sol-';
+        document.querySelectorAll('img[data-sol-img]').forEach(function (img) {
+          const key = img.getAttribute('data-sol-img');
+          if (!key) return;
+          const nextSrc = prefix + key + '.svg';
+          if (img.getAttribute('src') !== nextSrc) img.setAttribute('src', nextSrc);
+        });
+      }
+      syncSolutionIcons();
+      window.addEventListener('dfs:themechange', function (e) {
+        syncSolutionIcons(e && e.detail && e.detail.theme);
       });
       solTabs.forEach(function (tab) {
         tab.addEventListener('click', function () { selectSolution(tab.getAttribute('data-sol')); });

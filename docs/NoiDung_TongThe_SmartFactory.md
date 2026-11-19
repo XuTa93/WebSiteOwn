@@ -81,21 +81,7 @@ Ba thẻ hành động nổi ngay dưới Hero nhằm thu hút khách hàng ở 
 
 ---
 
-### 3.4. Thách thức thường gặp tại nhà máy (`#challenges`)
-- **Kicker:** `THÁCH THỨC THƯỜNG GẶP`
-- **Tiêu đề (H2):** **Nhà máy vẫn đang vận hành bằng giấy, Excel và kinh nghiệm?**
-- **Mô tả:** Dữ liệu sản xuất rời rạc khiến ban điều hành ra quyết định chậm, khó chứng minh chất lượng với khách hàng và tốn kém khi xảy ra sự cố.
-
-| Mã | Vấn đề tại xưởng | Hệ lụy thực tế | Giải pháp từ DFS — Digital Factory Solutions |
-| :---: | :--- | :--- | :--- |
-| **01** | **Báo cáo sản xuất trễ 1–2 ngày** | Số liệu ghi tay cuối ca, nhập lại vào Excel — sai lệch, thiếu và không ai tin hoàn toàn. | `→ MES ghi nhận tự động theo thời gian thực` |
-| **02** | **Không biết OEE thực tế** | Thời gian dừng máy, chạy chậm, hàng lỗi bị "ẩn" — năng lực thật của xưởng chưa được khai thác. | `→ Kết nối máy (IIoT) & phân tích tổn thất` |
-| **03** | **Truy xuất lô mất hàng giờ** | Khi khách hàng khiếu nại hoặc cần thu hồi, phải lục sổ sách nhiều bộ phận mới khoanh vùng được lô lỗi. | `→ Phả hệ lô (genealogy) tra cứu trong vài giây` |
-| **04** | **ERP và xưởng không "nói chuyện"** | Kế hoạch trên ERP không phản ánh tiến độ thực tế dưới xưởng; tồn kho WIP luôn chênh lệch. | `→ Tích hợp hai chiều ERP ⇄ MES ⇄ Máy` |
-
----
-
-### 3.5. Bộ giải pháp Smart Factory theo mô-đun (`#solutions`)
+### 3.4. Bộ giải pháp Smart Factory theo mô-đun (`#solutions`)
 - **Kicker:** `GIẢI PHÁP`
 - **Tiêu đề (H2):** **Bộ giải pháp Smart Factory theo mô-đun**
 - **Mô tả:** Bắt đầu từ bài toán cấp thiết nhất, mở rộng dần trên cùng một nền tảng dữ liệu.
@@ -176,6 +162,20 @@ Ba thẻ hành động nổi ngay dưới Hero nhằm thu hút khách hàng ở 
   - Tự động tổng hợp báo cáo kiểm kê khí nhà kính Scope 1–2 theo ISO 50001 & ESG.
 - **Chỉ số hiệu quả điển hình:** **`-12–20%`** chi phí điện năng & tổn thất chạy không tải trên mỗi đơn vị sản phẩm.
 - **Điểm nhấn kết nối phần cứng:** Tương thích đồng hồ 3 pha Modbus RTU/TCP, biến dòng CT kẹp mở, cảm biến lưu lượng và DFS PowerMeter PM-3P.
+
+---
+
+### 3.5. Thách thức thường gặp tại nhà máy (`#challenges`)
+- **Kicker:** `THÁCH THỨC THƯỜNG GẶP`
+- **Tiêu đề (H2):** **Nhà máy vẫn đang vận hành bằng giấy, Excel và kinh nghiệm?**
+- **Mô tả:** Dữ liệu sản xuất rời rạc khiến ban điều hành ra quyết định chậm, khó chứng minh chất lượng với khách hàng và tốn kém khi xảy ra sự cố.
+
+| Mã | Vấn đề tại xưởng | Hệ lụy thực tế | Giải pháp từ DFS — Digital Factory Solutions |
+| :---: | :--- | :--- | :--- |
+| **01** | **Báo cáo sản xuất trễ 1–2 ngày** | Số liệu ghi tay cuối ca, nhập lại vào Excel — sai lệch, thiếu và không ai tin hoàn toàn. | `→ MES ghi nhận tự động theo thời gian thực` |
+| **02** | **Không biết OEE thực tế** | Thời gian dừng máy, chạy chậm, hàng lỗi bị "ẩn" — năng lực thật của xưởng chưa được khai thác. | `→ Kết nối máy (IIoT) & phân tích tổn thất` |
+| **03** | **Truy xuất lô mất hàng giờ** | Khi khách hàng khiếu nại hoặc cần thu hồi, phải lục sổ sách nhiều bộ phận mới khoanh vùng được lô lỗi. | `→ Phả hệ lô (genealogy) tra cứu trong vài giây` |
+| **04** | **ERP và xưởng không "nói chuyện"** | Kế hoạch trên ERP không phản ánh tiến độ thực tế dưới xưởng; tồn kho WIP luôn chênh lệch. | `→ Tích hợp hai chiều ERP ⇄ MES ⇄ Máy` |
 
 ---
 
