@@ -7,16 +7,16 @@
     </radialGradient>
     <linearGradient id="mes-deck" x1="20%" y1="15%" x2="85%" y2="85%">
       <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="65%" stop-color="#F2FAF5" />
-      <stop offset="100%" stop-color="#E6F4EC" />
+      <stop offset="65%" stop-color="#F0FAFC" />
+      <stop offset="100%" stop-color="#E6F4F6" />
     </linearGradient>
     <linearGradient id="mes-screen-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="100%" stop-color="#E6F4EC" />
+      <stop offset="100%" stop-color="#E6F4F6" />
     </linearGradient>
     <linearGradient id="mes-brand-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38B870" />
-      <stop offset="100%" stop-color="#008B45" />
+      <stop offset="0%" stop-color="#1CC0D1" />
+      <stop offset="100%" stop-color="#026A74" />
     </linearGradient>
     <linearGradient id="mes-belt" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#3D3D3D" />
@@ -76,9 +76,9 @@
     <polygon points="64,102 96,86 96,91 64,107" fill="#76827D" />
     <polygon points="56,68 64,68 96,84 96,86 64,102 56,102 24,86 24,84" fill="url(#mes-deck)" />
     <polyline points="24,84 56,68 64,68 96,84" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" />
-    <polygon points="57,71 63,71 90,84.5 90,85.5 63,99 57,99 30,85.5 30,84.5" fill="none" stroke="#CFEAD9" stroke-width="0.9" />
-    <polygon points="64,102 96,86 96,88 64,104" fill="#008B45" />
-    <polygon points="56,102 64,102 64,104 56,104" fill="#128243" />
+    <polygon points="57,71 63,71 90,84.5 90,85.5 63,99 57,99 30,85.5 30,84.5" fill="none" stroke="#CCE9ED" stroke-width="0.9" />
+    <polygon points="64,102 96,86 96,88 64,104" fill="#026A74" />
+    <polygon points="56,102 64,102 64,104 56,104" fill="#01535B" />
   </g>
 
   <!-- Gantry Support Mast -->
@@ -99,34 +99,34 @@
     <polygon points="36.5,33.5 73.5,15 73.5,19.5 36.5,38" fill="#303030" />
     <!-- Glowing RUN LED in Header -->
     <g transform="translate(70, 19.5)">
-      <circle class="mes-led" cx="0" cy="0" r="1.7" fill="#5EE49B" filter="url(#mes-glow)" />
+      <circle class="mes-led" cx="0" cy="0" r="1.7" fill="#4CE3F2" filter="url(#mes-glow)" />
     </g>
     <!-- 4-Block MES Scheduling Grid (Left Side of Screen) -->
     <g transform="matrix(1, -0.5, 0, 1, 39, 39.5)">
-      <rect x="0" y="0" width="5.5" height="5.5" rx="0.8" fill="#008B45" />
-      <rect x="7" y="0" width="5.5" height="5.5" rx="0.8" fill="#38B870" />
-      <rect x="0" y="7" width="5.5" height="5.5" rx="0.8" fill="#2E8B57" />
-      <rect x="7" y="7" width="5.5" height="5.5" rx="0.8" fill="#CFEAD9" stroke="#008B45" stroke-width="0.6" />
+      <rect x="0" y="0" width="5.5" height="5.5" rx="0.8" fill="#026A74" />
+      <rect x="7" y="0" width="5.5" height="5.5" rx="0.8" fill="#1CC0D1" />
+      <rect x="0" y="7" width="5.5" height="5.5" rx="0.8" fill="#0699A8" />
+      <rect x="7" y="7" width="5.5" height="5.5" rx="0.8" fill="#CCE9ED" stroke="#026A74" stroke-width="0.6" />
       <!-- Live KPI Bars (Right Side of Screen) -->
       <line x1="16" y1="12.5" x2="31" y2="12.5" stroke="#A4B0AA" stroke-width="0.8" />
       <g transform="translate(18, 12)">
-        <rect class="mes-bar-1" x="-1.2" y="-7.5" width="2.4" height="7.5" rx="0.4" fill="#008B45" />
+        <rect class="mes-bar-1" x="-1.2" y="-7.5" width="2.4" height="7.5" rx="0.4" fill="#026A74" />
       </g>
       <g transform="translate(21.8, 12)">
-        <rect class="mes-bar-2" x="-1.2" y="-10" width="2.4" height="10" rx="0.4" fill="#38B870" />
+        <rect class="mes-bar-2" x="-1.2" y="-10" width="2.4" height="10" rx="0.4" fill="#1CC0D1" />
       </g>
       <g transform="translate(25.6, 12)">
-        <rect class="mes-bar-3" x="-1.2" y="-6.2" width="2.4" height="6.2" rx="0.4" fill="#2E8B57" />
+        <rect class="mes-bar-3" x="-1.2" y="-6.2" width="2.4" height="6.2" rx="0.4" fill="#0699A8" />
       </g>
       <g transform="translate(29.4, 12)">
-        <rect class="mes-bar-4" x="-1.2" y="-9.2" width="2.4" height="9.2" rx="0.4" fill="#5EE49B" />
+        <rect class="mes-bar-4" x="-1.2" y="-9.2" width="2.4" height="9.2" rx="0.4" fill="#4CE3F2" />
       </g>
     </g>
   </g>
 
   <!-- Telemetry Uplink Connector (Conveyor -> MES Dashboard) -->
-  <path d="M 59,72 L 59,56 L 56,54.5 L 56,48" stroke="#CFEAD9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-  <path class="mes-uplink" d="M 59,72 L 59,56 L 56,54.5 L 56,48" stroke="#38B870" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#mes-glow)" />
+  <path d="M 59,72 L 59,56 L 56,54.5 L 56,48" stroke="#CCE9ED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <path class="mes-uplink" d="M 59,72 L 59,56 L 56,54.5 L 56,48" stroke="#1CC0D1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#mes-glow)" />
 
   <!-- Isometric Conveyor Belt Assembly in Foreground -->
   <g id="mes-conveyor">
@@ -140,7 +140,7 @@
     <!-- Conveyor Belt Top Surface -->
     <polygon points="34,74 44,69 82,88 72,93" fill="url(#mes-belt)" />
     <!-- Emerald Chevron Guide Trim Along Front Rail -->
-    <polygon points="34,77.2 72,96.2 72,97.6 34,78.6" fill="#008B45" />
+    <polygon points="34,77.2 72,96.2 72,97.6 34,78.6" fill="#026A74" />
     <!-- Conveyor Roller Stripes -->
     <g stroke="#525C58" stroke-width="0.9">
       <line x1="40" y1="77" x2="50" y2="72" />
@@ -154,9 +154,9 @@
     <g clip-path="url(#mes-belt-clip)">
       <g transform="translate(54, 79)">
         <g class="mes-part-1">
-          <polygon points="0,-5 6,-2 0,1 -6,-2" fill="#5EE49B" />
-          <polygon points="-6,-2 0,1 0,5.5 -6,2.5" fill="#008B45" />
-          <polygon points="0,1 6,-2 6,2.5 0,5.5" fill="#128243" />
+          <polygon points="0,-5 6,-2 0,1 -6,-2" fill="#4CE3F2" />
+          <polygon points="-6,-2 0,1 0,5.5 -6,2.5" fill="#026A74" />
+          <polygon points="0,1 6,-2 6,2.5 0,5.5" fill="#01535B" />
         </g>
         <g class="mes-part-2">
           <polygon points="0,-5 6,-2 0,1 -6,-2" fill="#FFFFFF" />
@@ -164,15 +164,15 @@
           <polygon points="0,1 6,-2 6,2.5 0,5.5" fill="#76827D" />
         </g>
         <g class="mes-part-3">
-          <polygon points="0,-5 6,-2 0,1 -6,-2" fill="#38B870" />
-          <polygon points="-6,-2 0,1 0,5.5 -6,2.5" fill="#128243" />
-          <polygon points="0,1 6,-2 6,2.5 0,5.5" fill="#0B5E32" />
+          <polygon points="0,-5 6,-2 0,1 -6,-2" fill="#1CC0D1" />
+          <polygon points="-6,-2 0,1 0,5.5 -6,2.5" fill="#01535B" />
+          <polygon points="0,1 6,-2 6,2.5 0,5.5" fill="#074E5A" />
         </g>
       </g>
     </g>
 
     <!-- Optical Edge Sensor Gate on Conveyor -->
     <polygon points="55,70 59,68 62,69.5 62,75 58,77 55,75.5" fill="#262626" />
-    <circle cx="59" cy="72" r="1.4" fill="#38B870" filter="url(#mes-glow)" />
+    <circle cx="59" cy="72" r="1.4" fill="#1CC0D1" filter="url(#mes-glow)" />
   </g>
 </svg>

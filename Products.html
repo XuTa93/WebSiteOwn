@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sản phẩm | DFS — Thiết bị IIoT, Auto-ID, Andon & Phần mềm Smart Factory</title>
+  <title>Sản phẩm | DFS: Thiết bị IIoT, Auto-ID, Andon & Phần mềm Smart Factory</title>
   <meta name="description" content="Khám phá danh mục sản phẩm và thiết bị công nghiệp chuẩn mở của DFS: Bộ thu thập dữ liệu IIoT, máy quét mã vạch & PDA, màn hình Panel PC, bảng Andon, máy in nhãn GS1 và phần mềm MES." />
   <link rel="icon" href="favicon.ico?v=20261119" sizes="32x32" />
   <link rel="icon" href="assets/favicon-32x32.png?v=20261119" type="image/png" sizes="32x32" />
@@ -17,8 +17,7 @@
     /* ==========================================================================
        DFS Design System — tokens (xem docs/BrandGuide_ThietKe.md)
        ========================================================================== */
-    :root,
-    :root[data-theme="green"] {
+    :root {
       --nx-header-height: 72px;
       --nx-container-max: 1300px;
 
@@ -27,22 +26,22 @@
       --nx-ff-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
       --nx-ff-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
 
-      /* Brand — Phiên bản 1: Tông màu Xanh lá (Green) */
-      --nx-brand: #008B45;
-      --nx-brand-alt: #128243;
-      --nx-brand-secondary: #2E8B57;
-      --nx-brand-secondary-alt: #228B22;
-      --nx-brand-hover: #2E8B57;
-      --nx-brand-pressed: #128243;
-      --nx-brand-subtle: #E6F4EC;
-      --nx-brand-subtle-active: #CFEAD9;
-      --nx-accent-teal: #2E8B57;
-      --nx-brand-on-dark: #38B870;
+      /* Brand — Tông màu Xanh lục bảo chủ đạo (Teal) */
+      --nx-brand: #026A74;
+      --nx-brand-alt: #01535B;
+      --nx-brand-secondary: #0699A8;
+      --nx-brand-secondary-alt: #058390;
+      --nx-brand-hover: #0699A8;
+      --nx-brand-pressed: #01535B;
+      --nx-brand-subtle: #E6F4F6;
+      --nx-brand-subtle-active: #CCE9ED;
+      --nx-accent-teal: #0699A8;
+      --nx-brand-on-dark: #1CC0D1;
       --nx-on-brand: #FFFFFF;
-      --nx-brand-rgb: 0, 139, 69;
-      --nx-brand-gradient: linear-gradient(135deg, #008B45 0%, #2E8B57 100%);
-      --nx-ghost-dark-bg: #1D2822;
-      --nx-ghost-dark-hover: #22352A;
+      --nx-brand-rgb: 2, 106, 116;
+      --nx-brand-gradient: linear-gradient(135deg, #026A74 0%, #0699A8 100%);
+      --nx-ghost-dark-bg: #182628;
+      --nx-ghost-dark-hover: #1E3236;
 
       /* Industrial neutrals — Đen mờ #262626 & Trắng ngà #F5F5F5 */
       --nx-steel-900: #262626;
@@ -58,12 +57,12 @@
       --nx-text: #262626;
       --nx-text-muted: #5C6661;
       --nx-text-inverse: #FFFFFF;
-      --nx-text-brand: #008B45;
+      --nx-text-brand: #026A74;
 
       /* Semantic Shop-floor Status (Andon / MES) */
-      --nx-status-run: #008B45;
-      --nx-status-run-bg: #E6F4EC;
-      --nx-status-run-text: #128243;
+      --nx-status-run: #026A74;
+      --nx-status-run-bg: #E6F4F6;
+      --nx-status-run-text: #01535B;
       --nx-status-idle: #F5A524;
       --nx-status-idle-bg: #FEF3E2;
       --nx-status-idle-text: #B54708;
@@ -74,7 +73,7 @@
       --nx-status-info-bg: #EFF8FF;
       --nx-status-info-text: #175CD3;
 
-      /* Radius & Elevation (8C Industrial Precision Scale) */
+      /* Radius & Elevation */
       --nx-radius-xs: 2px;
       --nx-radius-s: 3px;
       --nx-radius-m: 4px;
@@ -82,33 +81,6 @@
       --nx-radius-tag: 2px;
       --nx-elev-1: 0 2px 6px rgba(38, 38, 38, 0.10);
       --nx-elev-2: 0 4px 16px rgba(38, 38, 38, 0.12);
-    }
-
-    :root[data-theme="teal"] {
-      /* Brand — Phiên bản 2: Tông màu Xanh lục bảo (Teal) */
-      --nx-brand: #0E7485;
-      --nx-brand-alt: #006C7A;
-      --nx-brand-secondary: #00A0B0;
-      --nx-brand-secondary-alt: #008EA0;
-      --nx-brand-hover: #00A0B0;
-      --nx-brand-pressed: #006C7A;
-      --nx-brand-subtle: #E6F4F7;
-      --nx-brand-subtle-active: #CCE8EE;
-      --nx-accent-teal: #00A0B0;
-      --nx-brand-on-dark: #00B8CA;
-      --nx-on-brand: #FFFFFF;
-      --nx-brand-rgb: 14, 116, 133;
-      --nx-brand-gradient: linear-gradient(135deg, #0E7485 0%, #00A0B0 100%);
-      --nx-ghost-dark-bg: #1B272A;
-      --nx-ghost-dark-hover: #203338;
-
-      /* Text */
-      --nx-text-brand: #0E7485;
-
-      /* Status Run */
-      --nx-status-run: #0E7485;
-      --nx-status-run-bg: #E6F4F7;
-      --nx-status-run-text: #006C7A;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -147,7 +119,7 @@
     .nx-topbar a:hover, .nx-topbar a:focus-visible { color: var(--nx-brand); }
     .nx-topbar a:hover::after, .nx-topbar a:focus-visible::after { transform: scaleX(1); }
 
-    /* ---------- Header (Axis-inspired with Emerald Jade underline) ---------- */
+    /* ---------- Header ---------- */
     .nx-header {
       height: var(--nx-header-height);
       background: var(--nx-surface);
@@ -188,7 +160,7 @@
       transition: color 0.2s ease;
       white-space: nowrap;
     }
-    /* Axis-style crisp 2px bottom bar in active Brand Color */
+    /* Crisp 2px bottom bar in active Brand Color */
     .nx-nav-btn::after {
       content: ""; position: absolute; left: 0.85rem; right: 0.85rem; bottom: 14px;
       height: 2px; background: var(--nx-brand); border-radius: 0;
@@ -211,13 +183,11 @@
     .nx-link:hover::after, .nx-link:focus-visible::after { transform: scaleX(1); }
 
     .nx-header-utils { display: flex; align-items: center; gap: 0.45rem; flex-shrink: 0; }
-    .nx-theme-switch,
     .nx-lang-switch {
       display: inline-flex; align-items: center;
       border: 1px solid var(--nx-border-strong); border-radius: var(--nx-radius-s);
       background: var(--nx-surface-alt); padding: 2px; gap: 2px; height: 34px;
     }
-    .nx-theme-btn,
     .nx-lang-btn {
       border: none; background: transparent; color: var(--nx-text-muted);
       font-family: var(--nx-ff-mono); font-size: 0.72rem; font-weight: 700;
@@ -225,20 +195,8 @@
       cursor: pointer; transition: background-color 0.15s ease, color 0.15s ease;
       display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; letter-spacing: 0.03em; white-space: nowrap;
     }
-    .nx-theme-btn:hover,
     .nx-lang-btn:hover { color: var(--nx-text); }
-    .nx-theme-btn.is-active { background: var(--nx-steel-900); color: #FFFFFF; }
     .nx-lang-btn.is-active { background: var(--nx-steel-900); color: var(--nx-brand-on-dark); }
-    .nx-theme-dot {
-      width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-    }
-    .nx-theme-dot--green { background: linear-gradient(135deg, #2E8B57 45%, #008B45 45%); }
-    .nx-theme-dot--teal { background: linear-gradient(135deg, #00A0B0 45%, #0E7485 45%); }
-    @media (max-width: 639px) {
-      .nx-theme-txt { display: none; }
-      .nx-theme-btn { padding: 0 0.38rem; }
-    }
     .nx-cta-short { display: none; }
     @media (max-width: 439px) {
       .nx-cta-full { display: none; }
@@ -275,9 +233,8 @@
       .nx-header-utils { gap: 0.28rem; }
       .nx-header-utils .nx-btn--sm { padding: 0.36rem 0.85rem 0.36rem 0.52rem; font-size: 0.7rem; }
       .nx-menu-toggle { width: 34px; height: 34px; }
-      .nx-theme-switch, .nx-lang-switch { height: 30px; padding: 1px; gap: 1px; }
+      .nx-lang-switch { height: 30px; padding: 1px; gap: 1px; }
       .nx-lang-btn { padding: 0 0.3rem; font-size: 0.64rem; }
-      .nx-theme-btn { padding: 0 0.3rem; }
       .nx-logo-lockup { gap: 2px; }
       .nx-logo-svg { height: 18px; }
       .nx-logo small { font-size: 0.44rem; letter-spacing: 0.03em; }
@@ -360,7 +317,7 @@
     .nx-mob-link:hover, .nx-mob-link:focus-visible { color: var(--nx-text-brand); }
     .nx-mob-link:hover::after, .nx-mob-link:focus-visible::after { transform: scaleX(1); }
 
-    /* ---------- Buttons (8C: Speed Chevron / Automation Flow) ---------- */
+    /* ---------- Buttons ---------- */
     .nx-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
       font-family: var(--nx-ff-body); font-size: 0.9375rem; font-weight: 700; line-height: 1.45;
@@ -420,7 +377,7 @@
     }
     .nx-btn--sm:hover { padding-right: 1.85rem; margin-right: -0.2rem; }
 
-    /* ---------- Axis-Style Full-Bleed Split Mega Menu ---------- */
+    /* ---------- Full-Bleed Split Mega Menu ---------- */
     .nx-mega {
       position: absolute; top: var(--nx-header-height); left: 0; right: 0;
       background: var(--nx-surface); box-shadow: var(--nx-elev-2); border-top: 1px solid #E6E6E6;
@@ -464,7 +421,7 @@
     .nx-axis-tab.is-active { color: var(--nx-text); font-weight: 700; }
     .nx-axis-tab:hover::after, .nx-axis-tab:focus-visible::after, .nx-axis-tab.is-active::after { transform: scaleX(1); }
 
-    /* Pointer notch from white right panel into gray left sidebar (like Axis screenshot) */
+    /* Pointer notch from white right panel into gray left sidebar */
     .nx-axis-sidebar::after {
       content: ""; display: none; position: absolute; right: -8px; top: var(--notch-top);
       width: 15px; height: 15px; background: var(--nx-surface);
@@ -538,9 +495,9 @@
     .nx-axis-spot span { display: block; font-size: 0.8rem; color: var(--nx-text-muted); line-height: 1.35; }
 
     /* ==========================================================================
-       SECTION A: TWO-TIER HERO (Axis /products style)
-       1. 400px Dark Hardware Skyline Banner with single Emerald-highlighted word
-       2. Clean White Page Title H1 + 28px Light Preamble
+       SECTION A: TWO-TIER PRODUCT HERO
+       1. 380px Dark Hardware Skyline Banner with brand-highlighted phrase
+       2. Clean White Page Title H1 + Light Preamble
        ========================================================================== */
     .ac-banner {
       position: relative; height: 380px; background: var(--nx-steel-900);
@@ -584,7 +541,7 @@
     .ac-section { padding: 1.5rem 0 4.5rem; }
     .ac-section--gray { background: var(--nx-surface-alt); padding: 4.5rem 0; }
 
-    /* Left-aligned underlined sub-heading (Axis .products-collection__title) */
+    /* Left-aligned underlined sub-heading */
     .ac-collection-title {
       font-size: 1.375rem; font-weight: 600; line-height: 1.45; color: var(--nx-text);
       border-bottom: 1px solid var(--nx-border-rule);
@@ -600,7 +557,7 @@
     @media (min-width: 600px) { .ac-deck-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1024px) { .ac-deck-grid { grid-template-columns: repeat(4, 1fr); } }
 
-    /* Signature Axis "Stacked Deck of Cards" Effect */
+    /* Stacked Deck of Cards Effect */
     .ac-deck-card {
       position: relative; z-index: 1;
       background: var(--nx-surface);
@@ -705,7 +662,7 @@
     @media (min-width: 860px) { .ac-spot-body h3 { min-height: 2.7em; } }
     .ac-spot-body p { font-size: 0.95rem; color: var(--nx-text-muted); margin: 0 0 1.5rem; flex: 1; }
 
-    /* Signature Axis .link-cta with left-to-right Emerald Jade underline sweep */
+    /* Editorial link CTA with left-to-right brand underline sweep */
     .ac-link-cta {
       display: inline-block; font-size: 0.84rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.08em; color: var(--nx-text);
@@ -726,7 +683,7 @@
     .ac-link-cta:hover::after, .ac-link-cta:focus-visible::after { transform: scaleX(1); }
 
     /* ==========================================================================
-       SECTION D: NEW PRODUCTS / LATEST HARDWARE LAUNCHES (Single Cards with 8C Chevron NEW Ribbon)
+       SECTION D: NEW PRODUCTS / LATEST HARDWARE LAUNCHES
        ========================================================================== */
     .ac-single-grid {
       display: grid; grid-template-columns: 1fr; gap: 2rem;
@@ -750,7 +707,7 @@
     .ac-single-card:hover { transform: translateY(-3px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(var(--nx-brand-rgb), 0.28), 0 6px 18px rgba(38, 38, 38, 0.08); }
     .ac-single-card:hover::after, .ac-single-card:focus-visible::after { width: 100%; }
 
-    /* 8C Speed Chevron "NEW" Ribbon Badge */
+    /* Chevron "NEW" Ribbon Badge */
     .ac-badge-new {
       position: absolute; top: 14px; left: 0; z-index: 3;
       background: var(--nx-brand); color: var(--nx-on-brand);
@@ -836,15 +793,15 @@
   <!-- TOPBAR -->
   <div class="nx-topbar">
     <div class="nx-container">
-      <span class="nx-topbar-tagline" data-i18n="topbar.pr.tagline">Giải pháp & Thiết bị Smart Factory chuẩn mở — DFS</span>
+      <span class="nx-topbar-tagline" data-i18n="topbar.pr.tagline">Thiết bị IIoT và Phần mềm sản xuất chuẩn mở | DFS</span>
       <span>Tư vấn & Báo giá dự án: <a href="tel:+84000000000">(+84) 000 000 000</a> · <a href="index.html" data-i18n="topbar.pr.back_mes">Trang Giải pháp MES</a></span>
     </div>
   </div>
 
-  <!-- HEADER (Axis style with active underline bar) -->
+  <!-- HEADER -->
   <header class="nx-header">
     <div class="nx-header-inner">
-      <a href="index.html" class="nx-logo" aria-label="DFS — Digital Factory Solutions — Trang chủ">
+      <a href="index.html" class="nx-logo" aria-label="DFS - Digital Factory Solutions - Trang chủ">
         <span class="nx-logo-lockup">
           <svg class="nx-logo-svg" viewBox="0 0 734 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DFS">
             <defs>
@@ -880,16 +837,6 @@
       </nav>
 
       <div class="nx-header-utils">
-        <div class="nx-theme-switch" role="group" aria-label="Chọn phiên bản tông màu">
-          <button type="button" class="nx-theme-btn is-active" data-theme-btn="green" aria-pressed="true" title="Tông màu Xanh lá (Green — #008B45 / #2E8B57)">
-            <span class="nx-theme-dot nx-theme-dot--green" aria-hidden="true"></span>
-            <span class="nx-theme-txt">XANH LÁ</span>
-          </button>
-          <button type="button" class="nx-theme-btn" data-theme-btn="teal" aria-pressed="false" title="Tông màu Xanh lục bảo (Teal — #0E7485 / #00A0B0)">
-            <span class="nx-theme-dot nx-theme-dot--teal" aria-hidden="true"></span>
-            <span class="nx-theme-txt">LỤC BẢO</span>
-          </button>
-        </div>
         <div class="nx-lang-switch" role="group" aria-label="Language switcher">
           <button type="button" class="nx-lang-btn is-active" data-lang-btn="vi" aria-pressed="true">VI</button>
           <button type="button" class="nx-lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
@@ -911,20 +858,20 @@
       </div>
     </div>
 
-    <!-- AXIS-STYLE FULL-BLEED SPLIT MEGA MENU: SẢN PHẨM -->
+    <!-- FULL-BLEED SPLIT MEGA MENU: SẢN PHẨM -->
     <div class="nx-mega nx-mega--split" id="mega-products-panel">
       <div class="nx-container">
         <div class="nx-axis-mega">
           <div class="nx-axis-sidebar" role="tablist" aria-label="Phân nhóm sản phẩm">
             <button type="button" class="nx-axis-tab is-active" data-axis-tab="prod-cat" role="tab" aria-selected="true">Danh mục sản phẩm</button>
-            <button type="button" class="nx-axis-tab" data-axis-tab="prod-col" role="tab" aria-selected="false">Bộ giải pháp phần cứng trọn gói</button>
+            <button type="button" class="nx-axis-tab" data-axis-tab="prod-col" role="tab" aria-selected="false">Gói thiết bị theo khu vực</button>
           </div>
 
           <div class="nx-axis-main">
             <div class="nx-axis-pane is-active" data-axis-pane="prod-cat">
               <div class="nx-axis-pane-header">
                 <h3>Danh mục sản phẩm</h3>
-                <p>Hệ sinh thái phần mềm và thiết bị công nghiệp chuẩn mở cho nhà máy thông minh</p>
+                <p>Phần mềm MES và thiết bị công nghiệp chuẩn mở dùng cho dây chuyền sản xuất</p>
               </div>
               <ul class="nx-axis-cats">
                 <li><a href="#cat-edge">Bộ thu thập dữ liệu IIoT & Edge</a></li>
@@ -944,8 +891,8 @@
 
             <div class="nx-axis-pane" data-axis-pane="prod-col">
               <div class="nx-axis-pane-header">
-                <h3>Bộ giải pháp phần cứng trọn gói</h3>
-                <p>Các bộ thiết bị được đóng gói đồng bộ để giải quyết trọn vẹn từng bài toán tại xưởng</p>
+                <h3>Gói thiết bị theo khu vực</h3>
+                <p>Các bộ thiết bị ghép sẵn theo từng môi trường làm việc tại nhà máy</p>
               </div>
               <ul class="nx-axis-cats">
                 <li><a href="#cross-category-collections">Trạm phòng sạch & Chống cháy nổ</a></li>
@@ -957,11 +904,11 @@
             <div class="nx-axis-bottom">
               <a href="#new-products" class="nx-axis-spot">
                 <div class="nx-axis-spot-thumb"><img src="assets/images/card-mes-assembly.jpg" alt="Sản phẩm mới" /></div>
-                <div><strong>Sản phẩm mới ra mắt</strong><span>Khám phá các thiết bị IIoT & phần mềm thế hệ mới nhất</span></div>
+                <div><strong>Sản phẩm mới ra mắt</strong><span>Các dòng thiết bị IIoT và bản cập nhật phần mềm mới</span></div>
               </a>
               <a href="index.html#solutions" class="nx-axis-spot">
                 <div class="nx-axis-spot-thumb"><img src="assets/images/card-traceability.jpg" alt="Giải pháp" /></div>
-                <div><strong>Giải pháp theo ngành</strong><span>Giải pháp đồng bộ cho Điện tử, Thực phẩm và Dược phẩm</span></div>
+                <div><strong>Giải pháp theo ngành</strong><span>Cấu hình triển khai cho Điện tử, Thực phẩm và Dược phẩm</span></div>
               </a>
               <a href="#related-resources" class="nx-axis-spot">
                 <div class="nx-axis-spot-thumb"><img src="assets/images/card-digital-ops.jpg" alt="Công cụ" /></div>
@@ -973,7 +920,7 @@
       </div>
     </div>
 
-    <!-- AXIS-STYLE FULL-BLEED SPLIT MEGA MENU: GIẢI PHÁP -->
+    <!-- FULL-BLEED SPLIT MEGA MENU: GIẢI PHÁP -->
     <div class="nx-mega nx-mega--split" id="mega-solutions-panel">
       <div class="nx-container">
         <div class="nx-axis-mega">
@@ -989,10 +936,10 @@
             <div class="nx-axis-pane is-active" data-axis-pane="sol-mod">
               <div class="nx-axis-pane-header">
                 <h3>Giải pháp theo phân hệ</h3>
-                <p>Hệ thống mô-đun Smart Factory linh hoạt — bắt đầu từ điểm nghẽn cấp thiết nhất</p>
+                <p>Triển khai theo từng phân hệ, ưu tiên xử lý điểm nghẽn trước</p>
               </div>
               <ul class="nx-axis-cats">
-                <li><a href="index.html?sol=mes#solutions">MES — Điều hành sản xuất</a></li>
+                <li><a href="index.html?sol=mes#solutions">MES: Điều hành sản xuất</a></li>
                 <li><a href="index.html?sol=trace#solutions">Truy xuất nguồn gốc GS1</a></li>
                 <li><a href="index.html?sol=oee#solutions">Giám sát máy & OEE (IIoT)</a></li>
                 <li><a href="index.html?sol=qms#solutions">Quản lý chất lượng (QMS / SPC)</a></li>
@@ -1010,7 +957,7 @@
             <div class="nx-axis-pane" data-axis-pane="sol-ind">
               <div class="nx-axis-pane-header">
                 <h3>Giải pháp theo ngành công nghiệp</h3>
-                <p>Chuẩn hóa quy trình vận hành, truy xuất và tuân thủ kiểm toán theo đặc thù từng ngành</p>
+                <p>Áp dụng quy trình vận hành, truy xuất và hồ sơ audit theo đặc thù từng ngành</p>
               </div>
               <ul class="nx-axis-cats">
                 <li><a href="index.html?filter=electronics#cases">Điện tử & Lắp ráp SMT</a></li>
@@ -1031,11 +978,11 @@
               </a>
               <a href="index.html#platform" class="nx-axis-spot">
                 <div class="nx-axis-spot-thumb"><img src="assets/images/hero-smart-factory.jpg" alt="Kiến trúc ISA-95" /></div>
-                <div><strong>Kiến trúc chuẩn ISA-95</strong><span>Kết nối xuyên suốt từ PLC/Cảm biến lên ERP</span></div>
+                <div><strong>Kiến trúc chuẩn ISA-95</strong><span>Kết nối trực tiếp dữ liệu từ PLC, cảm biến lên phần mềm ERP</span></div>
               </a>
               <a href="index.html#cases" class="nx-axis-spot">
                 <div class="nx-axis-spot-thumb"><img src="assets/images/card-traceability.jpg" alt="Dự án thực tế" /></div>
-                <div><strong>Kết quả thực tế tại VN</strong><span>Tăng 18% OEE & truy xuất nguồn gốc dưới 30 giây</span></div>
+                <div><strong>Kết quả thực tế tại VN</strong><span>Tăng 18% OEE và truy xuất lô hàng dưới 30 giây</span></div>
               </a>
             </div>
           </div>
@@ -1054,7 +1001,7 @@
           <div class="nx-mob-sub" id="mob-solutions-sub">
             <div class="nx-mob-sub-title">Giải pháp theo phân hệ</div>
             <ul>
-              <li><a href="index.html?sol=mes#solutions">MES — Điều hành sản xuất</a></li>
+              <li><a href="index.html?sol=mes#solutions">MES: Điều hành sản xuất</a></li>
               <li><a href="index.html?sol=trace#solutions">Truy xuất nguồn gốc GS1</a></li>
               <li><a href="index.html?sol=oee#solutions">Giám sát máy &amp; OEE (IIoT)</a></li>
               <li><a href="index.html?sol=qms#solutions">Quản lý chất lượng (QMS / SPC)</a></li>
@@ -1101,13 +1048,13 @@
     </nav>
   </header>
 
-  <!-- SECTION A: TWO-TIER HERO (Axis /products structure) -->
+  <!-- SECTION A: TWO-TIER PRODUCT HERO -->
   <section class="ac-banner">
-    <img src="assets/images/hero-smart-factory.jpg" alt="Hệ sinh thái thiết bị công nghiệp và phần mềm DFS" class="ac-banner-bg" />
+    <img src="assets/images/hero-smart-factory.jpg" alt="Thiết bị công nghiệp và phần mềm sản xuất DFS" class="ac-banner-bg" />
     <div class="ac-banner-overlay"></div>
     <div class="nx-container" style="width: 100%;">
       <div class="ac-banner-content">
-        <p class="ac-banner-selling">Thiết bị & Phần mềm cho <em>mọi nhu cầu</em> nhà máy thông minh</p>
+        <p class="ac-banner-selling">Thiết bị và Phần mềm cho <em>dây chuyền</em> nhà máy thông minh</p>
       </div>
     </div>
   </section>
@@ -1116,12 +1063,12 @@
     <div class="nx-container">
       <h1>Sản phẩm</h1>
       <p class="ac-preamble">
-        Lựa chọn từ danh mục thiết bị công nghiệp chuẩn mở và phần mềm đóng gói của DFS cho thu thập dữ liệu IIoT, điều hành sản xuất MES, kiểm soát chất lượng, truy xuất nguồn gốc GS1 và hiển thị Andon tại xưởng.
+        Danh mục thiết bị công nghiệp chuẩn mở và phần mềm của DFS dùng cho thu thập dữ liệu IIoT, điều hành sản xuất MES, kiểm soát chất lượng, truy xuất nguồn gốc GS1 và bảng hiển thị Andon tại xưởng.
       </p>
     </div>
   </section>
 
-  <!-- SECTION B: 12 PRODUCT CATEGORIES (Axis Stacked Deck Cards) -->
+  <!-- SECTION B: 12 PRODUCT CATEGORIES -->
   <section class="ac-section" id="product-categories">
     <div class="nx-container">
       <h2 class="ac-collection-title">
@@ -1313,12 +1260,12 @@
     </div>
   </section>
 
-  <!-- SECTION C: CROSS-CATEGORY COLLECTIONS (Axis 3-Column Centered Spotlights) -->
+  <!-- SECTION C: CROSS-CATEGORY COLLECTIONS -->
   <section class="ac-section" id="cross-category-collections" style="padding-top: 1rem;">
     <div class="nx-container">
       <div class="ac-center-header">
-        <h2>Bộ giải pháp phần cứng trọn gói</h2>
-        <p>Khám phá các tổ hợp sản phẩm từ nhiều danh mục, được thiết kế chuyên biệt để đáp ứng trọn vẹn một môi trường vận hành.</p>
+        <h2>Gói thiết bị theo khu vực</h2>
+        <p>Các bộ thiết bị ghép sẵn từ nhiều nhóm sản phẩm để lắp đặt nhanh theo từng môi trường sản xuất.</p>
       </div>
 
       <div class="ac-spotlights-grid">
@@ -1350,7 +1297,7 @@
           </div>
           <div class="ac-spot-body">
             <h3>Gói nâng cấp máy cơ đời cũ (Legacy Retrofit)</h3>
-            <p>Kết hợp cảm biến đếm sản phẩm, mô-đun Remote I/O, đồng hồ dòng điện CT và EdgeBox giúp số hóa mọi máy cũ trong 2 giờ.</p>
+            <p>Kết hợp cảm biến đếm sản phẩm, mô-đun Remote I/O, đồng hồ dòng điện CT và EdgeBox để kết nối máy cơ đời cũ vào hệ thống MES.</p>
             <button type="button" class="ac-link-cta" data-quote-item="Bộ giải pháp Nâng cấp máy cơ đời cũ (Legacy Retrofit)">XEM CHI TIẾT</button>
           </div>
         </article>
@@ -1358,12 +1305,12 @@
     </div>
   </section>
 
-  <!-- SECTION D: NEW PRODUCTS / LATEST LAUNCHES (Axis Warm Gray Full-Bleed Wrapper + 8 Single Hardware Cards) -->
+  <!-- SECTION D: NEW PRODUCTS / LATEST LAUNCHES -->
   <section class="ac-section--gray" id="new-products">
     <div class="nx-container">
       <div class="ac-center-header">
         <h2>Sản phẩm mới</h2>
-        <p>Cập nhật những thiết bị phần cứng IIoT và phiên bản phần mềm mới nhất từ hệ sinh thái DFS.</p>
+        <p>Các mẫu thiết bị phần cứng IIoT và phiên bản phần mềm mới cập nhật của DFS.</p>
       </div>
 
       <h3 class="ac-collection-title">
@@ -1471,12 +1418,12 @@
     </div>
   </section>
 
-  <!-- SECTION E: RELATED RESOURCES (Axis 3-Column Flat Editorial Media-with-Text) -->
+  <!-- SECTION E: RELATED RESOURCES -->
   <section class="ac-section" id="related-resources" style="padding-top: 4.5rem;">
     <div class="nx-container">
       <div class="ac-center-header">
         <h2>Tài nguyên liên quan</h2>
-        <p>Bạn cũng có thể quan tâm đến các giải pháp và câu chuyện triển khai thực tế của chúng tôi</p>
+        <p>Các nhóm giải pháp và dự án đã triển khai của DFS</p>
       </div>
 
       <div class="ac-editorial-grid">
@@ -1485,7 +1432,7 @@
             <img src="assets/images/hero-smart-factory.jpg" alt="Giải pháp theo công nghệ" loading="lazy" />
           </div>
           <h3>Giải pháp theo công nghệ cốt lõi</h3>
-          <p>Từ kết nối IIoT đa giao thức, giám sát OEE thời gian thực đến phả hệ truy xuất nguồn gốc chuẩn GS1 — công nghệ của DFS giúp nhà máy minh bạch từng công đoạn.</p>
+          <p>Kết nối thiết bị IIoT đa giao thức, đo OEE theo thời gian thực và quản lý phả hệ truy xuất nguồn gốc chuẩn GS1 trên cùng hệ thống.</p>
           <a href="index.html#solutions" class="ac-link-cta">XEM THÊM</a>
         </article>
 
@@ -1494,16 +1441,16 @@
             <img src="assets/images/card-traceability.jpg" alt="Giải pháp theo ngành sản xuất" loading="lazy" />
           </div>
           <h3>Giải pháp theo ngành công nghiệp</h3>
-          <p>Mỗi ngành sản xuất có đặc thù riêng. Khám phá kiến trúc mở được thiết kế chuẩn xác cho Điện tử, Cơ khí, Thực phẩm xuất khẩu và Dược phẩm GMP.</p>
+          <p>Cấu hình triển khai theo quy trình thực tế của ngành Điện tử, Cơ khí, Thực phẩm xuất khẩu và Dược phẩm GMP.</p>
           <a href="index.html#platform" class="ac-link-cta">XEM THÊM</a>
         </article>
 
         <article class="ac-editorial-item">
           <div class="ac-editorial-media">
-            <img src="assets/images/card-mes-assembly.jpg" alt="Câu chuyện khách hàng" loading="lazy" />
+            <img src="assets/images/card-mes-assembly.jpg" alt="Dự án triển khai thực tế" loading="lazy" />
           </div>
-          <h3>Dự án & Câu chuyện khách hàng</h3>
-          <p>Xem cách các nhà máy tại Việt Nam vận hành thực tế hệ thống phần mềm và thiết bị DFS để tăng 18% OEE và rút ngắn truy xuất lô xuống dưới 30 giây.</p>
+          <h3>Dự án triển khai thực tế</h3>
+          <p>Tham khảo các nhà máy tại Việt Nam đang dùng phần mềm và thiết bị DFS để tăng 18% OEE và truy xuất lô dưới 30 giây.</p>
           <a href="index.html#cases" class="ac-link-cta">XEM THÊM</a>
         </article>
       </div>
@@ -1562,7 +1509,7 @@
         </div>
       </div>
       <div class="nx-footer-bottom">
-        <div><strong>DFS — Digital Factory Solutions</strong> — Số hóa nhà máy, minh bạch từng công đoạn. © 2026</div>
+        <div><strong>DFS (Digital Factory Solutions)</strong> | Phần mềm MES &amp; Tự động hóa dữ liệu nhà máy. © 2026</div>
         <a href="#" style="font-weight: 600;">Lên đầu trang ↑</a>
       </div>
     </div>
@@ -1726,7 +1673,7 @@
         }
       });
 
-      // Axis-style Sidebar Tabs scoped cleanly per Mega Menu panel + sliding notch
+      // Mega menu sidebar tabs and sliding indicator
       document.querySelectorAll('.nx-axis-mega').forEach(function (megaBox) {
         const sidebar = megaBox.querySelector('.nx-axis-sidebar');
         const tabs = megaBox.querySelectorAll('[data-axis-tab]');

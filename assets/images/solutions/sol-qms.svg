@@ -7,16 +7,16 @@
     </radialGradient>
     <linearGradient id="qms-deck" x1="20%" y1="15%" x2="85%" y2="85%">
       <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="65%" stop-color="#F2FAF5" />
-      <stop offset="100%" stop-color="#E6F4EC" />
+      <stop offset="65%" stop-color="#F0FAFC" />
+      <stop offset="100%" stop-color="#E6F4F6" />
     </linearGradient>
     <linearGradient id="qms-shield-left" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38B870" />
-      <stop offset="100%" stop-color="#008B45" />
+      <stop offset="0%" stop-color="#1CC0D1" />
+      <stop offset="100%" stop-color="#026A74" />
     </linearGradient>
     <linearGradient id="qms-shield-right" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2E8B57" />
-      <stop offset="100%" stop-color="#128243" />
+      <stop offset="0%" stop-color="#0699A8" />
+      <stop offset="100%" stop-color="#01535B" />
     </linearGradient>
     <linearGradient id="qms-shine-grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0" />
@@ -67,9 +67,9 @@
     <polygon points="64,102 96,86 96,91 64,107" fill="#76827D" />
     <polygon points="56,68 64,68 96,84 96,86 64,102 56,102 24,86 24,84" fill="url(#qms-deck)" />
     <polyline points="24,84 56,68 64,68 96,84" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" />
-    <polygon points="57,71 63,71 90,84.5 90,85.5 63,99 57,99 30,85.5 30,84.5" fill="none" stroke="#CFEAD9" stroke-width="0.9" />
-    <polygon points="64,102 96,86 96,88 64,104" fill="#008B45" />
-    <polygon points="56,102 64,102 64,104 56,104" fill="#128243" />
+    <polygon points="57,71 63,71 90,84.5 90,85.5 63,99 57,99 30,85.5 30,84.5" fill="none" stroke="#CCE9ED" stroke-width="0.9" />
+    <polygon points="64,102 96,86 96,88 64,104" fill="#026A74" />
+    <polygon points="56,102 64,102 64,104 56,104" fill="#01535B" />
   </g>
 
   <!-- Background/Right Elevated SPC Control Chart Card -->
@@ -81,18 +81,18 @@
     <rect x="57" y="21" width="44" height="42" rx="3" fill="#FFFFFF" stroke="#CBD4D0" stroke-width="1" />
     <!-- Top Dark Accent Header -->
     <path d="M 57 24 C 57 22.3 58.3 21 60 21 L 98 21 C 99.7 21 101 22.3 101 24 L 101 27 L 57 27 Z" fill="#262626" />
-    <circle cx="95.5" cy="24" r="1.4" fill="#5EE49B" />
+    <circle cx="95.5" cy="24" r="1.4" fill="#4CE3F2" />
     <!-- UCL / LCL Control Limit Dashed Lines -->
     <line x1="62" y1="33" x2="96" y2="33" stroke="#F5A524" stroke-width="1" stroke-dasharray="2.5 2" />
-    <line x1="62" y1="44" x2="96" y2="44" stroke="#CFEAD9" stroke-width="1" />
+    <line x1="62" y1="44" x2="96" y2="44" stroke="#CCE9ED" stroke-width="1" />
     <line x1="62" y1="55" x2="96" y2="55" stroke="#F5A524" stroke-width="1" stroke-dasharray="2.5 2" />
     <!-- SPC Process Curve -->
-    <polyline points="62,48 68,42 74,47 83,41 92,50 96,43" stroke="#008B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-    <circle cx="83" cy="41" r="1.5" fill="#008B45" />
-    <circle cx="92" cy="50" r="1.5" fill="#008B45" />
+    <polyline points="62,48 68,42 74,47 83,41 92,50 96,43" stroke="#026A74" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="83" cy="41" r="1.5" fill="#026A74" />
+    <circle cx="92" cy="50" r="1.5" fill="#026A74" />
     <!-- Live Moving SPC Measurement Beacon -->
     <g transform="translate(74, 47)">
-      <circle class="qms-spc-dot" cx="0" cy="0" r="2.6" fill="#38B870" stroke="#FFFFFF" stroke-width="0.9" filter="url(#qms-glow)" />
+      <circle class="qms-spc-dot" cx="0" cy="0" r="2.6" fill="#1CC0D1" stroke="#FFFFFF" stroke-width="0.9" filter="url(#qms-glow)" />
     </g>
   </g>
 
@@ -108,7 +108,7 @@
     <path d="M 48,25 L 70,34 L 70,52 C 70,66 60,76 48,81 C 36,76 26,66 26,52 L 26,34 Z" fill="url(#qms-shield-left)" />
     <path d="M 48,25 L 70,34 L 70,52 C 70,66 60,76 48,81 Z" fill="url(#qms-shield-right)" />
     <!-- Crisp Top Specular Edge -->
-    <polyline points="26,34 48,25 70,34" stroke="#5EE49B" stroke-width="1.2" stroke-linecap="round" />
+    <polyline points="26,34 48,25 70,34" stroke="#4CE3F2" stroke-width="1.2" stroke-linecap="round" />
 
     <!-- Animated Specular Sweep Clipped Inside Shield -->
     <g clip-path="url(#qms-shield-clip)">
@@ -119,11 +119,11 @@
 
     <!-- Expanding Verification Halo Ring -->
     <g transform="translate(48, 52)">
-      <circle class="qms-check-ring" cx="0" cy="0" r="14" stroke="#5EE49B" stroke-width="1.5" />
+      <circle class="qms-check-ring" cx="0" cy="0" r="14" stroke="#4CE3F2" stroke-width="1.5" />
     </g>
 
     <!-- Bold Crisp White Verification Checkmark -->
-    <polyline points="38.5,52.5 45.5,59.5 59,44" stroke="#0B5E32" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35" transform="translate(0.8, 1.4)" />
+    <polyline points="38.5,52.5 45.5,59.5 59,44" stroke="#074E5A" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35" transform="translate(0.8, 1.4)" />
     <polyline points="38.5,52.5 45.5,59.5 59,44" stroke="#FFFFFF" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" />
   </g>
 </svg>

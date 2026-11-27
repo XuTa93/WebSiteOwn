@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="meta.sf.title">DFS — Giải pháp Smart Factory: Hệ thống MES, Số hóa & Truy xuất nguồn gốc cho nhà máy</title>
-  <meta name="description" data-i18n-meta="meta.sf.desc" content="DFS — Digital Factory Solutions cung cấp giải pháp nhà máy thông minh: hệ thống điều hành sản xuất MES, số hóa quy trình không giấy tờ, giám sát OEE/IIoT và truy xuất nguồn gốc theo lô, theo serial chuẩn GS1." />
+  <title data-i18n="meta.sf.title">DFS | Giải pháp Nhà máy Thông minh: MES, Số hóa xưởng &amp; Truy xuất nguồn gốc</title>
+  <meta name="description" data-i18n-meta="meta.sf.desc" content="DFS (Digital Factory Solutions) cung cấp phần mềm điều hành sản xuất MES, số hóa biểu mẫu xưởng, giám sát OEE/IIoT và truy xuất nguồn gốc theo lô, serial chuẩn GS1." />
   <link rel="icon" href="favicon.ico?v=20261119" sizes="32x32" />
   <link rel="icon" href="assets/favicon-32x32.png?v=20261119" type="image/png" sizes="32x32" />
   <link rel="icon" href="assets/favicon.svg?v=20261119" type="image/svg+xml" sizes="any" />
@@ -17,8 +17,7 @@
     /* ==========================================================================
        DFS Design System — tokens (xem BrandSystem.html & docs/BrandGuide_ThietKe.md)
        ========================================================================== */
-    :root,
-    :root[data-theme="green"] {
+    :root {
       /* Layout */
       --nx-header-height: 72px;
       --nx-container-max: 1300px;
@@ -28,23 +27,23 @@
       --nx-ff-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
       --nx-ff-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
 
-      /* Brand — Phiên bản 1: Tông màu Xanh lá (Green) */
-      --nx-brand: #008B45;
-      --nx-brand-alt: #128243;
-      --nx-brand-secondary: #2E8B57;
-      --nx-brand-secondary-alt: #228B22;
-      --nx-brand-hover: #2E8B57;
-      --nx-brand-pressed: #128243;
-      --nx-brand-subtle: #E6F4EC;
-      --nx-brand-subtle-active: #CFEAD9;
-      --nx-accent-teal: #2E8B57;
-      --nx-brand-on-dark: #38B870;
+      /* Brand — Tông màu Xanh lục bảo chủ đạo (Teal) */
+      --nx-brand: #026A74;
+      --nx-brand-alt: #01535B;
+      --nx-brand-secondary: #0699A8;
+      --nx-brand-secondary-alt: #058390;
+      --nx-brand-hover: #0699A8;
+      --nx-brand-pressed: #01535B;
+      --nx-brand-subtle: #E6F4F6;
+      --nx-brand-subtle-active: #CCE9ED;
+      --nx-accent-teal: #0699A8;
+      --nx-brand-on-dark: #1CC0D1;
       --nx-on-brand: #FFFFFF;
-      --nx-brand-rgb: 0, 139, 69;
-      --nx-brand-gradient: linear-gradient(135deg, #008B45 0%, #2E8B57 100%);
-      --nx-ghost-dark-bg: #1D2822;
-      --nx-ghost-dark-hover: #22352A;
-      --nx-cta-end: #0D3B24;
+      --nx-brand-rgb: 2, 106, 116;
+      --nx-brand-gradient: linear-gradient(135deg, #026A74 0%, #0699A8 100%);
+      --nx-ghost-dark-bg: #182628;
+      --nx-ghost-dark-hover: #1E3236;
+      --nx-cta-end: #024249;
 
       /* Industrial neutrals — Đen mờ #262626 & Trắng ngà #F5F5F5 */
       --nx-steel-900: #262626;
@@ -59,12 +58,12 @@
       --nx-text: #262626;
       --nx-text-muted: #5C6661;
       --nx-text-inverse: #FFFFFF;
-      --nx-text-brand: #008B45;
+      --nx-text-brand: #026A74;
 
       /* Status (dùng cho dashboard / trạng thái máy Andon) */
-      --nx-status-run: #008B45;
-      --nx-status-run-bg: #E6F4EC;
-      --nx-status-run-text: #128243;
+      --nx-status-run: #026A74;
+      --nx-status-run-bg: #E6F4F6;
+      --nx-status-run-text: #01535B;
       --nx-status-idle: #F5A524;
       --nx-status-idle-bg: #FEF3E2;
       --nx-status-idle-text: #B54708;
@@ -110,34 +109,6 @@
       /* Elevation */
       --nx-elev-1: 0 0.125rem 0.25rem rgba(38, 38, 38, 0.10), 0 0 0.125rem rgba(38, 38, 38, 0.08);
       --nx-elev-2: 0 0.25rem 1rem rgba(38, 38, 38, 0.12), 0 0 0.125rem rgba(38, 38, 38, 0.10);
-    }
-
-    :root[data-theme="teal"] {
-      /* Brand — Phiên bản 2: Tông màu Xanh lục bảo (Teal) */
-      --nx-brand: #0E7485;
-      --nx-brand-alt: #006C7A;
-      --nx-brand-secondary: #00A0B0;
-      --nx-brand-secondary-alt: #008EA0;
-      --nx-brand-hover: #00A0B0;
-      --nx-brand-pressed: #006C7A;
-      --nx-brand-subtle: #E6F4F7;
-      --nx-brand-subtle-active: #CCE8EE;
-      --nx-accent-teal: #00A0B0;
-      --nx-brand-on-dark: #00B8CA;
-      --nx-on-brand: #FFFFFF;
-      --nx-brand-rgb: 14, 116, 133;
-      --nx-brand-gradient: linear-gradient(135deg, #0E7485 0%, #00A0B0 100%);
-      --nx-ghost-dark-bg: #1B272A;
-      --nx-ghost-dark-hover: #203338;
-      --nx-cta-end: #0A3842;
-
-      /* Text */
-      --nx-text-brand: #0E7485;
-
-      /* Status Run */
-      --nx-status-run: #0E7485;
-      --nx-status-run-bg: #E6F4F7;
-      --nx-status-run-text: #006C7A;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -234,13 +205,11 @@
     .nx-nav-btn:hover::after, .nx-nav-btn.is-active::after, .nx-nav-btn.is-current-page::after { transform: scaleX(1); }
 
     .nx-header-utils { display: flex; align-items: center; gap: 0.45rem; flex-shrink: 0; }
-    .nx-theme-switch,
     .nx-lang-switch {
       display: inline-flex; align-items: center;
       border: 1px solid var(--nx-border-strong); border-radius: var(--nx-radius-s);
       background: var(--nx-surface-alt); padding: 2px; gap: 2px; height: 34px;
     }
-    .nx-theme-btn,
     .nx-lang-btn {
       border: none; background: transparent; color: var(--nx-text-muted);
       font-family: var(--nx-ff-mono); font-size: 0.72rem; font-weight: 700;
@@ -248,20 +217,8 @@
       cursor: pointer; transition: background-color 0.15s ease, color 0.15s ease;
       display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; letter-spacing: 0.03em; white-space: nowrap;
     }
-    .nx-theme-btn:hover,
     .nx-lang-btn:hover { color: var(--nx-text); }
-    .nx-theme-btn.is-active { background: var(--nx-steel-900); color: #FFFFFF; }
     .nx-lang-btn.is-active { background: var(--nx-steel-900); color: var(--nx-brand-on-dark); }
-    .nx-theme-dot {
-      width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-    }
-    .nx-theme-dot--green { background: linear-gradient(135deg, #2E8B57 45%, #008B45 45%); }
-    .nx-theme-dot--teal { background: linear-gradient(135deg, #00A0B0 45%, #0E7485 45%); }
-    @media (max-width: 639px) {
-      .nx-theme-txt { display: none; }
-      .nx-theme-btn { padding: 0 0.38rem; }
-    }
     .nx-icon-btn {
       width: 38px; height: 38px; border-radius: var(--nx-radius-s); border: none; background: transparent; color: var(--nx-text);
       display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
@@ -293,9 +250,8 @@
       .nx-header-utils { gap: 0.28rem; }
       .nx-header-utils .nx-btn--sm { padding: 0.36rem 0.85rem 0.36rem 0.52rem; font-size: 0.7rem; }
       .nx-menu-toggle { width: 34px; height: 34px; }
-      .nx-theme-switch, .nx-lang-switch { height: 30px; padding: 1px; gap: 1px; }
+      .nx-lang-switch { height: 30px; padding: 1px; gap: 1px; }
       .nx-lang-btn { padding: 0 0.3rem; font-size: 0.64rem; }
-      .nx-theme-btn { padding: 0 0.3rem; }
       .nx-logo-lockup { gap: 2px; }
       .nx-logo-svg { height: 18px; }
       .nx-logo small { font-size: 0.44rem; letter-spacing: 0.03em; }
@@ -373,7 +329,7 @@
     .nx-mob-link:hover, .nx-mob-link:focus-visible { color: var(--nx-text-brand); }
     .nx-mob-link:hover::after, .nx-mob-link:focus-visible::after { transform: scaleX(1); }
 
-    /* Mega menu (Axis-inspired Full-Bleed Split Layout) */
+    /* Mega menu (Full-Bleed Split Layout) */
     .nx-mega {
       position: absolute; top: var(--nx-header-height); left: 0; right: 0;
       background: var(--nx-surface); box-shadow: var(--nx-elev-2); border-top: 1px solid #E6E6E6;
@@ -495,7 +451,7 @@
     .nx-axis-spot strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; }
     .nx-axis-spot span { display: block; font-size: 0.8rem; color: var(--nx-text-muted); line-height: 1.35; }
 
-    /* ---------- Buttons (8C: Speed Chevron / Automation Flow) ---------- */
+    /* ---------- Buttons ---------- */
     .nx-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
       font-family: var(--nx-ff-body); font-size: 0.9375rem; font-weight: 700; line-height: 1.45;
@@ -555,9 +511,9 @@
     }
     .nx-btn--sm:hover { padding-right: 1.85rem; margin-right: -0.2rem; }
 
-    /* ---------- Hero (8C FLOW Eyebrow + Video Background) ---------- */
+    /* ---------- Hero ---------- */
     .nx-hero {
-      position: relative; min-height: 520px; display: flex; align-items: center;
+      position: relative; min-height: 490px; display: flex; align-items: center;
       color: #fff; overflow: hidden; background: var(--nx-steel-900);
     }
     .nx-hero-bg {
@@ -568,7 +524,7 @@
       position: absolute; inset: 0; pointer-events: none;
       background: linear-gradient(90deg, rgba(38,38,38,0.92) 0%, rgba(38,38,38,0.72) 50%, rgba(38,38,38,0.20) 100%);
     }
-    .nx-hero-content { position: relative; z-index: 2; max-width: 660px; padding: 3.25rem 0 4.75rem; }
+    .nx-hero-content { position: relative; z-index: 2; max-width: 660px; padding: 3.25rem 0 3.5rem; }
     .nx-eyebrow {
       display: inline-flex; align-items: center; gap: 0.55rem;
       color: var(--nx-brand-on-dark); font-family: var(--nx-ff-mono); font-size: 0.75rem;
@@ -586,11 +542,12 @@
     .nx-hero h1 .hl { color: var(--nx-brand-on-dark); }
     .nx-hero p { font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.86); margin: 0 0 1.5rem; max-width: 560px; }
     .nx-hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
-    .nx-hero-trust { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.75rem; color: rgba(255,255,255,0.72); }
-    .nx-hero-trust span::before { content: "✓ "; color: var(--nx-brand-on-dark); font-weight: 700; }
 
-    /* ---------- Promo strip (8C Split Top Accent) ---------- */
-    .nx-promo-strip { margin-top: -2.75rem; position: relative; z-index: 10; }
+    /* ---------- Promo strip ---------- */
+    .nx-promo-strip { padding: 0 0 var(--nx-section-mobile); position: relative; z-index: 10; }
+    @media (min-width: 1024px) { .nx-promo-strip { padding-bottom: var(--nx-section-desktop); } }
+    #solutions { padding-top: 3.25rem; padding-bottom: 2.75rem; }
+    @media (min-width: 1024px) { #solutions { padding-top: 4.25rem; padding-bottom: 3.25rem; } }
     .nx-promo-grid { display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-l); }
     @media (min-width: 768px) { .nx-promo-grid { grid-template-columns: repeat(3, 1fr); } }
     .nx-promo-card {
@@ -667,132 +624,174 @@
     }
     @media (min-width: 1024px) and (max-width: 1279px) { .nx-pain-fix { min-height: 4.8rem; } }
 
-    /* ---------- Solution tabs ---------- */
-    .nx-tabs { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--nx-sp-s); margin-bottom: var(--nx-sp-xl); }
-    @media (min-width: 640px) { .nx-tabs { grid-template-columns: repeat(3, 1fr); } }
-    @media (min-width: 1024px) { .nx-tabs { grid-template-columns: repeat(7, 1fr); } }
-    @media (max-width: 639px) {
-      .nx-tabs .nx-tab:last-child:nth-child(odd) {
-        grid-column: 1 / -1; flex-direction: row; justify-content: center; gap: 0.75rem; padding: 0.75rem 1rem;
-      }
-      .nx-tabs .nx-tab:last-child:nth-child(odd) .nx-icon-circle {
-        width: 56px; height: 56px; flex-shrink: 0;
-      }
+    /* ---------- Solutions Circular Orbit + Detail Console ---------- */
+    .nx-sol-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+    @media (min-width: 1060px) {
+      .nx-sol-layout { grid-template-columns: minmax(460px, 540px) minmax(0, 1fr); gap: 2.5rem; align-items: center; }
     }
-    @media (min-width: 640px) and (max-width: 1023px) {
-      .nx-tabs .nx-tab:last-child:nth-child(3n+1) {
-        grid-column: 1 / -1; flex-direction: row; justify-content: center; gap: 0.85rem; padding: 0.85rem 1.25rem;
-      }
-      .nx-tabs .nx-tab:last-child:nth-child(3n+1) .nx-icon-circle {
-        width: 56px; height: 56px; flex-shrink: 0;
-      }
+
+    .nx-orbit-stage {
+      position: relative; width: 100%; max-width: 540px; aspect-ratio: 1 / 1;
+      margin: 0 auto; user-select: none;
     }
-    .nx-tab {
-      background: var(--nx-surface); border: none;
-      border-radius: var(--nx-radius-m); overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 0 0 1px rgba(38, 38, 38, 0.04), 0 2px 6px rgba(38, 38, 38, 0.03);
-      padding: var(--nx-sp-m) var(--nx-sp-s); display: flex; flex-direction: column; align-items: center; text-align: center;
-      gap: var(--nx-sp-s); cursor: pointer; font-family: var(--nx-ff-body); position: relative;
-      transition: all 0.2s ease;
+    .nx-orbit-svg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; overflow: visible;
     }
-    .nx-tab::after {
-      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--nx-brand); transform: scaleX(0); transform-origin: left center;
-      transition: transform 0.22s ease;
+    .nx-orbit-ring-outer {
+      fill: none; stroke: rgba(38, 38, 38, 0.07); stroke-width: 1; stroke-dasharray: 2 6;
     }
-    .nx-tab .nx-icon-circle {
-      width: 72px; height: 72px; padding: 4px; border-radius: var(--nx-radius-m);
-      background: linear-gradient(160deg, #FFFFFF 0%, var(--nx-surface-alt) 100%);
-      color: var(--nx-text); border: none; position: relative; overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 0 0 1px rgba(38, 38, 38, 0.06);
-      display: flex; align-items: center; justify-content: center; transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    .nx-orbit-ring-main {
+      fill: none; stroke: rgba(2, 106, 116, 0.22); stroke-width: 1.2;
     }
-    @media (max-width: 639px) { .nx-tab .nx-icon-circle { width: 68px; height: 68px; } }
-    @media (min-width: 1200px) { .nx-tab .nx-icon-circle { width: 80px; height: 80px; } }
+    .nx-orbit-ring-inner {
+      fill: none; stroke: rgba(2, 106, 116, 0.30); stroke-width: 1; stroke-dasharray: 4 4;
+      transform-origin: 280px 280px; animation: nx-orbit-spin 60s linear infinite;
+    }
+    .nx-orbit-spoke {
+      stroke: rgba(38, 38, 38, 0.13); stroke-width: 1.1;
+      transition: stroke 0.25s ease, stroke-width 0.25s ease;
+    }
+    .nx-orbit-spoke.is-active {
+      stroke: var(--nx-brand-secondary); stroke-width: 2; stroke-dasharray: 6 5;
+      animation: nx-spoke-flow 1.4s linear infinite;
+    }
+    .nx-orbit-dot {
+      fill: #FFFFFF; stroke: rgba(38, 38, 38, 0.28); stroke-width: 1.2;
+      transition: all 0.25s ease;
+    }
+    .nx-orbit-dot.is-active {
+      fill: var(--nx-brand-on-dark); stroke: var(--nx-brand); stroke-width: 1.8;
+    }
+    @keyframes nx-orbit-spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes nx-spoke-flow {
+      from { stroke-dashoffset: 22; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    .nx-orbit-hub {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 34%; height: 34%; border-radius: 50%;
+      background: radial-gradient(circle at 38% 28%, #344446 0%, #262626 62%, #192224 100%);
+      border: 1.5px solid rgba(28, 192, 209, 0.55);
+      box-shadow: 0 0 0 6px rgba(2, 106, 116, 0.08), 0 14px 32px rgba(38, 38, 38, 0.22);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 8% 7% 6%; text-align: center; z-index: 2;
+    }
+    .nx-hub-svg {
+      width: 70%; height: auto; display: block; margin-bottom: 3%;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.28));
+    }
+    .nx-hub-title {
+      font-family: var(--nx-ff-mono); font-size: clamp(0.48rem, 1.18vw, 0.62rem); font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255, 255, 255, 0.92);
+      line-height: 1.2; max-width: 84%;
+    }
+    .nx-hub-active {
+      margin-top: 4px; display: inline-flex; align-items: center; gap: 4px;
+      font-family: var(--nx-ff-mono); font-size: clamp(0.54rem, 1.3vw, 0.66rem); font-weight: 700;
+      letter-spacing: 0.08em; color: var(--nx-brand-on-dark);
+      background: rgba(28, 192, 209, 0.14); border: 1px solid rgba(28, 192, 209, 0.35);
+      padding: 1px 7px; border-radius: 2px;
+    }
+    .nx-hub-active::before {
+      content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--nx-brand-on-dark);
+    }
+
+    .nx-orbit-nodes { position: absolute; inset: 0; }
+    .nx-tab.nx-orbit-node {
+      position: absolute; left: var(--nx-x); top: var(--nx-y); transform: translate(-50%, -50%);
+      width: 14.2%; aspect-ratio: 1 / 1; border-radius: 50%; padding: 0; margin: 0;
+      background: var(--nx-surface); border: 1px solid rgba(38, 38, 38, 0.14);
+      box-shadow: 0 4px 12px rgba(38, 38, 38, 0.07);
+      display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, transform 0.22s ease;
+    }
+    .nx-tab.nx-orbit-node:hover,
+    .nx-tab.nx-orbit-node:focus-visible {
+      border-color: var(--nx-brand-secondary);
+      box-shadow: 0 0 0 4px rgba(2, 106, 116, 0.10), 0 8px 18px rgba(2, 106, 116, 0.14);
+      z-index: 5; outline: none;
+    }
+    .nx-tab.nx-orbit-node.is-active {
+      background: radial-gradient(circle at 50% 32%, #FFFFFF 0%, var(--nx-brand-subtle) 100%);
+      border: 2px solid var(--nx-brand);
+      box-shadow: 0 0 0 6px rgba(2, 106, 116, 0.12), 0 10px 22px rgba(2, 106, 116, 0.20);
+      z-index: 6;
+    }
+    .nx-orbit-icon {
+      width: 74%; height: 74%; display: flex; align-items: center; justify-content: center; pointer-events: none;
+    }
     .nx-sol-art {
-      width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0.94;
-      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.22s ease, filter 0.28s ease;
+      width: 100%; height: 100%; object-fit: contain; display: block;
+      transition: transform 0.25s ease;
     }
-    .nx-tab span { font-size: 0.875rem; font-weight: 600; color: var(--nx-text); line-height: 1.3; transition: color 0.2s ease; }
-    .nx-tab:hover, .nx-tab:focus-visible { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(var(--nx-brand-rgb), 0.22), 0 3px 10px rgba(38, 38, 38, 0.06); }
-    .nx-tab:hover .nx-icon-circle, .nx-tab:focus-visible .nx-icon-circle {
-      background: linear-gradient(155deg, #FFFFFF 0%, var(--nx-brand-subtle) 100%);
-      transform: translateY(-3px);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 0 0 1px rgba(var(--nx-brand-rgb), 0.48), 0 6px 14px rgba(var(--nx-brand-rgb), 0.14);
+    .nx-orbit-node:hover .nx-sol-art,
+    .nx-orbit-node.is-active .nx-sol-art { transform: scale(1.07); }
+    .nx-orbit-label {
+      position: absolute; top: calc(100% + 7px); left: 50%; transform: translateX(-50%);
+      width: max-content; max-width: 122px; text-align: center;
+      font-family: var(--nx-ff-body); font-size: 0.78rem; font-weight: 600; line-height: 1.24;
+      color: var(--nx-text); background: rgba(255, 255, 255, 0.92); padding: 2px 6px;
+      border-radius: 3px; transition: color 0.2s ease;
     }
-    .nx-tab:hover .nx-sol-art, .nx-tab:focus-visible .nx-sol-art {
-      transform: scale(1.07); opacity: 1;
-      filter: drop-shadow(0 3px 6px rgba(var(--nx-brand-rgb), 0.18));
-    }
-    .nx-tab:hover::after, .nx-tab:focus-visible::after, .nx-tab.is-active::after { transform: scaleX(1); }
-    .nx-tab.is-active {
-      background: linear-gradient(180deg, var(--nx-brand-subtle) 0%, var(--nx-surface) 56%);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(var(--nx-brand-rgb), 0.42), 0 6px 18px rgba(var(--nx-brand-rgb), 0.14);
-    }
-    .nx-tab.is-active .nx-icon-circle {
-      background: radial-gradient(circle at 50% 35%, #FFFFFF 0%, var(--nx-brand-subtle) 76%, var(--nx-brand-subtle-active) 100%);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 0 0 1px var(--nx-brand), 0 4px 12px rgba(var(--nx-brand-rgb), 0.22);
-    }
-    .nx-tab.is-active .nx-sol-art {
-      opacity: 1;
-      filter: drop-shadow(0 4px 8px rgba(var(--nx-brand-rgb), 0.22));
-      animation: nx-sol-float 3.2s ease-in-out infinite;
-    }
-    .nx-tab.is-active span { color: var(--nx-text-brand); font-weight: 700; }
-    @keyframes nx-sol-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-2.5px); }
+    .nx-orbit-node--top .nx-orbit-label { top: auto; bottom: calc(100% + 7px); }
+    .nx-orbit-node:hover .nx-orbit-label,
+    .nx-orbit-node.is-active .nx-orbit-label { color: var(--nx-text-brand); font-weight: 700; }
+
+    @media (max-width: 559px) {
+      .nx-orbit-stage { max-width: 380px; }
+      .nx-tab.nx-orbit-node { width: 14.8%; }
+      .nx-orbit-label {
+        font-size: 0.65rem; max-width: 76px; top: calc(100% + 4px);
+        padding: 1px 4px; line-height: 1.18;
+      }
+      .nx-orbit-node--top .nx-orbit-label { top: auto; bottom: calc(100% + 4px); }
+      .nx-orbit-node--left .nx-orbit-label { transform: translateX(-62%); }
+      .nx-orbit-node--right .nx-orbit-label { transform: translateX(-38%); }
+      .nx-hub-active { margin-top: 2px; padding: 1px 5px; }
     }
 
     .nx-sol-panel {
-      background: var(--nx-surface-alt); border-radius: var(--nx-radius-l); padding: var(--nx-sp-xl);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(38, 38, 38, 0.05), 0 3px 12px rgba(38, 38, 38, 0.05);
-      display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-xl);
-      align-items: center; border: none; border-left: 2px solid var(--nx-brand);
+      background: var(--nx-surface); border: 1px solid var(--nx-border);
+      border-top: 2px solid var(--nx-brand); border-radius: var(--nx-radius-m); padding: 1.5rem;
+      box-shadow: 0 4px 18px rgba(38, 38, 38, 0.05);
+      display: flex; flex-direction: column; gap: 1.1rem;
     }
-    @media (min-width: 768px) { .nx-sol-panel { grid-template-columns: 1.3fr 1fr; padding: var(--nx-sp-2xl); } }
-    .nx-check-list { list-style: none; padding: 0; margin: var(--nx-sp-m) 0 var(--nx-sp-l); display: grid; gap: 0.625rem; }
-    .nx-check-list li { display: flex; align-items: flex-start; gap: 0.625rem; font-weight: 500; }
-    .nx-check {
-      width: 20px; height: 20px; border-radius: var(--nx-radius-xs); background: var(--nx-brand); color: var(--nx-on-brand);
-      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 0.72rem; font-weight: 800;
+    @media (min-width: 768px) { .nx-sol-panel { padding: 2rem 2.25rem; } }
+    .nx-sol-meta-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;
     }
-    .nx-metric-box {
-      background: var(--nx-surface); border-radius: var(--nx-radius-m); padding: var(--nx-sp-l);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(38, 38, 38, 0.05), 0 3px 10px rgba(38, 38, 38, 0.05);
-      border: none; position: relative; overflow: hidden;
-      transition: box-shadow 0.28s ease, transform 0.28s ease;
+    .nx-sol-step-idx {
+      font-family: var(--nx-ff-mono); font-size: 0.75rem; font-weight: 700;
+      color: var(--nx-text-muted); letter-spacing: 0.06em;
     }
-    .nx-metric-box::before {
-      content: ""; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(105deg, transparent 20%, rgba(var(--nx-brand-rgb), 0.14) 50%, transparent 80%);
-      transform: translateX(-110%);
+    .nx-sol-panel h3 { font-size: clamp(1.25rem, 1.8vw, 1.5rem); font-weight: 700; line-height: 1.3; margin: 0; }
+    .nx-sol-panel-desc { color: var(--nx-text-muted); font-size: 0.9375rem; line-height: 1.6; margin: 0; }
+    .nx-sol-kpi-strip {
+      display: flex; align-items: center; gap: 1rem; padding: 0.85rem 1rem;
+      background: var(--nx-surface-alt); border-left: 2px solid var(--nx-brand);
+      border-radius: var(--nx-radius-s);
     }
-    .nx-metric-box::after {
-      content: ""; position: absolute; top: 0; left: 0; width: 64px; height: 2px;
-      background: var(--nx-brand); clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
-      transition: width 0.36s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .nx-metric-box.is-updating {
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(var(--nx-brand-rgb), 0.36), 0 8px 22px rgba(var(--nx-brand-rgb), 0.14);
-    }
-    .nx-metric-box.is-updating::before { animation: nx-sheen-sweep 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-    .nx-metric-box.is-updating::after, .nx-metric-box:hover::after { width: 100%; }
     .nx-metric-label {
       display: flex; align-items: center; gap: 0.45rem;
-      font-family: var(--nx-ff-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--nx-text-muted); margin-bottom: 0.5rem;
+      font-family: var(--nx-ff-mono); font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      color: var(--nx-text-muted); margin-bottom: 0.15rem;
     }
     .nx-metric-label::before {
       content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--nx-brand); flex-shrink: 0;
       animation: nx-kpi-pulse 2.2s ease-in-out infinite;
     }
     .nx-metric-value {
-      font-family: var(--nx-ff-display); font-size: 2.75rem; font-weight: 800; line-height: 1.1;
-      font-variant-numeric: tabular-nums; display: inline-block;
+      font-family: var(--nx-ff-display); font-size: clamp(1.65rem, 2.5vw, 2.15rem); font-weight: 800; line-height: 1;
+      font-variant-numeric: tabular-nums; display: inline-block; white-space: nowrap;
       color: var(--nx-text-brand); background: var(--nx-brand-gradient);
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
       transform-origin: left center;
     }
+    .nx-metric-cap { font-size: 0.85rem; font-weight: 600; color: var(--nx-text); line-height: 1.35; margin: 0; }
     .is-metric-pop { animation: nx-metric-pop 0.42s cubic-bezier(0.22, 1, 0.36, 1); }
     @keyframes nx-kpi-pulse {
       0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--nx-brand-rgb), 0.45); }
@@ -807,8 +806,18 @@
       0% { transform: translateX(-110%); }
       100% { transform: translateX(110%); }
     }
-    .nx-metric-cap { font-weight: 600; margin: 0.35rem 0 1rem; }
-    .nx-metric-note { background: var(--nx-brand-subtle); padding: 0.875rem; border-radius: var(--nx-radius-xs); border-left: 2px solid var(--nx-brand); font-size: 0.875rem; }
+    .nx-check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
+    .nx-check-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9125rem; line-height: 1.5; font-weight: 500; }
+    .nx-check {
+      width: 18px; height: 18px; border-radius: 2px; background: var(--nx-brand-subtle);
+      border: 1px solid rgba(var(--nx-brand-rgb), 0.35); color: var(--nx-text-brand);
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 0.7rem; font-weight: 800;
+    }
+    .nx-metric-note {
+      background: var(--nx-brand-subtle); padding: 0.75rem 0.9rem; border-radius: var(--nx-radius-xs);
+      border-left: 2px solid var(--nx-brand); font-size: 0.84rem; line-height: 1.5; color: var(--nx-text);
+    }
+    .nx-sol-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; padding-top: 0.25rem; }
 
     /* ---------- Architecture (ISA-95 — Clean Stack + Spec Table) ---------- */
     .nx-arch { display: grid; grid-template-columns: 1fr; gap: var(--nx-sp-xl); align-items: center; }
@@ -1138,7 +1147,7 @@
   <!-- UTILITY TOP BAR -->
   <div class="nx-topbar">
     <div class="nx-container">
-      <span class="nx-topbar-tagline" data-i18n="topbar.tagline">Giải pháp Smart Factory cho nhà máy Việt Nam — MES · Số hóa · Truy xuất nguồn gốc</span>
+      <span class="nx-topbar-tagline" data-i18n="topbar.tagline">DFS | Phần mềm MES, Số hóa xưởng và Truy xuất nguồn gốc</span>
       <span>Hotline: <a href="tel:+84000000000">(+84) 000 000 000</a> · <a href="#contact" data-modal-trigger="survey" data-i18n="topbar.survey_cta">Đăng ký khảo sát miễn phí</a></span>
     </div>
   </div>
@@ -1146,7 +1155,7 @@
   <!-- HEADER -->
   <header class="nx-header">
     <div class="nx-header-inner">
-      <a href="#hero" class="nx-logo" aria-label="DFS — Digital Factory Solutions — Trang chủ">
+      <a href="#hero" class="nx-logo" aria-label="DFS - Digital Factory Solutions - Trang chủ">
         <span class="nx-logo-lockup">
           <svg class="nx-logo-svg" viewBox="0 0 734 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DFS">
             <defs>
@@ -1182,16 +1191,6 @@
       </nav>
 
       <div class="nx-header-utils">
-        <div class="nx-theme-switch" role="group" aria-label="Chọn phiên bản tông màu">
-          <button type="button" class="nx-theme-btn is-active" data-theme-btn="green" aria-pressed="true" title="Tông màu Xanh lá (Green — #008B45 / #2E8B57)">
-            <span class="nx-theme-dot nx-theme-dot--green" aria-hidden="true"></span>
-            <span class="nx-theme-txt">XANH LÁ</span>
-          </button>
-          <button type="button" class="nx-theme-btn" data-theme-btn="teal" aria-pressed="false" title="Tông màu Xanh lục bảo (Teal — #0E7485 / #00A0B0)">
-            <span class="nx-theme-dot nx-theme-dot--teal" aria-hidden="true"></span>
-            <span class="nx-theme-txt">LỤC BẢO</span>
-          </button>
-        </div>
         <div class="nx-lang-switch" role="group" aria-label="Language switcher">
           <button type="button" class="nx-lang-btn is-active" data-lang-btn="vi" aria-pressed="true">VI</button>
           <button type="button" class="nx-lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
@@ -1210,13 +1209,13 @@
       </div>
     </div>
 
-    <!-- MEGA MENU: SẢN PHẨM (Axis-style Full-Bleed Split Layout) -->
+    <!-- MEGA MENU: SẢN PHẨM -->
     <div class="nx-mega nx-mega--split" id="mega-products-panel">
       <div class="nx-container">
         <div class="nx-axis-mega">
           <div class="nx-axis-sidebar" role="tablist" aria-label="Phân nhóm sản phẩm">
             <button type="button" class="nx-axis-tab is-active" data-axis-tab="prod-cat" role="tab" aria-selected="true" data-i18n="mega.prod.tab_cat">Danh mục sản phẩm</button>
-            <button type="button" class="nx-axis-tab" data-axis-tab="prod-col" role="tab" aria-selected="false" data-i18n="mega.prod.tab_col">Bộ giải pháp phần cứng trọn gói</button>
+            <button type="button" class="nx-axis-tab" data-axis-tab="prod-col" role="tab" aria-selected="false" data-i18n="mega.prod.tab_col">Gói thiết bị theo khu vực</button>
             <div style="margin-top: auto; padding-top: 1.5rem;">
               <a href="Products.html" class="nx-link" style="font-size: 0.875rem;" data-i18n="mega.prod.view_all">Xem toàn bộ trang Sản phẩm →</a>
             </div>
@@ -1227,7 +1226,7 @@
             <div class="nx-axis-pane is-active" data-axis-pane="prod-cat">
               <div class="nx-axis-pane-header">
                 <h3 data-i18n="mega.prod.cat_title">Danh mục sản phẩm</h3>
-                <p data-i18n="mega.prod.cat_desc">Hệ sinh thái phần mềm và thiết bị công nghiệp chuẩn mở cho nhà máy thông minh</p>
+                <p data-i18n="mega.prod.cat_desc">Phần mềm MES và thiết bị công nghiệp chuẩn mở dùng cho dây chuyền sản xuất</p>
               </div>
               <ul class="nx-axis-cats">
                 <li><a href="Products.html#cat-edge" data-i18n="mega.prod.c1">Bộ thu thập dữ liệu IIoT & Edge</a></li>
@@ -1245,11 +1244,11 @@
               </ul>
             </div>
 
-            <!-- Pane 2: Bộ giải pháp phần cứng trọn gói -->
+            <!-- Pane 2: Gói thiết bị theo khu vực -->
             <div class="nx-axis-pane" data-axis-pane="prod-col">
               <div class="nx-axis-pane-header">
-                <h3 data-i18n="mega.prod.col_title">Bộ giải pháp phần cứng trọn gói</h3>
-                <p data-i18n="mega.prod.col_desc">Các bộ thiết bị được đóng gói đồng bộ để giải quyết trọn vẹn từng bài toán tại xưởng</p>
+                <h3 data-i18n="mega.prod.col_title">Gói thiết bị theo khu vực</h3>
+                <p data-i18n="mega.prod.col_desc">Các bộ thiết bị ghép sẵn theo từng môi trường làm việc tại nhà máy</p>
               </div>
               <ul class="nx-axis-cats">
                 <li><a href="Products.html#cross-category-collections" data-i18n="mega.prod.b1">Trạm phòng sạch & Chống cháy nổ</a></li>
@@ -1258,7 +1257,7 @@
               </ul>
             </div>
 
-            <!-- Bottom 3 Circular Spotlights (Axis signature) -->
+            <!-- Bottom 3 Quick Spotlights -->
             <div class="nx-axis-bottom">
               <a href="Products.html#new-products" class="nx-axis-spot">
                 <div class="nx-axis-spot-thumb">
@@ -1266,7 +1265,7 @@
                 </div>
                 <div>
                   <strong data-i18n="mega.prod.s1_title">Sản phẩm mới ra mắt</strong>
-                  <span data-i18n="mega.prod.s1_desc">Khám phá các thiết bị IIoT & phần mềm thế hệ mới nhất</span>
+                  <span data-i18n="mega.prod.s1_desc">Các dòng thiết bị IIoT và bản cập nhật phần mềm mới</span>
                 </div>
               </a>
               <a href="#solutions" class="nx-axis-spot">
@@ -1275,7 +1274,7 @@
                 </div>
                 <div>
                   <strong data-i18n="mega.prod.s2_title">Giải pháp theo ngành</strong>
-                  <span data-i18n="mega.prod.s2_desc">Giải pháp đồng bộ cho Điện tử, Thực phẩm và Dược phẩm</span>
+                  <span data-i18n="mega.prod.s2_desc">Cấu hình triển khai cho Điện tử, Thực phẩm và Dược phẩm</span>
                 </div>
               </a>
               <a href="Products.html#related-resources" class="nx-axis-spot">
@@ -1293,7 +1292,7 @@
       </div>
     </div>
 
-    <!-- MEGA MENU: GIẢI PHÁP (Axis-style Full-Bleed Split Layout) -->
+    <!-- MEGA MENU: GIẢI PHÁP -->
     <div class="nx-mega nx-mega--split" id="mega-solutions-panel">
       <div class="nx-container">
         <div class="nx-axis-mega">
@@ -1310,10 +1309,10 @@
             <div class="nx-axis-pane is-active" data-axis-pane="sol-mod">
               <div class="nx-axis-pane-header">
                 <h3 data-i18n="mega.sol.mod_title">Giải pháp theo phân hệ</h3>
-                <p data-i18n="mega.sol.mod_desc">Hệ thống mô-đun Smart Factory linh hoạt — bắt đầu từ điểm nghẽn cấp thiết nhất</p>
+                <p data-i18n="mega.sol.mod_desc">Triển khai theo từng phân hệ, ưu tiên xử lý điểm nghẽn trước</p>
               </div>
               <ul class="nx-axis-cats">
-                <li><a href="#solutions" data-sol-jump="mes" data-i18n="mega.sol.m1">MES — Điều hành sản xuất</a></li>
+                <li><a href="#solutions" data-sol-jump="mes" data-i18n="mega.sol.m1">MES: Điều hành sản xuất</a></li>
                 <li><a href="#solutions" data-sol-jump="trace" data-i18n="mega.sol.m2">Truy xuất nguồn gốc GS1</a></li>
                 <li><a href="#solutions" data-sol-jump="oee" data-i18n="mega.sol.m3">Giám sát máy & OEE (IIoT)</a></li>
                 <li><a href="#solutions" data-sol-jump="qms" data-i18n="mega.sol.m4">Quản lý chất lượng (QMS / SPC)</a></li>
@@ -1332,7 +1331,7 @@
             <div class="nx-axis-pane" data-axis-pane="sol-ind">
               <div class="nx-axis-pane-header">
                 <h3 data-i18n="mega.sol.ind_title">Giải pháp theo ngành công nghiệp</h3>
-                <p data-i18n="mega.sol.ind_desc">Chuẩn hóa quy trình vận hành, truy xuất và tuân thủ kiểm toán theo đặc thù từng ngành</p>
+                <p data-i18n="mega.sol.ind_desc">Áp dụng quy trình vận hành, truy xuất và hồ sơ audit theo đặc thù từng ngành</p>
               </div>
               <ul class="nx-axis-cats">
                 <li><a href="#cases" data-filter-jump="electronics" data-i18n="mega.sol.i1">Điện tử & Lắp ráp SMT</a></li>
@@ -1346,7 +1345,7 @@
               </ul>
             </div>
 
-            <!-- Bottom 3 Circular Spotlights -->
+            <!-- Bottom 3 Quick Spotlights -->
             <div class="nx-axis-bottom">
               <a href="#contact" class="nx-axis-spot" data-modal-trigger="survey">
                 <div class="nx-axis-spot-thumb">
@@ -1363,7 +1362,7 @@
                 </div>
                 <div>
                   <strong data-i18n="mega.sol.s2_title">Kiến trúc chuẩn ISA-95</strong>
-                  <span data-i18n="mega.sol.s2_desc">Kết nối xuyên suốt từ PLC/Cảm biến lên ERP</span>
+                  <span data-i18n="mega.sol.s2_desc">Kết nối trực tiếp dữ liệu từ PLC, cảm biến lên phần mềm ERP</span>
                 </div>
               </a>
               <a href="#cases" class="nx-axis-spot">
@@ -1372,7 +1371,7 @@
                 </div>
                 <div>
                   <strong data-i18n="mega.sol.s3_title">Kết quả thực tế tại VN</strong>
-                  <span data-i18n="mega.sol.s3_desc">Tăng 18% OEE & truy xuất nguồn gốc dưới 30 giây</span>
+                  <span data-i18n="mega.sol.s3_desc">Tăng 18% OEE và truy xuất lô hàng dưới 30 giây</span>
                 </div>
               </a>
             </div>
@@ -1392,7 +1391,7 @@
           <div class="nx-mob-sub" id="mob-solutions-sub">
             <div class="nx-mob-sub-title" data-i18n="mega.sol.tab_mod">Giải pháp theo phân hệ</div>
             <ul>
-              <li><a href="#solutions" data-sol-jump="mes" data-i18n="mega.sol.m1">MES — Điều hành sản xuất</a></li>
+              <li><a href="#solutions" data-sol-jump="mes" data-i18n="mega.sol.m1">MES: Điều hành sản xuất</a></li>
               <li><a href="#solutions" data-sol-jump="trace" data-i18n="mega.sol.m2">Truy xuất nguồn gốc GS1</a></li>
               <li><a href="#solutions" data-sol-jump="oee" data-i18n="mega.sol.m3">Giám sát máy &amp; OEE (IIoT)</a></li>
               <li><a href="#solutions" data-sol-jump="qms" data-i18n="mega.sol.m4">Quản lý chất lượng (QMS / SPC)</a></li>
@@ -1444,25 +1443,215 @@
   <!-- HERO -->
   <section class="nx-hero" id="hero">
     <video class="nx-hero-bg" autoplay muted loop playsinline preload="auto" poster="assets/images/hero-smart-factory.jpg" aria-hidden="true">
-      <source src="assets/images/gemini_generated_video_d2e6fa73.mp4" type="video/mp4" />
+      <source src="assets/images/hero-factory-bg.mp4" type="video/mp4" />
     </video>
     <div class="nx-hero-overlay"></div>
     <div class="nx-container" style="width:100%;">
       <div class="nx-hero-content">
-        <div class="nx-eyebrow"><span class="nx-eyebrow-tip">FLOW</span><span>SMART FACTORY · MES · TRACEABILITY</span></div>
-        <h1 data-i18n="hero.title">Số hóa nhà máy, <span class="hl">minh bạch từng công đoạn</span> sản xuất</h1>
+        <div class="nx-eyebrow"><span class="nx-eyebrow-tip">FLOW</span><span data-i18n="hero.eyebrow">SMART FACTORY / MES / TRACEABILITY</span></div>
+        <h1 data-i18n="hero.title">Số hóa dây chuyền, <span class="hl">kiểm soát rõ từng công đoạn</span> sản xuất</h1>
         <p data-i18n="hero.desc">
-          DFS kết nối máy móc, con người và dữ liệu trên một nền tảng MES duy nhất — giúp nhà máy theo dõi sản lượng theo thời gian thực,
-          nâng hiệu suất thiết bị (OEE) và truy xuất nguồn gốc mọi lô hàng chỉ trong vài giây.
+          DFS kết nối máy móc, công nhân và dữ liệu xưởng vào chung một hệ thống MES. Quản lý theo dõi sản lượng theo ca, đo OEE thực tế và truy xuất lịch sử từng lô hàng ngay khi cần.
         </p>
         <div class="nx-hero-actions">
           <a href="#solutions" class="nx-btn nx-btn--primary" data-i18n="hero.cta_primary">Khám phá giải pháp</a>
           <button type="button" class="nx-btn nx-btn--ghost-light" data-modal-trigger="survey" data-i18n="hero.cta_secondary">Khảo sát nhà máy miễn phí</button>
         </div>
-        <div class="nx-hero-trust">
-          <span data-i18n="hero.trust1">Chuẩn kiến trúc ISA-95</span>
-          <span data-i18n="hero.trust2">Mã hóa GS1 (QR / DataMatrix)</span>
-          <span data-i18n="hero.trust3">Tích hợp ERP: SAP, Oracle, Odoo…</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS CIRCULAR ORBIT -->
+  <section class="nx-section" id="solutions">
+    <div class="nx-container">
+      <div class="nx-section-header">
+        <span class="nx-kicker" data-i18n="sol.kicker">Giải pháp</span>
+        <h2 data-i18n="sol.title">Bộ giải pháp Smart Factory theo mô-đun</h2>
+      </div>
+
+      <div class="nx-sol-layout">
+        <!-- Left: Circular Orbit Around Center Smart Factory -->
+        <div class="nx-orbit-stage">
+          <svg class="nx-orbit-svg" viewBox="0 0 560 560" aria-hidden="true">
+            <circle class="nx-orbit-ring-outer" cx="280" cy="280" r="236" />
+            <circle class="nx-orbit-ring-main" cx="280" cy="280" r="188" />
+            <circle class="nx-orbit-ring-inner" cx="280" cy="280" r="106" />
+
+            <!-- Radial spokes from factory center to 7 solution nodes -->
+            <line class="nx-orbit-spoke is-active" data-spoke="mes" x1="280" y1="280" x2="280" y2="92" />
+            <line class="nx-orbit-spoke" data-spoke="trace" x1="280" y1="280" x2="427" y2="162.8" />
+            <line class="nx-orbit-spoke" data-spoke="oee" x1="280" y1="280" x2="463.3" y2="321.8" />
+            <line class="nx-orbit-spoke" data-spoke="qms" x1="280" y1="280" x2="361.6" y2="449.4" />
+            <line class="nx-orbit-spoke" data-spoke="wms" x1="280" y1="280" x2="198.4" y2="449.4" />
+            <line class="nx-orbit-spoke" data-spoke="cmms" x1="280" y1="280" x2="96.7" y2="321.8" />
+            <line class="nx-orbit-spoke" data-spoke="ems" x1="280" y1="280" x2="133" y2="162.8" />
+
+            <!-- Hub rim connector dots (radius 106) -->
+            <circle class="nx-orbit-dot is-active" data-dot="mes" cx="280" cy="174" r="4.5" />
+            <circle class="nx-orbit-dot" data-dot="trace" cx="362.9" cy="213.9" r="3.5" />
+            <circle class="nx-orbit-dot" data-dot="oee" cx="383.3" cy="303.6" r="3.5" />
+            <circle class="nx-orbit-dot" data-dot="qms" cx="326" cy="375.5" r="3.5" />
+            <circle class="nx-orbit-dot" data-dot="wms" cx="234" cy="375.5" r="3.5" />
+            <circle class="nx-orbit-dot" data-dot="cmms" cx="176.7" cy="303.6" r="3.5" />
+            <circle class="nx-orbit-dot" data-dot="ems" cx="197.1" cy="213.9" r="3.5" />
+          </svg>
+
+          <!-- Center Smart Factory Hub -->
+          <div class="nx-orbit-hub">
+            <svg class="nx-hub-svg" viewBox="0 0 160 116" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DFS Smart Factory">
+              <defs>
+                <linearGradient id="hub-deck" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#E6F4F6" />
+                  <stop offset="100%" stop-color="#B9DCE1" />
+                </linearGradient>
+                <linearGradient id="hub-skylight" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6CEAF5" />
+                  <stop offset="100%" stop-color="#0699A8" />
+                </linearGradient>
+              </defs>
+              <!-- Isometric Chamfered Base Slab -->
+              <polygon points="10,78 80,113 150,78 80,43" fill="url(#hub-deck)" />
+              <polygon points="10,78 80,113 80,116 10,81" fill="#026A74" />
+              <polygon points="80,113 150,78 150,81 80,116" fill="#01535B" />
+
+              <!-- Twin Industrial Stacks (Rear Left) -->
+              <path d="M36 22 h7 v32 h-7 z" fill="#D4E2E4" />
+              <path d="M40 22 h3 v32 h-3 z" fill="#9BB1B5" />
+              <ellipse cx="39.5" cy="22" rx="3.5" ry="1.4" fill="#0699A8" />
+              <path d="M48 16 h7 v34 h-7 z" fill="#E3EEF0" />
+              <path d="M52 16 h3 v34 h-3 z" fill="#A6BCC0" />
+              <ellipse cx="51.5" cy="16" rx="3.5" ry="1.4" fill="#1CC0D1" />
+
+              <!-- Rear Warehouse / Automated Annex -->
+              <polygon points="56,37 94,18 128,35 90,54" fill="#E6F4F6" />
+              <polygon points="90,54 128,35 128,61 90,80" fill="#B6CBCE" />
+              <polygon points="56,37 90,54 90,80 56,63" fill="#FFFFFF" />
+              <!-- Annex Loading Bays -->
+              <polygon points="96,60 105,55.5 105,72 96,76.5" fill="#262626" />
+              <polygon points="110,53 119,48.5 119,65 110,69.5" fill="#262626" />
+
+              <!-- Main Sawtooth Factory Hall (Front Isometric) -->
+              <!-- Left White Front Wall -->
+              <polygon points="24,52 78,79 78,103 24,76" fill="#FFFFFF" />
+              <!-- Right Shaded Side Wall -->
+              <polygon points="78,79 124,56 124,80 78,103" fill="#C6D7DA" />
+
+              <!-- 3 Sawtooth Roof Bays -->
+              <polygon points="24,52 42,43 56,50 38,59" fill="#E6F4F6" />
+              <polygon points="38,59 56,50 60,57 42,66" fill="url(#hub-skylight)" />
+
+              <polygon points="42,61 60,52 74,59 56,68" fill="#E6F4F6" />
+              <polygon points="56,68 74,59 78,66 60,75" fill="url(#hub-skylight)" />
+
+              <polygon points="60,70 78,61 92,68 74,77" fill="#E6F4F6" />
+              <polygon points="78,79 124,56 110,49 64,72" fill="#D9ECEF" />
+              <polygon points="74,77 92,68 95,73 78,81" fill="url(#hub-skylight)" />
+
+              <!-- Windows & Roll-up Doors on Main Hall -->
+              <polygon points="31,61 45,68 45,73 31,66" fill="#1CC0D1" opacity="0.85" />
+              <polygon points="50,70.5 64,77.5 64,82.5 50,75.5" fill="#1CC0D1" opacity="0.85" />
+              <polygon points="85,81 97,75 97,93.5 85,99.5" fill="#262626" />
+              <polygon points="103,72 115,66 115,84.5 103,90.5" fill="#262626" />
+              <line x1="86" y1="87" x2="96" y2="82" stroke="#1CC0D1" stroke-width="1" />
+              <line x1="104" y1="78" x2="114" y2="73" stroke="#1CC0D1" stroke-width="1" />
+
+              <!-- Rooftop IIoT Mast + Signal Arcs -->
+              <line x1="106" y1="53" x2="106" y2="33" stroke="#1CC0D1" stroke-width="1.4" stroke-linecap="round" />
+              <circle cx="106" cy="32" r="2.2" fill="#1CC0D1" />
+              <path d="M101 28 a7 7 0 0 1 10 0" fill="none" stroke="#1CC0D1" stroke-width="1.1" stroke-linecap="round" opacity="0.85" />
+              <path d="M98 24 a11 11 0 0 1 16 0" fill="none" stroke="#1CC0D1" stroke-width="1" stroke-linecap="round" opacity="0.55" />
+            </svg>
+            <span class="nx-hub-title" data-i18n="sol.orbit.center_title">NHÀ MÁY THÔNG MINH</span>
+            <span class="nx-hub-active" id="sol-hub-active">MES</span>
+          </div>
+
+          <!-- 7 Circular Solution Nodes -->
+          <div class="nx-orbit-nodes" role="tablist" aria-label="Danh mục giải pháp">
+            <button type="button" class="nx-tab nx-orbit-node nx-orbit-node--top is-active" data-sol="mes" role="tab" aria-selected="true" style="--nx-x: 50.00%; --nx-y: 16.43%;">
+              <span class="nx-orbit-icon">
+                <img class="nx-sol-art" src="assets/images/solutions/sol-mes.svg?v=20261126" data-sol-img="mes" width="72" height="72" alt="" aria-hidden="true" loading="eager" decoding="async" />
+              </span>
+              <span class="nx-orbit-label" data-i18n="sol.orbit.mes">Điều hành SX</span>
+            </button>
+
+            <button type="button" class="nx-tab nx-orbit-node nx-orbit-node--top" data-sol="trace" role="tab" aria-selected="false" style="--nx-x: 76.25%; --nx-y: 29.07%;">
+              <span class="nx-orbit-icon">
+                <img class="nx-sol-art" src="assets/images/solutions/sol-trace.svg?v=20261126" data-sol-img="trace" width="72" height="72" alt="" aria-hidden="true" loading="eager" decoding="async" />
+              </span>
+              <span class="nx-orbit-label" data-i18n="sol.orbit.trace">Truy xuất GS1</span>
+            </button>
+
+            <button type="button" class="nx-tab nx-orbit-node nx-orbit-node--right" data-sol="oee" role="tab" aria-selected="false" style="--nx-x: 82.73%; --nx-y: 57.47%;">
+              <span class="nx-orbit-icon">
+                <img class="nx-sol-art" src="assets/images/solutions/sol-oee.svg?v=20261126" data-sol-img="oee" width="72" height="72" alt="" aria-hidden="true" loading="eager" decoding="async" />
+              </span>
+              <span class="nx-orbit-label" data-i18n="sol.orbit.oee">Giám sát &amp; OEE</span>
+            </button>
+
+            <button type="button" class="nx-tab nx-orbit-node" data-sol="qms" role="tab" aria-selected="false" style="--nx-x: 64.57%; --nx-y: 80.25%;">
+              <span class="nx-orbit-icon">
+                <img class="nx-sol-art" src="assets/images/solutions/sol-qms.svg?v=20261126" data-sol-img="qms" width="72" height="72" alt="" aria-hidden="true" loading="eager" decoding="async" />
+              </span>
+              <span class="nx-orbit-label" data-i18n="sol.orbit.qms">Chất lượng QMS</span>
+            </button>
+
+            <button type="button" class="nx-tab nx-orbit-node" data-sol="wms" role="tab" aria-selected="false" style="--nx-x: 35.43%; --nx-y: 80.25%;">
+              <span class="nx-orbit-icon">
+                <img class="nx-sol-art" src="assets/images/solutions/sol-wms.svg?v=20261126" data-sol-img="wms" width="72" height="72" alt="" aria-hidden="true" loading="eager" decoding="async" />
+              </span>
+              <span class="nx-orbit-label" data-i18n="sol.orbit.wms">Kho &amp; Logistics</span>
+            </button>
+
+            <button type="button" class="nx-tab nx-orbit-node nx-orbit-node--left" data-sol="cmms" role="tab" aria-selected="false" style="--nx-x: 17.27%; --nx-y: 57.47%;">
+              <span class="nx-orbit-icon">
+                <img class="nx-sol-art" src="assets/images/solutions/sol-cmms.svg?v=20261126" data-sol-img="cmms" width="72" height="72" alt="" aria-hidden="true" loading="eager" decoding="async" />
+              </span>
+              <span class="nx-orbit-label" data-i18n="sol.orbit.cmms">Bảo trì &amp; Biểu mẫu</span>
+            </button>
+
+            <button type="button" class="nx-tab nx-orbit-node nx-orbit-node--top" data-sol="ems" role="tab" aria-selected="false" style="--nx-x: 23.75%; --nx-y: 29.07%;">
+              <span class="nx-orbit-icon">
+                <img class="nx-sol-art" src="assets/images/solutions/sol-ems.svg?v=20261126" data-sol-img="ems" width="72" height="72" alt="" aria-hidden="true" loading="eager" decoding="async" />
+              </span>
+              <span class="nx-orbit-label" data-i18n="sol.orbit.ems">Năng lượng EMS</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Architectural Detail Panel -->
+        <div class="nx-sol-panel" id="solution-panel" role="tabpanel" aria-live="polite">
+          <div class="nx-sol-meta-row">
+            <span class="nx-tag" id="sol-badge">Manufacturing Execution System</span>
+            <span class="nx-sol-step-idx" id="sol-step-idx">01 / 07</span>
+          </div>
+          <h3 id="sol-title">Điều hành sản xuất theo thời gian thực, không giấy tờ</h3>
+          <p class="nx-sol-panel-desc" id="sol-desc">
+            Quản lý xuyên suốt lệnh sản xuất: nhận kế hoạch từ ERP, điều độ xuống từng chuyền/máy, cấp phát vật tư, ghi nhận sản lượng, phế phẩm và tổng hợp hồ sơ lô khi đóng lệnh.
+          </p>
+
+          <div class="nx-sol-kpi-strip">
+            <div class="nx-metric-value" id="sol-metric-value">-90%</div>
+            <div>
+              <div class="nx-metric-label" data-i18n="sol.metric_label">Hiệu quả điển hình</div>
+              <p class="nx-metric-cap" id="sol-metric-caption">Thời gian lập báo cáo sản xuất cuối ca, cuối tháng</p>
+            </div>
+          </div>
+
+          <ul class="nx-check-list" id="sol-bullets">
+            <li><span class="nx-check">✓</span><span>Lập và điều độ lệnh sản xuất theo năng lực chuyền, ca, công nhân</span></li>
+            <li><span class="nx-check">✓</span><span>Hướng dẫn công việc điện tử (eWI) &amp; ghi nhận sản lượng bằng máy quét, tablet</span></li>
+            <li><span class="nx-check">✓</span><span>Theo dõi bán thành phẩm (WIP), tiến độ đơn hàng và năng suất ca làm việc</span></li>
+            <li><span class="nx-check">✓</span><span>Hồ sơ lô điện tử (eBR/eDHR) tự động tổng hợp khi đóng lệnh</span></li>
+          </ul>
+
+          <div class="nx-metric-note" id="sol-metric-note">
+            <strong>Tích hợp:</strong> đồng bộ lệnh, BOM, routing và tồn kho hai chiều với ERP qua REST API / middleware.
+          </div>
+
+          <div class="nx-sol-actions">
+            <button type="button" class="nx-btn nx-btn--primary" id="btn-sol-explore" data-i18n="sol.btn_explore">Nhận tài liệu giải pháp</button>
+            <a href="#cases" class="nx-btn nx-btn--secondary" data-i18n="sol.btn_cases">Xem dự án thực tế</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1476,23 +1665,23 @@
           <div>
             <span class="nx-tag" data-i18n="promo.1.tag">Công cụ đánh giá</span>
             <h3 data-i18n="promo.1.title">Nhà máy của bạn đang ở cấp độ số hóa nào?</h3>
-            <p data-i18n="promo.1.desc">Trả lời 12 câu hỏi để biết mức độ trưởng thành số (cấp 1–5) và ưu tiên đầu tư phù hợp.</p>
+            <p data-i18n="promo.1.desc">Trả lời 12 câu hỏi ngắn để xác định mức độ số hóa hiện tại (cấp 1–5) và hạng mục nên làm trước.</p>
           </div>
           <button type="button" class="nx-link" data-modal-trigger="assessment" data-i18n="promo.1.cta">Làm bài đánh giá →</button>
         </div>
         <div class="nx-promo-card">
           <div>
-            <span class="nx-tag" data-i18n="promo.2.tag">Demo trực tiếp</span>
+            <span class="nx-tag" data-i18n="promo.2.tag">Demo hệ thống</span>
             <h3 data-i18n="promo.2.title">Trải nghiệm MES với dữ liệu dây chuyền thực</h3>
-            <p data-i18n="promo.2.desc">Xem lệnh sản xuất, OEE, cảnh báo dừng máy và hồ sơ lô điện tử chạy trên màn hình xưởng.</p>
+            <p data-i18n="promo.2.desc">Xem trực tiếp lệnh sản xuất, chỉ số OEE, cảnh báo dừng máy và hồ sơ lô điện tử trên màn hình xưởng.</p>
           </div>
           <button type="button" class="nx-link" data-modal-trigger="demo" data-i18n="promo.2.cta">Đặt lịch demo 45 phút →</button>
         </div>
         <div class="nx-promo-card">
           <div>
-            <span class="nx-tag" data-i18n="promo.3.tag">Tài liệu chuyên sâu</span>
-            <h3 data-i18n="promo.3.title">Cẩm nang truy xuất nguồn gốc cho nhà máy xuất khẩu</h3>
-            <p data-i18n="promo.3.desc">Yêu cầu từ thị trường EU, Mỹ, Nhật và cách đáp ứng bằng mã định danh GS1 + MES.</p>
+            <span class="nx-tag" data-i18n="promo.3.tag">Tài liệu kỹ thuật</span>
+            <h3 data-i18n="promo.3.title">Hướng dẫn truy xuất nguồn gốc cho nhà máy xuất khẩu</h3>
+            <p data-i18n="promo.3.desc">Tổng hợp yêu cầu thị trường EU, Mỹ, Nhật và cách áp dụng mã GS1 kết hợp MES.</p>
           </div>
           <button type="button" class="nx-link" data-modal-trigger="ebook" data-i18n="promo.3.cta">Tải cẩm nang (PDF) →</button>
         </div>
@@ -1500,122 +1689,38 @@
     </div>
   </div>
 
-  <!-- SOLUTIONS TABS -->
-  <section class="nx-section" id="solutions">
-    <div class="nx-container">
-      <div class="nx-section-header">
-        <span class="nx-kicker" data-i18n="sol.kicker">Giải pháp</span>
-        <h2 data-i18n="sol.title">Bộ giải pháp Smart Factory theo mô-đun</h2>
-        <p data-i18n="sol.desc">Bắt đầu từ bài toán cấp thiết nhất, mở rộng dần trên cùng một nền tảng dữ liệu. Chọn từng mô-đun để xem chi tiết.</p>
-      </div>
-
-      <div class="nx-tabs" role="tablist" aria-label="Danh mục giải pháp">
-        <button type="button" class="nx-tab is-active" data-sol="mes" role="tab" aria-selected="true">
-          <div class="nx-icon-circle">
-            <img class="nx-sol-art" src="assets/images/solutions/sol-mes.svg" data-sol-img="mes" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
-          </div>
-          <span data-i18n="sol.tab.mes">MES — Điều hành sản xuất</span>
-        </button>
-        <button type="button" class="nx-tab" data-sol="trace" role="tab" aria-selected="false">
-          <div class="nx-icon-circle">
-            <img class="nx-sol-art" src="assets/images/solutions/sol-trace.svg" data-sol-img="trace" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
-          </div>
-          <span data-i18n="sol.tab.trace">Truy xuất nguồn gốc</span>
-        </button>
-        <button type="button" class="nx-tab" data-sol="oee" role="tab" aria-selected="false">
-          <div class="nx-icon-circle">
-            <img class="nx-sol-art" src="assets/images/solutions/sol-oee.svg" data-sol-img="oee" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
-          </div>
-          <span data-i18n="sol.tab.oee">Giám sát máy & OEE</span>
-        </button>
-        <button type="button" class="nx-tab" data-sol="qms" role="tab" aria-selected="false">
-          <div class="nx-icon-circle">
-            <img class="nx-sol-art" src="assets/images/solutions/sol-qms.svg" data-sol-img="qms" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
-          </div>
-          <span data-i18n="sol.tab.qms">Quản lý chất lượng</span>
-        </button>
-        <button type="button" class="nx-tab" data-sol="wms" role="tab" aria-selected="false">
-          <div class="nx-icon-circle">
-            <img class="nx-sol-art" src="assets/images/solutions/sol-wms.svg" data-sol-img="wms" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
-          </div>
-          <span data-i18n="sol.tab.wms">Kho & Logistics (WMS)</span>
-        </button>
-        <button type="button" class="nx-tab" data-sol="cmms" role="tab" aria-selected="false">
-          <div class="nx-icon-circle">
-            <img class="nx-sol-art" src="assets/images/solutions/sol-cmms.svg" data-sol-img="cmms" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
-          </div>
-          <span data-i18n="sol.tab.cmms">Bảo trì & Số hóa biểu mẫu</span>
-        </button>
-        <button type="button" class="nx-tab" data-sol="ems" role="tab" aria-selected="false">
-          <div class="nx-icon-circle">
-            <img class="nx-sol-art" src="assets/images/solutions/sol-ems.svg" data-sol-img="ems" width="80" height="80" alt="" aria-hidden="true" loading="eager" decoding="async" />
-          </div>
-          <span data-i18n="sol.tab.ems">Quản lý năng lượng (EMS)</span>
-        </button>
-      </div>
-
-      <div class="nx-sol-panel" id="solution-panel" role="tabpanel" aria-live="polite">
-        <div>
-          <span class="nx-tag" id="sol-badge">Manufacturing Execution System</span>
-          <h3 id="sol-title" style="font-size:1.65rem;margin:0.35rem 0 0.75rem;">Điều hành sản xuất theo thời gian thực, không giấy tờ</h3>
-          <p id="sol-desc" style="color:var(--nx-text-muted);margin:0;">
-            Số hóa toàn bộ vòng đời lệnh sản xuất: từ kế hoạch nhận từ ERP, điều độ xuống từng chuyền/máy, cấp phát nguyên vật liệu, ghi nhận sản lượng – phế phẩm đến đóng lệnh và hồ sơ lô điện tử.
-          </p>
-          <ul class="nx-check-list" id="sol-bullets">
-            <li><span class="nx-check">✓</span><span>Lập và điều độ lệnh sản xuất theo năng lực chuyền, ca, công nhân</span></li>
-            <li><span class="nx-check">✓</span><span>Hướng dẫn công việc điện tử (eWI) & ghi nhận sản lượng bằng máy quét, tablet</span></li>
-            <li><span class="nx-check">✓</span><span>Theo dõi WIP, tiến độ đơn hàng và năng suất lao động tức thời</span></li>
-            <li><span class="nx-check">✓</span><span>Hồ sơ lô điện tử (eBR/eDHR) tự động tổng hợp khi đóng lệnh</span></li>
-          </ul>
-          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
-            <button type="button" class="nx-btn nx-btn--primary" id="btn-sol-explore" data-i18n="sol.btn_explore">Nhận tài liệu giải pháp</button>
-            <a href="#cases" class="nx-btn nx-btn--secondary" data-i18n="sol.btn_cases">Xem dự án thực tế</a>
-          </div>
-        </div>
-        <div class="nx-metric-box">
-          <div class="nx-metric-label" data-i18n="sol.metric_label">Hiệu quả điển hình</div>
-          <div class="nx-metric-value" id="sol-metric-value">-90%</div>
-          <div class="nx-metric-cap" id="sol-metric-caption">Thời gian lập báo cáo sản xuất cuối ca, cuối tháng</div>
-          <div class="nx-metric-note" id="sol-metric-note">
-            <strong>Tích hợp:</strong> đồng bộ lệnh, BOM, routing và tồn kho hai chiều với ERP qua REST API / middleware.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- PAIN POINTS -->
   <section class="nx-section nx-section--alt" id="challenges">
     <div class="nx-container">
       <div class="nx-section-header">
-        <span class="nx-kicker" data-i18n="pain.kicker">Thách thức thường gặp</span>
-        <h2 data-i18n="pain.title">Nhà máy vẫn đang vận hành bằng giấy, Excel và kinh nghiệm?</h2>
-        <p data-i18n="pain.desc">Dữ liệu sản xuất rời rạc khiến ban điều hành ra quyết định chậm, khó chứng minh chất lượng với khách hàng và tốn kém khi xảy ra sự cố.</p>
+        <span class="nx-kicker" data-i18n="pain.kicker">Vấn đề tại xưởng</span>
+        <h2 data-i18n="pain.title">4 điểm nghẽn thường gặp khi quản lý sản xuất bằng giấy và Excel</h2>
+        <p data-i18n="pain.desc">Dữ liệu phân tán giữa các bộ phận làm chậm việc xử lý sự cố, khó đối chiếu chất lượng và tốn nhiều công chuẩn bị khi khách hàng audit.</p>
       </div>
       <div class="nx-pain-grid">
         <article class="nx-pain">
           <span class="nx-pain-no">01</span>
           <h3 data-i18n="pain.1.title">Báo cáo sản xuất trễ 1–2 ngày</h3>
-          <p data-i18n="pain.1.desc">Số liệu ghi tay cuối ca, nhập lại vào Excel — sai lệch, thiếu và không ai tin hoàn toàn.</p>
-          <div class="nx-pain-fix" data-i18n="pain.1.fix">→ MES ghi nhận tự động theo thời gian thực</div>
+          <p data-i18n="pain.1.desc">Ghi tay cuối ca rồi nhập lại vào Excel, dễ sai số và khó đối chiếu khi cần.</p>
+          <div class="nx-pain-fix" data-i18n="pain.1.fix">Giải pháp: MES ghi nhận trực tiếp theo ca</div>
         </article>
         <article class="nx-pain">
           <span class="nx-pain-no">02</span>
           <h3 data-i18n="pain.2.title">Không biết OEE thực tế</h3>
-          <p data-i18n="pain.2.desc">Thời gian dừng máy, chạy chậm, hàng lỗi bị "ẩn" — năng lực thật của xưởng chưa được khai thác.</p>
-          <div class="nx-pain-fix" data-i18n="pain.2.fix">→ Kết nối máy (IIoT) & phân tích tổn thất</div>
+          <p data-i18n="pain.2.desc">Các lần dừng máy ngắn, chạy dưới tốc độ thiết kế và hàng lỗi không được ghi nhận đầy đủ.</p>
+          <div class="nx-pain-fix" data-i18n="pain.2.fix">Giải pháp: Kết nối máy (IIoT) và phân tích tổn thất</div>
         </article>
         <article class="nx-pain">
           <span class="nx-pain-no">03</span>
           <h3 data-i18n="pain.3.title">Truy xuất lô mất hàng giờ</h3>
-          <p data-i18n="pain.3.desc">Khi khách hàng khiếu nại hoặc cần thu hồi, phải lục sổ sách nhiều bộ phận mới khoanh vùng được lô lỗi.</p>
-          <div class="nx-pain-fix" data-i18n="pain.3.fix">→ Phả hệ lô (genealogy) tra cứu trong vài giây</div>
+          <p data-i18n="pain.3.desc">Khi có khiếu nại hoặc cần thu hồi, nhân sự phải dò sổ sách nhiều bộ phận mới khoanh vùng được lô lỗi.</p>
+          <div class="nx-pain-fix" data-i18n="pain.3.fix">Giải pháp: Tra cứu phả hệ lô trong vài giây</div>
         </article>
         <article class="nx-pain">
           <span class="nx-pain-no">04</span>
-          <h3 data-i18n="pain.4.title">ERP và xưởng không "nói chuyện"</h3>
-          <p data-i18n="pain.4.desc">Kế hoạch trên ERP không phản ánh tiến độ thực tế dưới xưởng; tồn kho WIP luôn chênh lệch.</p>
-          <div class="nx-pain-fix" data-i18n="pain.4.fix">→ Tích hợp hai chiều ERP ⇄ MES ⇄ Máy</div>
+          <h3 data-i18n="pain.4.title">ERP và xưởng sản xuất bị lệch dữ liệu</h3>
+          <p data-i18n="pain.4.desc">Kế hoạch trên ERP không khớp với tiến độ chạy máy thực tế, tồn kho bán thành phẩm (WIP) hay sai lệch.</p>
+          <div class="nx-pain-fix" data-i18n="pain.4.fix">Giải pháp: Đồng bộ hai chiều ERP ⇄ MES ⇄ Máy</div>
         </article>
       </div>
     </div>
@@ -1625,27 +1730,27 @@
   <section class="nx-section nx-section--dark" id="platform">
     <div class="nx-container">
       <div class="nx-section-header">
-        <span class="nx-kicker" data-i18n="plat.kicker">Nền tảng DFS — Digital Factory Solutions</span>
+        <span class="nx-kicker" data-i18n="plat.kicker">Kiến trúc hệ thống DFS</span>
         <h2 data-i18n="plat.title">Kiến trúc mở ISA-95 &amp; Chuẩn tương thích</h2>
       </div>
 
       <div class="nx-arch">
         <div class="nx-arch-stack" aria-label="Sơ đồ 3 tầng kiến trúc ISA-95">
           <div class="nx-tier">
-            <span class="nx-tier-title" data-i18n="plat.tier4.title">Cấp 4 · ERP Quản trị</span>
+            <span class="nx-tier-title" data-i18n="plat.tier4.title">Cấp 4: ERP Quản trị</span>
             <span class="nx-tier-meta" data-i18n="plat.tier4.meta">SAP / Oracle / Odoo</span>
           </div>
           <div class="nx-flow-arrow" aria-hidden="true" data-i18n="plat.arrow1">&#8593;&#8595; API Đồng bộ hai chiều</div>
           <div class="nx-tier nx-tier--core">
             <div>
-              <strong class="nx-tier-core-title" data-i18n="plat.tier3.title">Cấp 3 · DFS MES / MOM</strong>
+              <strong class="nx-tier-core-title" data-i18n="plat.tier3.title">Cấp 3: DFS MES / MOM</strong>
               <span class="nx-tier-core-sub" data-i18n="plat.tier3.sub">Trung tâm điều hành &amp; dữ liệu nhà máy</span>
             </div>
             <span class="nx-tier-badge">CORE</span>
           </div>
           <div class="nx-flow-arrow" aria-hidden="true" data-i18n="plat.arrow2">&#8593;&#8595; Thu thập thời gian thực</div>
           <div class="nx-tier">
-            <span class="nx-tier-title" data-i18n="plat.tier0.title">Cấp 0–2 · Edge, PLC &amp; Hiện trường</span>
+            <span class="nx-tier-title" data-i18n="plat.tier0.title">Cấp 0–2: Edge, PLC &amp; Hiện trường</span>
             <span class="nx-tier-meta" data-i18n="plat.tier0.meta">Máy móc &amp; Cảm biến</span>
           </div>
         </div>
@@ -1670,7 +1775,7 @@
             </div>
             <div class="nx-spec-row">
               <div class="nx-spec-label" data-i18n="plat.spec.r4_label">Mô hình Hạ tầng</div>
-              <div class="nx-spec-val" data-i18n="plat.spec.r4_val">On-premise tại nhà máy, Cloud hoặc Hybrid — tương thích cả máy đời cũ</div>
+              <div class="nx-spec-val" data-i18n="plat.spec.r4_val">Cài đặt On-premise tại nhà máy, Cloud hoặc Hybrid; hỗ trợ kết nối cả máy đời cũ</div>
             </div>
           </div>
         </div>
@@ -1743,8 +1848,8 @@
     <div class="nx-container">
       <div class="nx-section-header">
         <span class="nx-kicker" data-i18n="road.kicker">Phương pháp triển khai</span>
-        <h2 data-i18n="road.title">Lộ trình 5 bước — bắt đầu nhỏ, nhân rộng nhanh</h2>
-        <p data-i18n="road.desc">Giảm rủi ro đầu tư bằng mô hình thí điểm có mục tiêu đo lường rõ ràng trước khi mở rộng toàn nhà máy.</p>
+        <h2 data-i18n="road.title">Lộ trình triển khai 5 bước: thí điểm 1 chuyền trước khi mở rộng</h2>
+        <p data-i18n="road.desc">Triển khai thí điểm có KPI đo lường cụ thể trên 1 dây chuyền trước khi đầu tư mở rộng toàn nhà máy.</p>
       </div>
       <div class="nx-roadmap">
         <div class="nx-step"><div class="nx-step-no">01</div><h3 data-i18n="road.1.title">Khảo sát & đánh giá</h3><p data-i18n="road.1.desc">Đánh giá hiện trạng quy trình, thiết bị, dữ liệu; xác định bài toán ưu tiên và KPI mục tiêu.</p><span class="nx-step-time" data-i18n="road.1.time">1–2 tuần</span></div>
@@ -1761,8 +1866,8 @@
     <div class="nx-container">
       <div class="nx-section-header">
         <span class="nx-kicker" data-i18n="about.kicker">Năng lực</span>
-        <h2 data-i18n="about.title">Đối tác chuyển đổi số sản xuất đáng tin cậy</h2>
-        <p data-i18n="about.desc">Đội ngũ kỹ sư am hiểu cả công nghệ thông tin (IT) lẫn công nghệ vận hành (OT) tại xưởng sản xuất.</p>
+        <h2 data-i18n="about.title">Đội ngũ triển khai am hiểu cả phần mềm IT và thiết bị xưởng OT</h2>
+        <p data-i18n="about.desc">Kỹ sư DFS làm việc trực tiếp tại xưởng để kết nối PLC, cảm biến, thiết bị mã vạch và đồng bộ dữ liệu với ERP.</p>
       </div>
       <div class="nx-numbers">
         <div class="nx-number">
@@ -1800,8 +1905,8 @@
     <div class="nx-container">
       <div class="nx-cta">
         <div>
-          <h2 data-i18n="cta.title">Sẵn sàng bắt đầu hành trình Smart Factory?</h2>
-          <p data-i18n="cta.desc">Đăng ký khảo sát miễn phí 1 ngày tại nhà máy. Chuyên gia của chúng tôi sẽ đề xuất lộ trình số hóa và ước tính ROI cụ thể cho doanh nghiệp bạn.</p>
+          <h2 data-i18n="cta.title">Đặt lịch khảo sát hiện trạng nhà máy</h2>
+          <p data-i18n="cta.desc">Đăng ký khảo sát 1 ngày miễn phí tại xưởng. Kỹ sư DFS sẽ đánh giá hiện trạng kết nối máy, quy trình và gửi đề xuất lộ trình cùng ước tính chi phí.</p>
         </div>
         <div class="nx-cta-actions">
           <button type="button" class="nx-btn nx-btn--primary" data-modal-trigger="survey" data-i18n="cta.btn_survey">Đăng ký khảo sát</button>
@@ -1864,7 +1969,7 @@
         </div>
       </div>
       <div class="nx-footer-bottom">
-        <div data-i18n="footer.copyright"><strong>DFS — Digital Factory Solutions</strong> — Số hóa nhà máy, minh bạch từng công đoạn. © 2026</div>
+        <div data-i18n="footer.copyright"><strong>DFS (Digital Factory Solutions)</strong> | Phần mềm MES &amp; Tự động hóa dữ liệu nhà máy. © 2026</div>
         <a href="#hero" style="font-weight:600;" data-i18n="footer.back_top">Lên đầu trang ↑</a>
       </div>
     </div>
@@ -1899,7 +2004,7 @@
             <option data-i18n="modal.opt.ems">Quản lý năng lượng (EMS / ESG)</option>
             <option data-i18n="modal.opt.qms">Quản lý chất lượng</option>
             <option data-i18n="modal.opt.paperless">Số hóa biểu mẫu / Paperless</option>
-            <option data-i18n="modal.opt.consult">Chưa rõ — cần tư vấn tổng thể</option>
+            <option data-i18n="modal.opt.consult">Chưa rõ, cần tư vấn tổng thể</option>
           </select>
         </label>
         <div style="display:flex;justify-content:flex-end;gap:0.75rem;margin-top:0.5rem;">
@@ -1963,7 +2068,7 @@
         });
       });
 
-      // Axis-style Sidebar Tabs scoped cleanly per Mega Menu panel + sliding notch
+      // Mega menu sidebar tabs and sliding indicator
       function syncNotch(sidebar, activeTab) {
         if (!sidebar || !activeTab) return;
         const topPx = activeTab.offsetTop + (activeTab.offsetHeight / 2) - 8;
@@ -2080,11 +2185,11 @@
         mes: {
           badge: 'Manufacturing Execution System',
           title: 'Điều hành sản xuất theo thời gian thực, không giấy tờ',
-          desc: 'Số hóa toàn bộ vòng đời lệnh sản xuất: từ kế hoạch nhận từ ERP, điều độ xuống từng chuyền/máy, cấp phát nguyên vật liệu, ghi nhận sản lượng – phế phẩm đến đóng lệnh và hồ sơ lô điện tử.',
+          desc: 'Quản lý xuyên suốt lệnh sản xuất: nhận kế hoạch từ ERP, điều độ xuống từng chuyền/máy, cấp phát vật tư, ghi nhận sản lượng, phế phẩm và tổng hợp hồ sơ lô khi đóng lệnh.',
           bullets: [
             'Lập và điều độ lệnh sản xuất theo năng lực chuyền, ca, công nhân',
             'Hướng dẫn công việc điện tử (eWI) & ghi nhận sản lượng bằng máy quét, tablet',
-            'Theo dõi WIP, tiến độ đơn hàng và năng suất lao động tức thời',
+            'Theo dõi bán thành phẩm (WIP), tiến độ đơn hàng và năng suất ca làm việc',
             'Hồ sơ lô điện tử (eBR/eDHR) tự động tổng hợp khi đóng lệnh'
           ],
           metricVal: '-90%',
@@ -2093,8 +2198,8 @@
         },
         trace: {
           badge: 'Traceability & Genealogy',
-          title: 'Truy xuất nguồn gốc theo lô, theo serial chuẩn GS1',
-          desc: 'Xây dựng phả hệ đầy đủ toàn trình (End-to-End): từ lô nguyên liệu NCC, lệnh sản xuất, máy móc vận hành, kết quả kiểm tra chất lượng đến đóng gói dán nhãn pallet và phân phối.',
+          title: 'Truy xuất nguồn gốc theo lô và serial chuẩn GS1',
+          desc: 'Lưu vết phả hệ sản phẩm từ lô nguyên liệu đầu vào, lệnh sản xuất, thông số máy, kết quả QC đến đóng gói thùng/pallet và xuất kho.',
           bullets: [
             'Sinh và in mã định danh GS1: GTIN, SSCC, QR, DataMatrix, GS1-128',
             'Liên kết phả hệ cha – con: đơn vị → hộp → thùng → pallet (aggregation)',
@@ -2106,11 +2211,11 @@
           note: '<strong>Tuân thủ:</strong> định hướng theo TCVN 12850:2019, ISO 22000/HACCP, GMP và yêu cầu xuất khẩu EU/Mỹ/Nhật.'
         },
         oee: {
-          badge: 'IIoT · Machine Monitoring',
+          badge: 'IIoT / Machine Monitoring',
           title: 'Giám sát máy và tối ưu hiệu suất thiết bị tổng thể (OEE)',
-          desc: 'Thu thập tự động trạng thái chạy/dừng, tốc độ, sản lượng và cảnh báo từ PLC, cảm biến — kể cả máy đời cũ — để thấy rõ mọi tổn thất năng lực.',
+          desc: 'Lấy tự động trạng thái chạy/dừng, tốc độ, sản lượng và mã lỗi từ PLC hoặc cảm biến, áp dụng được cho cả máy cơ đời cũ.',
           bullets: [
-            'Dashboard OEE theo máy, chuyền, ca: Availability · Performance · Quality',
+            'Dashboard OEE theo máy, chuyền, ca (Availability, Performance, Quality)',
             'Phân loại nguyên nhân dừng máy, biểu đồ Pareto 6 tổn thất lớn',
             'Màn hình Andon tại xưởng, cảnh báo qua Zalo/Email/SMS',
             'Edge gateway kết nối OPC UA, Modbus, MQTT, Siemens S7…'
@@ -2120,7 +2225,7 @@
           note: '<strong>Không cần thay máy:</strong> bổ sung cảm biến/IO module cho máy chưa có PLC.'
         },
         qms: {
-          badge: 'Quality Management · SPC',
+          badge: 'Quality Management / SPC',
           title: 'Kiểm soát chất lượng ngay tại công đoạn',
           desc: 'Đưa kế hoạch kiểm tra lên tablet, thu thập kết quả đo trực tiếp từ thiết bị và cảnh báo sớm khi quá trình có xu hướng vượt giới hạn kiểm soát.',
           bullets: [
@@ -2144,11 +2249,11 @@
             'Kiểm kê nhanh, đối soát tồn kho với ERP'
           ],
           metricVal: '99,8%',
-          metricCap: 'Độ chính xác tồn kho sau khi áp dụng quét mã toàn trình',
+          metricCap: 'Độ chính xác tồn kho khi quét mã vạch ở các bước nhập, xuất, chuyển kho',
           note: '<strong>Kết nối:</strong> máy in nhãn, PDA, RFID, cân điện tử, AGV/AMR.'
         },
         cmms: {
-          badge: 'Maintenance · Digital Forms',
+          badge: 'Maintenance / Digital Forms',
           title: 'Bảo trì chủ động và số hóa biểu mẫu xưởng',
           desc: 'Lập kế hoạch bảo trì định kỳ dựa trên giờ chạy thực tế từ máy; số hóa checklist, nhật ký ca, biểu mẫu 5S/an toàn thay cho giấy tờ.',
           bullets: [
@@ -2159,14 +2264,14 @@
           ],
           metricVal: '-30%',
           metricCap: 'Thời gian dừng máy ngoài kế hoạch',
-          note: '<strong>Paperless:</strong> toàn bộ biểu mẫu lưu trữ tập trung, tìm kiếm tức thì khi audit.'
+          note: '<strong>Paperless:</strong> toàn bộ biểu mẫu lưu tập trung, tra cứu nhanh khi cần audit.'
         },
         ems: {
-          badge: 'Energy Management · ESG',
+          badge: 'Energy Management / ESG',
           title: 'Giám sát năng lượng thời gian thực & Tối ưu chi phí',
           desc: 'Thu thập liên tục dữ liệu điện năng, khí nén, hơi, nước từ đồng hồ đo thông minh theo từng phân xưởng, chuyền và máy; liên kết mức tiêu thụ với từng lệnh sản xuất và chuẩn bị báo cáo phát thải CO₂.',
           bullets: [
-            'Theo dõi phụ tải đỉnh (Peak Demand), hệ số công suất (cosφ) & cảnh báo quá tải tức thời',
+            'Theo dõi phụ tải đỉnh (Peak Demand), hệ số công suất (cosφ) và cảnh báo quá tải',
             'Tính định mức tiêu hao năng lượng (kWh, m³) trên từng sản phẩm và lô sản xuất',
             'Phát hiện máy chạy không tải, rò rỉ khí nén và thiết bị tiêu thụ điện bất thường',
             'Tự động tổng hợp báo cáo kiểm kê khí nhà kính Scope 1–2 theo ISO 50001 & ESG'
@@ -2178,12 +2283,21 @@
       };
 
       const solTabs = document.querySelectorAll('.nx-tab');
+      const orbitSpokes = document.querySelectorAll('.nx-orbit-spoke[data-spoke]');
+      const orbitDots = document.querySelectorAll('.nx-orbit-dot[data-dot]');
       const $ = function (id) { return document.getElementById(id); };
       const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const metricBoxEl = document.querySelector('.nx-metric-box');
       let currentSolKey = 'mes';
-      let solRevealed = false;
-      let metricBoxTimer = null;
+      const solOrbitMeta = {
+        mes:   { code: 'MES',   idx: '01 / 07' },
+        trace: { code: 'TRACE', idx: '02 / 07' },
+        oee:   { code: 'OEE',   idx: '03 / 07' },
+        qms:   { code: 'QMS',   idx: '04 / 07' },
+        wms:   { code: 'WMS',   idx: '05 / 07' },
+        cmms:  { code: 'CMMS',  idx: '06 / 07' },
+        ems:   { code: 'EMS',   idx: '07 / 07' }
+      };
+      const solOrder = ['mes', 'trace', 'oee', 'qms', 'wms', 'cmms', 'ems'];
 
       function triggerMetricPop(el) {
         if (!el) return;
@@ -2285,15 +2399,6 @@
         }
       }
 
-      function highlightMetricBox() {
-        if (!metricBoxEl || prefersReducedMotion) return;
-        metricBoxEl.classList.remove('is-updating');
-        void metricBoxEl.offsetWidth;
-        metricBoxEl.classList.add('is-updating');
-        clearTimeout(metricBoxTimer);
-        metricBoxTimer = setTimeout(function () { metricBoxEl.classList.remove('is-updating'); }, 680);
-      }
-
       function selectSolution(key, opts) {
         const shouldAnimate = !opts || opts.animate !== false;
         currentSolKey = key;
@@ -2306,6 +2411,20 @@
           t.classList.toggle('is-active', active);
           t.setAttribute('aria-selected', String(active));
         });
+        orbitSpokes.forEach(function (s) {
+          s.classList.toggle('is-active', s.getAttribute('data-spoke') === key);
+        });
+        orbitDots.forEach(function (dot) {
+          const active = dot.getAttribute('data-dot') === key;
+          dot.classList.toggle('is-active', active);
+          dot.setAttribute('r', active ? '4.5' : '3.5');
+        });
+        const meta = solOrbitMeta[key] || { code: String(key).toUpperCase(), idx: '01 / 07' };
+        const hubActiveEl = $('sol-hub-active');
+        if (hubActiveEl) hubActiveEl.textContent = meta.code;
+        const stepIdxEl = $('sol-step-idx');
+        if (stepIdxEl) stepIdxEl.textContent = meta.idx;
+
         $('sol-badge').textContent = d.badge;
         $('sol-title').textContent = d.title;
         $('sol-desc').textContent = d.desc;
@@ -2316,53 +2435,37 @@
         $('sol-metric-note').innerHTML = d.note;
 
         const metricEl = $('sol-metric-value');
-        if (shouldAnimate) {
-          solRevealed = true;
-          highlightMetricBox();
-          animateMetricValue(metricEl, d.metricVal, { duration: 560 });
-        } else {
-          if (metricEl._metricRaf) { cancelAnimationFrame(metricEl._metricRaf); metricEl._metricRaf = null; }
-          if (metricEl._metricDelayTimer) { clearTimeout(metricEl._metricDelayTimer); metricEl._metricDelayTimer = null; }
+        if (metricEl) {
           metricEl.textContent = d.metricVal;
+          if (shouldAnimate && !prefersReducedMotion) triggerMetricPop(metricEl);
         }
       }
       window.addEventListener('dfs:langchange', function () {
         selectSolution(currentSolKey, { animate: false });
       });
-      function syncSolutionIcons(theme) {
-        const t = theme || document.documentElement.getAttribute('data-theme') || (window.DFS_I18N && window.DFS_I18N.getTheme && window.DFS_I18N.getTheme()) || 'green';
-        const prefix = t === 'teal' ? 'assets/images/solutions/teal/sol-' : 'assets/images/solutions/sol-';
-        document.querySelectorAll('img[data-sol-img]').forEach(function (img) {
-          const key = img.getAttribute('data-sol-img');
-          if (!key) return;
-          const nextSrc = prefix + key + '.svg';
-          if (img.getAttribute('src') !== nextSrc) img.setAttribute('src', nextSrc);
-        });
-      }
-      syncSolutionIcons();
-      window.addEventListener('dfs:themechange', function (e) {
-        syncSolutionIcons(e && e.detail && e.detail.theme);
-      });
       solTabs.forEach(function (tab) {
         tab.addEventListener('click', function () { selectSolution(tab.getAttribute('data-sol'), { animate: true }); });
+        tab.addEventListener('keydown', function (e) {
+          const curIdx = solOrder.indexOf(tab.getAttribute('data-sol'));
+          if (curIdx === -1) return;
+          let nextIdx = -1;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            nextIdx = (curIdx + 1) % solOrder.length;
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            nextIdx = (curIdx - 1 + solOrder.length) % solOrder.length;
+          }
+          if (nextIdx !== -1) {
+            e.preventDefault();
+            const nextKey = solOrder[nextIdx];
+            selectSolution(nextKey, { animate: true });
+            const nextBtn = document.querySelector('.nx-tab[data-sol="' + nextKey + '"]');
+            if (nextBtn) nextBtn.focus();
+          }
+        });
       });
       document.querySelectorAll('[data-sol-jump]').forEach(function (link) {
         link.addEventListener('click', function () { selectSolution(link.getAttribute('data-sol-jump'), { animate: true }); });
       });
-
-      const solSectionEl = $('solutions');
-      if (solSectionEl && 'IntersectionObserver' in window) {
-        const solObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting && !solRevealed) {
-              solRevealed = true;
-              selectSolution(currentSolKey, { animate: true });
-              solObs.disconnect();
-            }
-          });
-        }, { threshold: 0.25 });
-        solObs.observe(solSectionEl);
-      }
 
       // Case filters + Case KPI counter
       const filters = document.querySelectorAll('.nx-filter');
@@ -2448,9 +2551,9 @@
         ebook: ['Tài liệu', 'Tải cẩm nang truy xuất nguồn gốc', 'Để lại thông tin để nhận đường dẫn tải tài liệu PDF qua email.']
       };
       const caseContent = {
-        electronics: ['Case study · Linh kiện ô tô', 'MES + OEE cho 12 chuyền lắp ráp', 'Kết nối 85 máy, Andon theo thời gian thực và phân tích nguyên nhân dừng máy giúp tăng 18% OEE sau 6 tháng. Để lại thông tin để nhận bản case study đầy đủ.'],
-        fnb: ['Case study · Thực phẩm xuất khẩu', 'Truy xuất từ vùng nguyên liệu đến container', 'Mã hóa GS1 cho thùng – pallet, liên kết lô nguyên liệu và hồ sơ chế biến; truy xuất một lô dưới 30 giây. Để lại thông tin để nhận bản đầy đủ.'],
-        pharma: ['Case study · Dược phẩm GMP', 'Hồ sơ lô điện tử (eBR)', 'Số hóa 140 biểu mẫu với chữ ký điện tử và audit trail, rút ngắn 60% thời gian duyệt lô. Để lại thông tin để nhận bản đầy đủ.']
+        electronics: ['Case study: Linh kiện ô tô', 'MES + OEE cho 12 chuyền lắp ráp', 'Kết nối 85 máy, Andon theo thời gian thực và phân tích nguyên nhân dừng máy giúp tăng 18% OEE sau 6 tháng. Để lại thông tin để nhận bản case study đầy đủ.'],
+        fnb: ['Case study: Thực phẩm xuất khẩu', 'Truy xuất từ vùng nguyên liệu đến container', 'Mã hóa GS1 cho thùng – pallet, liên kết lô nguyên liệu và hồ sơ chế biến; truy xuất một lô dưới 30 giây. Để lại thông tin để nhận bản đầy đủ.'],
+        pharma: ['Case study: Dược phẩm GMP', 'Hồ sơ lô điện tử (eBR)', 'Số hóa 140 biểu mẫu với chữ ký điện tử và audit trail, rút ngắn 60% thời gian duyệt lô. Để lại thông tin để nhận bản đầy đủ.']
       };
       function openModal(tag, title, body) {
         closeAllMega();
@@ -2509,7 +2612,9 @@
       if (filterParam) applyFilter(filterParam, { animate: false });
       const modalParam = params.get('modal');
       if (modalParam && modalContent[modalParam]) {
-        const c = modalContent[modalParam];
+        const lang = (window.DFS_I18N && window.DFS_I18N.currentLang) || 'vi';
+        const i18nM = window.DFS_I18N && window.DFS_I18N.modalContent && window.DFS_I18N.modalContent[modalParam];
+        const c = (i18nM && i18nM[lang]) || modalContent[modalParam];
         openModal(c[0], c[1], c[2]);
       }
     })();

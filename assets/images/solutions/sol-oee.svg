@@ -7,17 +7,17 @@
     </radialGradient>
     <linearGradient id="oee-deck" x1="20%" y1="15%" x2="85%" y2="85%">
       <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="65%" stop-color="#F2FAF5" />
-      <stop offset="100%" stop-color="#E6F4EC" />
+      <stop offset="65%" stop-color="#F0FAFC" />
+      <stop offset="100%" stop-color="#E6F4F6" />
     </linearGradient>
     <linearGradient id="oee-bezel" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#3D3D3D" />
       <stop offset="100%" stop-color="#262626" />
     </linearGradient>
     <linearGradient id="oee-green-arc" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#008B45" />
-      <stop offset="55%" stop-color="#38B870" />
-      <stop offset="100%" stop-color="#5EE49B" />
+      <stop offset="0%" stop-color="#026A74" />
+      <stop offset="55%" stop-color="#1CC0D1" />
+      <stop offset="100%" stop-color="#4CE3F2" />
     </linearGradient>
     <filter id="oee-glow" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="1.8" result="blur" />
@@ -66,9 +66,9 @@
     <polygon points="64,102 96,86 96,91 64,107" fill="#76827D" />
     <polygon points="56,68 64,68 96,84 96,86 64,102 56,102 24,86 24,84" fill="url(#oee-deck)" />
     <polyline points="24,84 56,68 64,68 96,84" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" />
-    <polygon points="57,71 63,71 90,84.5 90,85.5 63,99 57,99 30,85.5 30,84.5" fill="none" stroke="#CFEAD9" stroke-width="0.9" />
-    <polygon points="64,102 96,86 96,88 64,104" fill="#008B45" />
-    <polygon points="56,102 64,102 64,104 56,104" fill="#128243" />
+    <polygon points="57,71 63,71 90,84.5 90,85.5 63,99 57,99 30,85.5 30,84.5" fill="none" stroke="#CCE9ED" stroke-width="0.9" />
+    <polygon points="64,102 96,86 96,88 64,104" fill="#026A74" />
+    <polygon points="56,102 64,102 64,104 56,104" fill="#01535B" />
   </g>
 
   <!-- Gauge Stand Pedestal -->
@@ -111,21 +111,21 @@
     <!-- 3 Compact A / P / Q Metric Mini-Bars Inside Lower Dial -->
     <g transform="translate(40.5, 65.5)">
       <rect x="0" y="0" width="21" height="2" rx="1" fill="#E4EAE7" />
-      <rect class="oee-apq-1" x="0" y="0" width="18" height="2" rx="1" fill="#008B45" />
+      <rect class="oee-apq-1" x="0" y="0" width="18" height="2" rx="1" fill="#026A74" />
       <rect x="0" y="3.5" width="21" height="2" rx="1" fill="#E4EAE7" />
-      <rect class="oee-apq-2" x="0" y="3.5" width="16" height="2" rx="1" fill="#38B870" />
+      <rect class="oee-apq-2" x="0" y="3.5" width="16" height="2" rx="1" fill="#1CC0D1" />
       <rect x="0" y="7" width="21" height="2" rx="1" fill="#E4EAE7" />
-      <rect class="oee-apq-3" x="0" y="7" width="19.5" height="2" rx="1" fill="#2E8B57" />
+      <rect class="oee-apq-3" x="0" y="7" width="19.5" height="2" rx="1" fill="#0699A8" />
     </g>
 
     <!-- Animated Precision Needle Centered at (51, 54) -->
     <g transform="translate(51, 54)">
       <g class="oee-needle">
         <polygon points="-1.8,4 0,-18.5 1.8,4" fill="#262626" />
-        <polygon points="0,-18.5 1.8,4 0,4" fill="#008B45" />
+        <polygon points="0,-18.5 1.8,4 0,4" fill="#026A74" />
       </g>
       <circle cx="0" cy="0" r="4.2" fill="#262626" />
-      <circle cx="0" cy="0" r="2.1" fill="#38B870" />
+      <circle cx="0" cy="0" r="2.1" fill="#1CC0D1" />
     </g>
   </g>
 
@@ -144,12 +144,12 @@
     <!-- Tier 2 (Middle Amber Standby) -->
     <rect x="85.8" y="39.5" width="6.4" height="5.5" rx="1" fill="#F5A524" opacity="0.55" />
     <!-- Tier 1 (Top Active RUN Beacon) -->
-    <rect x="85.8" y="31.5" width="6.4" height="6" rx="1" fill="#5EE49B" filter="url(#oee-glow)" />
+    <rect x="85.8" y="31.5" width="6.4" height="6" rx="1" fill="#4CE3F2" filter="url(#oee-glow)" />
     <!-- Top Cap -->
     <ellipse cx="89" cy="29.5" rx="4.5" ry="1.6" fill="#525C58" />
     <!-- Expanding RUN Radar Ring -->
     <g transform="translate(89, 34.5)">
-      <circle class="oee-radar" cx="0" cy="0" r="7.5" stroke="#38B870" stroke-width="1.4" />
+      <circle class="oee-radar" cx="0" cy="0" r="7.5" stroke="#1CC0D1" stroke-width="1.4" />
     </g>
   </g>
 </svg>
